@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[三角形单元]]></title>
+    <url>%2F2017%2F10%2F18%2F%E4%B8%89%E8%A7%92%E5%BD%A2%E5%8D%95%E5%85%83%2F</url>
+    <content type="text"><![CDATA[本文解析的推导了线性三角形单元的基函数及其相关积分。将所有与基函数相关积分都用节点的实际坐标表示，并将其写成向量乘积的形式，这样在计算单元刚度矩阵时就不用使用数值积分而可以直接使用解析形式，而且如果采用无矩阵方法，单元矩阵与向量的乘积只需要很少的计算量。 形状函数$\vec{N}(r) = [λ_1,λ_2,λ_3]^{T}$$\frac{\partial \vec{N}(r)}{\partial x} = \frac{[b_1,b_2,b_3]^{T}}{2Δ}$$\frac{\partial \vec{N}(r)}{\partial y} = \frac{[c_1,c_2,c_3]^{T}}{2Δ}$ 其中 $b_1 = y_2-y_3$$b_2 = y_3-y_1$$b_3 = y_1-y_2$ $c_1 = x_3-x_2$$c_2 = x_1-x_3$$c_3 = x_2-x_1$ $2Δ=c_3b_2-b_3c_2$ 欧拉公式$\int_{s}λ_1^aλ_2^bλ_3^cdxdy=\frac{a!b!c!}{(a+b+c+2)!}2Δ$ 得 $\int_sdxdy = \frac{1}{2}2Δ$$\int_sλ_idxdy = \frac{1}{6}2Δ \,\,\,\,\, i=1,2,3$$\int_sλ_i^2dxdy = \frac{1}{12}2Δ \,\,\,\,\, i=1,2,3$$\int_sλ_iλ_jdxdy = \frac{1}{24}2Δ \,\,\,\,\, i=1,2,3;j=1,2,3,i≠j$ 单元矩阵$$\mathbf{B}{Γ}=\int{Γ}\vec{N}(r)[\vec{N}]^{T}(r)dΓ=\frac{l}{6}(\vec{I}\vec{I}^T+\mathbf{I})$$ $\mathbf{B}{11}=\int{e}\vec{N}(r)[\vec{N}]^{T}(r)dr=\frac{2Δ}{24}(\vec{I}\vec{I}^T+\mathbf{I})$ $\mathbf{B}{x1}=\int{e}\frac{\partial \vec{N}(r)}{\partial x}[\vec{N}]^{T}(r)dr=\frac{1}{6}\begin{bmatrix}b_1\b_2\b_3\end{bmatrix}\vec{I}^T$ $\mathbf{B}{y1}=\int{e}\frac{\partial \vec{N}(r)}{\partial x}[\vec{N}]^{T}(r)dr=\frac{1}{6}\begin{bmatrix}c_1\c_2\c_3\end{bmatrix}\vec{I}^T$ $\vec{b}=\int_{e}\vec{N}(r)dr=\frac{2Δ}{6}\vec{I}$ 与向量乘积移出项$[\mathbf{B}{11}\mathbf{X}\mathbf{Σ}]{\vec{e},j}= \int{e}\vec{N}(r)[\vec{N}]^{T}(r)dr = \frac{2Δ}{24}(\vec{I}\vec{I}^T+\mathbf{I})\begin{bmatrix}\phi{e(1),j}\\phi{e(2),j}\\phi{e(3),j}\end{bmatrix}Σ_{j}$ $= \frac{2ΔΣ{j}}{24}(sum(\phi{\vec{e},j})+\begin{bmatrix}\phi{e(1),j}\\phi{e(2),j}\\phi_{e(3),j}\end{bmatrix})$ 对流项 X方向 $-[\mathbf{B}_{x1}\mathbf{X}\mathbf{A}x]{\vec{e},j} = -\frac{1}{6}\begin{bmatrix}y_2-y_3\y_3-y_1\y_1-y2\end{bmatrix}sum(\phi^{x}{\vec{e},j})$ 其中 $\phi^{x}=\mathbf{X}\mathbf{A}_x$ Y方向 $-[\mathbf{B}_{y1}\mathbf{X}\mathbf{A}y]{\vec{e},j} = -\frac{1}{6}\begin{bmatrix}x_3-x_2\x_1-x_3\x_2-x1\end{bmatrix}sum(\phi^{y}{\vec{e},j})$ 其中 $\phi^{y}=\mathbf{X}\mathbf{A}_y$ 边界项$[\mathbf{B}{Γ}\mathbf{X}\mathbf{A}{n}]{\vec{e},j}=\frac{l}{6}(\vec{I}\vec{I}^T+\mathbf{I})\begin{bmatrix}\phi^{n}{e(1),j}\\phi^{n}{e(2),j}\end{bmatrix} = \frac{l}{6}(sum(\phi^{n}{\vec{e},j})+\begin{bmatrix}\phi^{n}{e(1),j}\\phi^{n}{e(2),j}\end{bmatrix})$ 右端项$[\vec{b}[\vec{s}]^{T}]{\vec{e},j} = \frac{2Δ}{6}\vec{I}s{j}$]]></content>
+      <categories>
+        <category>有限元</category>
+      </categories>
+      <tags>
+        <tag>有限元</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[利用hexo和github搭建个人blog]]></title>
+    <url>%2F2017%2F10%2F18%2F%E5%88%A9%E7%94%A8hexo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog%2F</url>
+    <content type="text"><![CDATA[最开始时使用emacs的org-mod写博客，但使用atom之后就很少使用emacs，blog也没有坚持写下去。现在想用markdown代替org-mod重新开始写blog，所以又开始了折腾。现在的主要流程是使用atom编辑markdown文档，然后使用hexo生成和发布blog，发布平台使用 github-page，下面对整个流程进行简单说明。 hexo是一款基于node 的静态博客网站生成器，官网hexo，按照官网说明一步步完成 hexo 安装。 常用命令12345678# 新建posthexo n post# 生成静态页面hexo g# 开启服务hexo s# 发布hexo d 配置站点配置文件_config.yml在项目根目录下, 主要包含站点的一些配置，例如1234567# Sitetitle:subtitle:description:author:language:timezone: 主题hexo 包含很多 主题 可以下载，直接clone到themes文件夹中，并在站点配置文件_config.yml中作简单配置就可以使用，next 主题是一款很干净简介的主题，以下主要对next主题进行配置。 next主题安装下载主题1git clone https://github.com/iissnan/hexo-theme-next themes/next 下载之后在 /themes/next/README.md中有next的使用说明和在线文档，仔细阅读后进行相关配置。 启用主题在站点配置文件_config.yml中找到 theme 字段，并将其值更改为 next12## Themes: https://hexo.io/themes/theme: next next主题配置主题配置文件为 /themes/next/_config.yml. 设置 scheme12345## Schemes#scheme: Musescheme: Mist#scheme: Pisces#scheme: Gemini 设置菜单123456789# When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -&gt; archives)menu: home: / categories: /categories/ #about: /about/ archives: /archives/ tags: /tags/ #sitemap: /sitemap.xml #commonweal: /404/ 某些页面默认没有，需要新建1hexo new page categories 设置头像1avatar: /images/bio.png 设置分享12# Sharejiathis: true 设置评论使用第三方社交评论系统友言，注册友言之后得到一个用户id，填入配置文件中就行。123# Support for youyan comments system.# You can get your uid from http://www.uyan.ccyouyan_uid: xxxx 设置社交123social: #LinkLabel: Link GitHub: https://github.com/fccf 设置链接1234567# Blog rollslinks_title: Links#links_layout: blocklinks_layout: inlinelinks: #Title: http://example.com/ ITER: http://www.iter.org/ 文章加密打开themes/next/layout/_partials/head/custom-head.swig文件,插入以下代码： 12345678910&lt;script&gt; (function()&#123; if('&#123;&#123; page.password &#125;&#125;')&#123; if (prompt('请输入文章密码') !== '&#123;&#123; page.password &#125;&#125;')&#123; alert('密码错误！'); history.back(); &#125; &#125; &#125;)();&lt;/script&gt; 然后在文章开头添加 password 1234title:date:tags:password: xxxx 写作使用atom编辑器编辑markdown文件，因为atom编辑器有些markdown插件很好用，比如 markdown-preview-enhanced 可以在线预览，可以直接编辑图片和公式等，用起来比emacs的org-mod爽，所以彻底抛弃了emacs。 markdown 语法markdown语法很简单，上手很快，但功能很强大。markdown可以使用很多编辑器进行编辑，还可以在线编辑以及预览 stackedit. readmore1&lt;!-- more --&gt; 设置MathJax公式显示需要设置 MathJax12345# MathJax Supportmathjax: enable: true per_page: false cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML 图片使用七牛云作为图床，将所有图片都上传到七牛云上。 配置七牛云七牛云配置文件conf_qiniu.json可以直接放在blog目录下1234567891011121314&#123; "src_dir" : "xxx", "access_key" : "xxx", "secret_key" : "xxx", "up_host" : "xxx", "zone" : "hn", "bucket" : "images", "ignore_dir" : false, "overwrite" : false, "check_exists" : false, "check_hash" : false, "check_size" : false, "rescan_local" : true&#125; 上传图片1qshell qupload conf_qiniu.json 发布github在github上新建项目： fccf.github.io 配置1234deploy: type: git repo: git@github.com:fccf/fccf.github.io.git branch: master 发布发布前先生成1hexo d -g 如果出现错误：ERROR Deployer not found: git，执行命令 npm install hexo-deployer-git –save]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F10%2F17%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+</search>
