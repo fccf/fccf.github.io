@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="superfun">
 <meta property="og:description" content="最开始时使用emacs的org-mod写博客，但使用atom之后就很少使用emacs，blog也没有坚持写下去。现在想用markdown代替org-mod重新开始写blog，所以又开始了折腾。现在的主要流程是使用atom编辑markdown文档，然后使用hexo生成和发布blog，发布平台使用 github-page，下面对整个流程进行简单说明。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-18T10:54:06.733Z">
+<meta property="og:updated_time" content="2017-10-18T11:00:59.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用hexo和github搭建个人blog">
 <meta name="twitter:description" content="最开始时使用emacs的org-mod写博客，但使用atom之后就很少使用emacs，blog也没有坚持写下去。现在想用markdown代替org-mod重新开始写blog，所以又开始了折腾。现在的主要流程是使用atom编辑markdown文档，然后使用hexo生成和发布blog，发布平台使用 github-page，下面对整个流程进行简单说明。">
@@ -403,8 +403,8 @@
 <h4 id="上传图片"><a href="#上传图片" class="headerlink" title="上传图片"></a>上传图片</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">qshell qupload conf_qiniu.json</div></pre></td></tr></table></figure>
 <h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><h3 id="github"><a href="#github" class="headerlink" title="github"></a>github</h3><p>在github上新建项目： fccf.github.io</p>
 <h3 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> <span class="string">git</span></div><div class="line"><span class="attr">  repo:</span> <span class="string">git@github.com:fccf/fccf.github.io.git</span></div><div class="line"><span class="attr">  branch:</span> <span class="string">master</span></div></pre></td></tr></table></figure>
-<p>如果发布的时候出现错误：ERROR Deployer not found: git 意思就是用来发布文章的git没有安装，执行命令 npm install hexo-deployer-git –save就可以解决</p>
 <h3 id="发布-1"><a href="#发布-1" class="headerlink" title="发布"></a>发布</h3><p>发布前先生成<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d -g</div></pre></td></tr></table></figure></p>
+<p>如果出现错误：ERROR Deployer not found: git，执行命令 npm install hexo-deployer-git –save</p>
 
       
     </div>
@@ -444,6 +444,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/18/三角形单元/" rel="prev" title="三角形单元">
+                三角形单元 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -545,7 +549,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -556,7 +560,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -567,7 +571,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
