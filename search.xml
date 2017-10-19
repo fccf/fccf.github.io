@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[一阶中子输运方程galerkin离散]]></title>
+    <url>%2F2017%2F10%2F19%2F%E4%B8%80%E9%98%B6%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8Bgalerkin%E7%A6%BB%E6%95%A3%2F</url>
+    <content type="text"><![CDATA[对一阶中子输运方程直接进行Galerkin离散然后分部积分并将边界条件带入边界积分项与不进行分部积分而是方程直接减去galerkin离散后的边界条件是等价的。与将两个方程相加除二得到的方程也是等价的。 这与带约束的变分原理中拉格朗日乘子法很相似，其中拉格朗日乘子为 -1。 输运方程$Ω⋅∇ϕ+σϕ = s$ 弱形式$(φ,Ω⋅∇ϕ)+(φ,σϕ) = (φ,s)$ 分部积分$&lt;φ,Ω⋅nϕ&gt; - (Ω⋅∇φ,ϕ)+(φ,σϕ) = (φ,s)$ 边界条件$&lt;φ,Ω⋅nϕ&gt;^{-} = G$ 带边界条件的方程$&lt;φ,Ω⋅nϕ&gt;^{+} - (Ω⋅∇φ,ϕ)+(φ,σϕ) = (φ,s) - G$ 再分部积分$&lt;φ,Ω⋅nϕ&gt;^{+} -&lt;φ,Ω⋅nϕ&gt; + (φ,Ω⋅∇ϕ)+(φ,σϕ) = (φ,s) - G$ 带边界条件的原方程$ -&lt;φ,Ω⋅nϕ&gt;^{-} + (φ,Ω⋅∇ϕ)+(φ,σϕ) = (φ,s)-G$该方程实际上就是原方程减去边界上的方程。 相加除2$ [&lt;φ,Ω⋅nϕ&gt;^{+}-&lt;φ,Ω⋅nϕ&gt;^{-}] /2 + [(φ,Ω⋅∇ϕ)- (Ω⋅∇φ,ϕ)]/2+(φ,σϕ) = (φ,s)-G$ 方程式等效$(Ω⋅∇φ,ϕ) + (φ,Ω⋅∇ϕ) = &lt;φ,Ω⋅nϕ&gt; = &lt;φ,Ω⋅nϕ&gt;^{+} + &lt;φ,Ω⋅nϕ&gt;^{-}$ $&lt;φ,Ω⋅nϕ&gt;^{+} - (Ω⋅∇φ,ϕ)=-&lt;φ,Ω⋅nϕ&gt;^{-} + (φ,Ω⋅∇ϕ)$]]></content>
+      <categories>
+        <category>中子输运方程</category>
+        <category>有限元</category>
+      </categories>
+      <tags>
+        <tag>中子输运方程</tag>
+        <tag>Galerkin</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[三角形单元]]></title>
     <url>%2F2017%2F10%2F18%2F%E4%B8%89%E8%A7%92%E5%BD%A2%E5%8D%95%E5%85%83%2F</url>
     <content type="text"><![CDATA[本文解析的推导了线性三角形单元的基函数及其相关积分。将所有与基函数相关积分都用节点的实际坐标表示，并将其写成向量乘积的形式，这样在计算单元刚度矩阵时就不用使用数值积分而可以直接使用解析形式，而且如果采用无矩阵方法，单元矩阵与向量的乘积只需要很少的计算量。 形状函数$\vec{N}(r) = [λ_1,λ_2,λ_3]^{T}$$\frac{\partial \vec{N}(r)}{\partial x} = \frac{[b_1,b_2,b_3]^{T}}{2Δ}$$\frac{\partial \vec{N}(r)}{\partial y} = \frac{[c_1,c_2,c_3]^{T}}{2Δ}$ 其中 $b_1 = y_2-y_3$$b_2 = y_3-y_1$$b_3 = y_1-y_2$ $c_1 = x_3-x_2$$c_2 = x_1-x_3$$c_3 = x_2-x_1$ $2Δ=c_3b_2-b_3c_2$ 欧拉公式$\int_{s}λ_1^aλ_2^bλ_3^cdxdy=\frac{a!b!c!}{(a+b+c+2)!}2Δ$ 得 $\int_sdxdy = \frac{1}{2}2Δ$$\int_sλ_idxdy = \frac{1}{6}2Δ \,\,\,\,\, i=1,2,3$$\int_sλ_i^2dxdy = \frac{1}{12}2Δ \,\,\,\,\, i=1,2,3$$\int_sλ_iλ_jdxdy = \frac{1}{24}2Δ \,\,\,\,\, i=1,2,3;j=1,2,3,i≠j$ 单元矩阵$$\mathbf{B}{Γ}=\int{Γ}\vec{N}(r)[\vec{N}]^{T}(r)dΓ=\frac{l}{6}(\vec{I}\vec{I}^T+\mathbf{I})$$ $\mathbf{B}{11}=\int{e}\vec{N}(r)[\vec{N}]^{T}(r)dr=\frac{2Δ}{24}(\vec{I}\vec{I}^T+\mathbf{I})$ $\mathbf{B}{x1}=\int{e}\frac{\partial \vec{N}(r)}{\partial x}[\vec{N}]^{T}(r)dr=\frac{1}{6}\begin{bmatrix}b_1\b_2\b_3\end{bmatrix}\vec{I}^T$ $\mathbf{B}{y1}=\int{e}\frac{\partial \vec{N}(r)}{\partial x}[\vec{N}]^{T}(r)dr=\frac{1}{6}\begin{bmatrix}c_1\c_2\c_3\end{bmatrix}\vec{I}^T$ $\vec{b}=\int_{e}\vec{N}(r)dr=\frac{2Δ}{6}\vec{I}$ 与向量乘积移出项$[\mathbf{B}{11}\mathbf{X}\mathbf{Σ}]{\vec{e},j}= \int{e}\vec{N}(r)[\vec{N}]^{T}(r)dr = \frac{2Δ}{24}(\vec{I}\vec{I}^T+\mathbf{I})\begin{bmatrix}\phi{e(1),j}\\phi{e(2),j}\\phi{e(3),j}\end{bmatrix}Σ_{j}$ $= \frac{2ΔΣ{j}}{24}(sum(\phi{\vec{e},j})+\begin{bmatrix}\phi{e(1),j}\\phi{e(2),j}\\phi_{e(3),j}\end{bmatrix})$ 对流项 X方向 $-[\mathbf{B}_{x1}\mathbf{X}\mathbf{A}x]{\vec{e},j} = -\frac{1}{6}\begin{bmatrix}y_2-y_3\y_3-y_1\y_1-y2\end{bmatrix}sum(\phi^{x}{\vec{e},j})$ 其中 $\phi^{x}=\mathbf{X}\mathbf{A}_x$ Y方向 $-[\mathbf{B}_{y1}\mathbf{X}\mathbf{A}y]{\vec{e},j} = -\frac{1}{6}\begin{bmatrix}x_3-x_2\x_1-x_3\x_2-x1\end{bmatrix}sum(\phi^{y}{\vec{e},j})$ 其中 $\phi^{y}=\mathbf{X}\mathbf{A}_y$ 边界项$[\mathbf{B}{Γ}\mathbf{X}\mathbf{A}{n}]{\vec{e},j}=\frac{l}{6}(\vec{I}\vec{I}^T+\mathbf{I})\begin{bmatrix}\phi^{n}{e(1),j}\\phi^{n}{e(2),j}\end{bmatrix} = \frac{l}{6}(sum(\phi^{n}{\vec{e},j})+\begin{bmatrix}\phi^{n}{e(1),j}\\phi^{n}{e(2),j}\end{bmatrix})$ 右端项$[\vec{b}[\vec{s}]^{T}]{\vec{e},j} = \frac{2Δ}{6}\vec{I}s{j}$]]></content>
