@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[中子输运方程中常运符号的含义]]></title>
+    <url>%2F2017%2F10%2F19%2F%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E4%B8%AD%E5%B8%B8%E8%BF%90%E7%AC%A6%E5%8F%B7%E7%9A%84%E5%90%AB%E4%B9%89%2F</url>
+    <content type="text"><![CDATA[$r$ : 空间坐标$\Omega$ : 角度坐标$\varphi$ : 幅角$\vartheta$ : 极角$\mathbb{S}$ : 单位球面 $\nabla$ : 梯度算子$\phi$ : 角通量$\Phi$ : 标通量 ($n/(cm^2\cdot s)$)$\sigma$ : 微观截面 ( $b$,$1b=10^{-24}cm^2$ )$\Sigma$ : 宏观截面 ( $cm^{-1}$ )$\Sigma_t$ : 宏观总截面$\Sigma_s$ : 宏观散射截面$\Sigma_f$ : 宏观裂变截面$\nu$ : 每次裂变释放的中子数$\Sigma_{s,n}$ : n 阶散射截面$s_s$ : 散射源 ( $cm^{-3}\cdot s^{-1}$ )$s_f$ : 裂变源 ( $cm^{-3}\cdot s^{-1}$ )$s_e$ : 外源 ( $cm^{-3}\cdot s^{-1}$ )$n$ : 表面单位外法向量 $(\cdot,\cdot)$ : 求解域的内积，包含求解的空间和角度$(u,v)$ = $\int_{v}\int_{\mathbb{S}}uv d\Omega dr$ $&lt;\cdot,\cdot&gt;$ : 边界上的内积$$ = $\int_{\partial v}\int_{\mathbb{S}}uv \vec{n} \cdot\vec{\Omega}d\Omega dr$ $&lt;\cdot,\cdot&gt;^{+}$ : 边界上的内积，半角度$\vec{n}\cdot\vec{\Omega}&gt;0$ $^{+}$ = $\int_{\partial v}\int_{\vec{n} \cdot\vec{\Omega}&gt;0}uv \vec{n} \cdot\vec{\Omega}d\Omega dr$ $&lt;\cdot,\cdot&gt;^{-}$ : 边界上的内积，半角度 $\vec{n} \cdot \vec{\Omega}&lt;0$ $^{-}$ = $\int_{\partial v}\int_{\vec{n} \cdot \vec{\Omega}&lt;0} uv \vec{n}\cdot \vec{\Omega} d\Omega dr$]]></content>
+      <categories>
+        <category>中子输运方程</category>
+      </categories>
+      <tags>
+        <tag>中子输运方程</tag>
+        <tag>符号</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[有限元离散一阶方程的稳定算法]]></title>
+    <url>%2F2017%2F10%2F19%2F%E6%9C%89%E9%99%90%E5%85%83%E7%A6%BB%E6%95%A3%E4%B8%80%E9%98%B6%E6%96%B9%E7%A8%8B%E7%9A%84%E7%A8%B3%E5%AE%9A%E7%AE%97%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[对一阶中子输运方程直接使用 Galerkin 方法在某些情况下会产生非物理的震荡现象。 震荡产生的原因稳定算法]]></content>
+      <categories>
+        <category>中子输运方程</category>
+      </categories>
+      <tags>
+        <tag>中子输运方程</tag>
+        <tag>有限元</tag>
+        <tag>galerkin</tag>
+        <tag>稳定算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[通量分解]]></title>
     <url>%2F2017%2F10%2F19%2F%E9%80%9A%E9%87%8F%E5%88%86%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[通量在求解区域应该满足平衡方程，这种平衡关系反应了输运方程的物理本质，其中包含以下几点 相邻的两个节点通量会互相交换 一个节点上增加的量必须从另一个节点上减去 通量可以通过边界互相交换 通量能够通过反应减少 通量是由源产生的 前三点通过输运方程第一项（泄露项）反应，第四点通过第二项（移出项）反应，第五点由方程右端项反应。同时第三点也通过边界条件进行反应。 数值通量通过定义数值通量$\mathbf{\Phi}$来反应相邻节点间的通量交换关系。其中$\mathbf{\Phi}$是一个稀疏矩阵，其稀疏性与网格的稀疏模式一致。其元素$\Phi_{ij}$表示从节点$j$转移到节点$i$的通量，显然$\Phi_{ij}=-\Phi_{ji}$，即从节点$i$转移到节点$j$的等于负的节点$j$转移到节点$i$的量。即矩阵$\mathbf{\Phi}$是一个反对称矩阵。 通量在节点间的转移量通过输运方程第一项 (泄露项) 表示，有限元离散之后的半离散格式为 $\sum_{j}\mathbf{c}_{ij}\phi_{j}$， 由于$\sum_{j}\mathbf{c}_{ij} = 0$，所以转移到节点 $i$ 的量为$\sum_{j}\Phi_{ij} = \sum_{j}\mathbf{c}_{ij}\phi_{j} = \sum_{j}\mathbf{c}_{ij}\phi_{j} + \phi_{i}\sum_{j}\mathbf{c}_{ij} = \sum_{j}\mathbf{c}_{ij}(\phi_{i}+\phi_{j})$ 可以将系数$\mathbf{c}_{ij}$分解为反对称的$\mathbf{a}_{ij}$和对称的$\mathbf{b}_{ij}$，其中$\mathbf{c}_{ij} = (\mathbf{a}_{ij}+\mathbf{b}_{ij})/2$$\mathbf{a}_{ij} = \mathbf{c}_{ij}-\mathbf{c}_{ji}$$\mathbf{b}_{ij} = \mathbf{c}_{ij}+\mathbf{c}_{ji}$ 所以$\sum_{j}(\mathbf{a}_{ij}+\mathbf{b}_{ij})(\phi_{i}+\phi_{j})/2 = \sum_{j}\Phi_{ij} $ 通量分解为$\Phi_{ij} = \mathbf{a}_{ij}(\phi_{i}+\phi_{j})/2, \forall j \ne i$$\Phi_{ii} =\sum_{j} \mathbf{b}_{ij}(\phi_{i}+\phi_{j})/2$]]></content>
@@ -15,7 +41,7 @@
   <entry>
     <title><![CDATA[有限元离散算子的性质]]></title>
     <url>%2F2017%2F10%2F19%2F%E6%9C%89%E9%99%90%E5%85%83%E7%A6%BB%E6%95%A3%E7%AE%97%E5%AD%90%E7%9A%84%E6%80%A7%E8%B4%A8%2F</url>
-    <content type="text"><![CDATA[某些算子经过有限元离散之后会有一些很好的性质，这对理解有限元方法的本质以及对离散后方程的性质的理解都很有帮助。 基函数有限元方法在每一个离散点$j$上都定义了基函数$φ_{j}$，基函数之和在任何地方恒等于1，基函数梯度之和在任何地方恒等于0 $∑_{j}φ_{j} = 1$$∑_{j}∇φ_{j} = 0$ 质量矩阵M质量矩阵为未知量离散之后的系数矩阵$\mathbf{M} = \{m_{ij}\} = \{ \int_{V}φ_{i}φ_{j}dV \}$ 质量矩阵第i行之和为$∑_{j}m_{ij} = \int_{V}φ_{i}\sum_{j}φ_{j}dV = \int_{V}φ_{i}dV$ 质量矩阵所有元素之和等于积分区域的体积$∑_{i}∑_{j}m_{ij} = \int_{V}∑_{i}φ_{i}\sum_{j}φ_{j}dV = \int_{V}dV = V$ 质量矩阵实际上是将体积分配到节点对上作为权重系数 质量矩阵集中用一个对角矩阵$\mathbf{M}_{L}$来近似处理质量矩阵$\mathbf{M}$，其对角元素为质量矩阵每一行元素之和$\mathbf{M}_{L} = diag\{m_i\}$, $m_i=\sum_{j}m_{ij}$ 这样的对角矩阵$\mathbf{M}_{L}$是矩阵$\mathbf{M}$的保守近似$(\mathbf{M}_{L}\phi)_{i} = (\mathbf{M}\phi)_{i}$ 质量矩阵集中实际上是将有限元方法与节点为中心的有限体积法结合，在保证反应率守恒的情况下能够减少计算量。 扩散矩阵D扩散矩阵是拉普拉斯算子离散之后的系数矩阵$\mathbf{D} = \{d_{ij}\} = \{ \int_{V}∇φ_{i}∇φ_{j}dV \}$ 扩散矩阵是对称的，每一行，每一列之和都为0$∑_{j}d_{ij} = \int_{V}∇φ_{i}\sum_{j}∇φ_{j}dV = 0$$∑_{i}d_{ij} = \int_{V}\sum_{i}∇φ_{i}∇φ_{j}dV = 0$ 对流矩阵C对流矩阵是梯度或者散度离散之后的系数系数矩阵 $\vec{\mathbf{C}} = \{\vec{c}_{ij}\} = \{ \int_{V}φ_{i}∇φ_{j}dV \}$ 对流矩阵不对称，第i行之和为0$∑_{j}\vec{c}_{ij} = \int_{V}φ_{i}\sum_{j}∇φ_{j}dV = 0$ 第j列之和为$∑_{i}\vec{c}_{ij} = \int_{V}\sum_{i}φ_{i}∇φ_{j}dV = \int_{V}∇φ_{j}dV$ 对流矩阵的对称性对流矩阵与其转置之和 $\vec{b}_{ij} = \vec{c}_{ij}+\vec{c}_{ji}$ $\vec{b}_{ij}=\int_{V}φ_{i}∇φ_{j}dV + \int_{V}φ_{j}∇φ_{i}dV = \int_{V}∇(φ_{i}φ_{j})dV =\int_{Γ}φ_{i}φ_{j}\vec{n}dΓ$ 第j列之和为$∑_{i}\vec{b}_{ij} = \vec{b}_{j} = \int_{Γ}\varphi_{j}\vec{n}dΓ= \vec{n}_{j}Γ_{j}$$\vec{n}_{j}=\int_{Γ}\varphi_{j}\vec{n}dΓ/Γ_{j}$$Γ_{j}=\int_{Γ}\varphi_{j}dΓ$ 矩阵 $\mathbf{B}$ 是定义在边界上的对称矩阵 对流矩阵与其转置之差 $\vec{a}_{ij} = \vec{c}_{ij}-\vec{c}_{ji}$，矩阵$\mathbf{A}$ 是定义在区域内部的反对称矩阵。 $\mathbf{C} = [\mathbf{A}+\mathbf{B}]/2$ 表示对流矩阵是由边界上的对称矩阵和内部的反对称矩阵之和构成。]]></content>
+    <content type="text"><![CDATA[某些算子经过有限元离散之后会有一些很好的性质，其中包括拉普拉斯算子离散后的扩散矩阵，梯度或散度算子离散后产生的对流矩阵，未知量直接离散后产生的质量矩阵等。分析这些矩阵的性质这对理解有限元方法的本质以及对离散后方程的性质的理解都很有帮助。 基函数有限元方法在每一个离散点$j$上都定义了基函数$φ_{j}$，基函数之和在任何地方恒等于1，基函数梯度之和在任何地方恒等于0 $∑_{j}φ_{j} = 1$$∑_{j}∇φ_{j} = 0$ 质量矩阵M质量矩阵为未知量离散之后的系数矩阵$\mathbf{M} = \{m_{ij}\} = \{ \int_{V}φ_{i}φ_{j}dV \}$ 质量矩阵第i行之和为$∑_{j}m_{ij} = \int_{V}φ_{i}\sum_{j}φ_{j}dV = \int_{V}φ_{i}dV$ 质量矩阵所有元素之和等于积分区域的体积$∑_{i}∑_{j}m_{ij} = \int_{V}∑_{i}φ_{i}\sum_{j}φ_{j}dV = \int_{V}dV = V$ 质量矩阵实际上是将体积分配到节点对上作为权重系数 质量矩阵集中用一个对角矩阵$\mathbf{M}_{L}$来近似处理质量矩阵$\mathbf{M}$，其对角元素为质量矩阵每一行元素之和$\mathbf{M}_{L} = diag\{m_i\}$, $m_i=\sum_{j}m_{ij}$ 这样的对角矩阵$\mathbf{M}_{L}$是矩阵$\mathbf{M}$的保守近似$(\mathbf{M}_{L}\phi)_{i} = (\mathbf{M}\phi)_{i}$ 质量矩阵集中实际上是将有限元方法与节点为中心的有限体积法结合，在保证反应率守恒的情况下能够减少计算量。 扩散矩阵D扩散矩阵是拉普拉斯算子离散之后的系数矩阵$\mathbf{D} = \{d_{ij}\} = \{ \int_{V}∇φ_{i}∇φ_{j}dV \}$ 扩散矩阵是对称的，每一行，每一列之和都为0$∑_{j}d_{ij} = \int_{V}∇φ_{i}\sum_{j}∇φ_{j}dV = 0$$∑_{i}d_{ij} = \int_{V}\sum_{i}∇φ_{i}∇φ_{j}dV = 0$ 对流矩阵C对流矩阵是梯度或者散度离散之后的系数系数矩阵 $\vec{\mathbf{C}} = \{\vec{c}_{ij}\} = \{ \int_{V}φ_{i}∇φ_{j}dV \}$ 对流矩阵不对称，第i行之和为0$∑_{j}\vec{c}_{ij} = \int_{V}φ_{i}\sum_{j}∇φ_{j}dV = 0$ 第j列之和为$∑_{i}\vec{c}_{ij} = \int_{V}\sum_{i}φ_{i}∇φ_{j}dV = \int_{V}∇φ_{j}dV$ 对流矩阵的对称性对流矩阵与其转置之和 $\vec{b}_{ij} = \vec{c}_{ij}+\vec{c}_{ji}$ $\vec{b}_{ij}=\int_{V}φ_{i}∇φ_{j}dV + \int_{V}φ_{j}∇φ_{i}dV = \int_{V}∇(φ_{i}φ_{j})dV =\int_{Γ}φ_{i}φ_{j}\vec{n}dΓ$ 第j列之和为$∑_{i}\vec{b}_{ij} = \vec{b}_{j} = \int_{Γ}\varphi_{j}\vec{n}dΓ= \vec{n}_{j}Γ_{j}$$\vec{n}_{j}=\int_{Γ}\varphi_{j}\vec{n}dΓ/Γ_{j}$$Γ_{j}=\int_{Γ}\varphi_{j}dΓ$ 矩阵 $\mathbf{B}$ 是定义在边界上的对称矩阵 对流矩阵与其转置之差 $\vec{a}_{ij} = \vec{c}_{ij}-\vec{c}_{ji}$，矩阵$\mathbf{A}$ 是定义在区域内部的反对称矩阵。 $\mathbf{C} = [\mathbf{A}+\mathbf{B}]/2$ 表示对流矩阵是由边界上的对称矩阵和内部的反对称矩阵之和构成。]]></content>
       <categories>
         <category>有限元</category>
       </categories>

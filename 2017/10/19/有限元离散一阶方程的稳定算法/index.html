@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="fccf" />
+  <meta name="keywords" content="中子输运方程,有限元,galerkin,稳定算法," />
 
 
 
@@ -94,16 +94,18 @@
 
 
 
-<meta name="description" content="道，行之而成">
-<meta property="og:type" content="website">
-<meta property="og:title" content="fccf">
-<meta property="og:url" content="http://fccf.site/tags/中子输运方程/index.html">
+<meta name="description" content="对一阶中子输运方程直接使用 Galerkin 方法在某些情况下会产生非物理的震荡现象。">
+<meta name="keywords" content="中子输运方程,有限元,galerkin,稳定算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有限元离散一阶方程的稳定算法">
+<meta property="og:url" content="http://fccf.site/2017/10/19/有限元离散一阶方程的稳定算法/index.html">
 <meta property="og:site_name" content="fccf">
-<meta property="og:description" content="道，行之而成">
+<meta property="og:description" content="对一阶中子输运方程直接使用 Galerkin 方法在某些情况下会产生非物理的震荡现象。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-19T07:51:55.181Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="fccf">
-<meta name="twitter:description" content="道，行之而成">
+<meta name="twitter:title" content="有限元离散一阶方程的稳定算法">
+<meta name="twitter:description" content="对一阶中子输运方程直接使用 Galerkin 方法在某些情况下会产生非物理的震荡现象。">
 
 
 
@@ -132,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://fccf.site/tags/中子输运方程/"/>
+  <link rel="canonical" href="http://fccf.site/2017/10/19/有限元离散一阶方程的稳定算法/"/>
 
 
 
@@ -148,7 +150,7 @@
 </script>
 
 
-  <title>标签: 中子输运方程 | fccf</title>
+  <title>有限元离散一阶方程的稳定算法 | fccf</title>
   
 
 
@@ -173,7 +175,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -301,138 +303,203 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>中子输运方程<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://fccf.site/2017/10/19/有限元离散一阶方程的稳定算法/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="c.fang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bio.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fccf">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/10/19/中子输运方程中常运符号的含义/" itemprop="url">
-              
-                <span itemprop="name">中子输运方程中常运符号的含义</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">有限元离散一阶方程的稳定算法</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-19T15:53:45+08:00"
-              content="2017-10-19" >
-          10-19
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T15:46:12+08:00">
+                2017-10-19
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/中子输运方程/" itemprop="url" rel="index">
+                    <span itemprop="name">中子输运方程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/19/有限元离散一阶方程的稳定算法/" itemprop="url">
-              
-                <span itemprop="name">有限元离散一阶方程的稳定算法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-19T15:46:12+08:00"
-              content="2017-10-19" >
-          10-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/19/通量分解/" itemprop="url">
-              
-                <span itemprop="name">通量分解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-19T14:28:40+08:00"
-              content="2017-10-19" >
-          10-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/19/一阶中子输运方程galerkin离散/" itemprop="url">
-              
-                <span itemprop="name">一阶中子输运方程galerkin离散</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-19T10:03:00+08:00"
-              content="2017-10-19" >
-          10-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+        <p>对一阶中子输运方程直接使用 Galerkin 方法在某些情况下会产生非物理的震荡现象。</p>
+<a id="more"></a>
+<h2 id="震荡产生的原因"><a href="#震荡产生的原因" class="headerlink" title="震荡产生的原因"></a>震荡产生的原因</h2><h2 id="稳定算法"><a href="#稳定算法" class="headerlink" title="稳定算法"></a>稳定算法</h2>
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/中子输运方程/" rel="tag"># 中子输运方程</a>
+          
+            <a href="/tags/有限元/" rel="tag"># 有限元</a>
+          
+            <a href="/tags/galerkin/" rel="tag"># galerkin</a>
+          
+            <a href="/tags/稳定算法/" rel="tag"># 稳定算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/19/通量分解/" rel="next" title="通量分解">
+                <i class="fa fa-chevron-left"></i> 通量分解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/19/中子输运方程中常运符号的含义/" rel="prev" title="中子输运方程中常运符号的含义">
+                中子输运方程中常运符号的含义 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -440,6 +507,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
 
         </div>
         
@@ -460,8 +533,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/bio.png"
@@ -550,6 +632,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#震荡产生的原因"><span class="nav-number">1.</span> <span class="nav-text">震荡产生的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#稳定算法"><span class="nav-number">2.</span> <span class="nav-text">稳定算法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -652,10 +750,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
@@ -681,6 +779,10 @@
   
     
 
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2146790"></script>
+      <!-- UY END -->
     
   
 
