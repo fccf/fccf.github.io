@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="fccf" />
+  <meta name="keywords" content="中子输运方程,通量分解," />
 
 
 
@@ -94,16 +94,18 @@
 
 
 
-<meta name="description" content="道，行之而成">
-<meta property="og:type" content="website">
-<meta property="og:title" content="fccf">
-<meta property="og:url" content="http://fccf.site/index.html">
+<meta name="description" content="通量在求解区域应该满足平衡方程，这种平衡关系反应了输运方程的物理本质，其中包含以下几点  相邻的两个节点通量会互相交换 一个节点上增加的量必须从另一个节点上减去 通量可以通过边界互相交换 通量能够通过反应减少 通量是由源产生的  前三点通过输运方程第一项（泄露项）反应，第四点通过第二项（移出项）反应，第五点由方程右端项反应。同时第三点也通过边界条件进行反应。">
+<meta name="keywords" content="中子输运方程,通量分解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通量分解">
+<meta property="og:url" content="http://fccf.site/2017/10/19/通量分解/index.html">
 <meta property="og:site_name" content="fccf">
-<meta property="og:description" content="道，行之而成">
+<meta property="og:description" content="通量在求解区域应该满足平衡方程，这种平衡关系反应了输运方程的物理本质，其中包含以下几点  相邻的两个节点通量会互相交换 一个节点上增加的量必须从另一个节点上减去 通量可以通过边界互相交换 通量能够通过反应减少 通量是由源产生的  前三点通过输运方程第一项（泄露项）反应，第四点通过第二项（移出项）反应，第五点由方程右端项反应。同时第三点也通过边界条件进行反应。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-19T07:24:02.308Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="fccf">
-<meta name="twitter:description" content="道，行之而成">
+<meta name="twitter:title" content="通量分解">
+<meta name="twitter:description" content="通量在求解区域应该满足平衡方程，这种平衡关系反应了输运方程的物理本质，其中包含以下几点  相邻的两个节点通量会互相交换 一个节点上增加的量必须从另一个节点上减去 通量可以通过边界互相交换 通量能够通过反应减少 通量是由源产生的  前三点通过输运方程第一项（泄露项）反应，第四点通过第二项（移出项）反应，第五点由方程右端项反应。同时第三点也通过边界条件进行反应。">
 
 
 
@@ -132,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://fccf.site/"/>
+  <link rel="canonical" href="http://fccf.site/2017/10/19/通量分解/"/>
 
 
 
@@ -148,7 +150,7 @@
 </script>
 
 
-  <title>fccf</title>
+  <title>通量分解 | fccf</title>
   
 
 
@@ -173,9 +175,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -302,9 +302,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -334,9 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/19/通量分解/" itemprop="url">通量分解</a></h1>
+          <h1 class="post-title" itemprop="name headline">通量分解</h1>
         
 
         <div class="post-meta">
@@ -408,8 +406,7 @@
       
 
       
-        
-          <p>通量在求解区域应该满足平衡方程，这种平衡关系反应了输运方程的物理本质，其中包含以下几点</p>
+        <p>通量在求解区域应该满足平衡方程，这种平衡关系反应了输运方程的物理本质，其中包含以下几点</p>
 <ol>
 <li>相邻的两个节点通量会互相交换</li>
 <li>一个节点上增加的量必须从另一个节点上减去</li>
@@ -418,14 +415,13 @@
 <li>通量是由源产生的</li>
 </ol>
 <p>前三点通过输运方程第一项（泄露项）反应，第四点通过第二项（移出项）反应，第五点由方程右端项反应。同时第三点也通过边界条件进行反应。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/通量分解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<a id="more"></a>
+<h2 id="数值通量"><a href="#数值通量" class="headerlink" title="数值通量"></a>数值通量</h2><p>通过定义数值通量$\mathbf{\Phi}$来反应相邻节点间的通量交换关系。其中$\mathbf{\Phi}$是一个稀疏矩阵，其稀疏性与网格的稀疏模式一致。其元素$\Phi_{ij}$表示从节点$j$转移到节点$i$的通量，显然$\Phi_{ij}=-\Phi_{ji}$，即从节点$i$转移到节点$j$的等于负的节点$j$转移到节点$i$的量。即矩阵$\mathbf{\Phi}$是一个反对称矩阵。</p>
+<p>通量在节点间的转移量通过输运方程第一项 (泄露项) 表示，有限元离散之后的半离散格式为 $\sum_{j}\mathbf{c}_{ij}\phi_{j}$， 由于$\sum_{j}\mathbf{c}_{ij} = 0$，所以转移到节点 $i$ 的量为<br>$\sum_{j}\Phi_{ij} = \sum_{j}\mathbf{c}_{ij}\phi_{j} = \sum_{j}\mathbf{c}_{ij}\phi_{j} + \phi_{i}\sum_{j}\mathbf{c}_{ij} = \sum_{j}\mathbf{c}_{ij}(\phi_{i}+\phi_{j})$</p>
+<p>可以将系数$\mathbf{c}_{ij}$分解为反对称的$\mathbf{a}_{ij}$和对称的$\mathbf{b}_{ij}$，其中<br>$\mathbf{c}_{ij} = (\mathbf{a}_{ij}+\mathbf{b}_{ij})/2$<br>$\mathbf{a}_{ij} = \mathbf{c}_{ij}-\mathbf{c}_{ji}$<br>$\mathbf{b}_{ij} = \mathbf{c}_{ij}+\mathbf{c}_{ji}$</p>
+<p>所以<br>$\sum_{j}(\mathbf{a}_{ij}+\mathbf{b}_{ij})(\phi_{i}+\phi_{j})/2 = \sum_{j}\Phi_{ij} $</p>
+<p>通量分解为<br>$\Phi_{ij} = \mathbf{a}_{ij}(\phi_{i}+\phi_{j})/2, \forall j \ne i$<br>$\Phi_{ii} =\sum_{j} \mathbf{b}_{ij}(\phi_{i}+\phi_{j})/2$</p>
+
       
     </div>
     
@@ -440,306 +436,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://fccf.site/2017/10/19/有限元离散算子的性质/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="c.fang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/bio.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fccf">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/19/有限元离散算子的性质/" itemprop="url">有限元离散算子的性质</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:23:42+08:00">
-                2017-10-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/有限元/" itemprop="url" rel="index">
-                    <span itemprop="name">有限元</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/中子输运方程/" rel="tag"># 中子输运方程</a>
           
-
+            <a href="/tags/通量分解/" rel="tag"># 通量分解</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <p>某些算子经过有限元离散之后会有一些很好的性质，这对理解有限元方法的本质以及对离散后方程的性质的理解都很有帮助。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/有限元离散算子的性质/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/19/有限元离散算子的性质/" rel="next" title="有限元离散算子的性质">
+                <i class="fa fa-chevron-left"></i> 有限元离散算子的性质
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://fccf.site/2017/10/19/一阶中子输运方程galerkin离散/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="c.fang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/bio.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fccf">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/19/一阶中子输运方程galerkin离散/" itemprop="url">一阶中子输运方程galerkin离散</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T10:03:00+08:00">
-                2017-10-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/中子输运方程/" itemprop="url" rel="index">
-                    <span itemprop="name">中子输运方程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>对一阶中子输运方程直接进行Galerkin离散然后分部积分并将边界条件带入边界积分项与不进行分部积分而是方程直接减去galerkin离散后的边界条件是等价的。与将两个方程相加除二得到的方程也是等价的。 这与带约束的变分原理中拉格朗日乘子法很相似，其中拉格朗日乘子为 -1。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/一阶中子输运方程galerkin离散/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -749,448 +477,34 @@
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://fccf.site/2017/10/18/三角形单元/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="c.fang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/bio.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fccf">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/18/三角形单元/" itemprop="url">三角形单元</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T19:06:22+08:00">
-                2017-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/有限元/" itemprop="url" rel="index">
-                    <span itemprop="name">有限元</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本文解析的推导了线性三角形单元的基函数及其相关积分。将所有与基函数相关积分都用节点的实际坐标表示，并将其写成向量乘积的形式，这样在计算单元刚度矩阵时就不用使用数值积分而可以直接使用解析形式，而且如果采用无矩阵方法，单元矩阵与向量的乘积只需要很少的计算量。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/18/三角形单元/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://fccf.site/2017/10/18/利用hexo和github搭建个人blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="c.fang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/bio.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fccf">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/18/利用hexo和github搭建个人blog/" itemprop="url">利用hexo和github搭建个人blog</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T10:40:59+08:00">
-                2017-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">tools</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最开始时使用emacs的org-mod写博客，但使用atom之后就很少使用emacs，blog也没有坚持写下去。现在想用markdown代替org-mod重新开始写blog，所以又开始了折腾。<br>现在的主要流程是使用atom编辑markdown文档，然后使用hexo生成和发布blog，发布平台使用 github-page，下面对整个流程进行简单说明。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/18/利用hexo和github搭建个人blog/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://fccf.site/2017/10/17/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="c.fang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/bio.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fccf">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/17/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T22:40:59+08:00">
-                2017-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">tools</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/17/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -1198,6 +512,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
 
         </div>
         
@@ -1218,8 +538,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/bio.png"
@@ -1308,6 +637,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数值通量"><span class="nav-number">1.</span> <span class="nav-text">数值通量</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1410,10 +755,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
@@ -1439,6 +784,10 @@
   
     
 
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2146790"></script>
+      <!-- UY END -->
     
   
 

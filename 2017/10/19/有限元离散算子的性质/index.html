@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="fccf">
 <meta property="og:description" content="某些算子经过有限元离散之后会有一些很好的性质，这对理解有限元方法的本质以及对离散后方程的性质的理解都很有帮助。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T03:04:40.106Z">
+<meta property="og:updated_time" content="2017-10-19T06:28:44.784Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="有限元离散算子的性质">
 <meta name="twitter:description" content="某些算子经过有限元离散之后会有一些很好的性质，这对理解有限元方法的本质以及对离散后方程的性质的理解都很有帮助。">
@@ -418,6 +418,9 @@
 </li>
 </ul>
 <p>质量矩阵实际上是将体积分配到节点对上作为权重系数</p>
+<h3 id="质量矩阵集中"><a href="#质量矩阵集中" class="headerlink" title="质量矩阵集中"></a>质量矩阵集中</h3><p>用一个对角矩阵$\mathbf{M}_{L}$来近似处理质量矩阵$\mathbf{M}$，其对角元素为质量矩阵每一行元素之和<br>$\mathbf{M}_{L} = diag\{m_i\}$, $m_i=\sum_{j}m_{ij}$</p>
+<p>这样的对角矩阵$\mathbf{M}_{L}$是矩阵$\mathbf{M}$的保守近似<br>$(\mathbf{M}_{L}\phi)_{i} = (\mathbf{M}\phi)_{i}$</p>
+<p>质量矩阵集中实际上是将有限元方法与节点为中心的有限体积法结合，在保证反应率守恒的情况下能够减少计算量。</p>
 <h2 id="扩散矩阵D"><a href="#扩散矩阵D" class="headerlink" title="扩散矩阵D"></a>扩散矩阵D</h2><p>扩散矩阵是拉普拉斯算子离散之后的系数矩阵<br>$\mathbf{D} = \{d_{ij}\} = \{ \int_{V}∇φ_{i}∇φ_{j}dV \}$</p>
 <ul>
 <li>扩散矩阵是对称的，每一行，每一列之和都为0<br>$∑_{j}d_{ij} = \int_{V}∇φ_{i}\sum_{j}∇φ_{j}dV = 0$<br>$∑_{i}d_{ij} = \int_{V}\sum_{i}∇φ_{i}∇φ_{j}dV = 0$</li>
@@ -428,7 +431,7 @@
 <li>对流矩阵不对称，第i行之和为0<br>$∑_{j}\vec{c}_{ij} = \int_{V}φ_{i}\sum_{j}∇φ_{j}dV = 0$</li>
 <li>第j列之和为<br>$∑_{i}\vec{c}_{ij} = \int_{V}\sum_{i}φ_{i}∇φ_{j}dV = \int_{V}∇φ_{j}dV$</li>
 </ul>
-<h2 id="对流矩阵与其转置"><a href="#对流矩阵与其转置" class="headerlink" title="对流矩阵与其转置"></a>对流矩阵与其转置</h2><p>对流矩阵与其转置之和 $\vec{b}_{ij} = \vec{c}_{ij}+\vec{c}_{ji}$<br>  $\vec{b}_{ij}=\int_{V}φ_{i}∇φ_{j}dV + \int_{V}φ_{j}∇φ_{i}dV =  \int_{V}∇(φ_{i}φ_{j})dV =\int_{Γ}φ_{i}φ_{j}\vec{n}dΓ$</p>
+<h3 id="对流矩阵的对称性"><a href="#对流矩阵的对称性" class="headerlink" title="对流矩阵的对称性"></a>对流矩阵的对称性</h3><p>对流矩阵与其转置之和 $\vec{b}_{ij} = \vec{c}_{ij}+\vec{c}_{ji}$<br>  $\vec{b}_{ij}=\int_{V}φ_{i}∇φ_{j}dV + \int_{V}φ_{j}∇φ_{i}dV =  \int_{V}∇(φ_{i}φ_{j})dV =\int_{Γ}φ_{i}φ_{j}\vec{n}dΓ$</p>
 <ul>
 <li>第j列之和为<br>$∑_{i}\vec{b}_{ij} = \vec{b}_{j} = \int_{Γ}\varphi_{j}\vec{n}dΓ= \vec{n}_{j}Γ_{j}$<br>$\vec{n}_{j}=\int_{Γ}\varphi_{j}\vec{n}dΓ/Γ_{j}$<br>$Γ_{j}=\int_{Γ}\varphi_{j}dΓ$</li>
 </ul>
@@ -475,6 +478,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/19/通量分解/" rel="prev" title="通量分解">
+                通量分解 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -576,7 +583,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -587,7 +594,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -598,7 +605,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -660,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基函数"><span class="nav-number">1.</span> <span class="nav-text">基函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#质量矩阵M"><span class="nav-number">2.</span> <span class="nav-text">质量矩阵M</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩散矩阵D"><span class="nav-number">3.</span> <span class="nav-text">扩散矩阵D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对流矩阵C"><span class="nav-number">4.</span> <span class="nav-text">对流矩阵C</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对流矩阵与其转置"><span class="nav-number">5.</span> <span class="nav-text">对流矩阵与其转置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基函数"><span class="nav-number">1.</span> <span class="nav-text">基函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#质量矩阵M"><span class="nav-number">2.</span> <span class="nav-text">质量矩阵M</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#质量矩阵集中"><span class="nav-number">2.1.</span> <span class="nav-text">质量矩阵集中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩散矩阵D"><span class="nav-number">3.</span> <span class="nav-text">扩散矩阵D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对流矩阵C"><span class="nav-number">4.</span> <span class="nav-text">对流矩阵C</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对流矩阵的对称性"><span class="nav-number">4.1.</span> <span class="nav-text">对流矩阵的对称性</span></a></li></ol></li></ol></div>
             
 
           </div>
