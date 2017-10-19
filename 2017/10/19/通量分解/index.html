@@ -416,11 +416,11 @@
 </ol>
 <p>前三点通过输运方程第一项（泄露项）反应，第四点通过第二项（移出项）反应，第五点由方程右端项反应。同时第三点也通过边界条件进行反应。</p>
 <a id="more"></a>
-<h2 id="数值通量"><a href="#数值通量" class="headerlink" title="数值通量"></a>数值通量</h2><p>通过定义数值通量$\mathbf{\Phi}$来反应相邻节点间的通量交换关系。其中$\mathbf{\Phi}$是一个稀疏矩阵，其稀疏性与网格的稀疏模式一致。其元素$\Phi<em>{ij}$表示从节点$j$转移到节点$i$的通量，显然$\Phi</em>{ij}=-\Phi_{ji}$，即从节点$i$转移到节点$j$的等于负的节点$j$转移到节点$i$的量。即矩阵$\mathbf{\Phi}$是一个反对称矩阵。</p>
-<p>通量在节点间的转移量通过输运方程第一项 (泄露项) 表示，有限元离散之后的半离散格式为 $\sum<em>{j}\mathbf{c}</em>{ij}\phi<em>{j}$， 由于$\sum</em>{j}\mathbf{c}<em>{ij} = 0$，所以转移到节点 $i$ 的量为<br>$\sum</em>{j}\Phi<em>{ij} = \sum</em>{j}\mathbf{c}<em>{ij}\phi</em>{j} = \sum<em>{j}\mathbf{c}</em>{ij}\phi<em>{j} + \phi</em>{i}\sum<em>{j}\mathbf{c}</em>{ij} = \sum<em>{j}\mathbf{c}</em>{ij}(\phi<em>{i}+\phi</em>{j})$</p>
-<p>可以将系数$\mathbf{c}<em>{ij}$分解为反对称的$\mathbf{a}</em>{ij}$和对称的$\mathbf{b}<em>{ij}$，其中<br>$\mathbf{c}</em>{ij} = (\mathbf{a}<em>{ij}+\mathbf{b}</em>{ij})/2$<br>$\mathbf{a}<em>{ij} = \mathbf{c}</em>{ij}-\mathbf{c}<em>{ji}$<br>$\mathbf{b}</em>{ij} = \mathbf{c}<em>{ij}+\mathbf{c}</em>{ji}$</p>
-<p>所以<br>$\sum<em>{j}(\mathbf{a}</em>{ij}+\mathbf{b}<em>{ij})(\phi</em>{i}+\phi<em>{j})/2 = \sum</em>{j}\Phi_{ij} $</p>
-<p>通量分解为<br>$\Phi<em>{ij} = \mathbf{a}</em>{ij}(\phi<em>{i}+\phi</em>{j})/2, \forall j \ne i$<br>$\Phi<em>{ii} =\sum</em>{j} \mathbf{b}<em>{ij}(\phi</em>{i}+\phi_{j})/2$</p>
+<h2 id="数值通量"><a href="#数值通量" class="headerlink" title="数值通量"></a>数值通量</h2><p>通过定义数值通量$\mathbf{\Phi}$来反应相邻节点间的通量交换关系。其中$\mathbf{\Phi}$是一个稀疏矩阵，其稀疏性与网格的稀疏模式一致。其元素$\Phi_{ij}$表示从节点$j$转移到节点$i$的通量，显然$\Phi_{ij}=-\Phi_{ji}$，即从节点$i$转移到节点$j$的等于负的节点$j$转移到节点$i$的量。即矩阵$\mathbf{\Phi}$是一个反对称矩阵。</p>
+<p>通量在节点间的转移量通过输运方程第一项 (泄露项) 表示，有限元离散之后的半离散格式为 $\sum_{j}\mathbf{c}_{ij}\phi_{j}$， 由于$\sum_{j}\mathbf{c}_{ij} = 0$，所以转移到节点 $i$ 的量为<br>$\sum_{j}\Phi_{ij} = \sum_{j}\mathbf{c}_{ij}\phi_{j} = \sum_{j}\mathbf{c}_{ij}\phi_{j} + \phi_{i}\sum_{j}\mathbf{c}_{ij} = \sum_{j}\mathbf{c}_{ij}(\phi_{i}+\phi_{j})$</p>
+<p>可以将系数$\mathbf{c}_{ij}$分解为反对称的$\mathbf{a}_{ij}$和对称的$\mathbf{b}_{ij}$，其中<br>$\mathbf{c}_{ij} = (\mathbf{a}_{ij}+\mathbf{b}_{ij})/2$<br>$\mathbf{a}_{ij} = \mathbf{c}_{ij}-\mathbf{c}_{ji}$<br>$\mathbf{b}_{ij} = \mathbf{c}_{ij}+\mathbf{c}_{ji}$</p>
+<p>所以<br>$\sum_{j}(\mathbf{a}_{ij}+\mathbf{b}_{ij})(\phi_{i}+\phi_{j})/2 = \sum_{j}\Phi_{ij} $</p>
+<p>通量分解为<br>$\Phi_{ij} = \mathbf{a}_{ij}(\phi_{i}+\phi_{j})/2, \forall j \ne i$<br>$\Phi_{ii} =\sum_{j} \mathbf{b}_{ij}(\phi_{i}+\phi_{j})/2$</p>
 
       
     </div>
