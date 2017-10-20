@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[代数方程的物理含义]]></title>
+    <url>%2F2017%2F10%2F20%2F%E4%BB%A3%E6%95%B0%E6%96%B9%E7%A8%8B%E7%9A%84%E7%89%A9%E7%90%86%E5%90%AB%E4%B9%89%2F</url>
+    <content type="text"><![CDATA[通常情况下我们使用偏微分方程组来描述物理现象，然后将该方程通过数值离散为一个代数方程来进行求解。然而，在这里，我直接从守恒关系出发，直接研究代数方程的物理含义。 代数方程代数方程是一个矩阵乘以一个未知向量等于一个已知向量的方程，表示如下$\mathbf{A}\vec{x}=\vec{b}$ 第i行可以表示为$\sum_{j}a_{ij}x_{j}=b_{i}$ 另$a_{ij}x_{j}=f_{ij}$，所以$\sum_{j}f_{ij}=b_{i}$ 守恒关系该方程代表一种物理守恒关系，右端项$b_{i}$表示节点$i$产生的量，左端项$\sum_{j}f_{ij}$表示节点$i$消失的量。其中$f_{ij},i\ne j$表示从节点 $i$ 通过对流或扩散转移到节点 $j$ 的量，其中$f_{ii}$表示从节点 $i$ 处发生反应消失的量。 由于$f_{ij} = a_{ij}x_{j}$，所以系数$a_{ij}$可以看成一个权重系数，即从节点 $i$ 转移到节点 $j$ 的量可以用节点 $j$ 的量的一个权重表示。 由于$a_{ij}$的一些性质，实际上 $f_{ij}$ 并不一定定义为 $a_{ij}x_{j}$，但一定要保证守恒关系。]]></content>
+      <categories>
+        <category>数值计算</category>
+      </categories>
+      <tags>
+        <tag>数值计算</tag>
+        <tag>通量分解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[网格与矩阵的对应关系]]></title>
+    <url>%2F2017%2F10%2F20%2F%E7%BD%91%E6%A0%BC%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%9A%84%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB%2F</url>
+    <content type="text"><![CDATA[在数值计算中，通常会将求解区域进行离散，离散之后的网格与最终形成的系数矩阵有着一一对应的关系，通常情况下离散网格某一点只会对其周围的点产生影响，对更远地方的点完全没有影响，所以与网格对应的矩阵是一个稀疏的，而且该矩阵与网格存在以下关系 网格中的一条边 ij 对应与矩阵中元素 aij。 一个点 i 对应与矩阵中的对角元素 aii。 网格中环绕某个点 i 的点数 psp 代表矩阵中 i 行的元素个数。 网格中环绕某个点 i 的单元数 esp 代表对矩阵中元素 aii 有贡献的单元数。 网格中环绕某条边 ij 的单元数 ese 代表对矩阵中元素 aij 有贡献的单元数。 示例以下为一个网格与矩阵对应关系的示例 网格矩阵]]></content>
+      <categories>
+        <category>有限元</category>
+      </categories>
+      <tags>
+        <tag>有限元</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[球谐函数方法]]></title>
     <url>%2F2017%2F10%2F20%2F%E7%90%83%E8%B0%90%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[中子输运方程的球谐函数方法是离散输运方程角度变量的一种方法，这种方法将输运方程中与角度相关的变量都用球谐函数展开，然后在方程两端同时乘以球谐函数并在整个角度上进行积分从而消去角度变量，此时方程变为一个只含有空间变量的偏微分方程组。 单能稳态中子输运方程$Ω⋅∇ϕ(r,Ω)+σ_t(r)ϕ(r,Ω)=∫_ {\mathbb{S}} σ_s(r,Ω^{‘}⋅Ω)\phi(r,Ω^{‘})drdΩ^{‘} + s(r,Ω)$ 球谐函数方法将中子角通量密度和散射截面和中子源用球谐函数展开，得 $\phi(r,Ω) ≈ \sum_{n=0}^{N}\sum_{m=-n}^{n}\phi_{n,m}(r)Y_{n,m}(Ω)$ $σ_s(r,Ω^{‘}⋅Ω) ≈ \sum_{n=0}^{L}σ_{s,n}\sum_{m=-n}^{n}Y_{n,m}(Ω)Y_{n,m}(Ω^{‘})$ $s(r,Ω) ≈ \sum_{n=0}^{N}\sum_{m=-n}^{n}s_{n,m}(r)Y_{n,m}(Ω)$ 将展开式带入中子输运方程，并将群内散射源移到方程左端，得 $Ω⋅∇\sum_{n=0}^{N}\sum_{m=-n}^{n}\phi_{n,m}(r)Y_{n,m}(Ω)+\sum_{n=0}^{N}\sum_{m=-n}^{n}σ_n(r)\phi_{n,m}(r)Y_{n,m}(Ω)= \sum_{n=0}^{N}\sum_{m=-n}^{n}s_{n,m}(r)Y_{n,m}(Ω)$ 其中 $σ_n(r) = \left\{\begin{matrix}\sigma_t(r)-\sigma_{s,n}(r) \,\,\,\,\,\,\,\,\,\,\,\, 0 ≤n ≤ L\\\sigma_t(r) \,\,\,\,\,\,\,\,\,\,\,\, L ≤ n ≤ N&amp;\end{matrix}\right.$ 向量形式将球谐函数的下标 $n,m$ 转化为一维下标 $j$，则输运方程可以表示为 $Ω⋅∇[\vec{Y}(Ω)]^{T}\vec{\phi}(r)+[\vec{Y}(Ω)]^{T} \mathbf{Σ}(r)\vec{\phi}(r)= [\vec{Y}(Ω)]^{T}\vec{s}(r)$ 其中$\mathbf{Σ}(r)$为对角矩阵，对角元素由 $\sigma_n$构成。 由球谐函数递推关系可知 $Ω_x\vec{Y}(Ω) = \mathbf{A}_x\vec{Y}(Ω)$ $Ω_y\vec{Y}(Ω) = \mathbf{A}_y\vec{Y}(Ω)$ $Ω_z\vec{Y}(Ω) = \mathbf{A}_z\vec{Y}(Ω)$ 其中 $ \mathbf{A}_x$, $ \mathbf{A}_y$, $ \mathbf{A}_z$为角度$x,y,z$方向上的雅可比矩阵，该矩阵是对称稀疏的。所以方程变为 $[\vec{Y}]^{T}(Ω)[\mathbf{A}_x\frac{\partial \vec{\phi}(r)}{\partial x}+\mathbf{A}_y\frac{\partial \vec{\phi}(r)}{\partial y}+\mathbf{A}_z\frac{\partial \vec{\phi}(r)}{\partial z}+ \mathbf{Σ}\vec{\phi}(r)] = [\vec{Y}(Ω)]^{T}\vec{s}(r)$ Galerkin投影利用Galerkin方法，在方程两端同时左乘球谐函数$\vec{Y}(Ω)$,然后对角度 $Ω$ 进行积分，由球谐函数正交关系 $\int_\mathbb{S}\vec{Y}(Ω)[\vec{Y}]^{T}(Ω)dΩ = \mathbf{I}$ 得经过球谐函数展开之后的偏微分方程组为 $\mathbf{A}_x\frac{\partial \vec{\phi}(r)}{\partial x}+\mathbf{A}_y\frac{\partial \vec{\phi}(r)}{\partial y}+\mathbf{A}_z\frac{\partial \vec{\phi}(r)}{\partial z}+ \mathbf{Σ}\vec{\phi}(r) = \vec{s}(r)$]]></content>
@@ -45,8 +68,8 @@
         <category>中子输运方程</category>
       </categories>
       <tags>
-        <tag>中子输运方程</tag>
         <tag>有限元</tag>
+        <tag>中子输运方程</tag>
         <tag>galerkin</tag>
         <tag>稳定算法</tag>
       </tags>
@@ -54,7 +77,7 @@
   <entry>
     <title><![CDATA[通量分解]]></title>
     <url>%2F2017%2F10%2F19%2F%E9%80%9A%E9%87%8F%E5%88%86%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[通量在求解区域应该满足平衡方程，这种平衡关系反应了输运方程的物理本质，其中包含以下几点 相邻的两个节点通量会互相交换 一个节点上增加的量必须从另一个节点上减去 通量可以通过边界互相交换 通量能够通过反应减少 通量是由源产生的 前三点通过输运方程第一项（泄露项）反应，第四点通过第二项（移出项）反应，第五点由方程右端项反应。同时第三点也通过边界条件进行反应。 数值通量通过定义数值通量$\mathbf{\Phi}$来反应相邻节点间的通量交换关系。其中$\mathbf{\Phi}$是一个稀疏矩阵，其稀疏性与网格的稀疏模式一致。其元素$\Phi_{ij}$表示从节点$j$转移到节点$i$的通量，显然$\Phi_{ij}=-\Phi_{ji}$，即从节点$i$转移到节点$j$的等于负的节点$j$转移到节点$i$的量。即矩阵$\mathbf{\Phi}$是一个反对称矩阵。 通量在节点间的转移量通过输运方程第一项 (泄露项) 表示，有限元离散之后的半离散格式为 $\sum_{j}\mathbf{c}_{ij}\phi_{j}$， 由于$\sum_{j}\mathbf{c}_{ij} = 0$，所以转移到节点 $i$ 的量为$\sum_{j}\Phi_{ij} = \sum_{j}\mathbf{c}_{ij}\phi_{j} = \sum_{j}\mathbf{c}_{ij}\phi_{j} + \phi_{i}\sum_{j}\mathbf{c}_{ij} = \sum_{j}\mathbf{c}_{ij}(\phi_{i}+\phi_{j})$ 可以将系数$\mathbf{c}_{ij}$分解为反对称的$\mathbf{a}_{ij}$和对称的$\mathbf{b}_{ij}$，其中$\mathbf{c}_{ij} = (\mathbf{a}_{ij}+\mathbf{b}_{ij})/2$$\mathbf{a}_{ij} = \mathbf{c}_{ij}-\mathbf{c}_{ji}$$\mathbf{b}_{ij} = \mathbf{c}_{ij}+\mathbf{c}_{ji}$ 所以$\sum_{j}(\mathbf{a}_{ij}+\mathbf{b}_{ij})(\phi_{i}+\phi_{j})/2 = \sum_{j}\Phi_{ij} $ 通量分解为$\Phi_{ij} = \mathbf{a}_{ij}(\phi_{i}+\phi_{j})/2, \forall j \ne i$$\Phi_{ii} =\sum_{j} \mathbf{b}_{ij}(\phi_{i}+\phi_{j})/2$]]></content>
+    <content type="text"><![CDATA[通量在求解区域应该满足平衡方程，这种平衡关系反应了输运方程的物理本质，其中包含以下几点 相邻的两个节点通量会互相交换 一个节点上增加的量必须从另一个节点上减去 通量可以通过边界互相交换 通量能够通过反应减少 通量是由源产生的 前三点通过输运方程第一项（泄露项）反应，第四点通过第二项（移出项）反应，第五点由方程右端项反应。同时第三点也通过边界条件进行反应。 数值通量通过定义数值通量$\mathbf{\Phi}$来反应相邻节点间的通量交换关系。其中$\mathbf{\Phi}$是一个稀疏矩阵，其稀疏性与网格的稀疏模式一致。其元素$\Phi_{ij}$表示从节点$j$转移到节点$i$的通量，显然$\Phi_{ij}=-\Phi_{ji}$，即从节点$i$转移到节点$j$的等于负的节点$j$转移到节点$i$的量。即矩阵$\mathbf{\Phi}$是一个反对称矩阵。 通量在节点间的转移量通过输运方程第一项 (泄露项) 表示，有限元离散之后的半离散格式为 $\sum_{j}\mathbf{c}_{ij}\phi_{j}$， 由于$\sum_{j}\mathbf{c}_{ij} = 0$，所以转移到节点 $i$ 的量为$\sum_{j}\Phi_{ij} = \sum_{j}\mathbf{c}_{ij}\phi_{j} = \sum_{j}\mathbf{c}_{ij}\phi_{j} + \phi_{i}\sum_{j}\mathbf{c}_{ij} = \sum_{j}\mathbf{c}_{ij}(\phi_{i}+\phi_{j})$ 可以将系数$\mathbf{c}_{ij}$分解为反对称的$\mathbf{a}_{ij}$和对称的$\mathbf{b}_{ij}$，其中$\mathbf{c}_{ij} = (\mathbf{a}_{ij}+\mathbf{b}_{ij})/2$$\mathbf{a}_{ij} = \mathbf{c}_{ij}-\mathbf{c}_{ji}$$\mathbf{b}_{ij} = \mathbf{c}_{ij}+\mathbf{c}_{ji}$ 所以$\sum_{j}(\mathbf{a}_{ij}+\mathbf{b}_{ij})(\phi_{i}+\phi_{j})/2 = \sum_{j}\Phi_{ij} $ 通量分解为$\Phi_{ij} = \mathbf{a}_{ij}(\phi_{i}+\phi_{j})/2, \forall j \ne i$$\Phi_{ii} =\sum_{j} \mathbf{b}_{ij}(\phi_{i}+\phi_{j})/2$ ##]]></content>
       <categories>
         <category>有限元</category>
       </categories>
