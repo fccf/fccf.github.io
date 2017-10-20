@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="superfun">
 <meta property="og:description" content="通常情况下我们使用偏微分方程组来描述物理现象，然后将该方程通过数值离散为一个代数方程来进行求解。然而，在这里，我直接从守恒关系出发，直接研究代数方程的物理含义。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-20T07:34:57.536Z">
+<meta property="og:updated_time" content="2017-10-20T08:39:31.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代数方程的物理含义">
 <meta name="twitter:description" content="通常情况下我们使用偏微分方程组来描述物理现象，然后将该方程通过数值离散为一个代数方程来进行求解。然而，在这里，我直接从守恒关系出发，直接研究代数方程的物理含义。">
@@ -414,6 +414,17 @@
 <h2 id="守恒关系"><a href="#守恒关系" class="headerlink" title="守恒关系"></a>守恒关系</h2><p>该方程代表一种物理守恒关系，右端项$b_{i}$表示节点$i$产生的量，左端项$\sum_{j}f_{ij}$表示节点$i$消失的量。其中$f_{ij},i\ne j$表示从节点 $i$ 通过对流或扩散转移到节点 $j$ 的量，其中$f_{ii}$表示从节点 $i$ 处发生反应消失的量。</p>
 <p>由于$f_{ij} = a_{ij}x_{j}$，所以系数$a_{ij}$可以看成一个权重系数，即从节点 $i$ 转移到节点 $j$ 的量可以用节点 $j$ 的量的一个权重表示。</p>
 <p>由于$a_{ij}$的一些性质，实际上 $f_{ij}$ 并不一定定义为 $a_{ij}x_{j}$，但一定要保证守恒关系。</p>
+<h2 id="矩阵性质"><a href="#矩阵性质" class="headerlink" title="矩阵性质"></a>矩阵性质</h2><p>在物理上，通常右端项 $\vec{b}$ 为源项，是非负的，这种情况下要求未知量 $\vec{x}$ 也是非负的。此时矩阵 $\mathbf{A}$ 必须有一些特殊的性质。</p>
+<h3 id="M-Matrix"><a href="#M-Matrix" class="headerlink" title="M-Matrix"></a>M-Matrix</h3><p>代数方程的解为<br>$\vec{x} = \mathbf{A}^{-1}\vec{b}$</p>
+<p>由于 $\vec{b}$ 取任意非负值时，解 $\vec{x}$ 都必须为非负值，所以$\mathbf{A}^{-1}$的所有元素都必须为非负值。此时矩阵 $\mathbf{A}$ 被称为单调矩阵。</p>
+<p>一个非对角元上只有非正值的单调矩阵被称为M-Matrix</p>
+<p>如果矩阵 $\mathbf{A}$ 有以下性质，则$\mathbf{A}$ 是M-Matrix</p>
+<ol>
+<li>$a_{ii}&gt;0,∀ i$</li>
+<li>$a_{ij}\le0,∀ j\ne i$</li>
+<li>$\sum{a_{ij}}\ge 0,∀ i$</li>
+</ol>
+<p>证明：<br>$\mathbf{A}=\mathbf{D}-\mathbf{C}$<br>其中$\mathbf{D}= diag(\mathbf{A})&gt;0$为$\mathbf{A}$的对角元素，$\mathbf{C} \ge 0$为$\mathbf{A}$的非对角元，所以<br>$\mathbf{A}^{-1}=(\mathbf{D}-\mathbf{C})^{-1} = [\mathbf{D}(\mathbf{I}-\mathbf{D}^{-1}\mathbf{C})]^{-1} = (\mathbf{I}-\mathbf{D}^{-1}\mathbf{C})^{-1}\mathbf{D}^{-1}$<br>另 $\mathbf{B}=\mathbf{D}^{-1}\mathbf{C} \ge 0$，由于是对角占优的，所以$\mathbf{B}$的谱半径$\rho(\mathbf{B})&lt;1$，所以以下级数是收敛的<br>$(\mathbf{I}-\mathbf{B})^{-1}=\mathbf{I}+\mathbf{B}+\mathbf{B}^2+\mathbf{B}^3+ …$<br>所以$\mathbf{A}^{-1}$的所有元素都为非负值</p>
 
       
     </div>
@@ -640,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#代数方程"><span class="nav-number">1.</span> <span class="nav-text">代数方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#守恒关系"><span class="nav-number">2.</span> <span class="nav-text">守恒关系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#代数方程"><span class="nav-number">1.</span> <span class="nav-text">代数方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#守恒关系"><span class="nav-number">2.</span> <span class="nav-text">守恒关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵性质"><span class="nav-number">3.</span> <span class="nav-text">矩阵性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#M-Matrix"><span class="nav-number">3.1.</span> <span class="nav-text">M-Matrix</span></a></li></ol></li></ol></div>
             
 
           </div>
