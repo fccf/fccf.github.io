@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="单能稳态中子输运方程$Ω⋅∇ϕ(r,Ω)+σ_t(r)ϕ(r,Ω)=∫_ {\mathbb{S}} σ_s(r,Ω^{‘}⋅Ω)\phi(r,Ω^{‘})drdΩ^{‘} + s(r,Ω)$ 球谐函数方法将中子角通量密度和散射截面和中子源用球谐函数展开，得 $\phi(r,Ω) ≈ \sum_{n=0}^{N}\sum_{m=-n}^{n}\phi_{n,m}(r)Y_{n,m}(Ω)$ $σ_s">
+<meta name="description" content="中子输运方程的球谐函数方法是离散输运方程角度变量的一种方法，这种方法将输运方程中与角度相关的变量都用球谐函数展开，然后在方程两端同时乘以球谐函数并在整个角度上进行积分从而消去角度变量，此时方程变为一个只3含有空间变量的偏微分方程组。">
 <meta name="keywords" content="中子输运方程,球谐函数,pn方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="球谐函数方法">
 <meta property="og:url" content="http://superfun.xyz/2017/10/20/球谐函数方法/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="单能稳态中子输运方程$Ω⋅∇ϕ(r,Ω)+σ_t(r)ϕ(r,Ω)=∫_ {\mathbb{S}} σ_s(r,Ω^{‘}⋅Ω)\phi(r,Ω^{‘})drdΩ^{‘} + s(r,Ω)$ 球谐函数方法将中子角通量密度和散射截面和中子源用球谐函数展开，得 $\phi(r,Ω) ≈ \sum_{n=0}^{N}\sum_{m=-n}^{n}\phi_{n,m}(r)Y_{n,m}(Ω)$ $σ_s">
+<meta property="og:description" content="中子输运方程的球谐函数方法是离散输运方程角度变量的一种方法，这种方法将输运方程中与角度相关的变量都用球谐函数展开，然后在方程两端同时乘以球谐函数并在整个角度上进行积分从而消去角度变量，此时方程变为一个只3含有空间变量的偏微分方程组。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-20T06:21:22.407Z">
+<meta property="og:updated_time" content="2017-10-20T06:26:42.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="球谐函数方法">
-<meta name="twitter:description" content="单能稳态中子输运方程$Ω⋅∇ϕ(r,Ω)+σ_t(r)ϕ(r,Ω)=∫_ {\mathbb{S}} σ_s(r,Ω^{‘}⋅Ω)\phi(r,Ω^{‘})drdΩ^{‘} + s(r,Ω)$ 球谐函数方法将中子角通量密度和散射截面和中子源用球谐函数展开，得 $\phi(r,Ω) ≈ \sum_{n=0}^{N}\sum_{m=-n}^{n}\phi_{n,m}(r)Y_{n,m}(Ω)$ $σ_s">
+<meta name="twitter:description" content="中子输运方程的球谐函数方法是离散输运方程角度变量的一种方法，这种方法将输运方程中与角度相关的变量都用球谐函数展开，然后在方程两端同时乘以球谐函数并在整个角度上进行积分从而消去角度变量，此时方程变为一个只3含有空间变量的偏微分方程组。">
 
 
 
@@ -406,7 +406,9 @@
       
 
       
-        <h2 id="单能稳态中子输运方程"><a href="#单能稳态中子输运方程" class="headerlink" title="单能稳态中子输运方程"></a>单能稳态中子输运方程</h2><p>$Ω⋅∇ϕ(r,Ω)+σ_t(r)ϕ(r,Ω)=∫_ {\mathbb{S}} σ_s(r,Ω^{‘}⋅Ω)\phi(r,Ω^{‘})drdΩ^{‘} + s(r,Ω)$</p>
+        <p>中子输运方程的球谐函数方法是离散输运方程角度变量的一种方法，这种方法将输运方程中与角度相关的变量都用球谐函数展开，然后在方程两端同时乘以球谐函数并在整个角度上进行积分从而消去角度变量，此时方程变为一个只3含有空间变量的偏微分方程组。</p>
+<a id="more"></a>
+<h2 id="单能稳态中子输运方程"><a href="#单能稳态中子输运方程" class="headerlink" title="单能稳态中子输运方程"></a>单能稳态中子输运方程</h2><p>$Ω⋅∇ϕ(r,Ω)+σ_t(r)ϕ(r,Ω)=∫_ {\mathbb{S}} σ_s(r,Ω^{‘}⋅Ω)\phi(r,Ω^{‘})drdΩ^{‘} + s(r,Ω)$</p>
 <h2 id="球谐函数方法"><a href="#球谐函数方法" class="headerlink" title="球谐函数方法"></a>球谐函数方法</h2><p>将中子角通量密度和散射截面和中子源用球谐函数展开，得</p>
 <p>$\phi(r,Ω) ≈ \sum_{n=0}^{N}\sum_{m=-n}^{n}\phi_{n,m}(r)Y_{n,m}(Ω)$</p>
 <p>$σ_s(r,Ω^{‘}⋅Ω) ≈ \sum_{n=0}^{L}σ_{s,n}\sum_{m=-n}^{n}Y_{n,m}(Ω)Y_{n,m}(Ω^{‘})$</p>

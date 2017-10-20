@@ -409,31 +409,14 @@
 
       
         
-          
-            <h2 id="单能稳态中子输运方程"><a href="#单能稳态中子输运方程" class="headerlink" title="单能稳态中子输运方程"></a>单能稳态中子输运方程</h2><p>$Ω⋅∇ϕ(r,Ω)+σ_t(r)ϕ(r,Ω)=∫_ {\mathbb{S}} σ_s(r,Ω^{‘}⋅Ω)\phi(r,Ω^{‘})drdΩ^{‘} + s(r,Ω)$</p>
-<h2 id="球谐函数方法"><a href="#球谐函数方法" class="headerlink" title="球谐函数方法"></a>球谐函数方法</h2><p>将中子角通量密度和散射截面和中子源用球谐函数展开，得</p>
-<p>$\phi(r,Ω) ≈ \sum_{n=0}^{N}\sum_{m=-n}^{n}\phi_{n,m}(r)Y_{n,m}(Ω)$</p>
-<p>$σ_s(r,Ω^{‘}⋅Ω) ≈ \sum_{n=0}^{L}σ_{s,n}\sum_{m=-n}^{n}Y_{n,m}(Ω)Y_{n,m}(Ω^{‘})$</p>
-<p>$s(r,Ω) ≈ \sum_{n=0}^{N}\sum_{m=-n}^{n}s_{n,m}(r)Y_{n,m}(Ω)$</p>
-<p>将展开式带入中子输运方程，并将群内散射源移到方程左端，得</p>
-<p>$Ω⋅∇\sum_{n=0}^{N}\sum_{m=-n}^{n}\phi_{n,m}(r)Y_{n,m}(Ω)+\sum_{n=0}^{N}\sum_{m=-n}^{n}σ_n(r)\phi_{n,m}(r)Y_{n,m}(Ω)= \sum_{n=0}^{N}\sum_{m=-n}^{n}s_{n,m}(r)Y_{n,m}(Ω)$</p>
-<p>其中</p>
-<p>$σ_n(r) = \left\{\begin{matrix}<br>\sigma_t(r)-\sigma_{s,n}(r) \,\,\,\,\,\,\,\,\,\,\,\,   0 ≤n ≤ L\\<br>\sigma_t(r)                 \,\,\,\,\,\,\,\,\,\,\,\,  L ≤ n ≤ N&amp;<br>\end{matrix}\right.$</p>
-<h2 id="向量形式"><a href="#向量形式" class="headerlink" title="向量形式"></a>向量形式</h2><p>将球谐函数的下标 $n,m$ 转化为一维下标 $j$，则输运方程可以表示为</p>
-<p>$Ω⋅∇[\vec{Y}(Ω)]^{T}\vec{\phi}(r)+[\vec{Y}(Ω)]^{T} \mathbf{Σ}(r)\vec{\phi}(r)= [\vec{Y}(Ω)]^{T}\vec{s}(r)$</p>
-<p>其中$\mathbf{Σ}(r)$为对角矩阵，对角元素由 $\sigma_n$构成。</p>
-<p>由球谐函数递推关系可知</p>
-<p>$Ω_x\vec{Y}(Ω) = \mathbf{A}_x\vec{Y}(Ω)$</p>
-<p>$Ω_y\vec{Y}(Ω) = \mathbf{A}_y\vec{Y}(Ω)$</p>
-<p>$Ω_z\vec{Y}(Ω) = \mathbf{A}_z\vec{Y}(Ω)$</p>
-<p>其中 $ \mathbf{A}_x$,  $ \mathbf{A}_y$, $ \mathbf{A}_z$为角度$x,y,z$方向上的雅可比矩阵，该矩阵是对称稀疏的。所以方程变为</p>
-<p>$[\vec{Y}]^{T}(Ω)[\mathbf{A}_x\frac{\partial \vec{\phi}(r)}{\partial x}+\mathbf{A}_y\frac{\partial \vec{\phi}(r)}{\partial y}+\mathbf{A}_z\frac{\partial \vec{\phi}(r)}{\partial z}+ \mathbf{Σ}\vec{\phi}(r)] = [\vec{Y}(Ω)]^{T}\vec{s}(r)$</p>
-<h2 id="Galerkin投影"><a href="#Galerkin投影" class="headerlink" title="Galerkin投影"></a>Galerkin投影</h2><p>利用Galerkin方法，在方程两端同时左乘球谐函数$\vec{Y}(Ω)$,然后对角度 $Ω$ 进行积分，由球谐函数正交关系</p>
-<p>$\int_\mathbb{S}\vec{Y}(Ω)[\vec{Y}]^{T}(Ω)dΩ = \mathbf{I}$</p>
-<p>得经过球谐函数展开之后的偏微分方程组为</p>
-<p>$\mathbf{A}_x\frac{\partial \vec{\phi}(r)}{\partial x}+\mathbf{A}_y\frac{\partial \vec{\phi}(r)}{\partial y}+\mathbf{A}_z\frac{\partial \vec{\phi}(r)}{\partial z}+ \mathbf{Σ}\vec{\phi}(r) = \vec{s}(r)$</p>
-
-          
+          <p>中子输运方程的球谐函数方法是离散输运方程角度变量的一种方法，这种方法将输运方程中与角度相关的变量都用球谐函数展开，然后在方程两端同时乘以球谐函数并在整个角度上进行积分从而消去角度变量，此时方程变为一个只3含有空间变量的偏微分方程组。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/20/球谐函数方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
