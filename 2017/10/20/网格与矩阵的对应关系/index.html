@@ -94,20 +94,20 @@
 
 
 
-<meta name="description" content="在数值计算中，通常会将求解区域进行离散，离散之后的网格与最终形成的系数矩阵有着一一对应的关系，通常情况下离散网格某一点只会对其周围的点产生影响，对更远地方的点完全没有影响，所以与网格对应的矩阵是一个稀疏的，而且该矩阵与网格存在以下关系  网格中的一条边 ij 对应与矩阵中元素 aij。 一个点 i 对应与矩阵中的对角元素 aii。 网格中环绕某个点 i 的点数 psp 代表矩阵中 i 行的元素个数">
+<meta name="description" content="在数值计算中，通常会将求解区域进行离散，离散之后的网格与最终形成的系数矩阵有着一一对应的关系，通常情况下离散网格某一点只会对其周围的点产生影响，对更远地方的点完全没有影响，所以与网格对应的矩阵是一个稀疏的，而且该矩阵与网格存在以下关系">
 <meta name="keywords" content="有限元">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网格与矩阵的对应关系">
 <meta property="og:url" content="http://superfun.xyz/2017/10/20/网格与矩阵的对应关系/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="在数值计算中，通常会将求解区域进行离散，离散之后的网格与最终形成的系数矩阵有着一一对应的关系，通常情况下离散网格某一点只会对其周围的点产生影响，对更远地方的点完全没有影响，所以与网格对应的矩阵是一个稀疏的，而且该矩阵与网格存在以下关系  网格中的一条边 ij 对应与矩阵中元素 aij。 一个点 i 对应与矩阵中的对角元素 aii。 网格中环绕某个点 i 的点数 psp 代表矩阵中 i 行的元素个数">
+<meta property="og:description" content="在数值计算中，通常会将求解区域进行离散，离散之后的网格与最终形成的系数矩阵有着一一对应的关系，通常情况下离散网格某一点只会对其周围的点产生影响，对更远地方的点完全没有影响，所以与网格对应的矩阵是一个稀疏的，而且该矩阵与网格存在以下关系">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/mesh.png">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/mesh_matrix.png">
-<meta property="og:updated_time" content="2017-10-20T10:36:57.078Z">
+<meta property="og:updated_time" content="2017-10-20T12:35:41.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网格与矩阵的对应关系">
-<meta name="twitter:description" content="在数值计算中，通常会将求解区域进行离散，离散之后的网格与最终形成的系数矩阵有着一一对应的关系，通常情况下离散网格某一点只会对其周围的点产生影响，对更远地方的点完全没有影响，所以与网格对应的矩阵是一个稀疏的，而且该矩阵与网格存在以下关系  网格中的一条边 ij 对应与矩阵中元素 aij。 一个点 i 对应与矩阵中的对角元素 aii。 网格中环绕某个点 i 的点数 psp 代表矩阵中 i 行的元素个数">
+<meta name="twitter:description" content="在数值计算中，通常会将求解区域进行离散，离散之后的网格与最终形成的系数矩阵有着一一对应的关系，通常情况下离散网格某一点只会对其周围的点产生影响，对更远地方的点完全没有影响，所以与网格对应的矩阵是一个稀疏的，而且该矩阵与网格存在以下关系">
 <meta name="twitter:image" content="http://on08uqozg.bkt.clouddn.com/mesh.png">
 
 
@@ -409,7 +409,7 @@
       
 
       
-        <p>在数值计算中，通常会将求解区域进行离散，离散之后的网格与最终形成的系数矩阵有着一一对应的关系，通常情况下离散网格某一点只会对其周围的点产生影响，对更远地方的点完全没有影响，所以与网格对应的矩阵是一个稀疏的，而且该矩阵与网格存在以下关系</p>
+        <p>在数值计算中，通常会将求解区域进行离散，离散之后的网格与最终形成的系数矩阵有着一一对应的关系，通常情况下离散网格某一点只会对其周围的点产生影响，对更远地方的点完全没有影响，所以与网格对应的矩阵是一个稀疏的，而且该矩阵与网格存在以下关系<br><a id="more"></a></p>
 <ol>
 <li>网格中的一条边 ij 对应与矩阵中元素 aij。</li>
 <li>一个点 i 对应与矩阵中的对角元素 aii。</li>
@@ -417,7 +417,6 @@
 <li>网格中环绕某个点 i 的单元数 esp 代表对矩阵中元素 aii 有贡献的单元数。</li>
 <li>网格中环绕某条边 ij 的单元数 ese 代表对矩阵中元素 aij 有贡献的单元数。</li>
 </ol>
-<a id="more"></a>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>以下为一个网格与矩阵对应关系的示例</p>
 <p><img src="http://on08uqozg.bkt.clouddn.com/mesh.png" alt="网格"><br><img src="http://on08uqozg.bkt.clouddn.com/mesh_matrix.png" alt="矩阵"></p>
 
@@ -564,7 +563,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
