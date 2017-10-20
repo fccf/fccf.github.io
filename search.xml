@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[球谐函数方法]]></title>
+    <url>%2F2017%2F10%2F20%2F%E7%90%83%E8%B0%90%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[单能稳态中子输运方程$Ω⋅∇ϕ(r,Ω)+σ_t(r)ϕ(r,Ω)=∫_ {\mathbb{S}} σ_s(r,Ω^{‘}⋅Ω)\phi(r,Ω^{‘})drdΩ^{‘} + s(r,Ω)$ 球谐函数方法将中子角通量密度和散射截面和中子源用球谐函数展开，得 $\phi(r,Ω) ≈ \sum_{n=0}^{N}\sum_{m=-n}^{n}\phi_{n,m}(r)Y_{n,m}(Ω)$ $σ_s(r,Ω^{‘}⋅Ω) ≈ \sum_{n=0}^{L}σ_{s,n}\sum_{m=-n}^{n}Y_{n,m}(Ω)Y_{n,m}(Ω^{‘})$ $s(r,Ω) ≈ \sum_{n=0}^{N}\sum_{m=-n}^{n}s_{n,m}(r)Y_{n,m}(Ω)$ 将展开式带入中子输运方程，并将群内散射源移到方程左端，得 $Ω⋅∇\sum_{n=0}^{N}\sum_{m=-n}^{n}\phi_{n,m}(r)Y_{n,m}(Ω)+\sum_{n=0}^{N}\sum_{m=-n}^{n}σ_n(r)\phi_{n,m}(r)Y_{n,m}(Ω)= \sum_{n=0}^{N}\sum_{m=-n}^{n}s_{n,m}(r)Y_{n,m}(Ω)$ 其中 $σ_n(r) = \left\{\begin{matrix}\sigma_t(r)-\sigma_{s,n}(r) \,\,\,\,\,\,\,\,\,\,\,\, 0 ≤n ≤ L\\\sigma_t(r) \,\,\,\,\,\,\,\,\,\,\,\, L ≤ n ≤ N&amp;\end{matrix}\right.$ 向量形式将球谐函数的下标 $n,m$ 转化为一维下标 $j$，则输运方程可以表示为 $Ω⋅∇[\vec{Y}(Ω)]^{T}\vec{\phi}(r)+[\vec{Y}(Ω)]^{T} \mathbf{Σ}(r)\vec{\phi}(r)= [\vec{Y}(Ω)]^{T}\vec{s}(r)$ 其中$\mathbf{Σ}(r)$为对角矩阵，对角元素由 $\sigma_n$构成。 由球谐函数递推关系可知 $Ω_x\vec{Y}(Ω) = \mathbf{A}_x\vec{Y}(Ω)$ $Ω_y\vec{Y}(Ω) = \mathbf{A}_y\vec{Y}(Ω)$ $Ω_z\vec{Y}(Ω) = \mathbf{A}_z\vec{Y}(Ω)$ 其中 $ \mathbf{A}_x$, $ \mathbf{A}_y$, $ \mathbf{A}_z$为角度$x,y,z$方向上的雅可比矩阵，该矩阵是对称稀疏的。所以方程变为 $[\vec{Y}]^{T}(Ω)[\mathbf{A}_x\frac{\partial \vec{\phi}(r)}{\partial x}+\mathbf{A}_y\frac{\partial \vec{\phi}(r)}{\partial y}+\mathbf{A}_z\frac{\partial \vec{\phi}(r)}{\partial z}+ \mathbf{Σ}\vec{\phi}(r)] = [\vec{Y}(Ω)]^{T}\vec{s}(r)$ Galerkin投影利用Galerkin方法，在方程两端同时左乘球谐函数$\vec{Y}(Ω)$,然后对角度 $Ω$ 进行积分，由球谐函数正交关系 $\int_\mathbb{S}\vec{Y}(Ω)[\vec{Y}]^{T}(Ω)dΩ = \mathbf{I}$ 得经过球谐函数展开之后的偏微分方程组为 $\mathbf{A}_x\frac{\partial \vec{\phi}(r)}{\partial x}+\mathbf{A}_y\frac{\partial \vec{\phi}(r)}{\partial y}+\mathbf{A}_z\frac{\partial \vec{\phi}(r)}{\partial z}+ \mathbf{Σ}\vec{\phi}(r) = \vec{s}(r)$]]></content>
+      <categories>
+        <category>中子输运方程</category>
+      </categories>
+      <tags>
+        <tag>中子输运方程</tag>
+        <tag>球谐函数</tag>
+        <tag>pn方法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[球谐函数]]></title>
+    <url>%2F2017%2F10%2F20%2F%E7%90%83%E8%B0%90%E5%87%BD%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[球谐函数定义球谐函数图像球谐函数性质单位球面上数值积分]]></content>
+      <categories>
+        <category>球谐函数</category>
+      </categories>
+      <tags>
+        <tag>球谐函数</tag>
+        <tag>pn</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[中子输运方程中常运符号的含义]]></title>
     <url>%2F2017%2F10%2F19%2F%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E4%B8%AD%E5%B8%B8%E8%BF%90%E7%AC%A6%E5%8F%B7%E7%9A%84%E5%90%AB%E4%B9%89%2F</url>
     <content type="text"><![CDATA[$r$ : 空间坐标$\Omega$ : 角度坐标$\varphi$ : 幅角$\vartheta$ : 极角$\mathbb{S}$ : 单位球面$\nabla$ : 梯度算子$\phi$ : 角通量$\Phi$ : 标通量 ($n/(cm^2\cdot s)$)$\sigma$ : 微观截面 ( $b$,$1b=10^{-24}cm^2$ )$\Sigma$ : 宏观截面 ( $cm^{-1}$ )$\Sigma_t$ : 宏观总截面$\Sigma_s$ : 宏观散射截面$\Sigma_f$ : 宏观裂变截面$\nu$ : 每次裂变释放的中子数$\Sigma_{s,n}$ : n 阶散射截面$s_s$ : 散射源 ( $cm^{-3}\cdot s^{-1}$ )$s_f$ : 裂变源 ( $cm^{-3}\cdot s^{-1}$ )$s_e$ : 外源 ( $cm^{-3}\cdot s^{-1}$ )$n$ : 表面单位外法向量 $(\cdot,\cdot)$ : 求解域的内积，包含求解的空间和角度$(u,v)$ = $\int_{v}\int_{\mathbb{S}}uv d\Omega dr$ $&lt; \cdot,\cdot &gt;$ : 边界上的内积$&lt; u,v &gt; = \int_{\partial v}\int_{\mathbb{S}}uv \vec{n} \cdot\vec{\Omega}d\Omega dr$ $&lt; \cdot,\cdot &gt;^{+}$ : 边界上的内积，半角度$\vec{n}\cdot\vec{\Omega}&gt;0$ $&lt; u,v &gt;^{+} = \int_{\partial v}\int_{\vec{n} \cdot\vec{\Omega}&gt;0}uv \vec{n} \cdot\vec{\Omega}d\Omega dr$ $&lt; \cdot,\cdot &gt;^{-}$ : 边界上的内积，半角度 $\vec{n} \cdot \vec{\Omega}&lt;0$ $&lt; u,v &gt;^{-} = \int_{\partial v}\int_{\vec{n} \cdot \vec{\Omega}&lt;0} uv \vec{n}\cdot \vec{\Omega} d\Omega dr$]]></content>
