@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[马斯洛人本哲学]]></title>
+    <url>%2F2017%2F10%2F21%2F%E9%A9%AC%E6%96%AF%E6%B4%9B%E4%BA%BA%E6%9C%AC%E5%93%B2%E5%AD%A6%2F</url>
+    <content type="text"><![CDATA[最近看了马斯洛的人本哲学，有以下几点学习和感悟： 人类永远不会感到一种持久的满足感，需求驱动着人们向前发展，当一个需求逐渐被满足，很快又会出现其他更高级的需求。 需求是有一定的层次关系的，只有满足了某些需求另一些才会出现，通常需求的层次关系为 生理 (食物) 安全 (人身安全，工作，住房等) 爱 (归属，朋友，爱人等) 尊重 (自我的高度评价，自尊以及受到他人尊重) 自我实现 (成为你所能成为的那个人) 需求控制着我们的思想，基本需求会调动着我们身体的所有机能为其服务。 需求就像维生素一样，如果得不到满足便会生病。 高级的需求反应了人的自由，这种高级需求同时意味着责任，但很多人往往会逃避责任，逃避自由；如果没有高级需求，人就会活得像行尸走肉。 需求是和价值联系起来的，只有满足了某种需求才会产生价值。 不仅人有需求，任何事物都有需求，这种需求可以看作所有事物发展的动力。 约拿情节，人们不仅惧怕自己身上最坏的东西，同时也害怕自己身上最好的东西。我们不仅压制着自己危险的，可怕的，可憎的冲动，也常常压制着美好的崇高的冲动。 判断一件事情是好是坏应该主要看做这件事的动机而不是结果。所以做一件事时，如果动机是好的，就勇敢的去做而不要去在意结果。]]></content>
+      <categories>
+        <category>哲学</category>
+      </categories>
+      <tags>
+        <tag>马斯洛</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[中子输运方程的边界条件]]></title>
     <url>%2F2017%2F10%2F20%2F%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E7%9A%84%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6%2F</url>
     <content type="text"><![CDATA[中子输运方程是一个双曲方程，在数值计算中只需要给定入流边界条件就可以了，通常情况中子输运方程的边界条件包括真空边界条件，即入流恒为零;另一种边界条件为反射边界条件，即如流量等于其关于切线的对称角的出流量。在处理有限元方法的边界条件时，通常是将边界条件直接带入变分之后的边界积分项，然后对带边界条件的变分方程进行离散。以下对球谐函数方法的这两种边界条件进行处理。 真空边界条件$\phi(r,Ω) =0 \,\,\,\,\,\,\,\,\,\,\,\, r \in \Gamma_{v},n\cdot \Omega &lt;0$ 其中$\Gamma_{v}$为真空边界; $n$为边界外法线方向。 对于球谐函数方法有$\int_{n\cdot \Omega &lt;0}n\cdot \Omega\vec{Y}(Ω)\phi(r,Ω) dΩ = 0$ 反射边界条件$\phi(r,Ω) =\phi(r,\mathbf{H}Ω) \,\,\,\,\,\,\,\,\,\,\,\, r \in \Gamma_{r},n\cdot \Omega &lt;0$ 其中$\Gamma_{r}$为反射边界，$\mathbf{H}$为反射矩阵 $\mathbf{H}=\mathbf{I}-2nn^{T}$ 对于球谐函数方法，将其用球谐函数展开，得$[\vec{Y}(Ω)]^{T}\vec{\phi}_{r}(r)= [\vec{Y}(\mathbf{H}Ω)]^{T}\vec{\phi}(r)$所以$\vec{\phi}_{r}(r) = \mathbf{R}\vec{\phi}(r)$其中$\mathbf{R}=\int_{Ω}\vec{Y}(Ω)[\vec{Y}(\mathbf{H}Ω)]^{T}dΩ$ 黎曼分解边界上的角度雅克比矩阵为$\mathbf{A}_{n}=n_x\mathbf{A}_{x}+n_y\mathbf{A}_{y}+n_z\mathbf{A}_{z}$ 对其进行特征值分解，得$\mathbf{A}_{n}=\mathbf{V}Λ\mathbf{V}^{T}=\mathbf{V}(Λ^{+}+Λ^{-})\mathbf{V}^{T}=\mathbf{A}_{n}^{+}+\mathbf{A}_{n}^{-}$ 其中$Λ$特征值对角矩阵，$Λ^{+}$为该矩阵中特征值为正的分量，$Λ^{-}$为该矩阵中特征值为负的分量；$\mathbf{V}$为特征向量形成的矩阵。$\mathbf{A}_{n}^{+}=\mathbf{V}Λ^{+}\mathbf{V}^{T}$$\mathbf{A}_{n}^{-}=\mathbf{V}Λ^{-}\mathbf{V}^{T}$ 边界积分项通过特征值分解，边界积分项可以分解为入流部分与出流部分$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n} = \mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{+} + \mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} $ 其中$\mathbf{B}_{Γ}$是空间边界上的积分， $\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} $表示入流，$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{+} $ 表示出流，所以对于真空边界条件与反射边界条件可以表示为 真空边界$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} = 0$ 反射边界$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} = \mathbf{B}_{Γ}\mathbf{X}\mathbf{R}\mathbf{A}_{n}^{-}$]]></content>

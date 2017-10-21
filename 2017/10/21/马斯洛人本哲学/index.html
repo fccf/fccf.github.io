@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="有限元," />
+  <meta name="keywords" content="马斯洛," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="本文解析的推导了线性三角形单元的基函数及其相关积分。将所有与基函数相关积分都用节点的实际坐标表示，并将其写成向量乘积的形式，这样在计算单元刚度矩阵时就不用使用数值积分而可以直接使用解析形式，而且如果采用无矩阵方法，单元矩阵与向量的乘积只需要很少的计算量。">
-<meta name="keywords" content="有限元">
+<meta name="description" content="最近看了马斯洛的人本哲学，有以下几点学习和感悟：  人类永远不会感到一种持久的满足感，需求驱动着人们向前发展，当一个需求逐渐被满足，很快又会出现其他更高级的需求。 需求是有一定的层次关系的，只有满足了某些需求另一些才会出现，通常需求的层次关系为   生理 (食物) 安全 (人身安全，工作，住房等) 爱 (归属，朋友，爱人等) 尊重 (自我的高度评价，自尊以及受到他人尊重) 自我实现 (成为你所能成">
+<meta name="keywords" content="马斯洛">
 <meta property="og:type" content="article">
-<meta property="og:title" content="三角形单元">
-<meta property="og:url" content="http://superfun.xyz/2017/10/18/三角形单元/index.html">
+<meta property="og:title" content="马斯洛人本哲学">
+<meta property="og:url" content="http://superfun.xyz/2017/10/21/马斯洛人本哲学/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="本文解析的推导了线性三角形单元的基函数及其相关积分。将所有与基函数相关积分都用节点的实际坐标表示，并将其写成向量乘积的形式，这样在计算单元刚度矩阵时就不用使用数值积分而可以直接使用解析形式，而且如果采用无矩阵方法，单元矩阵与向量的乘积只需要很少的计算量。">
+<meta property="og:description" content="最近看了马斯洛的人本哲学，有以下几点学习和感悟：  人类永远不会感到一种持久的满足感，需求驱动着人们向前发展，当一个需求逐渐被满足，很快又会出现其他更高级的需求。 需求是有一定的层次关系的，只有满足了某些需求另一些才会出现，通常需求的层次关系为   生理 (食物) 安全 (人身安全，工作，住房等) 爱 (归属，朋友，爱人等) 尊重 (自我的高度评价，自尊以及受到他人尊重) 自我实现 (成为你所能成">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T03:42:56.122Z">
+<meta property="og:updated_time" content="2017-10-21T02:24:29.413Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="三角形单元">
-<meta name="twitter:description" content="本文解析的推导了线性三角形单元的基函数及其相关积分。将所有与基函数相关积分都用节点的实际坐标表示，并将其写成向量乘积的形式，这样在计算单元刚度矩阵时就不用使用数值积分而可以直接使用解析形式，而且如果采用无矩阵方法，单元矩阵与向量的乘积只需要很少的计算量。">
+<meta name="twitter:title" content="马斯洛人本哲学">
+<meta name="twitter:description" content="最近看了马斯洛的人本哲学，有以下几点学习和感悟：  人类永远不会感到一种持久的满足感，需求驱动着人们向前发展，当一个需求逐渐被满足，很快又会出现其他更高级的需求。 需求是有一定的层次关系的，只有满足了某些需求另一些才会出现，通常需求的层次关系为   生理 (食物) 安全 (人身安全，工作，住房等) 爱 (归属，朋友，爱人等) 尊重 (自我的高度评价，自尊以及受到他人尊重) 自我实现 (成为你所能成">
 
 
 
@@ -134,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://superfun.xyz/2017/10/18/三角形单元/"/>
+  <link rel="canonical" href="http://superfun.xyz/2017/10/21/马斯洛人本哲学/"/>
 
 
 
@@ -150,7 +150,7 @@
 </script>
 
 
-  <title>三角形单元 | superfun</title>
+  <title>马斯洛人本哲学 | superfun</title>
   
 
 
@@ -317,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/10/18/三角形单元/">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/10/21/马斯洛人本哲学/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="c.fang">
@@ -334,7 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">三角形单元</h1>
+          <h1 class="post-title" itemprop="name headline">马斯洛人本哲学</h1>
         
 
         <div class="post-meta">
@@ -346,8 +346,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T19:06:22+08:00">
-                2017-10-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-21T10:21:41+08:00">
+                2017-10-21
               </time>
             
 
@@ -369,8 +369,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/有限元/" itemprop="url" rel="index">
-                    <span itemprop="name">有限元</span>
+                  <a href="/categories/哲学/" itemprop="url" rel="index">
+                    <span itemprop="name">哲学</span>
                   </a>
                 </span>
 
@@ -406,37 +406,27 @@
       
 
       
-        <p>本文解析的推导了线性三角形单元的基函数及其相关积分。将所有与基函数相关积分都用节点的实际坐标表示，并将其写成向量乘积的形式，这样在计算单元刚度矩阵时就不用使用数值积分而可以直接使用解析形式，而且如果采用无矩阵方法，单元矩阵与向量的乘积只需要很少的计算量。</p>
-<a id="more"></a>
-<h3 id="形状函数"><a href="#形状函数" class="headerlink" title="形状函数"></a>形状函数</h3><p>$\vec{N}(r) = [λ_1,λ_2,λ_3]^{T}$<br>$\frac{\partial \vec{N}(r)}{\partial x} = \frac{[b_1,b_2,b_3]^{T}}{2Δ}$<br>$\frac{\partial \vec{N}(r)}{\partial y} = \frac{[c_1,c_2,c_3]^{T}}{2Δ}$</p>
-<p>其中</p>
-<p>$b_1 = y_2-y_3$<br>$b_2 = y_3-y_1$<br>$b_3 = y_1-y_2$</p>
-<p>$c_1 = x_3-x_2$<br>$c_2 = x_1-x_3$<br>$c_3 = x_2-x_1$</p>
-<p>$2Δ=c_3b_2-b_3c_2$</p>
-<h3 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h3><p>$\int_{s}λ_1^aλ_2^bλ_3^cdxdy=\frac{a!b!c!}{(a+b+c+2)!}2Δ$</p>
-<p>得</p>
-<p>$\int_sdxdy = \frac{1}{2}2Δ$<br>$\int_sλ_idxdy = \frac{1}{6}2Δ \,\,\,\,\, i=1,2,3$<br>$\int_sλ_i^2dxdy = \frac{1}{12}2Δ \,\,\,\,\, i=1,2,3$<br>$\int_sλ_iλ_jdxdy = \frac{1}{24}2Δ \,\,\,\,\, i=1,2,3;j=1,2,3,i≠j$</p>
-<h3 id="单元矩阵"><a href="#单元矩阵" class="headerlink" title="单元矩阵"></a>单元矩阵</h3><p>$\mathbf{B}_{Γ}=\int_{Γ}\vec{N}(r)[\vec{N}]^{T}(r)dΓ=\frac{l}{6}(\vec{I}\vec{I}^T+\mathbf{I})$</p>
-<p>$\mathbf{B}_{11}=\int_{e}\vec{N}(r)[\vec{N}]^{T}(r)dr=\frac{2Δ}{24}(\vec{I}\vec{I}^T+\mathbf{I})$</p>
-<p>$\mathbf{B}_{x1}=\int_{e}\frac{\partial \vec{N}(r)}{\partial x}[\vec{N}]^{T}(r)dr=\frac{1}{6}\begin{bmatrix}b_1\\b_2\\b_3\end{bmatrix}\vec{I}^T$</p>
-<p>$\mathbf{B}_{y1}=\int_{e}\frac{\partial \vec{N}(r)}{\partial x}[\vec{N}]^{T}(r)dr=\frac{1}{6}\begin{bmatrix}c_1\\c_2\\c_3\end{bmatrix}\vec{I}^T$</p>
-<p>$\vec{b}=\int_{e}\vec{N}(r)dr=\frac{2Δ}{6}\vec{I}$</p>
-<h3 id="与向量乘积"><a href="#与向量乘积" class="headerlink" title="与向量乘积"></a>与向量乘积</h3><h4 id="移出项"><a href="#移出项" class="headerlink" title="移出项"></a>移出项</h4><p>$[\mathbf{B}_{11}\mathbf{X}\mathbf{Σ}]_{\vec{e},j}= \int_{e}\vec{N}(r)[\vec{N}]^{T}(r)dr = \frac{2Δ}{24}(\vec{I}\vec{I}^T+\mathbf{I})\begin{bmatrix}\phi_{e(1),j}\\\phi_{e(2),j}\\\phi_{e(3),j}\end{bmatrix}Σ_{j}$</p>
-<p>$= \frac{2ΔΣ_{j}}{24}(sum(\phi_{\vec{e},j})+\begin{bmatrix}\phi_{e(1),j}\\\phi_{e(2),j}\\\phi_{e(3),j}\end{bmatrix})$</p>
-<h4 id="对流项"><a href="#对流项" class="headerlink" title="对流项"></a>对流项</h4><ul>
-<li>X方向</li>
-</ul>
-<p>$-[\mathbf{B}_{x1}\mathbf{X}\mathbf{A}_x]_{\vec{e},j} = -\frac{1}{6}\begin{bmatrix}y_2-y_3\\y_3-y_1\\y_1-y_2\end{bmatrix}sum(\phi^{x}_{\vec{e},j})$</p>
-<p>其中</p>
-<p>$\phi^{x}=\mathbf{X}\mathbf{A}_x$</p>
+        <p>最近看了马斯洛的人本哲学，有以下几点学习和感悟：</p>
+<ol>
+<li>人类永远不会感到一种持久的满足感，需求驱动着人们向前发展，当一个需求逐渐被满足，很快又会出现其他更高级的需求。</li>
+<li>需求是有一定的层次关系的，只有满足了某些需求另一些才会出现，通常需求的层次关系为</li>
+</ol>
 <ul>
-<li>Y方向</li>
+<li>生理 (食物)</li>
+<li>安全 (人身安全，工作，住房等)</li>
+<li>爱 (归属，朋友，爱人等)</li>
+<li>尊重 (自我的高度评价，自尊以及受到他人尊重)</li>
+<li>自我实现 (成为你所能成为的那个人)<a id="more"></a></li>
 </ul>
-<p>$-[\mathbf{B}_{y1}\mathbf{X}\mathbf{A}_y]_{\vec{e},j} = -\frac{1}{6}\begin{bmatrix}x_3-x_2\\x_1-x_3\\x_2-x_1\end{bmatrix}sum(\phi^{y}_{\vec{e},j})$</p>
-<p>其中</p>
-<p>$\phi^{y}=\mathbf{X}\mathbf{A}_y$</p>
-<h4 id="边界项"><a href="#边界项" class="headerlink" title="边界项"></a>边界项</h4><p>$[\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}]_{\vec{e},j}=\frac{l}{6}(\vec{I}\vec{I}^T+\mathbf{I})\begin{bmatrix}\phi^{n}_{e(1),j}\\\phi^{n}_{e(2),j}<br>\end{bmatrix} = \frac{l}{6}(sum(\phi^{n}_{\vec{e},j})+\begin{bmatrix}\phi^{n}_{e(1),j}\\\phi^{n}_{e(2),j}\end{bmatrix})$</p>
-<h4 id="右端项"><a href="#右端项" class="headerlink" title="右端项"></a>右端项</h4><p>$[\vec{b}[\vec{s}]^{T}]_{\vec{e},j} = \frac{2Δ}{6}\vec{I}s_{j}$</p>
+<ol>
+<li>需求控制着我们的思想，基本需求会调动着我们身体的所有机能为其服务。</li>
+<li>需求就像维生素一样，如果得不到满足便会生病。</li>
+<li>高级的需求反应了人的自由，这种高级需求同时意味着责任，但很多人往往会逃避责任，逃避自由；如果没有高级需求，人就会活得像行尸走肉。</li>
+<li>需求是和价值联系起来的，只有满足了某种需求才会产生价值。</li>
+<li>不仅人有需求，任何事物都有需求，这种需求可以看作所有事物发展的动力。</li>
+<li>约拿情节，人们不仅惧怕自己身上最坏的东西，同时也害怕自己身上最好的东西。我们不仅压制着自己危险的，可怕的，可憎的冲动，也常常压制着美好的崇高的冲动。</li>
+<li>判断一件事情是好是坏应该主要看做这件事的动机而不是结果。所以做一件事时，如果动机是好的，就勇敢的去做而不要去在意结果。</li>
+</ol>
 
       
     </div>
@@ -454,7 +444,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/有限元/" rel="tag"># 有限元</a>
+            <a href="/tags/马斯洛/" rel="tag"># 马斯洛</a>
           
         </div>
       
@@ -467,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/18/利用hexo和github搭建个人blog/" rel="next" title="利用hexo和github搭建个人blog">
-                <i class="fa fa-chevron-left"></i> 利用hexo和github搭建个人blog
+              <a href="/2017/10/20/中子输运方程的边界条件/" rel="next" title="中子输运方程的边界条件">
+                <i class="fa fa-chevron-left"></i> 中子输运方程的边界条件
               </a>
             
           </div>
@@ -476,10 +466,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/19/一阶中子输运方程galerkin离散/" rel="prev" title="一阶中子输运方程galerkin离散">
-                一阶中子输运方程galerkin离散 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -556,17 +542,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/bio.png"
@@ -655,22 +632,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#形状函数"><span class="nav-number">1.</span> <span class="nav-text">形状函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#欧拉公式"><span class="nav-number">2.</span> <span class="nav-text">欧拉公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单元矩阵"><span class="nav-number">3.</span> <span class="nav-text">单元矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与向量乘积"><span class="nav-number">4.</span> <span class="nav-text">与向量乘积</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#移出项"><span class="nav-number">4.1.</span> <span class="nav-text">移出项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对流项"><span class="nav-number">4.2.</span> <span class="nav-text">对流项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#边界项"><span class="nav-number">4.3.</span> <span class="nav-text">边界项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#右端项"><span class="nav-number">4.4.</span> <span class="nav-text">右端项</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
