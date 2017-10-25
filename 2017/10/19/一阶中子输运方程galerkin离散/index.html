@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="superfun">
 <meta property="og:description" content="对一阶中子输运方程直接进行Galerkin离散然后分部积分并将边界条件带入边界积分项与不进行分部积分而是方程直接减去galerkin离散后的边界条件是等价的。与将两个方程相加除二得到的方程也是等价的。 这与带约束的变分原理中拉格朗日乘子法很相似，其中拉格朗日乘子为 -1。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T06:08:42.810Z">
+<meta property="og:updated_time" content="2017-10-23T09:05:20.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一阶中子输运方程galerkin离散">
 <meta name="twitter:description" content="对一阶中子输运方程直接进行Galerkin离散然后分部积分并将边界条件带入边界积分项与不进行分部积分而是方程直接减去galerkin离散后的边界条件是等价的。与将两个方程相加除二得到的方程也是等价的。 这与带约束的变分原理中拉格朗日乘子法很相似，其中拉格朗日乘子为 -1。">
@@ -416,8 +416,9 @@
 <h2 id="再分部积分"><a href="#再分部积分" class="headerlink" title="再分部积分"></a>再分部积分</h2><p>$&lt;φ,Ω⋅nϕ&gt;^{+}  -&lt;φ,Ω⋅nϕ&gt; + (φ,Ω⋅∇ϕ)+(φ,σϕ) = (φ,s) - G$</p>
 <h2 id="带边界条件的原方程"><a href="#带边界条件的原方程" class="headerlink" title="带边界条件的原方程"></a>带边界条件的原方程</h2><p>$ -&lt;φ,Ω⋅nϕ&gt;^{-} + (φ,Ω⋅∇ϕ)+(φ,σϕ) = (φ,s)-G$<br>该方程实际上就是原方程减去边界上的方程。</p>
 <h2 id="相加除2"><a href="#相加除2" class="headerlink" title="相加除2"></a>相加除2</h2><p>$ [&lt;φ,Ω⋅nϕ&gt;^{+}-&lt;φ,Ω⋅nϕ&gt;^{-}] /2 + [(φ,Ω⋅∇ϕ)- (Ω⋅∇φ,ϕ)]/2+(φ,σϕ) = (φ,s)-G$</p>
-<h2 id="方程式等效"><a href="#方程式等效" class="headerlink" title="方程式等效"></a>方程式等效</h2><p>$(Ω⋅∇φ,ϕ) + (φ,Ω⋅∇ϕ) = &lt;φ,Ω⋅nϕ&gt; = &lt;φ,Ω⋅nϕ&gt;^{+} + &lt;φ,Ω⋅nϕ&gt;^{-}$</p>
-<p>$&lt;φ,Ω⋅nϕ&gt;^{+}  - (Ω⋅∇φ,ϕ)=-&lt;φ,Ω⋅nϕ&gt;^{-} + (φ,Ω⋅∇ϕ)$</p>
+<h2 id="矩阵形式"><a href="#矩阵形式" class="headerlink" title="矩阵形式"></a>矩阵形式</h2><p>定义<br>$C = (φ,Ω⋅∇φ)$<br>$R = (φ,σφ)$<br>$O = &lt;φ,Ω⋅nφ&gt;$<br>$O^{+} = &lt;φ,Ω⋅nφ&gt;^{+}$<br>$O^{-} = &lt;φ,Ω⋅nφ&gt;^{-}$</p>
+<p>$b = (φ,s)-G$<br>所以<br>$C+C^{T} = O = O^{+} + O^{-}$<br>$C - O^{-}= -C^{T}+ O^{+} = (C-C^{T})/2+(O^{+}-O^{-})/2$</p>
+<p>所以以下三个方程是完全等价的<br>$[C - O^{-}+R]ϕ = b$<br>$[ -C^{T}+ O^{+}+R]ϕ = b$<br>$[ (C-C^{T})/2+(O^{+}-O^{-})/2+R]ϕ = b$</p>
 
       
     </div>
@@ -564,7 +565,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -575,7 +576,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -586,7 +587,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -648,7 +649,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#输运方程"><span class="nav-number">1.</span> <span class="nav-text">输运方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弱形式"><span class="nav-number">2.</span> <span class="nav-text">弱形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分部积分"><span class="nav-number">3.</span> <span class="nav-text">分部积分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边界条件"><span class="nav-number">4.</span> <span class="nav-text">边界条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带边界条件的方程"><span class="nav-number">5.</span> <span class="nav-text">带边界条件的方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#再分部积分"><span class="nav-number">6.</span> <span class="nav-text">再分部积分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带边界条件的原方程"><span class="nav-number">7.</span> <span class="nav-text">带边界条件的原方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相加除2"><span class="nav-number">8.</span> <span class="nav-text">相加除2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方程式等效"><span class="nav-number">9.</span> <span class="nav-text">方程式等效</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#输运方程"><span class="nav-number">1.</span> <span class="nav-text">输运方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弱形式"><span class="nav-number">2.</span> <span class="nav-text">弱形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分部积分"><span class="nav-number">3.</span> <span class="nav-text">分部积分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边界条件"><span class="nav-number">4.</span> <span class="nav-text">边界条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带边界条件的方程"><span class="nav-number">5.</span> <span class="nav-text">带边界条件的方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#再分部积分"><span class="nav-number">6.</span> <span class="nav-text">再分部积分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带边界条件的原方程"><span class="nav-number">7.</span> <span class="nav-text">带边界条件的原方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相加除2"><span class="nav-number">8.</span> <span class="nav-text">相加除2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵形式"><span class="nav-number">9.</span> <span class="nav-text">矩阵形式</span></a></li></ol></div>
             
 
           </div>
