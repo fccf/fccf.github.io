@@ -128,8 +128,8 @@
         <category>中子输运方程</category>
       </categories>
       <tags>
-        <tag>有限元</tag>
         <tag>中子输运方程</tag>
+        <tag>有限元</tag>
         <tag>galerkin</tag>
         <tag>稳定算法</tag>
       </tags>
