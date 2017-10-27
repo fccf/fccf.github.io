@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="中子输运方程,边界条件," />
+  <meta name="keywords" content="psblas," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="中子输运方程是一个双曲方程，在数值计算中只需要给定入流边界条件就可以了，通常情况中子输运方程的边界条件包括真空边界条件，即入流恒为零;另一种边界条件为反射边界条件，即如流量等于其关于切线的对称角的出流量。在处理有限元方法的边界条件时，通常是将边界条件直接带入变分之后的边界积分项，然后对带边界条件的变分方程进行离散。以下对球谐函数方法的这两种边界条件进行处理。">
-<meta name="keywords" content="中子输运方程,边界条件">
+<meta name="description" content="PSBLAS(parallel sparse BLAS) 主要用于并行迭代求解大型稀疏线性代数方程组。 该程序用Fortran2003按照面向对象思想编写。">
+<meta name="keywords" content="psblas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="中子输运方程的边界条件">
-<meta property="og:url" content="http://superfun.xyz/2017/10/20/中子输运方程的边界条件/index.html">
+<meta property="og:title" content="psblas学习">
+<meta property="og:url" content="http://superfun.xyz/2017/10/26/psblas学习/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="中子输运方程是一个双曲方程，在数值计算中只需要给定入流边界条件就可以了，通常情况中子输运方程的边界条件包括真空边界条件，即入流恒为零;另一种边界条件为反射边界条件，即如流量等于其关于切线的对称角的出流量。在处理有限元方法的边界条件时，通常是将边界条件直接带入变分之后的边界积分项，然后对带边界条件的变分方程进行离散。以下对球谐函数方法的这两种边界条件进行处理。">
+<meta property="og:description" content="PSBLAS(parallel sparse BLAS) 主要用于并行迭代求解大型稀疏线性代数方程组。 该程序用Fortran2003按照面向对象思想编写。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-20T13:44:42.092Z">
+<meta property="og:updated_time" content="2017-10-27T09:22:00.542Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="中子输运方程的边界条件">
-<meta name="twitter:description" content="中子输运方程是一个双曲方程，在数值计算中只需要给定入流边界条件就可以了，通常情况中子输运方程的边界条件包括真空边界条件，即入流恒为零;另一种边界条件为反射边界条件，即如流量等于其关于切线的对称角的出流量。在处理有限元方法的边界条件时，通常是将边界条件直接带入变分之后的边界积分项，然后对带边界条件的变分方程进行离散。以下对球谐函数方法的这两种边界条件进行处理。">
+<meta name="twitter:title" content="psblas学习">
+<meta name="twitter:description" content="PSBLAS(parallel sparse BLAS) 主要用于并行迭代求解大型稀疏线性代数方程组。 该程序用Fortran2003按照面向对象思想编写。">
 
 
 
@@ -134,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://superfun.xyz/2017/10/20/中子输运方程的边界条件/"/>
+  <link rel="canonical" href="http://superfun.xyz/2017/10/26/psblas学习/"/>
 
 
 
@@ -150,7 +150,7 @@
 </script>
 
 
-  <title>中子输运方程的边界条件 | superfun</title>
+  <title>psblas学习 | superfun</title>
   
 
 
@@ -317,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/10/20/中子输运方程的边界条件/">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/10/26/psblas学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="c.fang">
@@ -334,7 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">中子输运方程的边界条件</h1>
+          <h1 class="post-title" itemprop="name headline">psblas学习</h1>
         
 
         <div class="post-meta">
@@ -346,8 +346,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T21:06:08+08:00">
-                2017-10-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-26T10:08:42+08:00">
+                2017-10-26
               </time>
             
 
@@ -369,8 +369,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/中子输运方程/" itemprop="url" rel="index">
-                    <span itemprop="name">中子输运方程</span>
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
                   </a>
                 </span>
 
@@ -406,25 +406,70 @@
       
 
       
-        <p>中子输运方程是一个双曲方程，在数值计算中只需要给定入流边界条件就可以了，通常情况中子输运方程的边界条件包括真空边界条件，即入流恒为零;另一种边界条件为反射边界条件，即如流量等于其关于切线的对称角的出流量。在处理有限元方法的边界条件时，通常是将边界条件直接带入变分之后的边界积分项，然后对带边界条件的变分方程进行离散。以下对球谐函数方法的这两种边界条件进行处理。</p>
+        <p>PSBLAS(parallel sparse BLAS) 主要用于并行迭代求解大型稀疏线性代数方程组。 该程序用Fortran2003按照面向对象思想编写。</p>
 <a id="more"></a>
-<h2 id="真空边界条件"><a href="#真空边界条件" class="headerlink" title="真空边界条件"></a>真空边界条件</h2><p>$\phi(r,Ω) =0 \,\,\,\,\,\,\,\,\,\,\,\,   r \in \Gamma_{v},n\cdot \Omega &lt;0$</p>
-<p>其中$\Gamma_{v}$为真空边界; $n$为边界外法线方向。</p>
-<p>对于球谐函数方法有<br>$\int_{n\cdot \Omega &lt;0}n\cdot \Omega\vec{Y}(Ω)\phi(r,Ω) dΩ = 0$</p>
-<h2 id="反射边界条件"><a href="#反射边界条件" class="headerlink" title="反射边界条件"></a>反射边界条件</h2><p>$\phi(r,Ω) =\phi(r,\mathbf{H}Ω) \,\,\,\,\,\,\,\,\,\,\,\,   r \in \Gamma_{r},n\cdot \Omega &lt;0$</p>
-<p>其中$\Gamma_{r}$为反射边界，$\mathbf{H}$为反射矩阵 $\mathbf{H}=\mathbf{I}-2nn^{T}$</p>
-<p>对于球谐函数方法，将其用球谐函数展开，得<br>$[\vec{Y}(Ω)]^{T}\vec{\phi}_{r}(r)= [\vec{Y}(\mathbf{H}Ω)]^{T}\vec{\phi}(r)$<br>所以<br>$\vec{\phi}_{r}(r) = \mathbf{R}\vec{\phi}(r)$<br>其中<br>$\mathbf{R}=\int_{Ω}\vec{Y}(Ω)[\vec{Y}(\mathbf{H}Ω)]^{T}dΩ$</p>
-<h2 id="黎曼分解"><a href="#黎曼分解" class="headerlink" title="黎曼分解"></a>黎曼分解</h2><p>边界上的角度雅克比矩阵为<br>$\mathbf{A}_{n}=n_x\mathbf{A}_{x}+n_y\mathbf{A}_{y}+n_z\mathbf{A}_{z}$</p>
-<p>对其进行特征值分解，得<br>$\mathbf{A}_{n}=\mathbf{V}Λ\mathbf{V}^{T}=\mathbf{V}(Λ^{+}+Λ^{-})\mathbf{V}^{T}=\mathbf{A}_{n}^{+}+\mathbf{A}_{n}^{-}$</p>
-<p>其中$Λ$特征值对角矩阵，$Λ^{+}$为该矩阵中特征值为正的分量，$Λ^{-}$为该矩阵中特征值为负的分量；$\mathbf{V}$为特征向量形成的矩阵。<br>$\mathbf{A}_{n}^{+}=\mathbf{V}Λ^{+}\mathbf{V}^{T}$<br>$\mathbf{A}_{n}^{-}=\mathbf{V}Λ^{-}\mathbf{V}^{T}$</p>
-<h2 id="边界积分项"><a href="#边界积分项" class="headerlink" title="边界积分项"></a>边界积分项</h2><p>通过特征值分解，边界积分项可以分解为入流部分与出流部分<br>$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n} = \mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{+} + \mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} $</p>
-<p>其中$\mathbf{B}_{Γ}$是空间边界上的积分， $\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} $表示入流，$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{+} $ 表示出流，所以对于真空边界条件与反射边界条件可以表示为</p>
-<ul>
-<li><p>真空边界<br>$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} = 0$</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/sfilippone/psblas3.git</div></pre></td></tr></table></figure>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>按照说明进行安装，基本上就是以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">./configure</div><div class="line">make</div><div class="line">make install</div><div class="line">make clean</div></pre></td></tr></table></figure></p>
+<p>要预先安装blas，lapack，metis等库。</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>使用FoBis编译测试文件，定义变量 <strong>$PSB_DIR</strong>，然后修改以下的变量就可以使用psblas的所有库了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$PSB_DIR     = xxx</div><div class="line"></div><div class="line"></div><div class="line">mpi             = True</div><div class="line">include         = $PSB_DIR/modules $PSB_DIR/include</div><div class="line">libs            = -L$PSB_DIR/lib</div><div class="line">ext_libs        =  blas lapack metis psb_util psb_krylov psb_prec psb_base</div></pre></td></tr></table></figure></p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="点的分类"><a href="#点的分类" class="headerlink" title="点的分类"></a>点的分类</h3><ul>
+<li><p>内部点(inner points)<br>只依赖于同一区域的点；</p>
 </li>
-<li><p>反射边界<br>$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} = \mathbf{B}_{Γ}\mathbf{X}\mathbf{R}\mathbf{A}_{n}^{-}$</p>
+<li><p>边界点(boundary points)<br>依赖于其它区域的点；</p>
+</li>
+<li><p>光晕点(halo points)(ghost points)<br>一个区域的光晕点是该区域的边界点所依赖的其他区域的点；一个区域的边界点通常是其它区域的光晕点。</p>
 </li>
 </ul>
+<p>对于一个区域形成的矩阵，行数为 $I+B$ 行，列数为 $I+B+H$ 列，其中 $I$ 为内部点数目， $B$为边界点数目，$H$ 为光晕点数目。</p>
+<h3 id="索引空间-index-space"><a href="#索引空间-index-space" class="headerlink" title="索引空间(index_space)"></a>索引空间(index_space)</h3><p>建立索引空间是计算的第一步，将索引分配到不同的进程，建立全局与局部的对应关系。</p>
+<ul>
+<li>全局索引(global indices)<ul>
+<li>全局行</li>
+<li>全局列</li>
+</ul>
+</li>
+<li>局部索引(local indices)<ul>
+<li>局部行</li>
+<li>局部光晕点 -&gt; 局部列</li>
+<li>局部全局对照表</li>
+</ul>
+</li>
+</ul>
+<p>不同的离散方法有不同的索引空间，要确定索引空间必须确定网格的稀疏模式。</p>
+<h3 id="内置的稀疏矩阵存储格式"><a href="#内置的稀疏矩阵存储格式" class="headerlink" title="内置的稀疏矩阵存储格式"></a>内置的稀疏矩阵存储格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- coo          坐标存储(ia(nnz),ja(nnz),a(nnz))</div><div class="line">- csr          压缩行存储(ia(nr+1),ja(nnz),a(nnz))</div><div class="line">- csc          压缩列存储</div></pre></td></tr></table></figure>
+<h3 id="矩阵的状态"><a href="#矩阵的状态" class="headerlink" title="矩阵的状态"></a>矩阵的状态</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- build        分配空间之后，组装之前</div><div class="line">- assembled    组装后，之后可以进行矩阵计算。</div><div class="line">- update       对相同稀疏模式矩阵值进行更新</div></pre></td></tr></table></figure>
+<h2 id="命名原则"><a href="#命名原则" class="headerlink" title="命名原则"></a>命名原则</h2><ul>
+<li>所有的subroutine 和data types 以psb_ 开头</li>
+<li>所有自定义的类以 _type 结尾</li>
+<li>自定义的数据精度<ul>
+<li>s 单精度实数</li>
+<li>d 双精度实数</li>
+<li>c 单精度复数</li>
+<li>z 双精度复数</li>
+</ul>
+</li>
+<li>所有常数用 _ 结尾</li>
+<li>所有用户API 命名方式为 psb_xxname<ul>
+<li>xx主要有<ul>
+<li>ge: 密集数据</li>
+<li>sp: 稀疏数据</li>
+<li>cd: 数据交换描述符</li>
+</ul>
+</li>
+<li>name主要有<ul>
+<li>init -&gt; initialize</li>
+<li>all  -&gt; allocate</li>
+<li>ins  -&gt; insert</li>
+<li>asb  -&gt; assemble</li>
+<li>prec -&gt; precondition</li>
+<li>bld  -&gt; build</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="主要API"><a href="#主要API" class="headerlink" title="主要API"></a>主要API</h2><h3 id="并行环境API"><a href="#并行环境API" class="headerlink" title="并行环境API"></a>并行环境API</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- psb_init     并行环境初始化</div><div class="line">- psb_info     返回并行环境信息</div><div class="line">- psb_exit     退出并行环境</div><div class="line">- psb_abort    中断计算</div><div class="line">- psb_barrier  暂时中断</div><div class="line">- psb_wtime    返回时间</div></pre></td></tr></table></figure>
+<h3 id="数据管理API"><a href="#数据管理API" class="headerlink" title="数据管理API"></a>数据管理API</h3><h3 id="计算API"><a href="#计算API" class="headerlink" title="计算API"></a>计算API</h3><h2 id="计算流程"><a href="#计算流程" class="headerlink" title="计算流程"></a>计算流程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- 并行环境初始化 psb_init</div><div class="line">- 索引空间初始化 psb_cdall</div><div class="line">- 稀疏矩阵初始化 psb_spall</div><div class="line">- 矩阵向量初始化 psb_geall</div><div class="line">- 各进程系数计算 psb_spins, psb_geins</div><div class="line">- 矩阵组装      psb_cdasb, psb_spasb, psb_geasb</div><div class="line">- 预处理        psb_precset, psb_precbld</div><div class="line">- 迭代求解      psb_krylov</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -442,9 +487,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/中子输运方程/" rel="tag"># 中子输运方程</a>
-          
-            <a href="/tags/边界条件/" rel="tag"># 边界条件</a>
+            <a href="/tags/psblas/" rel="tag"># psblas</a>
           
         </div>
       
@@ -457,8 +500,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/20/代数方程的物理含义/" rel="next" title="代数方程的物理含义">
-                <i class="fa fa-chevron-left"></i> 代数方程的物理含义
+              <a href="/2017/10/25/数值方法简介/" rel="next" title="数值方法简介">
+                <i class="fa fa-chevron-left"></i> 数值方法简介
               </a>
             
           </div>
@@ -466,10 +509,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/21/马斯洛人本哲学/" rel="prev" title="马斯洛人本哲学">
-                马斯洛人本哲学 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -655,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#真空边界条件"><span class="nav-number">1.</span> <span class="nav-text">真空边界条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射边界条件"><span class="nav-number">2.</span> <span class="nav-text">反射边界条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#黎曼分解"><span class="nav-number">3.</span> <span class="nav-text">黎曼分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边界积分项"><span class="nav-number">4.</span> <span class="nav-text">边界积分项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载"><span class="nav-number">1.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-1"><span class="nav-number">1.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">1.3.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#点的分类"><span class="nav-number">2.1.</span> <span class="nav-text">点的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引空间-index-space"><span class="nav-number">2.2.</span> <span class="nav-text">索引空间(index_space)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置的稀疏矩阵存储格式"><span class="nav-number">2.3.</span> <span class="nav-text">内置的稀疏矩阵存储格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵的状态"><span class="nav-number">2.4.</span> <span class="nav-text">矩阵的状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名原则"><span class="nav-number">3.</span> <span class="nav-text">命名原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要API"><span class="nav-number">4.</span> <span class="nav-text">主要API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#并行环境API"><span class="nav-number">4.1.</span> <span class="nav-text">并行环境API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据管理API"><span class="nav-number">4.2.</span> <span class="nav-text">数据管理API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算API"><span class="nav-number">4.3.</span> <span class="nav-text">计算API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算流程"><span class="nav-number">5.</span> <span class="nav-text">计算流程</span></a></li></ol></div>
             
 
           </div>

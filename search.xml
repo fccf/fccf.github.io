@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[psblas学习]]></title>
+    <url>%2F2017%2F10%2F26%2Fpsblas%E5%AD%A6%E4%B9%A0%2F</url>
+    <content type="text"><![CDATA[PSBLAS(parallel sparse BLAS) 主要用于并行迭代求解大型稀疏线性代数方程组。 该程序用Fortran2003按照面向对象思想编写。 安装下载1git clone https://github.com/sfilippone/psblas3.git 安装按照说明进行安装，基本上就是以下命令1234./configuremakemake installmake clean 要预先安装blas，lapack，metis等库。 测试使用FoBis编译测试文件，定义变量 $PSB_DIR，然后修改以下的变量就可以使用psblas的所有库了。1234567$PSB_DIR = xxxmpi = Trueinclude = $PSB_DIR/modules $PSB_DIR/includelibs = -L$PSB_DIR/libext_libs = blas lapack metis psb_util psb_krylov psb_prec psb_base 概念点的分类 内部点(inner points)只依赖于同一区域的点； 边界点(boundary points)依赖于其它区域的点； 光晕点(halo points)(ghost points)一个区域的光晕点是该区域的边界点所依赖的其他区域的点；一个区域的边界点通常是其它区域的光晕点。 对于一个区域形成的矩阵，行数为 $I+B$ 行，列数为 $I+B+H$ 列，其中 $I$ 为内部点数目， $B$为边界点数目，$H$ 为光晕点数目。 索引空间(index_space)建立索引空间是计算的第一步，将索引分配到不同的进程，建立全局与局部的对应关系。 全局索引(global indices) 全局行 全局列 局部索引(local indices) 局部行 局部光晕点 -&gt; 局部列 局部全局对照表 不同的离散方法有不同的索引空间，要确定索引空间必须确定网格的稀疏模式。 内置的稀疏矩阵存储格式123- coo 坐标存储(ia(nnz),ja(nnz),a(nnz))- csr 压缩行存储(ia(nr+1),ja(nnz),a(nnz))- csc 压缩列存储 矩阵的状态123- build 分配空间之后，组装之前- assembled 组装后，之后可以进行矩阵计算。- update 对相同稀疏模式矩阵值进行更新 命名原则 所有的subroutine 和data types 以psb_ 开头 所有自定义的类以 _type 结尾 自定义的数据精度 s 单精度实数 d 双精度实数 c 单精度复数 z 双精度复数 所有常数用 _ 结尾 所有用户API 命名方式为 psb_xxname xx主要有 ge: 密集数据 sp: 稀疏数据 cd: 数据交换描述符 name主要有 init -&gt; initialize all -&gt; allocate ins -&gt; insert asb -&gt; assemble prec -&gt; precondition bld -&gt; build 主要API并行环境API123456- psb_init 并行环境初始化- psb_info 返回并行环境信息- psb_exit 退出并行环境- psb_abort 中断计算- psb_barrier 暂时中断- psb_wtime 返回时间 数据管理API计算API计算流程12345678- 并行环境初始化 psb_init- 索引空间初始化 psb_cdall- 稀疏矩阵初始化 psb_spall- 矩阵向量初始化 psb_geall- 各进程系数计算 psb_spins, psb_geins- 矩阵组装 psb_cdasb, psb_spasb, psb_geasb- 预处理 psb_precset, psb_precbld- 迭代求解 psb_krylov]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>psblas</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数值方法简介]]></title>
     <url>%2F2017%2F10%2F25%2F%E6%95%B0%E5%80%BC%E6%96%B9%E6%B3%95%E7%AE%80%E4%BB%8B%2F</url>
     <content type="text"><![CDATA[数值计算方法是将连续的偏微分方程及其边值条件通过一些数值方法将其离散为一个代数方程组，然后利用计算机进行数值求解。常用的数值方法有有限差分法，有限体积法，有限元法等。有限差分法通过用差商代替微分，将偏微分方程离散为代数方程，这种方法简单有效，容易推导，但通常只针对结构网格。 有限体积法根据守恒定理将方程的积分形式在每一个控制体中列出一个守恒方程，这样可以保证物理量的局部守恒，而且可以适用于任意网格。 有限元方法利用变分原理或加权残值法将偏微分方程变为一种积分形式，这种形式被称为弱形式，然后利用分片多项式对未知量进行插值，带入弱形式中进行求解。有限元方法非常通用和灵活，很容易处理任意边界条件，同时适用于任意网格。 差分迎风差分格式$v\frac{\partial \phi}{\partial x} = v\frac{\phi_i - \phi_{i-1}}{Δx}$ 表示点$i$只与点$i-1$相关 中心差分格式$v\frac{\partial \phi}{\partial x} = v\frac{\phi_{i+1} - \phi_{i-1}}{2Δx}$表示点$i$与点$i-1$和点$i+1$相关 对对流占优方程使用迎风差分格式会产生拖尾效应 (smearing)，使用中心差分格式会产生伪震荡现象(wiggles) 数值方法的性质数值方法应该满足以下几点性质 一致性，随着网格尺寸的减小，截断误差应该趋近于0 稳定性 收敛性 物理量守恒 物理边界]]></content>
