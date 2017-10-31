@@ -422,9 +422,9 @@
 </ul>
 </li>
 </ul>
-<h3 id="一阶方程"><a href="#一阶方程" class="headerlink" title="一阶方程"></a>一阶方程</h3><p>$a_0+a_1\frac{∂{u}}{∂{x_1}} + …+a_d\frac{∂{u}}{∂{x_{d}}} = 0 $<br>一阶方程一定是双曲型方程。</p>
-<h3 id="二阶方程"><a href="#二阶方程" class="headerlink" title="二阶方程"></a>二阶方程</h3><p>$\sum_{i,j=1}^{D}a_{ij}\frac{∂^{2}u}{∂x_i∂x_j}+\sum_{k}^{D}b_k\frac{∂u}{∂x_k}+cu+d = 0$</p>
-<p>系数矩阵$A = \{a_{ij}\} \in R^{D × D}$，该矩阵是对称的<br>方程的性质由该矩阵的特征值决定，如果$D$个特征值全为正，则该方程为椭圆方程；如果$D-1$个特征值为正，另$1$个特征值为负，则该方程为双曲方程；如果$D-1$个特征值为正，另$1$个特征值为$0$，则该方程为抛物方程；</p>
+<h3 id="一阶方程"><a href="#一阶方程" class="headerlink" title="一阶方程"></a>一阶方程</h3><p>$a<em>0+a_1\frac{∂{u}}{∂{x_1}} + …+a_d\frac{∂{u}}{∂{x</em>{d}}} = 0 $<br>一阶方程一定是双曲型方程。</p>
+<h3 id="二阶方程"><a href="#二阶方程" class="headerlink" title="二阶方程"></a>二阶方程</h3><p>$\sum<em>{i,j=1}^{D}a</em>{ij}\frac{∂^{2}u}{∂x<em>i∂x_j}+\sum</em>{k}^{D}b_k\frac{∂u}{∂x_k}+cu+d = 0$</p>
+<p>系数矩阵$A = {a_{ij}} \in R^{D × D}$，该矩阵是对称的<br>方程的性质由该矩阵的特征值决定，如果$D$个特征值全为正，则该方程为椭圆方程；如果$D-1$个特征值为正，另$1$个特征值为负，则该方程为双曲方程；如果$D-1$个特征值为正，另$1$个特征值为$0$，则该方程为抛物方程；</p>
 <h2 id="偏微分方程的几何解释"><a href="#偏微分方程的几何解释" class="headerlink" title="偏微分方程的几何解释"></a>偏微分方程的几何解释</h2><p><img src="http://on08uqozg.bkt.clouddn.com/geo_interpretation_PDE.png" alt="偏微分方程几何解释"></p>
 <p>图中，domain of dependence是会对点P处的信息产生影响的区域，zone of influence是点P会影响的区域。</p>
 <p>在有限元方法中，某一点的影响点集包含围绕着这一点的所有点，这对椭圆方程是适用的；对双曲方程并不适用，因为在双曲方程中，对某一点的影响点集应该只是上游区域的点，不应该包含下游区域的点。</p>

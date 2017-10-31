@@ -416,27 +416,27 @@
 <h3 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h3><p>$\int_{s}λ_1^aλ_2^bλ_3^cdxdy=\frac{a!b!c!}{(a+b+c+2)!}2Δ$</p>
 <p>得</p>
 <p>$\int_sdxdy = \frac{1}{2}2Δ$<br>$\int_sλ_idxdy = \frac{1}{6}2Δ \,\,\,\,\, i=1,2,3$<br>$\int_sλ_i^2dxdy = \frac{1}{12}2Δ \,\,\,\,\, i=1,2,3$<br>$\int_sλ_iλ_jdxdy = \frac{1}{24}2Δ \,\,\,\,\, i=1,2,3;j=1,2,3,i≠j$</p>
-<h3 id="单元矩阵"><a href="#单元矩阵" class="headerlink" title="单元矩阵"></a>单元矩阵</h3><p>$\mathbf{B}_{Γ}=\int_{Γ}\vec{N}(r)[\vec{N}]^{T}(r)dΓ=\frac{l}{6}(\vec{I}\vec{I}^T+\mathbf{I})$</p>
-<p>$\mathbf{B}_{11}=\int_{e}\vec{N}(r)[\vec{N}]^{T}(r)dr=\frac{2Δ}{24}(\vec{I}\vec{I}^T+\mathbf{I})$</p>
-<p>$\mathbf{B}_{x1}=\int_{e}\frac{\partial \vec{N}(r)}{\partial x}[\vec{N}]^{T}(r)dr=\frac{1}{6}\begin{bmatrix}b_1\\b_2\\b_3\end{bmatrix}\vec{I}^T$</p>
-<p>$\mathbf{B}_{y1}=\int_{e}\frac{\partial \vec{N}(r)}{\partial x}[\vec{N}]^{T}(r)dr=\frac{1}{6}\begin{bmatrix}c_1\\c_2\\c_3\end{bmatrix}\vec{I}^T$</p>
+<h3 id="单元矩阵"><a href="#单元矩阵" class="headerlink" title="单元矩阵"></a>单元矩阵</h3><p>$\mathbf{B}<em>{Γ}=\int</em>{Γ}\vec{N}(r)[\vec{N}]^{T}(r)dΓ=\frac{l}{6}(\vec{I}\vec{I}^T+\mathbf{I})$</p>
+<p>$\mathbf{B}<em>{11}=\int</em>{e}\vec{N}(r)[\vec{N}]^{T}(r)dr=\frac{2Δ}{24}(\vec{I}\vec{I}^T+\mathbf{I})$</p>
+<p>$\mathbf{B}<em>{x1}=\int</em>{e}\frac{\partial \vec{N}(r)}{\partial x}[\vec{N}]^{T}(r)dr=\frac{1}{6}\begin{bmatrix}b_1\b_2\b_3\end{bmatrix}\vec{I}^T$</p>
+<p>$\mathbf{B}<em>{y1}=\int</em>{e}\frac{\partial \vec{N}(r)}{\partial x}[\vec{N}]^{T}(r)dr=\frac{1}{6}\begin{bmatrix}c_1\c_2\c_3\end{bmatrix}\vec{I}^T$</p>
 <p>$\vec{b}=\int_{e}\vec{N}(r)dr=\frac{2Δ}{6}\vec{I}$</p>
-<h3 id="与向量乘积"><a href="#与向量乘积" class="headerlink" title="与向量乘积"></a>与向量乘积</h3><h4 id="移出项"><a href="#移出项" class="headerlink" title="移出项"></a>移出项</h4><p>$[\mathbf{B}_{11}\mathbf{X}\mathbf{Σ}]_{\vec{e},j}= \int_{e}\vec{N}(r)[\vec{N}]^{T}(r)dr = \frac{2Δ}{24}(\vec{I}\vec{I}^T+\mathbf{I})\begin{bmatrix}\phi_{e(1),j}\\\phi_{e(2),j}\\\phi_{e(3),j}\end{bmatrix}Σ_{j}$</p>
-<p>$= \frac{2ΔΣ_{j}}{24}(sum(\phi_{\vec{e},j})+\begin{bmatrix}\phi_{e(1),j}\\\phi_{e(2),j}\\\phi_{e(3),j}\end{bmatrix})$</p>
+<h3 id="与向量乘积"><a href="#与向量乘积" class="headerlink" title="与向量乘积"></a>与向量乘积</h3><h4 id="移出项"><a href="#移出项" class="headerlink" title="移出项"></a>移出项</h4><p>$[\mathbf{B}<em>{11}\mathbf{X}\mathbf{Σ}]</em>{\vec{e},j}= \int<em>{e}\vec{N}(r)[\vec{N}]^{T}(r)dr = \frac{2Δ}{24}(\vec{I}\vec{I}^T+\mathbf{I})\begin{bmatrix}\phi</em>{e(1),j}\\phi<em>{e(2),j}\\phi</em>{e(3),j}\end{bmatrix}Σ_{j}$</p>
+<p>$= \frac{2ΔΣ<em>{j}}{24}(sum(\phi</em>{\vec{e},j})+\begin{bmatrix}\phi<em>{e(1),j}\\phi</em>{e(2),j}\\phi_{e(3),j}\end{bmatrix})$</p>
 <h4 id="对流项"><a href="#对流项" class="headerlink" title="对流项"></a>对流项</h4><ul>
 <li>X方向</li>
 </ul>
-<p>$-[\mathbf{B}_{x1}\mathbf{X}\mathbf{A}_x]_{\vec{e},j} = -\frac{1}{6}\begin{bmatrix}y_2-y_3\\y_3-y_1\\y_1-y_2\end{bmatrix}sum(\phi^{x}_{\vec{e},j})$</p>
+<p>$-[\mathbf{B}<em>{x1}\mathbf{X}\mathbf{A}_x]</em>{\vec{e},j} = -\frac{1}{6}\begin{bmatrix}y<em>2-y_3\y_3-y_1\y_1-y_2\end{bmatrix}sum(\phi^{x}</em>{\vec{e},j})$</p>
 <p>其中</p>
 <p>$\phi^{x}=\mathbf{X}\mathbf{A}_x$</p>
 <ul>
 <li>Y方向</li>
 </ul>
-<p>$-[\mathbf{B}_{y1}\mathbf{X}\mathbf{A}_y]_{\vec{e},j} = -\frac{1}{6}\begin{bmatrix}x_3-x_2\\x_1-x_3\\x_2-x_1\end{bmatrix}sum(\phi^{y}_{\vec{e},j})$</p>
+<p>$-[\mathbf{B}<em>{y1}\mathbf{X}\mathbf{A}_y]</em>{\vec{e},j} = -\frac{1}{6}\begin{bmatrix}x<em>3-x_2\x_1-x_3\x_2-x_1\end{bmatrix}sum(\phi^{y}</em>{\vec{e},j})$</p>
 <p>其中</p>
 <p>$\phi^{y}=\mathbf{X}\mathbf{A}_y$</p>
-<h4 id="边界项"><a href="#边界项" class="headerlink" title="边界项"></a>边界项</h4><p>$[\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}]_{\vec{e},j}=\frac{l}{6}(\vec{I}\vec{I}^T+\mathbf{I})\begin{bmatrix}\phi^{n}_{e(1),j}\\\phi^{n}_{e(2),j}<br>\end{bmatrix} = \frac{l}{6}(sum(\phi^{n}_{\vec{e},j})+\begin{bmatrix}\phi^{n}_{e(1),j}\\\phi^{n}_{e(2),j}\end{bmatrix})$</p>
-<h4 id="右端项"><a href="#右端项" class="headerlink" title="右端项"></a>右端项</h4><p>$[\vec{b}[\vec{s}]^{T}]_{\vec{e},j} = \frac{2Δ}{6}\vec{I}s_{j}$</p>
+<h4 id="边界项"><a href="#边界项" class="headerlink" title="边界项"></a>边界项</h4><p>$[\mathbf{B}<em>{Γ}\mathbf{X}\mathbf{A}</em>{n}]<em>{\vec{e},j}=\frac{l}{6}(\vec{I}\vec{I}^T+\mathbf{I})\begin{bmatrix}\phi^{n}</em>{e(1),j}\\phi^{n}<em>{e(2),j}<br>\end{bmatrix} = \frac{l}{6}(sum(\phi^{n}</em>{\vec{e},j})+\begin{bmatrix}\phi^{n}<em>{e(1),j}\\phi^{n}</em>{e(2),j}\end{bmatrix})$</p>
+<h4 id="右端项"><a href="#右端项" class="headerlink" title="右端项"></a>右端项</h4><p>$[\vec{b}[\vec{s}]^{T}]<em>{\vec{e},j} = \frac{2Δ}{6}\vec{I}s</em>{j}$</p>
 
       
     </div>

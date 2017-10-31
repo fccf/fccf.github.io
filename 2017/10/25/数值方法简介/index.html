@@ -411,9 +411,9 @@
         <p>数值计算方法是将连续的偏微分方程及其边值条件通过一些数值方法将其离散为一个代数方程组，然后利用计算机进行数值求解。常用的数值方法有有限差分法，有限体积法，有限元法等。<br><a id="more"></a><br>有限差分法通过用差商代替微分，将偏微分方程离散为代数方程，这种方法简单有效，容易推导，但通常只针对结构网格。</p>
 <p>有限体积法根据守恒定理将方程的积分形式在每一个控制体中列出一个守恒方程，这样可以保证物理量的局部守恒，而且可以适用于任意网格。</p>
 <p>有限元方法利用变分原理或加权残值法将偏微分方程变为一种积分形式，这种形式被称为弱形式，然后利用分片多项式对未知量进行插值，带入弱形式中进行求解。有限元方法非常通用和灵活，很容易处理任意边界条件，同时适用于任意网格。</p>
-<h2 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h2><h3 id="迎风差分格式"><a href="#迎风差分格式" class="headerlink" title="迎风差分格式"></a>迎风差分格式</h3><p>$v\frac{\partial \phi}{\partial x} = v\frac{\phi_i - \phi_{i-1}}{Δx}$</p>
+<h2 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h2><h3 id="迎风差分格式"><a href="#迎风差分格式" class="headerlink" title="迎风差分格式"></a>迎风差分格式</h3><p>$v\frac{\partial \phi}{\partial x} = v\frac{\phi<em>i - \phi</em>{i-1}}{Δx}$</p>
 <p>表示点$i$只与点$i-1$相关</p>
-<h3 id="中心差分格式"><a href="#中心差分格式" class="headerlink" title="中心差分格式"></a>中心差分格式</h3><p>$v\frac{\partial \phi}{\partial x} = v\frac{\phi_{i+1} - \phi_{i-1}}{2Δx}$<br>表示点$i$与点$i-1$和点$i+1$相关</p>
+<h3 id="中心差分格式"><a href="#中心差分格式" class="headerlink" title="中心差分格式"></a>中心差分格式</h3><p>$v\frac{\partial \phi}{\partial x} = v\frac{\phi<em>{i+1} - \phi</em>{i-1}}{2Δx}$<br>表示点$i$与点$i-1$和点$i+1$相关</p>
 <p>对对流占优方程使用迎风差分格式会产生拖尾效应 (smearing)，使用中心差分格式会产生伪震荡现象(wiggles)</p>
 <p><img src="http://on08uqozg.bkt.clouddn.com/smearing_wiggles.png" alt="smearing_wiggles"></p>
 <h2 id="数值方法的性质"><a href="#数值方法的性质" class="headerlink" title="数值方法的性质"></a>数值方法的性质</h2><p>数值方法应该满足以下几点性质</p>
