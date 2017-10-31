@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="superfun">
 <meta property="og:description" content="PSBLAS(parallel sparse BLAS) 主要用于并行迭代求解大型稀疏线性代数方程组。 该程序用Fortran2003按照面向对象思想编写。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-27T09:22:00.542Z">
+<meta property="og:updated_time" content="2017-10-31T12:22:20.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="psblas学习">
 <meta name="twitter:description" content="PSBLAS(parallel sparse BLAS) 主要用于并行迭代求解大型稀疏线性代数方程组。 该程序用Fortran2003按照面向对象思想编写。">
@@ -468,7 +468,44 @@
 </ul>
 </li>
 </ul>
-<h2 id="主要API"><a href="#主要API" class="headerlink" title="主要API"></a>主要API</h2><h3 id="并行环境API"><a href="#并行环境API" class="headerlink" title="并行环境API"></a>并行环境API</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- psb_init     并行环境初始化</div><div class="line">- psb_info     返回并行环境信息</div><div class="line">- psb_exit     退出并行环境</div><div class="line">- psb_abort    中断计算</div><div class="line">- psb_barrier  暂时中断</div><div class="line">- psb_wtime    返回时间</div></pre></td></tr></table></figure>
+<h2 id="主要API"><a href="#主要API" class="headerlink" title="主要API"></a>主要API</h2><h3 id="空间分配API"><a href="#空间分配API" class="headerlink" title="空间分配API"></a>空间分配API</h3><ul>
+<li>通信描述符分配psb_cdall</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">call psb_cdall(ictxt,desc_a,info,mg=mg,parts=parts)</div><div class="line">call psb_cdall(ictxt,desc_a,info,vg=vg,[mg=mg,flag=flag])</div><div class="line">call psb_cdall(ictxt,desc_a,info,vl=vl,[nl=nl,globalcheck=.true.,lidx=lidx])</div><div class="line">call psb_cdall(ictxt,desc_a,info,nl=nl)</div><div class="line">call psb_cdall(ictxt,desc_a,info,mg=mg,repl=.true.)</div><div class="line"></div><div class="line">integer(psb_ipk_)     :: ictxt   ! communication context</div><div class="line">type(psb_desc_type)   :: desc_a  ! communication descriptor</div><div class="line">integer(psb_ipk_)     :: info    ! Error code</div><div class="line">integer(psb_ipk_)     :: mg      ! the (global) number of rows of the problem</div><div class="line">external              :: parts   ! the partitioning subroutine</div><div class="line">integer(psb_ipk_)     :: vg(mg)  ! each index(i) is allocated to process vg(i)</div><div class="line">integer(psb_ipk_)     :: nl      ! number of local indices</div><div class="line">integer(psb_ipk_)     :: vl(nl)  ! global indices of current process</div><div class="line">logical               :: repl    ! build a replicated index space</div></pre></td></tr></table></figure>
+<p>cd (communication descriptor)存储进程之间的通信信息。通信描述符分配将离散的点分配到不同的核，第一次调用后进入build state，此时可以在不同的进程中添加通信。通过psb_cdins或psb_spins添加边，即定义整个离散的模式或稀疏矩阵的稀疏模式。然后通过psb_cdasb或psb_spasb计算通信信息，即定义halo points等，进入assembled state。此时就可以进行并行的矩阵计算，内部通信会自动进行。</p>
+<ul>
+<li><p>稀疏矩阵分配psb_spall</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">call psb_spall(a, desc_a, info, nnz)</div><div class="line">type(psb_dspmat_type) :: a      ! sparse matrix</div><div class="line">type(psb_desc_type)   :: desc_a ! communication descriptor</div><div class="line">integer(psb_ipk_)     :: info   ! Error code</div><div class="line">integer(psb_ipk_)     :: nnz    ! An estimate of the number of nonzeroes of local</div></pre></td></tr></table></figure>
+</li>
+<li><p>密集矩阵或向量分配psb_geall</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">call psb_geall(x, desc_a, info, n, lb)</div><div class="line">type(psb_d_vect_type) :: x      ! dense vector or matrix</div><div class="line">type(psb_desc_type)   :: desc_a ! communication descriptor</div><div class="line">integer(psb_ipk_)     :: info   ! Error code</div><div class="line">integer(psb_ipk_)     :: n      ! The number of columns (matrix)</div><div class="line">integer(psb_ipk_)     :: lb     ! The lower bound for the column index (matrix)</div></pre></td></tr></table></figure>
+<h3 id="赋值API"><a href="#赋值API" class="headerlink" title="赋值API"></a>赋值API</h3><ul>
+<li><p>通信描述符赋值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">call psb_cdins(nz, ia, ja, desc_a, info [,ila,jla])</div><div class="line">call psb_cdins(nz,ja,desc,info[,jla,mask,lidx])</div></pre></td></tr></table></figure>
+</li>
+<li><p>稀疏矩阵赋值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">call psb_spins(nz, ia, ja, val, a, desc_a, info [,local])</div><div class="line">integer(psb_ipk_)     :: nz</div><div class="line">integer(psb_ipk_)     :: ia(nz)</div><div class="line">integer(psb_ipk_)     :: ja(nz)</div><div class="line">integer(psb_dpk_)     :: val(nz)</div><div class="line">type(psb_dspmat_type) :: a      ! sparse matrix</div><div class="line">type(psb_desc_type)   :: desc_a ! communication descriptor</div><div class="line">integer(psb_ipk_)     :: info   ! Error code</div></pre></td></tr></table></figure>
+</li>
+<li><p>密集矩阵或向量赋值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">call psb_geins(m, irw, val, x, desc_a, info [,dupl,local])</div><div class="line">type(psb_d_vect_type) :: x      ! dense vector or matrix</div><div class="line">type(psb_desc_type)   :: desc_a ! communication descriptor</div><div class="line">integer(psb_ipk_)     :: info   ! Error code</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>赋值API定义整个稀疏矩阵的稀疏模式以及稀疏矩阵的值，</p>
+<h3 id="组装API"><a href="#组装API" class="headerlink" title="组装API"></a>组装API</h3><ul>
+<li><p>通信描述符组装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">call psb_cdasb(desc_a, info)</div></pre></td></tr></table></figure>
+</li>
+<li><p>稀疏矩阵组装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">call psb_spasb(a, desc_a, info, afmt, upd, dupl, mold)</div><div class="line">type(psb_dspmat_type) :: a      ! sparse matrix</div><div class="line">type(psb_desc_type)   :: desc_a ! communication descriptor</div><div class="line">integer(psb_ipk_)     :: info   ! Error code</div></pre></td></tr></table></figure>
+</li>
+<li><p>密集矩阵或向量组装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">call psb_geasb(x, desc_a, info, mold)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>组装完成之后，整个cd定义完成，即定义好给个区域的halo points，定义好了每个进程的发送和接收的信息，进入assembled状态，之后就可以进行并行的矩阵计算以及方程求解，不用担心内部的通信问题。</p>
+<h3 id="并行环境API"><a href="#并行环境API" class="headerlink" title="并行环境API"></a>并行环境API</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- psb_init     并行环境初始化</div><div class="line">- psb_info     返回并行环境信息</div><div class="line">- psb_exit     退出并行环境</div><div class="line">- psb_abort    中断计算</div><div class="line">- psb_barrier  暂时中断</div><div class="line">- psb_wtime    返回时间</div></pre></td></tr></table></figure>
 <h3 id="数据管理API"><a href="#数据管理API" class="headerlink" title="数据管理API"></a>数据管理API</h3><h3 id="计算API"><a href="#计算API" class="headerlink" title="计算API"></a>计算API</h3><h2 id="计算流程"><a href="#计算流程" class="headerlink" title="计算流程"></a>计算流程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- 并行环境初始化 psb_init</div><div class="line">- 索引空间初始化 psb_cdall</div><div class="line">- 稀疏矩阵初始化 psb_spall</div><div class="line">- 矩阵向量初始化 psb_geall</div><div class="line">- 各进程系数计算 psb_spins, psb_geins</div><div class="line">- 矩阵组装      psb_cdasb, psb_spasb, psb_geasb</div><div class="line">- 预处理        psb_precset, psb_precbld</div><div class="line">- 迭代求解      psb_krylov</div></pre></td></tr></table></figure>
 
       
@@ -509,6 +546,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/31/勒让得多项式/" rel="prev" title="勒让得多项式">
+                勒让得多项式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -610,7 +651,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -694,7 +735,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载"><span class="nav-number">1.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-1"><span class="nav-number">1.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">1.3.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#点的分类"><span class="nav-number">2.1.</span> <span class="nav-text">点的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引空间-index-space"><span class="nav-number">2.2.</span> <span class="nav-text">索引空间(index_space)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置的稀疏矩阵存储格式"><span class="nav-number">2.3.</span> <span class="nav-text">内置的稀疏矩阵存储格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵的状态"><span class="nav-number">2.4.</span> <span class="nav-text">矩阵的状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名原则"><span class="nav-number">3.</span> <span class="nav-text">命名原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要API"><span class="nav-number">4.</span> <span class="nav-text">主要API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#并行环境API"><span class="nav-number">4.1.</span> <span class="nav-text">并行环境API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据管理API"><span class="nav-number">4.2.</span> <span class="nav-text">数据管理API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算API"><span class="nav-number">4.3.</span> <span class="nav-text">计算API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算流程"><span class="nav-number">5.</span> <span class="nav-text">计算流程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载"><span class="nav-number">1.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-1"><span class="nav-number">1.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">1.3.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#点的分类"><span class="nav-number">2.1.</span> <span class="nav-text">点的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引空间-index-space"><span class="nav-number">2.2.</span> <span class="nav-text">索引空间(index_space)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置的稀疏矩阵存储格式"><span class="nav-number">2.3.</span> <span class="nav-text">内置的稀疏矩阵存储格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵的状态"><span class="nav-number">2.4.</span> <span class="nav-text">矩阵的状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名原则"><span class="nav-number">3.</span> <span class="nav-text">命名原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要API"><span class="nav-number">4.</span> <span class="nav-text">主要API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#空间分配API"><span class="nav-number">4.1.</span> <span class="nav-text">空间分配API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值API"><span class="nav-number">4.2.</span> <span class="nav-text">赋值API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组装API"><span class="nav-number">4.3.</span> <span class="nav-text">组装API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并行环境API"><span class="nav-number">4.4.</span> <span class="nav-text">并行环境API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据管理API"><span class="nav-number">4.5.</span> <span class="nav-text">数据管理API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算API"><span class="nav-number">4.6.</span> <span class="nav-text">计算API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算流程"><span class="nav-number">5.</span> <span class="nav-text">计算流程</span></a></li></ol></div>
             
 
           </div>

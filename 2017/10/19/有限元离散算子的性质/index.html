@@ -409,34 +409,34 @@
         <p>某些算子经过有限元离散之后会有一些很好的性质，其中包括拉普拉斯算子离散后的扩散矩阵，梯度或散度算子离散后产生的对流矩阵，未知量直接离散后产生的质量矩阵等。分析这些矩阵的性质这对理解有限元方法的本质以及对离散后方程的性质的理解都很有帮助。</p>
 <a id="more"></a>
 <h2 id="基函数"><a href="#基函数" class="headerlink" title="基函数"></a>基函数</h2><p>有限元方法在每一个离散点$j$上都定义了基函数$φ_{j}$，基函数之和在任何地方恒等于1，基函数梯度之和在任何地方恒等于0</p>
-<p>$∑_{j}φ_{j} = 1$<br>$∑_{j}∇φ_{j} = 0$</p>
-<h2 id="质量矩阵M"><a href="#质量矩阵M" class="headerlink" title="质量矩阵M"></a>质量矩阵M</h2><p>质量矩阵为未知量离散之后的系数矩阵<br>$\mathbf{M} = \{m_{ij}\} = \{ \int_{V}φ_{i}φ_{j}dV \}$</p>
+<p>$∑<em>{j}φ</em>{j} = 1$<br>$∑<em>{j}∇φ</em>{j} = 0$</p>
+<h2 id="质量矩阵M"><a href="#质量矩阵M" class="headerlink" title="质量矩阵M"></a>质量矩阵M</h2><p>质量矩阵为未知量离散之后的系数矩阵<br>$\mathbf{M} = {m<em>{ij}} = { \int</em>{V}φ<em>{i}φ</em>{j}dV }$</p>
 <ul>
-<li><p>质量矩阵第i行之和为<br>$∑_{j}m_{ij} = \int_{V}φ_{i}\sum_{j}φ_{j}dV = \int_{V}φ_{i}dV$</p>
+<li><p>质量矩阵第i行之和为<br>$∑<em>{j}m</em>{ij} = \int<em>{V}φ</em>{i}\sum<em>{j}φ</em>{j}dV = \int<em>{V}φ</em>{i}dV$</p>
 </li>
-<li><p>质量矩阵所有元素之和等于积分区域的体积<br>$∑_{i}∑_{j}m_{ij} = \int_{V}∑_{i}φ_{i}\sum_{j}φ_{j}dV = \int_{V}dV = V$</p>
+<li><p>质量矩阵所有元素之和等于积分区域的体积<br>$∑<em>{i}∑</em>{j}m<em>{ij} = \int</em>{V}∑<em>{i}φ</em>{i}\sum<em>{j}φ</em>{j}dV = \int_{V}dV = V$</p>
 </li>
 </ul>
 <p>质量矩阵实际上是将体积分配到节点对上作为权重系数</p>
-<h3 id="质量矩阵集中"><a href="#质量矩阵集中" class="headerlink" title="质量矩阵集中"></a>质量矩阵集中</h3><p>用一个对角矩阵$\mathbf{M}_{L}$来近似处理质量矩阵$\mathbf{M}$，其对角元素为质量矩阵每一行元素之和<br>$\mathbf{M}_{L} = diag\{m_i\}$, $m_i=\sum_{j}m_{ij}$</p>
-<p>这样的对角矩阵$\mathbf{M}_{L}$是矩阵$\mathbf{M}$的保守近似<br>$(\mathbf{M}_{L}\phi)_{i} = (\mathbf{M}\phi)_{i}$</p>
+<h3 id="质量矩阵集中"><a href="#质量矩阵集中" class="headerlink" title="质量矩阵集中"></a>质量矩阵集中</h3><p>用一个对角矩阵$\mathbf{M}<em>{L}$来近似处理质量矩阵$\mathbf{M}$，其对角元素为质量矩阵每一行元素之和<br>$\mathbf{M}</em>{L} = diag{m<em>i}$, $m_i=\sum</em>{j}m_{ij}$</p>
+<p>这样的对角矩阵$\mathbf{M}<em>{L}$是矩阵$\mathbf{M}$的保守近似<br>$(\mathbf{M}</em>{L}\phi)<em>{i} = (\mathbf{M}\phi)</em>{i}$</p>
 <p>质量矩阵集中实际上是将有限元方法与节点为中心的有限体积法结合，在保证反应率守恒的情况下能够减少计算量。</p>
-<h2 id="扩散矩阵D"><a href="#扩散矩阵D" class="headerlink" title="扩散矩阵D"></a>扩散矩阵D</h2><p>扩散矩阵是拉普拉斯算子离散之后的系数矩阵<br>$\mathbf{D} = \{d_{ij}\} = \{ \int_{V}∇φ_{i}∇φ_{j}dV \}$</p>
+<h2 id="扩散矩阵D"><a href="#扩散矩阵D" class="headerlink" title="扩散矩阵D"></a>扩散矩阵D</h2><p>扩散矩阵是拉普拉斯算子离散之后的系数矩阵<br>$\mathbf{D} = {d<em>{ij}} = { \int</em>{V}∇φ<em>{i}∇φ</em>{j}dV }$</p>
 <ul>
-<li>扩散矩阵是对称的，每一行，每一列之和都为0<br>$∑_{j}d_{ij} = \int_{V}∇φ_{i}\sum_{j}∇φ_{j}dV = 0$<br>$∑_{i}d_{ij} = \int_{V}\sum_{i}∇φ_{i}∇φ_{j}dV = 0$</li>
+<li>扩散矩阵是对称的，每一行，每一列之和都为0<br>$∑<em>{j}d</em>{ij} = \int<em>{V}∇φ</em>{i}\sum<em>{j}∇φ</em>{j}dV = 0$<br>$∑<em>{i}d</em>{ij} = \int<em>{V}\sum</em>{i}∇φ<em>{i}∇φ</em>{j}dV = 0$</li>
 </ul>
 <h2 id="对流矩阵C"><a href="#对流矩阵C" class="headerlink" title="对流矩阵C"></a>对流矩阵C</h2><p>对流矩阵是梯度或者散度离散之后的系数系数矩阵</p>
-<p>$\vec{\mathbf{C}} = \{\vec{c}_{ij}\} = \{ \int_{V}φ_{i}∇φ_{j}dV \}$</p>
+<p>$\vec{\mathbf{C}} = {\vec{c}<em>{ij}} = { \int</em>{V}φ<em>{i}∇φ</em>{j}dV }$</p>
 <ul>
-<li>对流矩阵不对称，第i行之和为0<br>$∑_{j}\vec{c}_{ij} = \int_{V}φ_{i}\sum_{j}∇φ_{j}dV = 0$</li>
-<li>第j列之和为<br>$∑_{i}\vec{c}_{ij} = \int_{V}\sum_{i}φ_{i}∇φ_{j}dV = \int_{V}∇φ_{j}dV$</li>
+<li>对流矩阵不对称，第i行之和为0<br>$∑<em>{j}\vec{c}</em>{ij} = \int<em>{V}φ</em>{i}\sum<em>{j}∇φ</em>{j}dV = 0$</li>
+<li>第j列之和为<br>$∑<em>{i}\vec{c}</em>{ij} = \int<em>{V}\sum</em>{i}φ<em>{i}∇φ</em>{j}dV = \int<em>{V}∇φ</em>{j}dV$</li>
 </ul>
-<h3 id="对流矩阵的对称性"><a href="#对流矩阵的对称性" class="headerlink" title="对流矩阵的对称性"></a>对流矩阵的对称性</h3><p>对流矩阵与其转置之和 $\vec{b}_{ij} = \vec{c}_{ij}+\vec{c}_{ji}$<br>  $\vec{b}_{ij}=\int_{V}φ_{i}∇φ_{j}dV + \int_{V}φ_{j}∇φ_{i}dV =  \int_{V}∇(φ_{i}φ_{j})dV =\int_{Γ}φ_{i}φ_{j}\vec{n}dΓ$</p>
+<h3 id="对流矩阵的对称性"><a href="#对流矩阵的对称性" class="headerlink" title="对流矩阵的对称性"></a>对流矩阵的对称性</h3><p>对流矩阵与其转置之和 $\vec{b}<em>{ij} = \vec{c}</em>{ij}+\vec{c}<em>{ji}$<br>  $\vec{b}</em>{ij}=\int<em>{V}φ</em>{i}∇φ<em>{j}dV + \int</em>{V}φ<em>{j}∇φ</em>{i}dV =  \int<em>{V}∇(φ</em>{i}φ<em>{j})dV =\int</em>{Γ}φ<em>{i}φ</em>{j}\vec{n}dΓ$</p>
 <ul>
-<li>第j列之和为<br>$∑_{i}\vec{b}_{ij} = \vec{b}_{j} = \int_{Γ}\varphi_{j}\vec{n}dΓ= \vec{n}_{j}Γ_{j}$<br>$\vec{n}_{j}=\int_{Γ}\varphi_{j}\vec{n}dΓ/Γ_{j}$<br>$Γ_{j}=\int_{Γ}\varphi_{j}dΓ$</li>
+<li>第j列之和为<br>$∑<em>{i}\vec{b}</em>{ij} = \vec{b}<em>{j} = \int</em>{Γ}\varphi<em>{j}\vec{n}dΓ= \vec{n}</em>{j}Γ<em>{j}$<br>$\vec{n}</em>{j}=\int<em>{Γ}\varphi</em>{j}\vec{n}dΓ/Γ<em>{j}$<br>$Γ</em>{j}=\int<em>{Γ}\varphi</em>{j}dΓ$</li>
 </ul>
 <p>矩阵 $\mathbf{B}$ 是定义在边界上的对称矩阵</p>
-<p>对流矩阵与其转置之差 $\vec{a}_{ij} = \vec{c}_{ij}-\vec{c}_{ji}$，矩阵$\mathbf{A}$ 是定义在区域内部的反对称矩阵。</p>
+<p>对流矩阵与其转置之差 $\vec{a}<em>{ij} = \vec{c}</em>{ij}-\vec{c}_{ji}$，矩阵$\mathbf{A}$ 是定义在区域内部的反对称矩阵。</p>
 <p>$\mathbf{C} = [\mathbf{A}+\mathbf{B}]/2$</p>
 <p>表示对流矩阵是由边界上的对称矩阵和内部的反对称矩阵之和构成。</p>
 
@@ -583,7 +583,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
