@@ -410,14 +410,14 @@
 <a id="more"></a>
 <h2 id="输运方程"><a href="#输运方程" class="headerlink" title="输运方程"></a>输运方程</h2><p>$Ω⋅∇ϕ+σϕ = s$</p>
 <h2 id="假设"><a href="#假设" class="headerlink" title="假设"></a>假设</h2><p>将通量分为连续部分与间断部分之和，其中$ ϕ_c$为连续部分，$ϕ_d$为间断部分<br>$ϕ = ϕ_c+ϕ_d$</p>
-<h2 id="弱形式"><a href="#弱形式" class="headerlink" title="弱形式"></a>弱形式</h2><p>在方程两端同时乘以基函数，在进行积分<br>$(φ_c,Ω⋅∇ϕ)+(φ_c,σϕ) = (φ_c,s)$  $\,\,\,\ 1$<br>$(φ_d,Ω⋅∇ϕ)+(φ_d,σϕ) = (φ_d,s)$  $\,\,\, 2$</p>
+<h2 id="弱形式"><a href="#弱形式" class="headerlink" title="弱形式"></a>弱形式</h2><p>在方程两端同时乘以基函数，在进行积分<br>$(φ_c,Ω⋅∇ϕ)+(φ_c,σϕ) = (φ_c,s)$  $\,\,\, 1$<br>$(φ_d,Ω⋅∇ϕ)+(φ_d,σϕ) = (φ_d,s)$  $\,\,\, 2$</p>
 <h2 id="分部积分"><a href="#分部积分" class="headerlink" title="分部积分"></a>分部积分</h2><p>对方程1的$ϕ$分部积分<br>$&lt;φ_c,Ω⋅nϕ&gt; - (Ω⋅∇φ_c,ϕ)+(φ_c,σϕ) = (φ_c,s)$</p>
 <p>对方程2的$ϕ_d$分部积分<br>$&lt;φ_d,Ω⋅nϕ_d&gt; - (Ω⋅∇φ_d,ϕ_d)+(φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ) = (φ_d,s)$</p>
 <h2 id="边界条件"><a href="#边界条件" class="headerlink" title="边界条件"></a>边界条件</h2><h3 id="外边界"><a href="#外边界" class="headerlink" title="外边界"></a>外边界</h3><p>$&lt;φ,Ω⋅nϕ_c&gt;^{-} = G$<br>$&lt;φ,Ω⋅nϕ_d&gt; = 0$</p>
 <h3 id="内边界"><a href="#内边界" class="headerlink" title="内边界"></a>内边界</h3><p>$&lt;φ_d,Ω⋅nϕ_d&gt;^{-} = 0$</p>
 <h2 id="带入方程"><a href="#带入方程" class="headerlink" title="带入方程"></a>带入方程</h2><p>$&lt;φ_c,Ω⋅nϕ_c&gt;^{+} - (Ω⋅∇φ_c,ϕ)+(φ_c,σϕ) = (φ_c,s) - G$</p>
 <p>$&lt;φ_d,Ω⋅nϕ_d&gt;^{+} - (Ω⋅∇φ_d,ϕ_d)+(φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ) = (φ_d,s)$</p>
-<h2 id="矩阵形式"><a href="#矩阵形式" class="headerlink" title="矩阵形式"></a>矩阵形式</h2><p>离散之后，可以将以上方程写为矩阵形式<br>$\begin{bmatrix} A &amp; B\C &amp; D\\end{bmatrix} \begin{bmatrix} \phi_c \ \phi_d\end{bmatrix} = \begin{bmatrix} s_c \ s_d\end{bmatrix}$</p>
+<h2 id="矩阵形式"><a href="#矩阵形式" class="headerlink" title="矩阵形式"></a>矩阵形式</h2><p>离散之后，可以将以上方程写为矩阵形式<br>$\begin{bmatrix} A &amp; B\\C &amp; D\\\end{bmatrix} \begin{bmatrix} \phi_c \ \phi_d\end{bmatrix} = \begin{bmatrix} s_c \ s_d\end{bmatrix}$</p>
 <p>由方程2得<br>$\phi_d=D^{-1}(s_d - C\phi_c)$<br>将其带入方程1中，得<br>$[A-BD^{-1}C ]\phi_c= s_c-BD^{-1}s_d$</p>
 <p>其中矩阵的单元矩阵形式为：</p>
 <h3 id="内部"><a href="#内部" class="headerlink" title="内部"></a>内部</h3><p>$A_e =  - (Ω⋅∇φ_c,φ_c)+(φ_c,σφ_c)$<br>$B_e =  - (Ω⋅∇φ_c,φ_d)+(φ_c,σφ_d)$<br>$C_e =    (φ_d,Ω⋅∇φ_c)+(φ_d,σφ_c)$<br>$D_e =  - (Ω⋅∇φ_d,φ_d)+(φ_d,σφ_d) + &lt;φ_d,Ω⋅nφ_d&gt;^{+} $</p>
