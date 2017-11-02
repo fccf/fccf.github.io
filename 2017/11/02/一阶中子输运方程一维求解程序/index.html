@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="中子输运方程,边界条件," />
+  <meta name="keywords" content="中子输运方程,Pn方法," />
 
 
 
@@ -94,18 +94,20 @@
 
 
 
-<meta name="description" content="中子输运方程是一个双曲方程，在数值计算中只需要给定入流边界条件就可以了，通常情况中子输运方程的边界条件包括真空边界条件，即入流恒为零;另一种边界条件为反射边界条件，即如流量等于其关于切线的对称角的出流量。在处理有限元方法的边界条件时，通常是将边界条件直接带入变分之后的边界积分项，然后对带边界条件的变分方程进行离散。以下对球谐函数方法的这两种边界条件进行处理。">
-<meta name="keywords" content="中子输运方程,边界条件">
+<meta name="description" content="开发该程序主要用于测试各种算法，算法的稳定性，算法的效率，以及学习并行算法的实施。目前程序角度上采用球谐函数方法，空间上采用有限元方法。">
+<meta name="keywords" content="中子输运方程,Pn方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="中子输运方程的边界条件">
-<meta property="og:url" content="http://superfun.xyz/2017/10/20/中子输运方程的边界条件/index.html">
+<meta property="og:title" content="中子输运方程一维求解程序">
+<meta property="og:url" content="http://superfun.xyz/2017/11/02/一阶中子输运方程一维求解程序/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="中子输运方程是一个双曲方程，在数值计算中只需要给定入流边界条件就可以了，通常情况中子输运方程的边界条件包括真空边界条件，即入流恒为零;另一种边界条件为反射边界条件，即如流量等于其关于切线的对称角的出流量。在处理有限元方法的边界条件时，通常是将边界条件直接带入变分之后的边界积分项，然后对带边界条件的变分方程进行离散。以下对球谐函数方法的这两种边界条件进行处理。">
+<meta property="og:description" content="开发该程序主要用于测试各种算法，算法的稳定性，算法的效率，以及学习并行算法的实施。目前程序角度上采用球谐函数方法，空间上采用有限元方法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-20T13:44:42.092Z">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/LegendrePolynomial.png">
+<meta property="og:updated_time" content="2017-11-02T02:11:24.067Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="中子输运方程的边界条件">
-<meta name="twitter:description" content="中子输运方程是一个双曲方程，在数值计算中只需要给定入流边界条件就可以了，通常情况中子输运方程的边界条件包括真空边界条件，即入流恒为零;另一种边界条件为反射边界条件，即如流量等于其关于切线的对称角的出流量。在处理有限元方法的边界条件时，通常是将边界条件直接带入变分之后的边界积分项，然后对带边界条件的变分方程进行离散。以下对球谐函数方法的这两种边界条件进行处理。">
+<meta name="twitter:title" content="中子输运方程一维求解程序">
+<meta name="twitter:description" content="开发该程序主要用于测试各种算法，算法的稳定性，算法的效率，以及学习并行算法的实施。目前程序角度上采用球谐函数方法，空间上采用有限元方法。">
+<meta name="twitter:image" content="http://on08uqozg.bkt.clouddn.com/LegendrePolynomial.png">
 
 
 
@@ -134,7 +136,7 @@
 
 
 
-  <link rel="canonical" href="http://superfun.xyz/2017/10/20/中子输运方程的边界条件/"/>
+  <link rel="canonical" href="http://superfun.xyz/2017/11/02/一阶中子输运方程一维求解程序/"/>
 
 
 
@@ -150,7 +152,7 @@
 </script>
 
 
-  <title>中子输运方程的边界条件 | superfun</title>
+  <title>中子输运方程一维求解程序 | superfun</title>
   
 
 
@@ -317,7 +319,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/10/20/中子输运方程的边界条件/">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/11/02/一阶中子输运方程一维求解程序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="c.fang">
@@ -334,7 +336,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">中子输运方程的边界条件</h1>
+          <h1 class="post-title" itemprop="name headline">中子输运方程一维求解程序</h1>
         
 
         <div class="post-meta">
@@ -346,8 +348,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T21:06:08+08:00">
-                2017-10-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T09:37:18+08:00">
+                2017-11-02
               </time>
             
 
@@ -406,25 +408,168 @@
       
 
       
-        <p>中子输运方程是一个双曲方程，在数值计算中只需要给定入流边界条件就可以了，通常情况中子输运方程的边界条件包括真空边界条件，即入流恒为零;另一种边界条件为反射边界条件，即如流量等于其关于切线的对称角的出流量。在处理有限元方法的边界条件时，通常是将边界条件直接带入变分之后的边界积分项，然后对带边界条件的变分方程进行离散。以下对球谐函数方法的这两种边界条件进行处理。</p>
+        <p>开发该程序主要用于测试各种算法，算法的稳定性，算法的效率，以及学习并行算法的实施。目前程序角度上采用球谐函数方法，空间上采用有限元方法。</p>
 <a id="more"></a>
-<h2 id="真空边界条件"><a href="#真空边界条件" class="headerlink" title="真空边界条件"></a>真空边界条件</h2><p>$\phi(r,Ω) =0 \,\,\,\,\,\,\,\,\,\,\,\,   r \in \Gamma_{v},n\cdot \Omega &lt;0$</p>
-<p>其中$\Gamma_{v}$为真空边界; $n$为边界外法线方向。</p>
-<p>对于球谐函数方法有<br>$\int_{n\cdot \Omega &lt;0}n\cdot \Omega\vec{Y}(Ω)\phi(r,Ω) dΩ = 0$</p>
-<h2 id="反射边界条件"><a href="#反射边界条件" class="headerlink" title="反射边界条件"></a>反射边界条件</h2><p>$\phi(r,Ω) =\phi(r,\mathbf{H}Ω) \,\,\,\,\,\,\,\,\,\,\,\,   r \in \Gamma_{r},n\cdot \Omega &lt;0$</p>
-<p>其中$\Gamma_{r}$为反射边界，$\mathbf{H}$为反射矩阵 $\mathbf{H}=\mathbf{I}-2nn^{T}$</p>
-<p>对于球谐函数方法，将其用球谐函数展开，得<br>$[\vec{Y}(Ω)]^{T}\vec{\phi}_{r}(r)= [\vec{Y}(\mathbf{H}Ω)]^{T}\vec{\phi}(r)$<br>所以<br>$\vec{\phi}_{r}(r) = \mathbf{R}\vec{\phi}(r)$<br>其中<br>$\mathbf{R}=\int_{Ω}\vec{Y}(Ω)[\vec{Y}(\mathbf{H}Ω)]^{T}dΩ$</p>
-<h2 id="黎曼分解"><a href="#黎曼分解" class="headerlink" title="黎曼分解"></a>黎曼分解</h2><p>边界上的角度雅克比矩阵为<br>$\mathbf{A}_{n}=n_x\mathbf{A}_{x}+n_y\mathbf{A}_{y}+n_z\mathbf{A}_{z}$</p>
-<p>对其进行特征值分解，得<br>$\mathbf{A}_{n}=\mathbf{V}Λ\mathbf{V}^{T}=\mathbf{V}(Λ^{+}+Λ^{-})\mathbf{V}^{T}=\mathbf{A}_{n}^{+}+\mathbf{A}_{n}^{-}$</p>
-<p>其中$Λ$特征值对角矩阵，$Λ^{+}$为该矩阵中特征值为正的分量，$Λ^{-}$为该矩阵中特征值为负的分量；$\mathbf{V}$为特征向量形成的矩阵。<br>$\mathbf{A}_{n}^{+}=\mathbf{V}Λ^{+}\mathbf{V}^{T}$<br>$\mathbf{A}_{n}^{-}=\mathbf{V}Λ^{-}\mathbf{V}^{T}$</p>
-<h2 id="边界积分项"><a href="#边界积分项" class="headerlink" title="边界积分项"></a>边界积分项</h2><p>通过特征值分解，边界积分项可以分解为入流部分与出流部分<br>$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n} = \mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{+} + \mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} $</p>
-<p>其中$\mathbf{B}_{Γ}$是空间边界上的积分， $\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} $表示入流，$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{+} $ 表示出流，所以对于真空边界条件与反射边界条件可以表示为</p>
+<h2 id="单能一维中子输运方程"><a href="#单能一维中子输运方程" class="headerlink" title="单能一维中子输运方程"></a>单能一维中子输运方程</h2><p>$$μ\frac{∂\phi(z.μ)}{∂z}+ σ_t(z)ϕ(z,μ) = \frac{1}{2\pi}\int_{0}^{2\pi}\int_{-1}^{1}σ_s(z,\mu_0)\phi(z,\mu^{‘}))d\mu^{‘}d\varphi^{‘} + \frac{s(z)}{2}$$</p>
+<h3 id="边界条件"><a href="#边界条件" class="headerlink" title="边界条件"></a>边界条件</h3><p>该方程是一阶双曲方程，需要给定如流边界条件，即<br>$$\phi(z,\mu) = g,n\cdot \mu &lt;0$$<br>所以，真空边界条件为<br>$$\phi(z,\mu) = 0,n\cdot \mu &lt;0$$<br>反射边界条件为<br>$$\phi(z,\mu) = \phi(z,-\mu),n\cdot \mu &lt;0$$</p>
+<h2 id="Pn方法"><a href="#Pn方法" class="headerlink" title="Pn方法"></a>Pn方法</h2><h3 id="用勒让得多项式展开角度变量"><a href="#用勒让得多项式展开角度变量" class="headerlink" title="用勒让得多项式展开角度变量"></a>用勒让得多项式展开角度变量</h3><p>将中子角通量密度和散射截面都用勒让得多项式展开，得</p>
+<p>$$\phi(z.μ) = \sum_{n=0}^{∞}\frac{2n+1}{2}\phi_n(z)P_n(\mu)$$</p>
+<p>$$σ_s(z,\mu_0) = \sum_{n=0}^{∞}\frac{2n+1}{2}\sigma_{sn}(z)P_n(\mu_0)$$</p>
+<p>由勒让得多项式加法定理及正交关系得散射源项为<br>$$\frac{1}{2\pi}\int_{0}^{2\pi}\int_{-1}^{1}σ_s(z,\mu_0)\phi(z,\mu^{‘}))d\mu^{‘}d\varphi^{‘} = \sum_{n=0}^{∞}\frac{2n+1}{2}\sigma_{sn}(z)\phi_n(z)P_n(\mu)$$</p>
+<p>由勒让得多项式递推公式得</p>
+<p>$$\sum_{n=0}^{∞}\frac{d\phi_n(z)}{dz}[(n+1)P_{n+1}(\mu)+n P_{n-1}(μ)]+ \sum_{n=0}^{∞}(2n+1)σ_t(z)\phi_n(z)P_n(\mu) = \sum_{n=0}^{∞}(2n+1)\sigma_{sn}(z)\phi_n(z)P_n(\mu) + s(z)$$</p>
+<p>在方程两端同时乘以$P_{n}(\mu),n=0,1,2,…$,并对 $-1\le \mu \le 1$积分，得</p>
+<p>$$\frac{n+1}{2n+1}\frac{d\phi_{n+1}(z)}{dz}+\frac{1}{2n+1}\frac{d\phi_{n-1}(z)}{dz}+\sigma_{n}\phi_n(z) = s(z)δ_{0n}$$</p>
+<p>式中 $σ_n = σ_t - σ_{sn}$</p>
+<p>在实际计算中，只取方程组前 $N+1$个方程，即认为$\frac{d\phi_{n+1}}{dz} = 0$以及$\phi_{n} = 0,n&gt;N$，此时<br>$$\phi(z.μ) = \sum_{n=0}^{N}\frac{2n+1}{2}\phi_n(z)P_n(\mu)$$</p>
+<p>将其写为矩阵形式为</p>
+<p>$$\mathbf{A}\frac{d\vec{\phi}(z)}{dz}+\mathbf{\Sigma}\vec{\phi}(z) = \vec{s}$$</p>
+<p>其中<br>$$\vec{\phi} = [\phi_0,\phi_1,\phi_2,…,\phi_N]^{T}$$<br>$$\vec{s} = [s_0,s_1,s_2,…,s_N]^{T}$$<br>$$\mathbf{\Sigma} = diag[\sigma_n]$$<br>$$\mathbf{A} = \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp;0 &amp;…<br>                            \ \frac{1}{3}&amp;0 &amp;\frac{2}{3} &amp; 0 &amp; …<br>                            \ 0&amp;\frac{2}{5} &amp;0&amp; \frac{3}{5} &amp; …<br>                            \ …&amp;… &amp;…&amp;… &amp; …\end{bmatrix} $$</p>
+<p>此时矩阵 $\mathbf{A}$ 不对称</p>
+<h3 id="用正交归一勒让得多项式展开"><a href="#用正交归一勒让得多项式展开" class="headerlink" title="用正交归一勒让得多项式展开"></a>用正交归一勒让得多项式展开</h3><p>$$\phi(z.μ) = \sum_{n=0}^{∞}\phi_n^{‘}(z)P_n^{‘}(\mu)$$<br>$$σ_s(z,\mu_0) = \sum_{n=0}^{∞}\sigma_{sn}^{‘}(z)P_n^{‘}(\mu_0)$$<br>其中<br>$$P_n^{‘}(\mu) = \sqrt{\frac{2n+1}{2}}P_n(\mu)$$<br>$$\int_{-1}^{1}P_n^{‘}(\mu)P_m^{‘}(\mu)d\mu = δ_{nm}$$</p>
+<p>递推公式<br>$$\mu P_n^{‘}(\mu) = \frac{n+1}{\sqrt{(2n+1)(2n+3)}}{P_{n+1}^{‘}(\mu)}+\frac{n}{\sqrt{(2n-1)(2n+1)}}{P_{n-1}^{‘}(\mu)}$$</p>
+<p>将其带入输运方程，并利用勒让得多项式递推公式和加法定理得<br>$$\sum_{n=0}^{∞}\frac{d\phi_n^{‘}(z)}{dz}[\frac{n+1}{\sqrt{(2n+1)(2n+3)}}{P_{n+1}^{‘}(\mu)}+\frac{n}{\sqrt{(2n-1)(2n+1)}}{P_{n-1}^{‘}(\mu)}]+ \sum_{n=0}^{∞}σ_t(z)\phi_n^{‘}(z)P_n^{‘}(\mu) = \sum_{n=0}^{∞}\sigma_{sn}^{‘}(z)\phi_n^{‘}(z)P_n^{‘}(\mu) +\frac{s(z)}{2}$$</p>
+<p>在方程两端同时乘以$P_{n}^{‘}(\mu),n=0,1,2,…$,并对 $-1\le \mu \le 1$积分，得<br>$$\mathbf{A}\frac{d\vec{\phi}(z)}{dz}+\mathbf{\Sigma}\vec{\phi}(z) = \vec{s}$$</p>
+<p>其中<br>$$\vec{\phi} = [\phi_0,\phi_1,\phi_2,…,\phi_N]^{T}=  \sqrt{2}[\phi_0^{‘},\phi_1^{‘},\phi_2^{‘},…,\phi_N^{‘}]^{T}$$<br>$$\vec{s} = [s_0,s_1,s_2,…,s_N]^{T}$$<br>$$\mathbf{\Sigma} = diag[\sigma_n]$$<br>$$\mathbf{A} = \begin{bmatrix} 0 &amp; \frac{1}{\sqrt{3}} &amp; 0 &amp;0 &amp;…<br>                            \ \frac{1}{\sqrt{3}}&amp;0 &amp;\frac{2}{\sqrt{15}} &amp; 0 &amp; …<br>                            \ 0&amp;\frac{2}{\sqrt{15}} &amp;0&amp; \frac{3}{\sqrt{35}} &amp; …<br>                            \ 0&amp;0&amp;\frac{3}{\sqrt{35}}&amp;0 &amp; …<br>                            \ …&amp;…&amp;…&amp;… &amp; …\end{bmatrix} $$</p>
+<p>此时矩阵 $\mathbf{A}$ 是对称的，其中<br>$$a_{i+1,i} = a_{i,i+1} = \frac{i}{\sqrt{4i^2-1}}$$<br>其中0阶矩$\phi_0 = \sqrt{2}\phi_{0}^{‘} = \int_{-1}^{1}\phi(z,\mu)d\mu$ 表示标通量。外中子源是各向同性的，所以 $s_1,s_2,…,s_N$都为0。</p>
+<h2 id="有限元方法"><a href="#有限元方法" class="headerlink" title="有限元方法"></a>有限元方法</h2><p>对以下一阶方程组使用有限元方法<br>$$\mathbf{A}\frac{d\vec{\phi}(z)}{dz}+\mathbf{\Sigma}\vec{\phi}(z) = \vec{s}$$</p>
+<p>将$\vec{\phi}(z)$中的每一个通量矩 $\phi_{j}(z)$用有限元基函数展开得<br>$$\phi_{j}(z) = \sum_{i=1}^I\phi_{ji}N_{i}(z) = \vec{\phi}_{j}^{T}\vec{N}(z)$$</p>
+<p>将离散的未知量写成如下矩阵形式<br>$$\mathbf{P} = \begin{bmatrix}<br>\phi_{11}&amp; \phi_{12} &amp; …  &amp; \phi_{1I}\\<br>\phi_{21}&amp; \phi_{22} &amp; …  &amp; \phi_{2I}\\<br>⋮&amp;⋮  &amp;  ⋱ &amp; ⋮\\<br>\phi_{J1}&amp; \phi_{J2} &amp; …  &amp; \phi_{JI}<br>\end{bmatrix}$$</p>
+<p>所以<br>$$\vec{\phi}(z) = \mathbf{P}\vec{N}(z)$$</p>
+<p>所以<br>$$\mathbf{A}\mathbf{P}\frac{d\vec{N}(z)}{dz}+\mathbf{\Sigma}\mathbf{P}\vec{N}(z) = \vec{s}$$</p>
+<h3 id="galerkin方法"><a href="#galerkin方法" class="headerlink" title="galerkin方法"></a>galerkin方法</h3><p>在方程两端同时右乘以基函数$[\vec{N}]^{T}(z)$，并对单元区域进行积分，得<br>$$\mathbf{A}\mathbf{P}_e\int_{e}\frac{\partial \vec{N}(z)}{\partial z}\vec{N}^{T}(z)dz + \int_{e}\mathbf{Σ}_e\mathbf{P}_e\vec{N}(z)\vec{N}^{T}(z)dz = \int_{e}\vec{s}_e\vec{N}^{T}(z)dz$$</p>
+<p>利用分部积分，得<br>$$n\cdot \mathbf{A}\mathbf{P}_{\Gamma_n}-\mathbf{A}\mathbf{P}_e\int_{e}\vec{N}(z)\frac{\partial \vec{N}^{T}(z)}{\partial z}dz + \int_{e}\mathbf{Σ}_e\mathbf{P}_e\vec{N}(z)\vec{N}^{T}(z)dz = \int_{e}\vec{s}_e\vec{N}^{T}(z)dz$$</p>
+<h4 id="边界条件-1"><a href="#边界条件-1" class="headerlink" title="边界条件"></a>边界条件</h4><p>令$\mathbf{A}_n = n\cdot \mathbf{A}$，将其进行特征值分解得$\mathbf{A}_n = \mathbf{A}_n^{+}+\mathbf{A}_n^{-}$</p>
 <ul>
-<li><p>真空边界<br>$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} = 0$</p>
-</li>
-<li><p>反射边界<br>$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} = \mathbf{B}_{Γ}\mathbf{X}\mathbf{R}\mathbf{A}_{n}^{-}$</p>
-</li>
+<li>真空边界<br>$$\mathbf{A}_n^{-} \vec{\phi}_{\Gamma_{v}} = 0$$</li>
+<li>反射边界<br>$$\mathbf{A}_n^{-} \vec{\phi}_{\Gamma_{r}} = \mathbf{A}_n^{-} \mathbf{R}\vec{\phi}_{\Gamma_{r}}$$<br>其中矩阵 $\mathbf{R} = \int_{-1}^{1} \vec{P}_n(\mu)\vec{P}_n(-\mu)d\mu$，该矩阵是一个对角矩阵<br>$$\mathbf{R} = diag[-1,1,-1,1,…,(-1)^{n+1}]$$</li>
 </ul>
+<h4 id="向量化"><a href="#向量化" class="headerlink" title="向量化"></a>向量化</h4><p>将以上矩阵方程变为向量方程为</p>
+<p>$$-\mathbf{B}_{1z}^{T}⊗\mathbf{A}\vec{\phi} + \mathbf{B}_{11}⊗\mathbf{Σ}\vec{\phi}+\mathbf{A}_n^{+}\vec{\phi}_{Γ}+\mathbf{A}_n^{-} \mathbf{R}\vec{\phi}_{\Gamma_{r}} = \vec{b} ⊗\vec{s}$$</p>
+<p>其中<br>$$\mathbf{B}_{1z} = \int_{e}\vec{N}(z)\frac{\partial \vec{N}^{T}(z)}{\partial z}dz$$<br>$$\mathbf{B}_{11} = \int_{e}\vec{N}(z)\vec{N}(z)^{T}dz$$<br>$$\vec{b} = \int_{e}\vec{N}(z)dz$$</p>
+<h4 id="一维线性单元"><a href="#一维线性单元" class="headerlink" title="一维线性单元"></a>一维线性单元</h4><p>形状函数及其导数<br>$$\vec{N}(z) = [λ_1,λ_2]^{T}$$<br>$$\frac{\partial \vec{N}(z)}{\partial z} = \frac{[b_1,b_2]^{T}}{l}$$</p>
+<p>其中<br>$$b_1 = -1,b_2 =  1$$</p>
+<p>由欧拉公式</p>
+<p>$$\int_{z}λ_1^aλ_2^bdz=\frac{a!b!}{(a+b+1)!}l$$</p>
+<p>得<br>$$\int_{z}dz=l$$<br>$$\int_{z}λ_idz=\frac{l}{2}$$<br>$$\int_{z}λ_i^{2}dz=\frac{l}{3}$$<br>$$\int_{z}λ_iλ_jdz=\frac{l}{6}$$</p>
+<p>所以<br>$$\mathbf{B}_{1z} = \int_{e}\vec{N}(z)\frac{\partial \vec{N}^{T}(z)}{\partial z}dz = \frac{l}{2}\begin{bmatrix}<br>-1&amp;1\\<br>-1&amp;1<br>\end{bmatrix}$$</p>
+<p>$$\mathbf{B}_{11} = \int_{e}\vec{N}(z)\vec{N}(z)^{T}dz = \frac{l}{6}\begin{bmatrix}<br>2&amp;1\\<br>1&amp;2<br>\end{bmatrix}$$</p>
+<p>$$\vec{b} = \int_{e}\vec{N}(z)dz = \frac{l}{2}\begin{bmatrix}<br>1\\<br>1<br>\end{bmatrix}$$</p>
+<h2 id="方程组装"><a href="#方程组装" class="headerlink" title="方程组装"></a>方程组装</h2><h3 id="单元矩阵"><a href="#单元矩阵" class="headerlink" title="单元矩阵"></a>单元矩阵</h3><h4 id="内部"><a href="#内部" class="headerlink" title="内部"></a>内部</h4><p>$$\mathbf{K}_e = -\mathbf{B}_{1z}^{T}⊗\mathbf{A} + \mathbf{B}_{11}⊗\mathbf{Σ}$$</p>
+<h4 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h4><p>$$\mathbf{K}_{be} = \mathbf{A}_n^{+}+\mathbf{A}_n^{-} \mathbf{R}$$</p>
+<h4 id="RHS"><a href="#RHS" class="headerlink" title="RHS"></a>RHS</h4><p>$$\vec{f}_e = \vec{b} ⊗\vec{s}$$</p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="勒让得多项式"><a href="#勒让得多项式" class="headerlink" title="勒让得多项式"></a>勒让得多项式</h2><h3 id="定义式"><a href="#定义式" class="headerlink" title="定义式"></a>定义式</h3><p>$$P_n(\mu) = \frac{1}{2^{n}n!}\frac{d^{n}(\mu^2-1)^{n}}{d\mu^{n}}$$</p>
+<h3 id="正交关系式"><a href="#正交关系式" class="headerlink" title="正交关系式"></a>正交关系式</h3><p>$$\int_{-1}^{1}P_n(\mu)P_m(\mu)d\mu = \frac{2}{2n+1}δ_{nm}$$</p>
+<h3 id="递推关系式"><a href="#递推关系式" class="headerlink" title="递推关系式"></a>递推关系式</h3><p>$$\mu P_n(\mu) = \frac{1}{2n+1}[nP_{n-1}(\mu) + (n+1)P_{n+1}(\mu)]$$</p>
+<h3 id="加法定理"><a href="#加法定理" class="headerlink" title="加法定理"></a>加法定理</h3><p>$$P_n(\mu_0) = P_n(\mu)P_n(\mu^{‘}) + 2\sum_{m=1}^{n}\frac{(n-m)!}{(n+m)!}P_{n}^{m}(\mu)cos(m(φ-\varphi^{‘}))$$</p>
+<h3 id="多项式系数"><a href="#多项式系数" class="headerlink" title="多项式系数"></a>多项式系数</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>1</th>
+<th>$x$</th>
+<th>$x^2$</th>
+<th>$x^3$</th>
+<th>$x^4$</th>
+<th>$x^5$</th>
+<th>$x^6$</th>
+<th>$x^7$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>$-\frac{1}{2}$</td>
+<td></td>
+<td>$\frac{3}{2}$</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td>$-\frac{3}{2}$</td>
+<td></td>
+<td>$\frac{5}{2}$</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>$\frac{3}{8}$</td>
+<td></td>
+<td>$-\frac{30}{8}$</td>
+<td></td>
+<td>$\frac{35}{8}$</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td></td>
+<td>$\frac{15}{8}$</td>
+<td></td>
+<td>$-\frac{70}{8}$</td>
+<td></td>
+<td>$\frac{63}{8}$</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>$-\frac{5}{16}$</td>
+<td></td>
+<td>$\frac{105}{16}$</td>
+<td></td>
+<td>$-\frac{315}{16}$</td>
+<td></td>
+<td>$\frac{231}{16}$</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td></td>
+<td>$-\frac{35}{16}$</td>
+<td></td>
+<td>$\frac{315}{16}$</td>
+<td></td>
+<td>$-\frac{693}{16}$</td>
+<td></td>
+<td>$\frac{429}{16}$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><p><img src="http://on08uqozg.bkt.clouddn.com/LegendrePolynomial.png" alt="pn"></p>
+<h2 id="向量化-1"><a href="#向量化-1" class="headerlink" title="向量化"></a>向量化</h2><h3 id="向量化算子"><a href="#向量化算子" class="headerlink" title="向量化算子"></a>向量化算子</h3><p>定义向量化算子，按列重排$V_c$，按行重排 $V_r$<br>$V_c(\mathbf{P}) = \begin{bmatrix}<br>\phi_{11}\ \phi_{21}\\⋮\ \phi_{J1}\ \phi_{12} \ ⋮\\\phi_{J2} \ ⋮\\\phi_{1I} \ ⋮\\\phi_{JI}<br>\end{bmatrix}$ $V_r(\mathbf{P}) = \begin{bmatrix}<br>\phi_{11}\ \phi_{12}\\⋮\ \phi_{1I}\ \phi_{21} \ ⋮\\\phi_{2I} \ ⋮\\\phi_{J1} \ ⋮\ \phi_{JI}<br>\end{bmatrix}$</p>
+<h3 id="矩阵方程向量化"><a href="#矩阵方程向量化" class="headerlink" title="矩阵方程向量化"></a>矩阵方程向量化</h3><p>$\mathbf{A}\mathbf{X}\mathbf{B} = \mathbf{Y} \Leftrightarrow (\mathbf{A} ⊗ \mathbf{B}^{T})V_r(\mathbf{X}) = V_r(\mathbf{Y})\Leftrightarrow (\mathbf{B}^{T}⊗\mathbf{A} )V_c(\mathbf{X}) = V_c(\mathbf{Y})$</p>
 
       
     </div>
@@ -444,7 +589,7 @@
           
             <a href="/tags/中子输运方程/" rel="tag"># 中子输运方程</a>
           
-            <a href="/tags/边界条件/" rel="tag"># 边界条件</a>
+            <a href="/tags/Pn方法/" rel="tag"># Pn方法</a>
           
         </div>
       
@@ -457,8 +602,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/20/代数方程的物理含义/" rel="next" title="代数方程的物理含义">
-                <i class="fa fa-chevron-left"></i> 代数方程的物理含义
+              <a href="/2017/10/31/勒让得多项式/" rel="next" title="勒让得多项式">
+                <i class="fa fa-chevron-left"></i> 勒让得多项式
               </a>
             
           </div>
@@ -466,10 +611,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/21/马斯洛人本哲学/" rel="prev" title="马斯洛人本哲学">
-                马斯洛人本哲学 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -655,7 +796,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#真空边界条件"><span class="nav-number">1.</span> <span class="nav-text">真空边界条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射边界条件"><span class="nav-number">2.</span> <span class="nav-text">反射边界条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#黎曼分解"><span class="nav-number">3.</span> <span class="nav-text">黎曼分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边界积分项"><span class="nav-number">4.</span> <span class="nav-text">边界积分项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#单能一维中子输运方程"><span class="nav-number">1.</span> <span class="nav-text">单能一维中子输运方程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#边界条件"><span class="nav-number">1.1.</span> <span class="nav-text">边界条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pn方法"><span class="nav-number">2.</span> <span class="nav-text">Pn方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用勒让得多项式展开角度变量"><span class="nav-number">2.1.</span> <span class="nav-text">用勒让得多项式展开角度变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用正交归一勒让得多项式展开"><span class="nav-number">2.2.</span> <span class="nav-text">用正交归一勒让得多项式展开</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有限元方法"><span class="nav-number">3.</span> <span class="nav-text">有限元方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#galerkin方法"><span class="nav-number">3.1.</span> <span class="nav-text">galerkin方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#边界条件-1"><span class="nav-number">3.1.1.</span> <span class="nav-text">边界条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量化"><span class="nav-number">3.1.2.</span> <span class="nav-text">向量化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一维线性单元"><span class="nav-number">3.1.3.</span> <span class="nav-text">一维线性单元</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方程组装"><span class="nav-number">4.</span> <span class="nav-text">方程组装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单元矩阵"><span class="nav-number">4.1.</span> <span class="nav-text">单元矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内部"><span class="nav-number">4.1.1.</span> <span class="nav-text">内部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#边界"><span class="nav-number">4.1.2.</span> <span class="nav-text">边界</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RHS"><span class="nav-number">4.1.3.</span> <span class="nav-text">RHS</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录"><span class="nav-number"></span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#勒让得多项式"><span class="nav-number">1.</span> <span class="nav-text">勒让得多项式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义式"><span class="nav-number">1.1.</span> <span class="nav-text">定义式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正交关系式"><span class="nav-number">1.2.</span> <span class="nav-text">正交关系式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递推关系式"><span class="nav-number">1.3.</span> <span class="nav-text">递推关系式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加法定理"><span class="nav-number">1.4.</span> <span class="nav-text">加法定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式系数"><span class="nav-number">1.5.</span> <span class="nav-text">多项式系数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像"><span class="nav-number">1.6.</span> <span class="nav-text">图像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向量化-1"><span class="nav-number">2.</span> <span class="nav-text">向量化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向量化算子"><span class="nav-number">2.1.</span> <span class="nav-text">向量化算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵方程向量化"><span class="nav-number">2.2.</span> <span class="nav-text">矩阵方程向量化</span></a></li></ol></li></ol></div>
             
 
           </div>
