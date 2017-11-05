@@ -103,7 +103,7 @@
 <meta property="og:description" content="开发该程序主要用于测试各种算法，算法的稳定性，算法的效率，以及学习并行算法的实施。目前程序角度上采用球谐函数方法，空间上采用有限元方法。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/LegendrePolynomial.png">
-<meta property="og:updated_time" content="2017-11-02T02:11:24.067Z">
+<meta property="og:updated_time" content="2017-11-03T06:55:17.786Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="中子输运方程一维求解程序">
 <meta name="twitter:description" content="开发该程序主要用于测试各种算法，算法的稳定性，算法的效率，以及学习并行算法的实施。目前程序角度上采用球谐函数方法，空间上采用有限元方法。">
@@ -452,7 +452,7 @@
 <p>由欧拉公式</p>
 <p>$$\int_{z}λ_1^aλ_2^bdz=\frac{a!b!}{(a+b+1)!}l$$</p>
 <p>得<br>$$\int_{z}dz=l$$<br>$$\int_{z}λ_idz=\frac{l}{2}$$<br>$$\int_{z}λ_i^{2}dz=\frac{l}{3}$$<br>$$\int_{z}λ_iλ_jdz=\frac{l}{6}$$</p>
-<p>所以<br>$$\mathbf{B}_{1z} = \int_{e}\vec{N}(z)\frac{\partial \vec{N}^{T}(z)}{\partial z}dz = \frac{l}{2}\begin{bmatrix}<br>-1&amp;1\\<br>-1&amp;1<br>\end{bmatrix}$$</p>
+<p>所以<br>$$\mathbf{B}_{1z} = \int_{e}\vec{N}(z)\frac{\partial \vec{N}^{T}(z)}{\partial z}dz = \frac{1}{2}\begin{bmatrix}<br>-1&amp;1\\<br>-1&amp;1<br>\end{bmatrix}$$</p>
 <p>$$\mathbf{B}_{11} = \int_{e}\vec{N}(z)\vec{N}(z)^{T}dz = \frac{l}{6}\begin{bmatrix}<br>2&amp;1\\<br>1&amp;2<br>\end{bmatrix}$$</p>
 <p>$$\vec{b} = \int_{e}\vec{N}(z)dz = \frac{l}{2}\begin{bmatrix}<br>1\\<br>1<br>\end{bmatrix}$$</p>
 <h2 id="方程组装"><a href="#方程组装" class="headerlink" title="方程组装"></a>方程组装</h2><h3 id="单元矩阵"><a href="#单元矩阵" class="headerlink" title="单元矩阵"></a>单元矩阵</h3><h4 id="内部"><a href="#内部" class="headerlink" title="内部"></a>内部</h4><p>$$\mathbf{K}_e = -\mathbf{B}_{1z}^{T}⊗\mathbf{A} + \mathbf{B}_{11}⊗\mathbf{Σ}$$</p>
@@ -612,6 +612,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/11/05/爱的艺术读后感-md/" rel="prev" title="爱的艺术读后感.md">
+                爱的艺术读后感.md <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -712,7 +716,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -734,7 +738,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
