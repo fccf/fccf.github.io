@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="superfun" />
+  <meta name="keywords" content="有限元," />
 
 
 
@@ -94,16 +94,18 @@
 
 
 
-<meta name="description" content="道，行之而成">
-<meta property="og:type" content="website">
-<meta property="og:title" content="superfun">
-<meta property="og:url" content="http://superfun.xyz/archives/2017/11/index.html">
+<meta name="description" content="标准的Galerkin有限元方法只适用于椭圆方程，直接应用于双曲方程会产生伪震荡，所以需要一些技巧来消除这些震荡，使解变得稳定。这些技巧主要有两个方面：第一是将一阶的双曲方程变为二阶的椭圆方程，比如最小二乘方法（GLS)、迎风流线扩散方法(SUPG)等；另一种是将离散的格式写为迎风格式，比如间断有限元(DG)等，以下对这些稳定算法进行简要的介绍。">
+<meta name="keywords" content="有限元">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一阶中子输运方程稳定有限元方法">
+<meta property="og:url" content="http://superfun.xyz/2017/11/06/一阶中子输运方程稳定有限元方法/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="道，行之而成">
+<meta property="og:description" content="标准的Galerkin有限元方法只适用于椭圆方程，直接应用于双曲方程会产生伪震荡，所以需要一些技巧来消除这些震荡，使解变得稳定。这些技巧主要有两个方面：第一是将一阶的双曲方程变为二阶的椭圆方程，比如最小二乘方法（GLS)、迎风流线扩散方法(SUPG)等；另一种是将离散的格式写为迎风格式，比如间断有限元(DG)等，以下对这些稳定算法进行简要的介绍。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-07T01:27:41.582Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="superfun">
-<meta name="twitter:description" content="道，行之而成">
+<meta name="twitter:title" content="一阶中子输运方程稳定有限元方法">
+<meta name="twitter:description" content="标准的Galerkin有限元方法只适用于椭圆方程，直接应用于双曲方程会产生伪震荡，所以需要一些技巧来消除这些震荡，使解变得稳定。这些技巧主要有两个方面：第一是将一阶的双曲方程变为二阶的椭圆方程，比如最小二乘方法（GLS)、迎风流线扩散方法(SUPG)等；另一种是将离散的格式写为迎风格式，比如间断有限元(DG)等，以下对这些稳定算法进行简要的介绍。">
 
 
 
@@ -132,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://superfun.xyz/archives/2017/11/"/>
+  <link rel="canonical" href="http://superfun.xyz/2017/11/06/一阶中子输运方程稳定有限元方法/"/>
 
 
 
@@ -148,7 +150,7 @@
 </script>
 
 
-  <title>归档 | superfun</title>
+  <title>一阶中子输运方程稳定有限元方法 | superfun</title>
   
 
 
@@ -173,7 +175,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -301,185 +303,247 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/11/06/一阶中子输运方程稳定有限元方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="c.fang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bio.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="superfun">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">一阶中子输运方程稳定有限元方法</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T15:19:39+08:00">
+                2017-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 23 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/输运方程/" itemprop="url" rel="index">
+                    <span itemprop="name">输运方程</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/07/《三体1-地球往事》读后感/" itemprop="url">
-              
-                <span itemprop="name">《三体1-地球往事》读后感</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-07T21:00:16+08:00"
-              content="2017-11-07" >
-          11-07
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/06/一阶中子输运方程稳定有限元方法/" itemprop="url">
-              
-                <span itemprop="name">一阶中子输运方程稳定有限元方法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-06T15:19:39+08:00"
-              content="2017-11-06" >
-          11-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/05/爱的艺术读后感-md/" itemprop="url">
-              
-                <span itemprop="name">爱的艺术读后感.md</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-05T21:13:52+08:00"
-              content="2017-11-05" >
-          11-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>标准的Galerkin有限元方法只适用于椭圆方程，直接应用于双曲方程会产生伪震荡，所以需要一些技巧来消除这些震荡，使解变得稳定。这些技巧主要有两个方面：第一是将一阶的双曲方程变为二阶的椭圆方程，比如最小二乘方法（GLS)、迎风流线扩散方法(SUPG)等；另一种是将离散的格式写为迎风格式，比如间断有限元(DG)等，以下对这些稳定算法进行简要的介绍。<br><a id="more"></a></p>
+<h2 id="Galerkin"><a href="#Galerkin" class="headerlink" title="Galerkin"></a>Galerkin</h2><h3 id="离散过程"><a href="#离散过程" class="headerlink" title="离散过程"></a>离散过程</h3><p>输运方程<br>$$Ω⋅∇ϕ+σϕ = s$$</p>
+<p>弱形式<br>$$(φ,Ω⋅∇ϕ)+(φ,σϕ) = (φ,s)$$</p>
+<p>分部积分<br>$$&lt;φ,Ω⋅nϕ&gt; - (Ω⋅∇φ,ϕ)+(φ,σϕ) = (φ,s)$$</p>
+<p>边界条件<br>$$&lt;φ,Ω⋅nϕ&gt;^{-} = G$$</p>
+<p>带边界条件的方程<br>$$&lt;φ,Ω⋅nϕ&gt;^{+}  - (Ω⋅∇φ,ϕ)+(φ,σϕ) = (φ,s) - G$$</p>
+<p>等价方程1<br>$$ -&lt;φ,Ω⋅nϕ&gt;^{-} + (φ,Ω⋅∇ϕ)+(φ,σϕ) = (φ,s)-G$$</p>
+<p>等价方程2<br>$$ [&lt;φ,Ω⋅nϕ&gt;^{+}-&lt;φ,Ω⋅nϕ&gt;^{-}] /2 + [(φ,Ω⋅∇ϕ)- (Ω⋅∇φ,ϕ)]/2+(φ,σϕ) = (φ,s)-G$$</p>
+<h3 id="矩阵形式"><a href="#矩阵形式" class="headerlink" title="矩阵形式"></a>矩阵形式</h3><p>定义<br>$$C = (φ,Ω⋅∇φ)$$</p>
+<p>$$R = (φ,σφ)$$</p>
+<p>$$O = &lt;φ,Ω⋅nφ&gt;$$</p>
+<p>$$O^{+} = &lt;φ,Ω⋅nφ&gt;^{+}$$</p>
+<p>$$O^{-} = &lt;φ,Ω⋅nφ&gt;^{-}$$</p>
+<p>$$b = (φ,s)-G$$</p>
+<p>所以Galerkin离散后的方程为<br>$$[C - O^{-}+R]ϕ = b$$</p>
+<p>$$[ -C^{T}+ O^{+}+R]ϕ = b$$</p>
+<p>$$[ (C-C^{T})/2+(O^{+}-O^{-})/2+R]ϕ = b$$</p>
+<h2 id="SUPG-Streamline-Upwinding-Petrov-Galerkin"><a href="#SUPG-Streamline-Upwinding-Petrov-Galerkin" class="headerlink" title="SUPG (Streamline Upwinding Petrov Galerkin)"></a>SUPG (Streamline Upwinding Petrov Galerkin)</h2><h3 id="离散过程-1"><a href="#离散过程-1" class="headerlink" title="离散过程"></a>离散过程</h3><p>流线扩散方法属于Petrov Galerkin 方法，该方法的检验函数与试探函数所在的空间不一样，检验函数所在的空间为 $φ+τΩ⋅∇φ$，所以输运方程的弱形式为<br>$$(φ,Ω⋅∇ϕ)+(φ,σϕ) + (τΩ⋅∇φ,Ω⋅∇ϕ)+(τΩ⋅∇φ,σϕ) = (φ,s)+ (τΩ⋅∇φ,s)$$</p>
+<h3 id="矩阵形式-1"><a href="#矩阵形式-1" class="headerlink" title="矩阵形式"></a>矩阵形式</h3><p>定义<br>$$D=(τΩ⋅∇φ,Ω⋅∇ϕ)$$</p>
+<p>$$C_{r}^{T} = (τΩ⋅∇φ,σϕ)$$</p>
+<p>$$b = (φ,s)+ (τΩ⋅∇φ,s)-G$$</p>
+<p>所以SUPG离散之后的方程为<br>$$[-C^{T}+ O^{+}+R + D + C_{r}^{T}]ϕ = b$$</p>
+<p>对于非真空区域，取$τ = \frac{1}{σ}$，则$C_{r}^{T} = C^{T}$，所以此时<br>$$[ O^{+}+R + D ]ϕ = b$$</p>
+<h2 id="GLS-Galerkin-Least-Squares"><a href="#GLS-Galerkin-Least-Squares" class="headerlink" title="GLS (Galerkin Least Squares)"></a>GLS (Galerkin Least Squares)</h2><p>最小二乘方法也是一种Petrov Galerkin 方法，该方法的检验函数所在的空间为试探函数空间的共轭，所以得到的矩阵是对称的。</p>
+<h2 id="SGS-Sub-Grid-Scale"><a href="#SGS-Sub-Grid-Scale" class="headerlink" title="SGS (Sub-Grid Scale)"></a>SGS (Sub-Grid Scale)</h2><h3 id="离散过程-2"><a href="#离散过程-2" class="headerlink" title="离散过程"></a>离散过程</h3><p>该方法将变量分为连续部分与间断部分之和，其中$ ϕ_c$为连续部分，$ϕ_d$为间断部分，最终会形成两个方程<br>$$ϕ = ϕ_c+ϕ_d$$</p>
+<p>其弱形式为<br>$$(φ_c,Ω⋅∇ϕ)+(φ_c,σϕ) = (φ_c,s) \tag{$1$}$$</p>
+<p>$$(φ_d,Ω⋅∇ϕ)+(φ_d,σϕ) = (φ_d,s) \tag{$2$}$$</p>
+<p>对方程1的$ϕ$分部积分<br>$$&lt;φ_c,Ω⋅nϕ&gt; - (Ω⋅∇φ_c,ϕ)+(φ_c,σϕ) = (φ_c,s)$$</p>
+<p>对方程2的$ϕ_d$分部积分<br>$$&lt;φ_d,Ω⋅nϕ_d&gt; - (Ω⋅∇φ_d,ϕ_d)+(φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ) = (φ_d,s)$$</p>
+<p>对于区域边界，有如下边界条件<br>$$&lt;φ,Ω⋅nϕ_c&gt;^{-} = G$$</p>
+<p>$$&lt;φ,Ω⋅nϕ_d&gt; = 0$$</p>
+<p>对于内部单元边界<br>$$&lt;φ_d,Ω⋅nϕ_d&gt;^{-} = 0$$</p>
+<p>带入边界条件得<br>$$&lt;φ_c,Ω⋅nϕ_c&gt;^{+} - (Ω⋅∇φ_c,ϕ)+(φ_c,σϕ) = (φ_c,s) - G$$</p>
+<p>$$&lt;φ_d,Ω⋅nϕ_d&gt;^{+} - (Ω⋅∇φ_d,ϕ_d)+(φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ) = (φ_d,s)$$</p>
+<h3 id="矩阵形式-2"><a href="#矩阵形式-2" class="headerlink" title="矩阵形式"></a>矩阵形式</h3><p>$$[ O^{+}-C^{T}+R]ϕ_c+[ -C^{T}+R]ϕ_d = s_c \tag{$3$}$$</p>
+<p>$$[ C+R]ϕ_c+[ O^{+}-C^{T}+R]ϕ_d = s_d \tag{$4$}$$</p>
+<p>方程(3)描述整个求解区域，方程(4)描述单个单元。所以对于每个内部单元</p>
+<p>$$K_{11} = -C^{T}+R$$</p>
+<p>$$K_{12} = -C^{T}+R$$</p>
+<p>$$K_{21} = C+R$$</p>
+<p>$$K_{22} = O^{+}-C^{T}+R$$</p>
+<p>对于边界<br>$$K_{11} = O^{+}$$</p>
+<p>由方程(4)求解$\phi_d$<br>$$\phi_d=K_{22}^{-1}(s_d - K_{21}\phi_c)$$</p>
+<p>然后带入方程(3)中，得<br>$$[K_{11}-K_{12}K_{22}^{-1}K_{21}]\phi_c = s_c - K_{12}K_{22}^{-1}s_d$$</p>
+<h3 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h3><p>采用迭代方法求解</p>
+<ol>
+<li>令$\phi_d = 0$，求解$K_{11}\phi_c = s_c$，得到$\phi_c$</li>
+<li>计算每个单元上的误差 $s_r = s_d - K_{21}\phi_c$</li>
+<li>在每个单元上求解 $K_{22}\phi_d = s_r$，得到 $\phi_d$</li>
+<li>求解方程 $K_{11}\phi_c = s_c - K_{12}\phi_d$，得到新的 $\phi_c$</li>
+</ol>
+<p>感觉迭代 2 次应该就差不多了。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/02/一阶中子输运方程一维求解程序/" itemprop="url">
-              
-                <span itemprop="name">中子输运方程一维求解程序</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-02T09:37:18+08:00"
-              content="2017-11-02" >
-          11-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/有限元/" rel="tag"># 有限元</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/05/爱的艺术读后感-md/" rel="next" title="爱的艺术读后感.md">
+                <i class="fa fa-chevron-left"></i> 爱的艺术读后感.md
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/07/《三体1-地球往事》读后感/" rel="prev" title="《三体1-地球往事》读后感">
+                《三体1-地球往事》读后感 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -487,6 +551,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
 
         </div>
         
@@ -507,8 +577,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/bio.png"
@@ -597,6 +676,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Galerkin"><span class="nav-number">1.</span> <span class="nav-text">Galerkin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散过程"><span class="nav-number">1.1.</span> <span class="nav-text">离散过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵形式"><span class="nav-number">1.2.</span> <span class="nav-text">矩阵形式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SUPG-Streamline-Upwinding-Petrov-Galerkin"><span class="nav-number">2.</span> <span class="nav-text">SUPG (Streamline Upwinding Petrov Galerkin)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散过程-1"><span class="nav-number">2.1.</span> <span class="nav-text">离散过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵形式-1"><span class="nav-number">2.2.</span> <span class="nav-text">矩阵形式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GLS-Galerkin-Least-Squares"><span class="nav-number">3.</span> <span class="nav-text">GLS (Galerkin Least Squares)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SGS-Sub-Grid-Scale"><span class="nav-number">4.</span> <span class="nav-text">SGS (Sub-Grid Scale)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散过程-2"><span class="nav-number">4.1.</span> <span class="nav-text">离散过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵形式-2"><span class="nav-number">4.2.</span> <span class="nav-text">矩阵形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#想法"><span class="nav-number">4.3.</span> <span class="nav-text">想法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -699,11 +794,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
 
 
   
@@ -730,6 +823,10 @@
   
     
 
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2146790"></script>
+      <!-- UY END -->
     
   
 
