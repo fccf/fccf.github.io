@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="有限元," />
+  <meta name="keywords" content="变分,守恒," />
 
 
 
@@ -94,21 +94,18 @@
 
 
 
-<meta name="description" content="在数值计算中，通常会将求解区域进行离散，离散之后的网格与最终形成的系数矩阵有着一一对应的关系，通常情况下离散网格某一点只会对其周围的点产生影响，对更远地方的点完全没有影响，所以与网格对应的矩阵是一个稀疏的，而且该矩阵与网格存在以下关系">
-<meta name="keywords" content="有限元">
+<meta name="description" content="方程变分形式的妙处在于很容易得到物理上的守恒关系，守恒关系包括全局守恒和局部守恒。前者表示在整个求解区域上产生的粒子与消失的粒子相等，后者表示在一个单元上产生和消失的粒子相等。守恒关系为：消失=产生，消失包括：泄露，反应，产生由源项产生。以下对输运方程的各种变分形式的守恒形式进行说明">
+<meta name="keywords" content="变分,守恒">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网格与矩阵的对应关系">
-<meta property="og:url" content="http://superfun.xyz/2017/10/20/网格与矩阵的对应关系/index.html">
+<meta property="og:title" content="输运方程变分形式的守恒关系">
+<meta property="og:url" content="http://superfun.xyz/2017/11/16/输运方程变分形式的守恒关系/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="在数值计算中，通常会将求解区域进行离散，离散之后的网格与最终形成的系数矩阵有着一一对应的关系，通常情况下离散网格某一点只会对其周围的点产生影响，对更远地方的点完全没有影响，所以与网格对应的矩阵是一个稀疏的，而且该矩阵与网格存在以下关系">
+<meta property="og:description" content="方程变分形式的妙处在于很容易得到物理上的守恒关系，守恒关系包括全局守恒和局部守恒。前者表示在整个求解区域上产生的粒子与消失的粒子相等，后者表示在一个单元上产生和消失的粒子相等。守恒关系为：消失=产生，消失包括：泄露，反应，产生由源项产生。以下对输运方程的各种变分形式的守恒形式进行说明">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/mesh.png">
-<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/mesh_matrix.png">
-<meta property="og:updated_time" content="2017-10-20T13:46:48.830Z">
+<meta property="og:updated_time" content="2017-11-16T13:23:22.801Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网格与矩阵的对应关系">
-<meta name="twitter:description" content="在数值计算中，通常会将求解区域进行离散，离散之后的网格与最终形成的系数矩阵有着一一对应的关系，通常情况下离散网格某一点只会对其周围的点产生影响，对更远地方的点完全没有影响，所以与网格对应的矩阵是一个稀疏的，而且该矩阵与网格存在以下关系">
-<meta name="twitter:image" content="http://on08uqozg.bkt.clouddn.com/mesh.png">
+<meta name="twitter:title" content="输运方程变分形式的守恒关系">
+<meta name="twitter:description" content="方程变分形式的妙处在于很容易得到物理上的守恒关系，守恒关系包括全局守恒和局部守恒。前者表示在整个求解区域上产生的粒子与消失的粒子相等，后者表示在一个单元上产生和消失的粒子相等。守恒关系为：消失=产生，消失包括：泄露，反应，产生由源项产生。以下对输运方程的各种变分形式的守恒形式进行说明">
 
 
 
@@ -137,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://superfun.xyz/2017/10/20/网格与矩阵的对应关系/"/>
+  <link rel="canonical" href="http://superfun.xyz/2017/11/16/输运方程变分形式的守恒关系/"/>
 
 
 
@@ -153,7 +150,7 @@
 </script>
 
 
-  <title>网格与矩阵的对应关系 | superfun</title>
+  <title>输运方程变分形式的守恒关系 | superfun</title>
   
 
 
@@ -320,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/10/20/网格与矩阵的对应关系/">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/11/16/输运方程变分形式的守恒关系/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="c.fang">
@@ -337,7 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">网格与矩阵的对应关系</h1>
+          <h1 class="post-title" itemprop="name headline">输运方程变分形式的守恒关系</h1>
         
 
         <div class="post-meta">
@@ -349,8 +346,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T14:42:14+08:00">
-                2017-10-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T17:05:13+08:00">
+                2017-11-16
               </time>
             
 
@@ -372,8 +369,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/有限元/" itemprop="url" rel="index">
-                    <span itemprop="name">有限元</span>
+                  <a href="/categories/中子输运方程/" itemprop="url" rel="index">
+                    <span itemprop="name">中子输运方程</span>
                   </a>
                 </span>
 
@@ -409,16 +406,35 @@
       
 
       
-        <p>在数值计算中，通常会将求解区域进行离散，离散之后的网格与最终形成的系数矩阵有着一一对应的关系，通常情况下离散网格某一点只会对其周围的点产生影响，对更远地方的点完全没有影响，所以与网格对应的矩阵是一个稀疏的，而且该矩阵与网格存在以下关系<br><a id="more"></a></p>
-<ol>
-<li>网格中的一条边 ij 对应与矩阵中元素 aij。</li>
-<li>一个点 i 对应与矩阵中的对角元素 aii。</li>
-<li>网格中环绕某个点 i 的点数 psp 代表矩阵中 i 行的元素个数。</li>
-<li>网格中环绕某个点 i 的单元数 esp 代表对矩阵中元素 aii 有贡献的单元数。</li>
-<li>网格中环绕某条边 ij 的单元数 ese 代表对矩阵中元素 aij 有贡献的单元数。</li>
-</ol>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>以下为一个网格与矩阵对应关系的示例</p>
-<p><img src="http://on08uqozg.bkt.clouddn.com/mesh.png" alt="网格"><br><img src="http://on08uqozg.bkt.clouddn.com/mesh_matrix.png" alt="矩阵"></p>
+        <p>方程变分形式的妙处在于很容易得到物理上的守恒关系，守恒关系包括全局守恒和局部守恒。前者表示在整个求解区域上产生的粒子与消失的粒子相等，后者表示在一个单元上产生和消失的粒子相等。守恒关系为：消失=产生，消失包括：泄露，反应，产生由源项产生。以下对输运方程的各种变分形式的守恒形式进行说明<br><a id="more"></a></p>
+<h2 id="CG-方程"><a href="#CG-方程" class="headerlink" title="CG 方程"></a>CG 方程</h2><p>中子输运方程连续有限元的变分形式为</p>
+<p>$$&lt;φ,Ω⋅nϕ&gt; - (Ω⋅∇φ,ϕ)+(φ,σϕ) = (φ,s)$$</p>
+<p>令检验函数 $φ$在整个区域中恒为 1，那么</p>
+<p>$$<1,ω⋅nϕ> +(1,σϕ) = (1,s)$$</1,ω⋅nϕ></p>
+<p>该式第一项为泄漏率，第二项为反应消失率，右端项为产生率</p>
+<h2 id="SAAF-方程"><a href="#SAAF-方程" class="headerlink" title="SAAF 方程"></a>SAAF 方程</h2><p>SAAF方程的变分形式为</p>
+<p>$$&lt;φ,Ω⋅nϕ&gt; + (Ω⋅∇φ, \frac{1}{σ}Ω⋅∇ϕ)+(φ,σϕ) = (Ω⋅∇φ,\frac{1}{σ}s)+(φ,s)$$</p>
+<p>令检验函数 $φ$在整个区域中恒为 1，那么</p>
+<p>$$<1,ω⋅nϕ> +(1,σϕ) = (1,s)$$</1,ω⋅nϕ></p>
+<p>满足守恒关系</p>
+<h2 id="LS-方程"><a href="#LS-方程" class="headerlink" title="LS 方程"></a>LS 方程</h2><p>LS 方程的变分形式为</p>
+<p>$$(Ω⋅∇φ,Ω⋅∇ϕ) + (σφ,Ω⋅∇ϕ) + (Ω⋅∇φ,σϕ) + (σφ,σϕ) - <cφ,ϕ-g>^{-} = (Ω⋅∇φ,s)+ (σφ,s)$$</cφ,ϕ-g></p>
+<p>令检验函数 $φ$在整个区域中恒为 1，那么<br>$$&lt;σ,Ω⋅nϕ&gt;  + (σ,σϕ) - <c,ϕ-g>^{-} = (σφ,s)$$</c,ϕ-g></p>
+<p>如果在整个区域上 $σ$ 为大于零的常数，并且 $c=σ$；方程才是全局守恒的，否则不是。</p>
+<ul>
+<li>对于真空区域<br>$$(Ω⋅∇φ,Ω⋅∇ϕ)  - <cφ,ϕ-g>^{-} = 0$$<br>所以<br>$$(Ω⋅∇φ,Ω⋅∇ϕ)+ (cφ,Ω⋅∇ϕ) + (Ω⋅∇φ,cϕ)-<cφ,ϕ>^{+} + <cφ,g>^{-} = 0$$<br>令检验函数 $φ$在整个区域中恒为 1，那么<br>$$ (c,Ω⋅∇ϕ)-<cφ,ϕ>^{+} + <cφ,g>^{-} = 0$$<br>只有当 $Ω⋅∇ϕ $ 恒等于零时，才满足守恒关系。即在真空区域要恒满足输运方程 $Ω⋅∇ϕ=0$，数值误差为0。</cφ,g></cφ,ϕ></cφ,g></cφ,ϕ></cφ,ϕ-g></li>
+</ul>
+<h2 id="SUPG-方程"><a href="#SUPG-方程" class="headerlink" title="SUPG 方程"></a>SUPG 方程</h2><p>SUPG 方程的变分形式为</p>
+<p>$$&lt;φ,Ω⋅nϕ&gt; -(Ω⋅∇φ,ϕ)+(φ,σϕ) + (τΩ⋅∇φ,Ω⋅∇ϕ)+(τΩ⋅∇φ,σϕ) = (φ,s)+ (τΩ⋅∇φ,s)$$</p>
+<p>令检验函数 $φ$在整个区域中恒为 1，那么</p>
+<p>$$<1,ω⋅nϕ> +(1,σϕ) = (1,s)$$</1,ω⋅nϕ></p>
+<p>满足守恒关系</p>
+<h2 id="SGS-方程"><a href="#SGS-方程" class="headerlink" title="SGS 方程"></a>SGS 方程</h2><p>SGS 方程的变分形式为<br>$$&lt;φ_c,Ω⋅nϕ&gt; - (Ω⋅∇φ_c,ϕ)+(φ_c,σϕ) = (φ_c,s)$$</p>
+<p>$$&lt;φ_d,Ω⋅nϕ_d&gt; - (Ω⋅∇φ_d,ϕ_d)+(φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ) = (φ_d,s)$$</p>
+<p>令检验函数 $φ_c$在整个区域中恒为 1，那么<br>$$<1,ω⋅nϕ> +(1,σϕ) = (1,s)$$</1,ω⋅nϕ></p>
+<p>满足全局守恒关系</p>
+<p>令检验函数 $φ_d$在单元中恒为 1，那么<br>$$<1,ω⋅nϕ_d> +(1,Ω⋅∇ϕ_c)+(1,σϕ) = (1,s)$$</1,ω⋅nϕ_d></p>
+<p>$$<1,ω⋅nϕ> +(1,σϕ) = (1,s)$$<br>满足局部守恒关系</1,ω⋅nϕ></p>
 
       
     </div>
@@ -436,7 +452,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/有限元/" rel="tag"># 有限元</a>
+            <a href="/tags/变分/" rel="tag"># 变分</a>
+          
+            <a href="/tags/守恒/" rel="tag"># 守恒</a>
           
         </div>
       
@@ -449,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/20/球谐函数方法/" rel="next" title="球谐函数方法">
-                <i class="fa fa-chevron-left"></i> 球谐函数方法
+              <a href="/2017/11/16/二阶中子输运方程/" rel="next" title="二阶中子输运方程">
+                <i class="fa fa-chevron-left"></i> 二阶中子输运方程
               </a>
             
           </div>
@@ -458,10 +476,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/20/代数方程的物理含义/" rel="prev" title="代数方程的物理含义">
-                代数方程的物理含义 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -647,7 +661,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">1.</span> <span class="nav-text">示例</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CG-方程"><span class="nav-number">1.</span> <span class="nav-text">CG 方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SAAF-方程"><span class="nav-number">2.</span> <span class="nav-text">SAAF 方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LS-方程"><span class="nav-number">3.</span> <span class="nav-text">LS 方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SUPG-方程"><span class="nav-number">4.</span> <span class="nav-text">SUPG 方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SGS-方程"><span class="nav-number">5.</span> <span class="nav-text">SGS 方程</span></a></li></ol></div>
             
 
           </div>
