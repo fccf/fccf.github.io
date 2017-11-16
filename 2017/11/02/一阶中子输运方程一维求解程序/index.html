@@ -103,7 +103,7 @@
 <meta property="og:description" content="开发该程序主要用于测试各种算法，算法的稳定性，算法的效率，以及学习并行算法的实施。目前程序角度上采用球谐函数方法，空间上采用有限元方法。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/LegendrePolynomial.png">
-<meta property="og:updated_time" content="2017-11-06T11:46:31.988Z">
+<meta property="og:updated_time" content="2017-11-08T07:45:28.278Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="中子输运方程一维求解程序">
 <meta name="twitter:description" content="开发该程序主要用于测试各种算法，算法的稳定性，算法的效率，以及学习并行算法的实施。目前程序角度上采用球谐函数方法，空间上采用有限元方法。">
@@ -449,7 +449,7 @@
 <h4 id="边界条件-1"><a href="#边界条件-1" class="headerlink" title="边界条件"></a>边界条件</h4><p>令$\mathbf{A}_n = n\cdot \mathbf{A}$，将其进行特征值分解得$\mathbf{A}_n = \mathbf{A}_n^{+}+\mathbf{A}_n^{-}$</p>
 <ul>
 <li>真空边界<br>$$\mathbf{A}_n^{-} \vec{\phi}_{\Gamma_{v}} = 0$$</li>
-<li>反射边界<br>$$\mathbf{A}_n^{-} \vec{\phi}_{\Gamma_{r}} = \mathbf{A}_n^{-} \mathbf{R}\vec{\phi}_{\Gamma_{r}}$$<br>其中矩阵 $\mathbf{R} = \int_{-1}^{1} \vec{P}_n(\mu)\vec{P}_n(-\mu)d\mu$，该矩阵是一个对角矩阵<br>$$\mathbf{R} = diag[-1,1,-1,1,…,(-1)^{n+1}]$$</li>
+<li>反射边界<br>$$\mathbf{A}_n^{-} \vec{\phi}_{\Gamma_{r}} = \mathbf{A}_n^{-} \mathbf{R}\vec{\phi}_{\Gamma_{r}}$$<br>其中矩阵 $\mathbf{R} = \int_{-1}^{1} \vec{P}_n(\mu)\vec{P}_n(-\mu)d\mu$，该矩阵是一个对角矩阵<br>$$\mathbf{R} = diag[1,-1,1,-1,…,(-1)^{n}]$$</li>
 </ul>
 <h4 id="向量化"><a href="#向量化" class="headerlink" title="向量化"></a>向量化</h4><p>将以上矩阵方程变为向量方程为</p>
 <p>$$-\mathbf{B}_{1z}^{T}⊗\mathbf{A}\vec{\phi} + \mathbf{B}_{11}⊗\mathbf{Σ}\vec{\phi}+\mathbf{A}_n^{+}\vec{\phi}_{Γ}+\mathbf{A}_n^{-} \mathbf{R}\vec{\phi}_{\Gamma_{r}} = \vec{b} ⊗\vec{s}$$</p>
@@ -723,7 +723,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -745,7 +745,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

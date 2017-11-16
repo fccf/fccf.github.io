@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="superfun">
 <meta property="og:description" content="SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证方程的稳定性。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-24T06:33:46.029Z">
+<meta property="og:updated_time" content="2017-11-14T08:40:43.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一阶中子输运方程SGS离散">
 <meta name="twitter:description" content="SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证方程的稳定性。">
@@ -422,10 +422,17 @@
 <p>其中矩阵的单元矩阵形式为：</p>
 <h3 id="内部"><a href="#内部" class="headerlink" title="内部"></a>内部</h3><p>$A_e =  - (Ω⋅∇φ_c,φ_c)+(φ_c,σφ_c)$<br>$B_e =  - (Ω⋅∇φ_c,φ_d)+(φ_c,σφ_d)$<br>$C_e =    (φ_d,Ω⋅∇φ_c)+(φ_d,σφ_c)$<br>$D_e =  - (Ω⋅∇φ_d,φ_d)+(φ_d,σφ_d) + &lt;φ_d,Ω⋅nφ_d&gt;^{+} $</p>
 <h3 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h3><p>$A_e =  &lt;φ_c,Ω⋅nφ_c&gt;^{+}$</p>
-<h3 id="单元矩阵"><a href="#单元矩阵" class="headerlink" title="单元矩阵"></a>单元矩阵</h3><p>定义<br>$L = (φ,Ω⋅∇φ)$<br>$R = (φ,σφ)$<br>$O = &lt;φ,Ω⋅nφ&gt;$<br>$O^{+} = &lt;φ,Ω⋅nφ&gt;^{+}$<br>$O^{-} = &lt;φ,Ω⋅nφ&gt;^{-}$</p>
-<p>所以<br>$L+L^{T} = O$<br>$A = -L^{T}+R$<br>$B = A$<br>$C = L+R = A + O$<br>$D = A + O^{+}$</p>
-<p>推导 ?</p>
-<p>$A-BD^{-1}C = A-A(A+O^{+})^{-1}(A+O) =  A-A(A+O^{+})^{-1}(A+O^{+}+O^{-}) = -A(A+O^{+})^{-1}O^{-}$<br>=&gt;<br>$-A(A+O^{+})^{-1}O^{-} \phi= s-A(A + O^{+})^{-1}s$<br>=&gt;<br>$-O^{-} \phi= (A + O^{+})A^{-1}s-s = O^{+}A^{-1}s$<br>=&gt;<br>$A(O^{+})^{-1}(-O^{-})\phi = s$<br>=&gt;<br>$A (I- (O^{+})^{-1}O)\phi = s$</p>
+<h3 id="单元矩阵"><a href="#单元矩阵" class="headerlink" title="单元矩阵"></a>单元矩阵</h3><p>定义<br>$$L = (φ,Ω⋅∇φ)$$</p>
+<p>$$R = (φ,σφ)$$</p>
+<p>$$O = &lt;φ,Ω⋅nφ&gt;$$</p>
+<p>$$O^{+} = &lt;φ,Ω⋅nφ&gt;^{+}$$</p>
+<p>$$O^{-} = &lt;φ,Ω⋅nφ&gt;^{-}$$</p>
+<p>所以<br>$$L+L^{T} = O$$</p>
+<p>$$A = -L^{T}+R$$</p>
+<p>$$B = A$$</p>
+<p>$$C = L+R = A + O$$</p>
+<p>$$D = A + O^{+}$$</p>
+<p>推导 ?<br>定义单元矩阵<br>$$K_e = A-BD^{-1}C$$<br>$$K_e  = A-A(A+O^{+})^{-1}(A+O) =  A-A(A+O^{+})^{-1}(A+O^{+}+O^{-}) = -A(A+O^{+})^{-1}O^{-}$$<br>$$-A(A+O^{+})^{-1}O^{-} \phi= s-A(A + O^{+})^{-1}s$$<br>$$-O^{-} \phi= (A + O^{+})A^{-1}s-s = O^{+}A^{-1}s$$<br>$$A(O^{+})^{-1}(-O^{-})\phi = s$$<br>$$A (I- (O^{+})^{-1}O)\phi = s$$</p>
 
       
     </div>
@@ -572,7 +579,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -594,7 +601,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
