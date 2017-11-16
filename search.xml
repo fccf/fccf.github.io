@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[二阶中子输运方程]]></title>
+    <url>%2F2017%2F11%2F16%2F%E4%BA%8C%E9%98%B6%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[由于一阶中子输运方程是一个双曲方程，要用有限元方法求解该方程，必须使用一种迎风格式的方法或将该方程变为二阶椭圆形式的方程。以下对二阶形式的中子输运方程进行研究，主要包括自共轭形式的中子输运方程(SAAF)；最小二乘形式的中子输运方程(LS)；流线扩散形式(SUPG)。 SAAF该方法使用角通量方程(Angular Flux Equation(AFE))将一阶方程中的泄露项转变为二阶形式。 中子输运方程$$Ω⋅∇ϕ+σϕ = s \tag{$1$}$$ 弱形式$$(φ,Ω⋅∇ϕ)+(φ,σϕ) = (φ,s) \tag{$2$}$$ 分部积分$$&lt;φ,Ω⋅nϕ&gt; - (Ω⋅∇φ,ϕ)+(φ,σϕ) = (φ,s) \tag{$3$}$$ 角通量方程$$ϕ = \frac{1}{σ}(s-Ω⋅∇ϕ) \tag{$4$}$$ SAAF弱形式将角通量方程(4)带入原方程的弱形式(3)中的一阶导数项，得 $$&lt;φ,Ω⋅nϕ&gt; + (Ω⋅∇φ, \frac{1}{σ}Ω⋅∇ϕ)+(φ,σϕ) = (Ω⋅∇φ,\frac{1}{σ}s)+(φ,s) \tag{$5$}$$ 该形式由于存在 $\frac{1}{σ}$，所以不能对真空区域进行求解。 处理真空SAAF-VT将$\frac{1}{σ}Ω⋅∇ϕ$变为 $\tauΩ⋅∇ϕ+ (\tau σ - 1)ϕ$，其中 $\tau = min( \frac{1}{σ}, \frac{h}{c})$，其中 $h$ 为网格的特征大小，c为一个常数，通常取2。所以方程 (5) 变为 $$&lt;φ,Ω⋅nϕ&gt; + (Ω⋅∇φ, \tauΩ⋅∇ϕ) + (Ω⋅∇φ, (\tau σ -1)ϕ)+(φ,σϕ) = (Ω⋅∇φ,\frac{1}{σ}s)+(φ,s) \tag{$5$}$$ 不过以下文献提到该方法只对$S_N$方法有效，对$P_N$方法不对。主要是因为一阶$P_N$公式在真空区域是病态的，因为在高维(2d,3d)情况下，角度JACOBI矩阵是奇异的。 Laboure V M. Improved fully-implicit spherical harmonics methods for first and second order forms of the transport equation using Galerkin Finite Element[D]. 2016. LS最小二乘公式的推导方式有很多种，可以从变分原理出发，也可以从加权残值法出发。以下从最小二乘泛函出发推导。令 $L = Ω⋅∇+σ$, 定义输运方程的全局残差的二范数 $$R = \int_v \int_{Ω} (L\phi - s)^2dΩdV$$ 对输运方程求解就是要使残差最小，即该泛函的一阶变分为零，所以 $$δR = 2 \int_v \int_{Ω} Lδϕ(L\phi - s)dΩdV = 0$$ 所以，最小二乘方法的弱形式为 $$(Lδϕ,Lϕ) = (Lδϕ,s)$$ 令 $φ = δϕ$，所以 $$(Ω⋅∇ϕ,Lϕ) = (Lδϕ,s)$$ 边界条件SUPG流线扩散方法属于Petrov Galerkin 方法，该方法的检验函数与试探函数所在的空间不一样，检验函数所在的空间为 $φ+τΩ⋅∇φ$，所以输运方程的弱形式为$$(φ,Ω⋅∇ϕ)+(φ,σϕ) + (τΩ⋅∇φ,Ω⋅∇ϕ)+(τΩ⋅∇φ,σϕ) = (φ,s)+ (τΩ⋅∇φ,s)$$ 如果 $\tau = \frac{1}{σ}$，则该式与SAAF一样$$&lt;φ,Ω⋅nϕ&gt; + (Ω⋅∇φ, \frac{1}{σ}Ω⋅∇ϕ)+(φ,σϕ) = (Ω⋅∇φ,\frac{1}{σ}s)+(φ,s) \tag{$5$}$$]]></content>
+      <categories>
+        <category>中子输运方程</category>
+      </categories>
+      <tags>
+        <tag>SAAF</tag>
+        <tag>GLS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[纯吸收介质中输运方程解析解]]></title>
     <url>%2F2017%2F11%2F15%2F%E7%BA%AF%E5%90%B8%E6%94%B6%E4%BB%8B%E8%B4%A8%E4%B8%AD%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E8%A7%A3%E6%9E%90%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[输运方程在单能，纯吸收介质的固定源问题中有解析解。下面对解析解以及解析解的求解进行推导 单能纯吸收介质的解析解$$\phi(r,\Omega)= \int s(r,Ω)exp(-\intσ_a(l’)dl’)dl$$ 源区内$$\phi(r,\Omega)= \int s(r,Ω)exp(-\int_0^lσ_a(l’)dl’)dl$$ 假设只有一个源区，并且源区内的吸收截面为常数 $σ_{a,1}$，所以$$\phi(r,\Omega)=\int s(r,Ω)exp(-σ_{a,1}l)dl = \frac{s(r,Ω)}{σ_{a,1}}(1-exp(-σ_{a,1}l_0(r,Ω))$$ 其中 $l_0(r,Ω)$为$r$处沿着 $\Omega$方向到源区边界的距离。 源区外$$\phi(r,\Omega)= \int s(r,Ω)exp(-\int_0^lσ_a(l’)dl’)dl$$ 假设一共有$n$个区域，每个区域的吸收截面为 $σ_{a,i}$，则$$\phi(r,\Omega)= \int_{l_0(r,Ω)}^{l_1(r,Ω)} s(r,Ω)exp(-\sigma_{a,1}(l-l_1)) \prod_{i=2}^{n}exp(-σ_{a,i}\delta l_i(r,Ω))dl$$ 所以$$\phi(r,\Omega) = \frac{s(r,Ω)}{σ_{a,1}}(1-exp(-σ_{a,1}δl_1(r,Ω))\prod_{i=2}^{n}exp(-σ_{a,i}\delta l_i(r,Ω))dl$$]]></content>
+    <content type="text"><![CDATA[输运方程在单能，纯吸收介质的固定源问题中有解析解。下面对解析解进行推导 单能纯吸收介质的解析解$$\phi(r,\Omega)= \int s(r,Ω)exp(-\intσ_a(l’)dl’)dl$$ 源区内$$\phi(r,\Omega)= \int s(r,Ω)exp(-\int_0^lσ_a(l’)dl’)dl$$ 假设只有一个源区，并且源区内的吸收截面为常数 $σ_{a,1}$，所以$$\phi(r,\Omega)=\int s(r,Ω)exp(-σ_{a,1}l)dl = \frac{s(r,Ω)}{σ_{a,1}}(1-exp(-σ_{a,1}l_0(r,Ω))$$ 其中 $l_0(r,Ω)$为$r$处沿着 $\Omega$方向到源区边界的距离。 源区外$$\phi(r,\Omega)= \int s(r,Ω)exp(-\int_0^lσ_a(l’)dl’)dl$$ 假设一共有$n$个区域，每个区域的吸收截面为 $σ_{a,i}$，则$$\phi(r,\Omega)= \int_{l_0(r,Ω)}^{l_1(r,Ω)} s(r,Ω)exp(-\sigma_{a,1}(l-l_1)) \prod_{i=2}^{n}exp(-σ_{a,i}\delta l_i(r,Ω))dl$$ 所以$$\phi(r,\Omega) = \frac{s(r,Ω)}{σ_{a,1}}(1-exp(-σ_{a,1}δl_1(r,Ω))\prod_{i=2}^{n}exp(-σ_{a,i}\delta l_i(r,Ω))dl$$]]></content>
       <categories>
         <category>输运方程</category>
       </categories>
@@ -197,20 +209,6 @@
       <tags>
         <tag>中子输运方程</tag>
         <tag>符号</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[有限元离散一阶方程的稳定算法]]></title>
-    <url>%2F2017%2F10%2F19%2F%E6%9C%89%E9%99%90%E5%85%83%E7%A6%BB%E6%95%A3%E4%B8%80%E9%98%B6%E6%96%B9%E7%A8%8B%E7%9A%84%E7%A8%B3%E5%AE%9A%E7%AE%97%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[对一阶中子输运方程直接使用 Galerkin 方法在某些情况下会产生非物理的震荡现象。 震荡产生的原因稳定算法]]></content>
-      <categories>
-        <category>中子输运方程</category>
-      </categories>
-      <tags>
-        <tag>有限元</tag>
-        <tag>中子输运方程</tag>
-        <tag>galerkin</tag>
-        <tag>稳定算法</tag>
       </tags>
   </entry>
   <entry>
