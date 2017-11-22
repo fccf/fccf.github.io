@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="superfun" />
+  <meta name="keywords" content="SGS,FSGS," />
 
 
 
@@ -94,17 +94,18 @@
 
 
 
-<meta name="description" content="道，行之而成">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://superfun.xyz/tags/index.html">
+<meta name="description" content="SGS方法是A.G.Buchan在文献 1 中提出的对一阶中子输运方程稳定的有限元方法。然后在文献 2 中提出了一种更加高效的方法叫 ESGS 方法。在此基础上我提出了一种快速的SGS方法叫FSGS方法，这种方法比ESGS效率要高很多，因为不用进行特征值分解和矩阵求逆。 SGS 方法SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证">
+<meta name="keywords" content="SGS,FSGS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一阶中子输运方程FSGS离散">
+<meta property="og:url" content="http://superfun.xyz/2017/11/20/一阶中子输运方程FSGS离散/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="道，行之而成">
+<meta property="og:description" content="SGS方法是A.G.Buchan在文献 1 中提出的对一阶中子输运方程稳定的有限元方法。然后在文献 2 中提出了一种更加高效的方法叫 ESGS 方法。在此基础上我提出了一种快速的SGS方法叫FSGS方法，这种方法比ESGS效率要高很多，因为不用进行特征值分解和矩阵求逆。 SGS 方法SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-18T11:37:28.842Z">
+<meta property="og:updated_time" content="2017-11-22T07:11:25.506Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="道，行之而成">
+<meta name="twitter:title" content="一阶中子输运方程FSGS离散">
+<meta name="twitter:description" content="SGS方法是A.G.Buchan在文献 1 中提出的对一阶中子输运方程稳定的有限元方法。然后在文献 2 中提出了一种更加高效的方法叫 ESGS 方法。在此基础上我提出了一种快速的SGS方法叫FSGS方法，这种方法比ESGS效率要高很多，因为不用进行特征值分解和矩阵求逆。 SGS 方法SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证">
 
 
 
@@ -133,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://superfun.xyz/tags/"/>
+  <link rel="canonical" href="http://superfun.xyz/2017/11/20/一阶中子输运方程FSGS离散/"/>
 
 
 
@@ -149,7 +150,7 @@
 </script>
 
 
-  <title>tags | superfun</title>
+  <title>一阶中子输运方程FSGS离散 | superfun</title>
   
 
 
@@ -304,40 +305,231 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/11/20/一阶中子输运方程FSGS离散/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="c.fang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bio.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="superfun">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 26 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/FSGS/" style="font-size: 12px; color: #ccc">FSGS</a> <a href="/tags/GLS/" style="font-size: 12px; color: #ccc">GLS</a> <a href="/tags/Galerkin/" style="font-size: 12px; color: #ccc">Galerkin</a> <a href="/tags/PDE/" style="font-size: 12px; color: #ccc">PDE</a> <a href="/tags/Pn方法/" style="font-size: 12px; color: #ccc">Pn方法</a> <a href="/tags/SAAF/" style="font-size: 12px; color: #ccc">SAAF</a> <a href="/tags/SGS/" style="font-size: 16.5px; color: #9d9d9d">SGS</a> <a href="/tags/hexo/" style="font-size: 16.5px; color: #9d9d9d">hexo</a> <a href="/tags/pn方法/" style="font-size: 21px; color: #6f6f6f">pn方法</a> <a href="/tags/psblas/" style="font-size: 12px; color: #ccc">psblas</a> <a href="/tags/三体/" style="font-size: 12px; color: #ccc">三体</a> <a href="/tags/中子输运方程/" style="font-size: 30px; color: #111">中子输运方程</a> <a href="/tags/偏微分方程/" style="font-size: 12px; color: #ccc">偏微分方程</a> <a href="/tags/变分/" style="font-size: 12px; color: #ccc">变分</a> <a href="/tags/基准题/" style="font-size: 12px; color: #ccc">基准题</a> <a href="/tags/守恒/" style="font-size: 12px; color: #ccc">守恒</a> <a href="/tags/弗洛姆/" style="font-size: 12px; color: #ccc">弗洛姆</a> <a href="/tags/数值计算/" style="font-size: 16.5px; color: #9d9d9d">数值计算</a> <a href="/tags/有限元/" style="font-size: 25.5px; color: #404040">有限元</a> <a href="/tags/爱的艺术/" style="font-size: 12px; color: #ccc">爱的艺术</a> <a href="/tags/球谐函数/" style="font-size: 16.5px; color: #9d9d9d">球谐函数</a> <a href="/tags/符号/" style="font-size: 12px; color: #ccc">符号</a> <a href="/tags/边界条件/" style="font-size: 12px; color: #ccc">边界条件</a> <a href="/tags/迎风格式/" style="font-size: 12px; color: #ccc">迎风格式</a> <a href="/tags/通量分解/" style="font-size: 16.5px; color: #9d9d9d">通量分解</a> <a href="/tags/马斯洛/" style="font-size: 12px; color: #ccc">马斯洛</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">一阶中子输运方程FSGS离散</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-20T09:25:30+08:00">
+                2017-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/中子输运方程/" itemprop="url" rel="index">
+                    <span itemprop="name">中子输运方程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>SGS方法是A.G.Buchan在文献 1 中提出的对一阶中子输运方程稳定的有限元方法。然后在文献 2 中提出了一种更加高效的方法叫 ESGS 方法。在此基础上我提出了一种快速的SGS方法叫FSGS方法，这种方法比ESGS效率要高很多，因为不用进行特征值分解和矩阵求逆。</p>
+<h2 id="SGS-方法"><a href="#SGS-方法" class="headerlink" title="SGS 方法"></a>SGS 方法</h2><p>SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证方程的稳定性。该方法将变量分为连续部分与间断部分之和，其中$ ϕ_c$为连续部分，$ϕ_d$为间断部分，最终会形成两个方程<br>$$ϕ = ϕ_c+ϕ_d$$</p>
+<p>其弱形式为<br>$$(φ_c,Ω⋅∇ϕ)+(φ_c,σϕ) = (φ_c,s) \tag{$1$}$$</p>
+<p>$$(φ_d,Ω⋅∇ϕ)+(φ_d,σϕ) = (φ_d,s) \tag{$2$}$$</p>
+<p>其中方程1是针对全局的，对$ϕ$分部积分<br>$$&lt;φ_c,Ω⋅nϕ&gt; - (Ω⋅∇φ_c,ϕ)+(φ_c,σϕ) = (φ_c,s)$$</p>
+<p>方程2是针对每个单元的，对$ϕ_d$分部积分<br>$$&lt;φ_d,Ω⋅nϕ_d&gt; - (Ω⋅∇φ_d,ϕ_d)+(φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ) = (φ_d,s)$$</p>
+<p>SGS方法假设对于区域边界，有如下边界条件<br>$$&lt;φ,Ω⋅nϕ_c&gt;^{-} = G$$</p>
+<p>$$&lt;φ,Ω⋅nϕ_d&gt; = 0$$</p>
+<p>对于内部单元边界<br>$$&lt;φ_d,Ω⋅nϕ_d&gt;^{-} = 0$$</p>
+<p>所以带入边界条件得<br>$$&lt;φ_c,Ω⋅nϕ_c&gt;^{+} - (Ω⋅∇φ_c,ϕ)+(φ_c,σϕ) = (φ_c,s) - G \tag{$3$}$$</p>
+<p>$$&lt;φ_d,Ω⋅nϕ_d&gt;^{+} - (Ω⋅∇φ_d,ϕ_d)+(φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ) = (φ_d,s) \tag{$4$}$$</p>
+<p>定义矩阵<br>$$A =  - (Ω⋅∇φ_c,φ_c)+(φ_c,σφ_c) + &lt;φ_d,Ω⋅nφ_d&gt;^{+}$$</p>
+<p>$$B =  - (Ω⋅∇φ_c,φ_d)+(φ_c,σφ_d)$$</p>
+<p>$$C =    (φ_d,Ω⋅∇φ_c)+(φ_d,σφ_c)$$</p>
+<p>$$D =  - (Ω⋅∇φ_d,φ_d)+(φ_d,σφ_d) + &lt;φ_d,Ω⋅nφ_d&gt;^{+} $$</p>
+<p>$$s_c = (φ_c,s) - G$$</p>
+<p>$$s_d = (φ_d,s)$$</p>
+<p>所以</p>
+<p>$$Aϕ_c+Bϕ_d = s_c \tag{$5$}$$</p>
+<p>$$Cϕ_c+Dϕ_d = s_d \tag{$6$}$$</p>
+<p>由方程 6 得</p>
+<p>$$\phi_d=D^{-1}(s_d - C\phi_c)$$</p>
+<p>将其带入方程5中，得</p>
+<p>$$[A-BD^{-1}C ]\phi_c= s_c-BD^{-1}s_d \tag{$7$}$$</p>
+<p>求解方程 7 得到解 $\phi_c$</p>
+<h2 id="FSGS-方法"><a href="#FSGS-方法" class="headerlink" title="FSGS 方法"></a>FSGS 方法</h2><p>在SGS方法中，虽然矩阵 $D$ 只用在每个小单元上求解，但在每个单元上需要求 $&lt;φ_d,Ω⋅nφ_d&gt;^{+}$，所以需要在每个单元上进行黎曼分解，而且在每个单元上都需要求 $D^{-1}$，这两个过程都是比较耗时的。在FSGS方法中提出了一种新的方法使得矩阵 $D$ 变为一个对角矩阵，并且过程中不需要进行特征值分解，所以效率会提高很多。</p>
+<p>该方法在每个单元上假设满足$Ω\cdot ∇\phi_d = c\phi_d$, 其中c为任意常数，所以方程 2 变为</p>
+<p>$$(φ_d,(c+σ)\phi_d) + (φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ_c) = (φ_d,s) $$</p>
+<p>所以矩阵 $D$ 变为以下形式</p>
+<p>$$D = (φ_d,(c+σ)φ_d)$$</p>
+<p>然后通过质量矩阵集中技巧将矩阵 $D$ 对角化(对角元素等于每一行元素之和)，得到对角矩阵 $D_d$，然后将该矩阵带入方程 7 中进行求解。<br>$$[A-BD_d^{-1}C ]\phi_c= s_c-BD_d^{-1}s_d \tag{$8$}$$</p>
+<ol>
+<li><p>Buchan A G, Candy A S, Merton S R, et al. The Inner-Element Subgrid Scale Finite Element Method for the Boltzmann Transport Equation[J]. Nuclear Science &amp; Engineering the Journal of the American Nuclear Society, 2010, 1030(2):1031-1031.</p>
+</li>
+<li><p>Buchan A G, Pain C C. An efficient space-angle subgrid scale discretisation of the neutron transport equation[J]. Annals of Nuclear Energy, 2016, 94:440-450.</p>
+</li>
+</ol>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SGS/" rel="tag"># SGS</a>
+          
+            <a href="/tags/FSGS/" rel="tag"># FSGS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/16/输运方程变分形式的守恒关系/" rel="next" title="输运方程变分形式的守恒关系">
+                <i class="fa fa-chevron-left"></i> 输运方程变分形式的守恒关系
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/22/ParaView学习/" rel="prev" title="ParaView学习">
+                ParaView学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
   </div>
 
 
@@ -372,8 +564,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/bio.png"
@@ -462,6 +663,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SGS-方法"><span class="nav-number">1.</span> <span class="nav-text">SGS 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FSGS-方法"><span class="nav-number">2.</span> <span class="nav-text">FSGS 方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -564,10 +781,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 

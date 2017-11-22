@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="中子输运方程,SGS," />
+  <meta name="keywords" content="SGS,中子输运方程," />
 
 
 
@@ -95,14 +95,14 @@
 
 
 <meta name="description" content="SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证方程的稳定性。">
-<meta name="keywords" content="中子输运方程,SGS">
+<meta name="keywords" content="SGS,中子输运方程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一阶中子输运方程SGS离散">
 <meta property="og:url" content="http://superfun.xyz/2017/10/23/一阶中子输运方程SGS离散/index.html">
 <meta property="og:site_name" content="superfun">
 <meta property="og:description" content="SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证方程的稳定性。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-14T08:40:43.230Z">
+<meta property="og:updated_time" content="2017-11-20T01:19:39.739Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一阶中子输运方程SGS离散">
 <meta name="twitter:description" content="SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证方程的稳定性。">
@@ -408,20 +408,24 @@
       
         <p>SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证方程的稳定性。</p>
 <a id="more"></a>
-<h2 id="输运方程"><a href="#输运方程" class="headerlink" title="输运方程"></a>输运方程</h2><p>$Ω⋅∇ϕ+σϕ = s$</p>
-<h2 id="假设"><a href="#假设" class="headerlink" title="假设"></a>假设</h2><p>将通量分为连续部分与间断部分之和，其中$ ϕ_c$为连续部分，$ϕ_d$为间断部分<br>$ϕ = ϕ_c+ϕ_d$</p>
-<h2 id="弱形式"><a href="#弱形式" class="headerlink" title="弱形式"></a>弱形式</h2><p>在方程两端同时乘以基函数，在进行积分<br>$(φ_c,Ω⋅∇ϕ)+(φ_c,σϕ) = (φ_c,s)$  $\,\,\, 1$<br>$(φ_d,Ω⋅∇ϕ)+(φ_d,σϕ) = (φ_d,s)$  $\,\,\, 2$</p>
-<h2 id="分部积分"><a href="#分部积分" class="headerlink" title="分部积分"></a>分部积分</h2><p>对方程1的$ϕ$分部积分<br>$&lt;φ_c,Ω⋅nϕ&gt; - (Ω⋅∇φ_c,ϕ)+(φ_c,σϕ) = (φ_c,s)$</p>
-<p>对方程2的$ϕ_d$分部积分<br>$&lt;φ_d,Ω⋅nϕ_d&gt; - (Ω⋅∇φ_d,ϕ_d)+(φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ) = (φ_d,s)$</p>
-<h2 id="边界条件"><a href="#边界条件" class="headerlink" title="边界条件"></a>边界条件</h2><h3 id="外边界"><a href="#外边界" class="headerlink" title="外边界"></a>外边界</h3><p>$&lt;φ,Ω⋅nϕ_c&gt;^{-} = G$<br>$&lt;φ,Ω⋅nϕ_d&gt; = 0$</p>
-<h3 id="内边界"><a href="#内边界" class="headerlink" title="内边界"></a>内边界</h3><p>$&lt;φ_d,Ω⋅nϕ_d&gt;^{-} = 0$</p>
-<h2 id="带入方程"><a href="#带入方程" class="headerlink" title="带入方程"></a>带入方程</h2><p>$&lt;φ_c,Ω⋅nϕ_c&gt;^{+} - (Ω⋅∇φ_c,ϕ)+(φ_c,σϕ) = (φ_c,s) - G$</p>
-<p>$&lt;φ_d,Ω⋅nϕ_d&gt;^{+} - (Ω⋅∇φ_d,ϕ_d)+(φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ) = (φ_d,s)$</p>
-<h2 id="矩阵形式"><a href="#矩阵形式" class="headerlink" title="矩阵形式"></a>矩阵形式</h2><p>离散之后，可以将以上方程写为矩阵形式<br>$\begin{bmatrix} A &amp; B\\C &amp; D\\\end{bmatrix} \begin{bmatrix} \phi_c \ \phi_d\end{bmatrix} = \begin{bmatrix} s_c \ s_d\end{bmatrix}$</p>
-<p>由方程2得<br>$\phi_d=D^{-1}(s_d - C\phi_c)$<br>将其带入方程1中，得<br>$[A-BD^{-1}C ]\phi_c= s_c-BD^{-1}s_d$</p>
+<h2 id="输运方程"><a href="#输运方程" class="headerlink" title="输运方程"></a>输运方程</h2><p>$$Ω⋅∇ϕ+σϕ = s$$</p>
+<h2 id="假设"><a href="#假设" class="headerlink" title="假设"></a>假设</h2><p>将通量分为连续部分与间断部分之和，其中$ ϕ_c$为连续部分，$ϕ_d$为间断部分<br>$$ϕ = ϕ_c+ϕ_d$$</p>
+<h2 id="弱形式"><a href="#弱形式" class="headerlink" title="弱形式"></a>弱形式</h2><p>在方程两端同时乘以基函数，在进行积分<br>$$(φ_c,Ω⋅∇ϕ)+(φ_c,σϕ) = (φ_c,s)\tag{$1$}$$<br>$$(φ_d,Ω⋅∇ϕ)+(φ_d,σϕ) = (φ_d,s)\tag{$2$}$$</p>
+<h2 id="分部积分"><a href="#分部积分" class="headerlink" title="分部积分"></a>分部积分</h2><p>对方程1的$ϕ$分部积分<br>$$&lt;φ_c,Ω⋅nϕ&gt; - (Ω⋅∇φ_c,ϕ)+(φ_c,σϕ) = (φ_c,s)$$</p>
+<p>对方程2的$ϕ_d$分部积分<br>$$&lt;φ_d,Ω⋅nϕ_d&gt; - (Ω⋅∇φ_d,ϕ_d)+(φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ) = (φ_d,s)$$</p>
+<h2 id="边界条件"><a href="#边界条件" class="headerlink" title="边界条件"></a>边界条件</h2><h3 id="外边界"><a href="#外边界" class="headerlink" title="外边界"></a>外边界</h3><p>$$&lt;φ,Ω⋅nϕ_c&gt;^{-} = G$$</p>
+<p>$$&lt;φ,Ω⋅nϕ_d&gt; = 0$$</p>
+<h3 id="内边界"><a href="#内边界" class="headerlink" title="内边界"></a>内边界</h3><p>$$&lt;φ_d,Ω⋅nϕ_d&gt;^{-} = 0$$</p>
+<h2 id="带入方程"><a href="#带入方程" class="headerlink" title="带入方程"></a>带入方程</h2><p>$$&lt;φ_c,Ω⋅nϕ_c&gt;^{+} - (Ω⋅∇φ_c,ϕ)+(φ_c,σϕ) = (φ_c,s) - G$$</p>
+<p>$$&lt;φ_d,Ω⋅nϕ_d&gt;^{+} - (Ω⋅∇φ_d,ϕ_d)+(φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ) = (φ_d,s)$$</p>
+<h2 id="矩阵形式"><a href="#矩阵形式" class="headerlink" title="矩阵形式"></a>矩阵形式</h2><p>离散之后，可以将以上方程写为矩阵形式<br>$$\begin{bmatrix} A &amp; B\\C &amp; D\\\end{bmatrix} \begin{bmatrix} \phi_c \ \phi_d\end{bmatrix} = \begin{bmatrix} s_c \ s_d\end{bmatrix}$$</p>
+<p>由方程2得<br>$$\phi_d=D^{-1}(s_d - C\phi_c)$$<br>将其带入方程1中，得<br>$$[A-BD^{-1}C ]\phi_c= s_c-BD^{-1}s_d$$</p>
 <p>其中矩阵的单元矩阵形式为：</p>
-<h3 id="内部"><a href="#内部" class="headerlink" title="内部"></a>内部</h3><p>$A_e =  - (Ω⋅∇φ_c,φ_c)+(φ_c,σφ_c)$<br>$B_e =  - (Ω⋅∇φ_c,φ_d)+(φ_c,σφ_d)$<br>$C_e =    (φ_d,Ω⋅∇φ_c)+(φ_d,σφ_c)$<br>$D_e =  - (Ω⋅∇φ_d,φ_d)+(φ_d,σφ_d) + &lt;φ_d,Ω⋅nφ_d&gt;^{+} $</p>
-<h3 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h3><p>$A_e =  &lt;φ_c,Ω⋅nφ_c&gt;^{+}$</p>
+<h3 id="内部"><a href="#内部" class="headerlink" title="内部"></a>内部</h3><p>$$A_e =  - (Ω⋅∇φ_c,φ_c)+(φ_c,σφ_c)$$</p>
+<p>$$B_e =  - (Ω⋅∇φ_c,φ_d)+(φ_c,σφ_d)$$</p>
+<p>$$C_e =    (φ_d,Ω⋅∇φ_c)+(φ_d,σφ_c)$$</p>
+<p>$$D_e =  - (Ω⋅∇φ_d,φ_d)+(φ_d,σφ_d) + &lt;φ_d,Ω⋅nφ_d&gt;^{+} $$</p>
+<h3 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h3><p>$$A_e =  &lt;φ_c,Ω⋅nφ_c&gt;^{+}$$</p>
 <h3 id="单元矩阵"><a href="#单元矩阵" class="headerlink" title="单元矩阵"></a>单元矩阵</h3><p>定义<br>$$L = (φ,Ω⋅∇φ)$$</p>
 <p>$$R = (φ,σφ)$$</p>
 <p>$$O = &lt;φ,Ω⋅nφ&gt;$$</p>
@@ -432,7 +436,30 @@
 <p>$$B = A$$</p>
 <p>$$C = L+R = A + O$$</p>
 <p>$$D = A + O^{+}$$</p>
-<p>推导 ?<br>定义单元矩阵<br>$$K_e = A-BD^{-1}C$$<br>$$K_e  = A-A(A+O^{+})^{-1}(A+O) =  A-A(A+O^{+})^{-1}(A+O^{+}+O^{-}) = -A(A+O^{+})^{-1}O^{-}$$<br>$$-A(A+O^{+})^{-1}O^{-} \phi= s-A(A + O^{+})^{-1}s$$<br>$$-O^{-} \phi= (A + O^{+})A^{-1}s-s = O^{+}A^{-1}s$$<br>$$A(O^{+})^{-1}(-O^{-})\phi = s$$<br>$$A (I- (O^{+})^{-1}O)\phi = s$$</p>
+<h3 id="矩阵运算-？"><a href="#矩阵运算-？" class="headerlink" title="矩阵运算 ？"></a>矩阵运算 ？</h3><p>定义单元矩阵<br>$$K_e = A-BD^{-1}C$$</p>
+<p>$$K_e  = A-A(A+O^{+})^{-1}(A+O) =  A-A(A+O^{+})^{-1}(A+O^{+}+O^{-}) = -A(A+O^{+})^{-1}O^{-}$$</p>
+<p>$$-A(A+O^{+})^{-1}O^{-} \phi= s-A(A + O^{+})^{-1}s$$</p>
+<p>$$-O^{-} \phi= (A + O^{+})A^{-1}s-s = O^{+}A^{-1}s$$</p>
+<p>$$A(O^{+})^{-1}(-O^{-})\phi = s$$</p>
+<p>$$A (I- (O^{+})^{-1}O)\phi = s$$</p>
+<h3 id="矩阵-D-的性质"><a href="#矩阵-D-的性质" class="headerlink" title="矩阵 $D$ 的性质 ?"></a>矩阵 $D$ 的性质 ?</h3><p>对于一维<br>$$O = \begin{bmatrix} -As &amp; 0\\0 &amp; As\\\end{bmatrix}$$</p>
+<p>$$O^{+} = \begin{bmatrix} -Asi &amp; 0\\0 &amp; Aso\\\end{bmatrix}$$</p>
+<p>$$O^{-} = \begin{bmatrix} -Aso &amp; 0\\0 &amp; Asi\\\end{bmatrix}$$</p>
+<hr>
+<p>$$L =\frac{1}{2} As\begin{bmatrix} -1 &amp; 1\-1 &amp; 1\\\end{bmatrix}$$</p>
+<p>$$L+L^{T} =O$$</p>
+<p>$$L-L^{T} =\begin{bmatrix} 0 &amp; As\ -As &amp; 0\\\end{bmatrix}$$</p>
+<hr>
+<p>$$O^{+}-L^{T} = \frac{1}{2}\begin{bmatrix} Aso-Asi &amp; As\-As &amp; Aso-Asi\\\end{bmatrix}$$</p>
+<p>$$L-O^{-} = O^{+} - L^{T}$$</p>
+<h3 id="FSGS"><a href="#FSGS" class="headerlink" title="FSGS"></a>FSGS</h3><p>最终要求解的代数方程组为<br>$$K\phi = F$$<br>其中 $F = Es$，所以<br>$$K = A-BD^{-1}C = -L^{T}+R + O^{+} -(-L^{T}+R)D^{-1}(L+R)$$</p>
+<p>$$K = -L^{T}+R+ O^{+} + L^{T}D^{-1}L + L^{T}D^{-1}R -RD^{-1}L - RD^{-1}R$$</p>
+<p>$$E = I-(-L^{T}+R)D^{-1} = I+L^{T}D^{-1} - RD^{-1}$$</p>
+<p>对于非真空区域，令 $D=R$，此时<br>$$K = -L^{T}+R+ O^{+} + L^{T}R^{-1}L + L^{T} -L - R = O^{+} + L^{T}R^{-1}L  -L$$</p>
+<p>$$E = L^{T}R^{-1}$$</p>
+<p>对于真空区域，令 $D = I$，此时</p>
+<p>$$K = O^{+} + L^{T}L -L $$</p>
+<p>$$E = L^{T}$$</p>
 
       
     </div>
@@ -450,9 +477,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/中子输运方程/" rel="tag"># 中子输运方程</a>
-          
             <a href="/tags/SGS/" rel="tag"># SGS</a>
+          
+            <a href="/tags/中子输运方程/" rel="tag"># 中子输运方程</a>
           
         </div>
       
@@ -579,7 +606,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -601,7 +628,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -663,7 +690,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#输运方程"><span class="nav-number">1.</span> <span class="nav-text">输运方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#假设"><span class="nav-number">2.</span> <span class="nav-text">假设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弱形式"><span class="nav-number">3.</span> <span class="nav-text">弱形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分部积分"><span class="nav-number">4.</span> <span class="nav-text">分部积分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边界条件"><span class="nav-number">5.</span> <span class="nav-text">边界条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外边界"><span class="nav-number">5.1.</span> <span class="nav-text">外边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内边界"><span class="nav-number">5.2.</span> <span class="nav-text">内边界</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带入方程"><span class="nav-number">6.</span> <span class="nav-text">带入方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵形式"><span class="nav-number">7.</span> <span class="nav-text">矩阵形式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内部"><span class="nav-number">7.1.</span> <span class="nav-text">内部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#边界"><span class="nav-number">7.2.</span> <span class="nav-text">边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单元矩阵"><span class="nav-number">7.3.</span> <span class="nav-text">单元矩阵</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#输运方程"><span class="nav-number">1.</span> <span class="nav-text">输运方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#假设"><span class="nav-number">2.</span> <span class="nav-text">假设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弱形式"><span class="nav-number">3.</span> <span class="nav-text">弱形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分部积分"><span class="nav-number">4.</span> <span class="nav-text">分部积分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边界条件"><span class="nav-number">5.</span> <span class="nav-text">边界条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外边界"><span class="nav-number">5.1.</span> <span class="nav-text">外边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内边界"><span class="nav-number">5.2.</span> <span class="nav-text">内边界</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带入方程"><span class="nav-number">6.</span> <span class="nav-text">带入方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵形式"><span class="nav-number">7.</span> <span class="nav-text">矩阵形式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内部"><span class="nav-number">7.1.</span> <span class="nav-text">内部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#边界"><span class="nav-number">7.2.</span> <span class="nav-text">边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单元矩阵"><span class="nav-number">7.3.</span> <span class="nav-text">单元矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵运算-？"><span class="nav-number">7.4.</span> <span class="nav-text">矩阵运算 ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵-D-的性质"><span class="nav-number">7.5.</span> <span class="nav-text">矩阵 $D$ 的性质 ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FSGS"><span class="nav-number">7.6.</span> <span class="nav-text">FSGS</span></a></li></ol></li></ol></div>
             
 
           </div>

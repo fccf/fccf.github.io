@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="superfun">
 <meta property="og:description" content="标准的Galerkin有限元方法只适用于椭圆方程，直接应用于双曲方程会产生伪震荡，所以需要一些技巧来消除这些震荡，使解变得稳定。这些技巧主要有两个方面：第一是将一阶的双曲方程变为二阶的椭圆方程，比如最小二乘方法（GLS)、迎风流线扩散方法(SUPG)等；另一种是将离散的格式写为迎风格式，比如间断有限元(DG)等，以下对这些稳定算法进行简要的介绍。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-14T09:02:40.747Z">
+<meta property="og:updated_time" content="2017-11-22T07:36:01.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一阶中子输运方程稳定有限元方法">
 <meta name="twitter:description" content="标准的Galerkin有限元方法只适用于椭圆方程，直接应用于双曲方程会产生伪震荡，所以需要一些技巧来消除这些震荡，使解变得稳定。这些技巧主要有两个方面：第一是将一阶的双曲方程变为二阶的椭圆方程，比如最小二乘方法（GLS)、迎风流线扩散方法(SUPG)等；另一种是将离散的格式写为迎风格式，比如间断有限元(DG)等，以下对这些稳定算法进行简要的介绍。">
@@ -414,22 +414,32 @@
 <p>带边界条件的方程<br>$$&lt;φ,Ω⋅nϕ&gt;^{+}  - (Ω⋅∇φ,ϕ)+(φ,σϕ) = (φ,s) - G$$</p>
 <p>等价方程1<br>$$ -&lt;φ,Ω⋅nϕ&gt;^{-} + (φ,Ω⋅∇ϕ)+(φ,σϕ) = (φ,s)-G$$</p>
 <p>等价方程2<br>$$ [&lt;φ,Ω⋅nϕ&gt;^{+}-&lt;φ,Ω⋅nϕ&gt;^{-}] /2 + [(φ,Ω⋅∇ϕ)- (Ω⋅∇φ,ϕ)]/2+(φ,σϕ) = (φ,s)-G$$</p>
-<h3 id="矩阵形式"><a href="#矩阵形式" class="headerlink" title="矩阵形式"></a>矩阵形式</h3><p>定义<br>$$C = (φ,Ω⋅∇φ)$$</p>
+<h3 id="矩阵形式"><a href="#矩阵形式" class="headerlink" title="矩阵形式"></a>矩阵形式</h3><p>定义<br>$$L = (φ,Ω⋅∇φ)$$</p>
 <p>$$R = (φ,σφ)$$</p>
 <p>$$O = &lt;φ,Ω⋅nφ&gt;$$</p>
 <p>$$O^{+} = &lt;φ,Ω⋅nφ&gt;^{+}$$</p>
 <p>$$O^{-} = &lt;φ,Ω⋅nφ&gt;^{-}$$</p>
 <p>$$b = (φ,s)-G$$</p>
-<p>所以Galerkin离散后的方程为<br>$$[C - O^{-}+R]ϕ = b$$</p>
-<p>$$[ -C^{T}+ O^{+}+R]ϕ = b$$</p>
-<p>$$[ (C-C^{T})/2+(O^{+}-O^{-})/2+R]ϕ = b$$</p>
+<p>所以Galerkin离散后的方程为<br>$$[L - O^{-}+R]ϕ = b$$</p>
+<p>$$[ -L^{T}+ O^{+}+R]ϕ = b$$</p>
+<p>$$[ (L-L^{T})/2+(O^{+}-O^{-})/2+R]ϕ = b$$</p>
 <h2 id="SUPG-Streamline-Upwinding-Petrov-Galerkin"><a href="#SUPG-Streamline-Upwinding-Petrov-Galerkin" class="headerlink" title="SUPG (Streamline Upwinding Petrov Galerkin)"></a>SUPG (Streamline Upwinding Petrov Galerkin)</h2><h3 id="离散过程-1"><a href="#离散过程-1" class="headerlink" title="离散过程"></a>离散过程</h3><p>流线扩散方法属于Petrov Galerkin 方法，该方法的检验函数与试探函数所在的空间不一样，检验函数所在的空间为 $φ+τΩ⋅∇φ$，所以输运方程的弱形式为<br>$$(φ,Ω⋅∇ϕ)+(φ,σϕ) + (τΩ⋅∇φ,Ω⋅∇ϕ)+(τΩ⋅∇φ,σϕ) = (φ,s)+ (τΩ⋅∇φ,s)$$</p>
 <h3 id="矩阵形式-1"><a href="#矩阵形式-1" class="headerlink" title="矩阵形式"></a>矩阵形式</h3><p>定义<br>$$D=(τΩ⋅∇φ,Ω⋅∇ϕ)$$</p>
 <p>$$C_{r}^{T} = (τΩ⋅∇φ,σϕ)$$</p>
 <p>$$b = (φ,s)+ (τΩ⋅∇φ,s)-G$$</p>
-<p>所以SUPG离散之后的方程为<br>$$[-C^{T}+ O^{+}+R + D + C_{r}^{T}]ϕ = b$$</p>
-<p>对于非真空区域，取$τ = \frac{1}{σ}$，则$C_{r}^{T} = C^{T}$，所以此时<br>$$[ O^{+}+R + D ]ϕ = b$$</p>
-<h2 id="GLS-Galerkin-Least-Squares"><a href="#GLS-Galerkin-Least-Squares" class="headerlink" title="GLS (Galerkin Least Squares)"></a>GLS (Galerkin Least Squares)</h2><p>最小二乘方法也是一种Petrov Galerkin 方法，该方法的检验函数所在的空间为试探函数空间的共轭，所以得到的矩阵是对称的。</p>
+<p>所以SUPG离散之后的方程为<br>$$[-L^{T}+ O^{+}+R + D + L_{r}^{T}]ϕ = b$$</p>
+<p>对于非真空区域，取$τ = \frac{1}{σ}$，则$L_{r}^{T} = L^{T}$，所以此时<br>$$[ O^{+}+R + D ]ϕ = b$$</p>
+<h2 id="GLS-Galerkin-Least-Squares"><a href="#GLS-Galerkin-Least-Squares" class="headerlink" title="GLS (Galerkin Least Squares)"></a>GLS (Galerkin Least Squares)</h2><p>最小二乘公式的推导方式有很多种，可以从变分原理出发，也可以从加权残值法出发。以下从最小二乘泛函出发推导。令 $T = Ω⋅∇+σ$, 定义输运方程的全局残差的二范数</p>
+<p>$$R = \int_v \int_{Ω} (T\phi - s)^2dΩdV$$</p>
+<p>对输运方程求解就是要使残差最小，即该泛函的一阶变分为零，所以</p>
+<p>$$δR = 2 \int_v \int_{Ω} Tδϕ(T\phi - s)dΩdV = 0$$</p>
+<p>所以，最小二乘方法的弱形式为</p>
+<p>$$(Tδϕ,Tϕ) = (Tδϕ,s)$$</p>
+<p>令 $φ = δϕ$，所以</p>
+<p>$$(Ω⋅∇φ,Ω⋅∇ϕ) + (σφ,Ω⋅∇ϕ) + (Ω⋅∇φ,σϕ) + (σφ,σϕ)= (Ω⋅∇φ,s)+ (σφ,s)$$</p>
+<h3 id="边界条件"><a href="#边界条件" class="headerlink" title="边界条件"></a>边界条件</h3><p>最小二乘方法的边界条件不好处理，对于$S_N$方法可以全部使用强制边界条件；而对于$P_N$方法，需要使用弱形式的边界条件，即在原来变分形式中减去边界上的变分的 $c$ 倍，即</p>
+<p>$$(Ω⋅∇φ,Ω⋅∇ϕ) + (σφ,Ω⋅∇ϕ) + (Ω⋅∇φ,σϕ) + (σφ,σϕ) - <cφ,ϕ-g>^{-} = (Ω⋅∇φ,s)+ (σφ,s)$$</cφ,ϕ-g></p>
+<p>其中c是一个常数，c的选取是一个很重要的问题。</p>
 <h2 id="SGS-Sub-Grid-Scale"><a href="#SGS-Sub-Grid-Scale" class="headerlink" title="SGS (Sub-Grid Scale)"></a>SGS (Sub-Grid Scale)</h2><h3 id="离散过程-2"><a href="#离散过程-2" class="headerlink" title="离散过程"></a>离散过程</h3><p>该方法将变量分为连续部分与间断部分之和，其中$ ϕ_c$为连续部分，$ϕ_d$为间断部分，最终会形成两个方程<br>$$ϕ = ϕ_c+ϕ_d$$</p>
 <p>其弱形式为<br>$$(φ_c,Ω⋅∇ϕ)+(φ_c,σϕ) = (φ_c,s) \tag{$1$}$$</p>
 <p>$$(φ_d,Ω⋅∇ϕ)+(φ_d,σϕ) = (φ_d,s) \tag{$2$}$$</p>
@@ -440,13 +450,13 @@
 <p>对于内部单元边界<br>$$&lt;φ_d,Ω⋅nϕ_d&gt;^{-} = 0$$</p>
 <p>带入边界条件得<br>$$&lt;φ_c,Ω⋅nϕ_c&gt;^{+} - (Ω⋅∇φ_c,ϕ)+(φ_c,σϕ) = (φ_c,s) - G$$</p>
 <p>$$&lt;φ_d,Ω⋅nϕ_d&gt;^{+} - (Ω⋅∇φ_d,ϕ_d)+(φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ) = (φ_d,s)$$</p>
-<h3 id="矩阵形式-2"><a href="#矩阵形式-2" class="headerlink" title="矩阵形式"></a>矩阵形式</h3><p>$$[ O^{+}-C^{T}+R]ϕ_c+[ -C^{T}+R]ϕ_d = s_c \tag{$3$}$$</p>
-<p>$$[ C+R]ϕ_c+[ O^{+}-C^{T}+R]ϕ_d = s_d \tag{$4$}$$</p>
+<h3 id="矩阵形式-2"><a href="#矩阵形式-2" class="headerlink" title="矩阵形式"></a>矩阵形式</h3><p>$$[ O^{+}-L^{T}+R]ϕ_c+[ -L^{T}+R]ϕ_d = s_c \tag{$3$}$$</p>
+<p>$$[ L+R]ϕ_c+[ O^{+}-L^{T}+R]ϕ_d = s_d \tag{$4$}$$</p>
 <p>方程(3)描述整个求解区域，方程(4)描述单个单元。所以对于每个内部单元</p>
-<p>$$K_{11} = -C^{T}+R$$</p>
-<p>$$K_{12} = -C^{T}+R$$</p>
-<p>$$K_{21} = C+R$$</p>
-<p>$$K_{22} = O^{+}-C^{T}+R$$</p>
+<p>$$K_{11} = -L^{T}+R$$</p>
+<p>$$K_{12} = -L^{T}+R$$</p>
+<p>$$K_{21} = L+R$$</p>
+<p>$$K_{22} = O^{+}-L^{T}+R$$</p>
 <p>对于边界<br>$$K_{11} = O^{+}$$</p>
 <p>由方程(4)求解$\phi_d$<br>$$\phi_d=K_{22}^{-1}(s_d - K_{21}\phi_c)$$</p>
 <p>然后带入方程(3)中，得<br>$$[K_{11}-K_{12}K_{22}^{-1}K_{21}]\phi_c = s_c - K_{12}K_{22}^{-1}s_d$$</p>
@@ -461,6 +471,33 @@
 <p>感觉迭代 2 次应该就差不多了。</p>
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>迭代求解<strong>失败</strong>，方程不满足局部守恒关系。迭代会震荡得更厉害。</p>
 <h2 id="SUPG-（LS）-SGS"><a href="#SUPG-（LS）-SGS" class="headerlink" title="SUPG （LS） + SGS"></a>SUPG （LS） + SGS</h2><p>想采用LS方法和SGS方法结合起来求解。因为最小二乘方法中为处理边界条件，公式中出现 $\frac{1}{σ}$，所以不适合于真空边界条件求解。所以单元矩阵在分真空边界上采用最小二乘方法，在真空区域采用SGS方法。</p>
+<h1 id="以下方法是我自己提出来的"><a href="#以下方法是我自己提出来的" class="headerlink" title="以下方法是我自己提出来的"></a>以下方法是我自己提出来的</h1><h2 id="FSGS-快速SGS"><a href="#FSGS-快速SGS" class="headerlink" title="FSGS (快速SGS)"></a>FSGS (快速SGS)</h2><p>最终要求解的代数方程组为<br>$$K\phi = F$$<br>其中 $F = Es$，所以<br>$$K = A-BD^{-1}C = -L^{T}+R + O^{+} -(-L^{T}+R)D^{-1}(L+R)$$</p>
+<p>$$K = -L^{T}+R+ O^{+} + L^{T}D^{-1}L + L^{T}D^{-1}R -RD^{-1}L - RD^{-1}R$$</p>
+<p>$$E = I-(-L^{T}+R)D^{-1} = I+L^{T}D^{-1} - RD^{-1}$$</p>
+<h3 id="非真空区域"><a href="#非真空区域" class="headerlink" title="非真空区域"></a>非真空区域</h3><p>令 $D=R$，此时<br>$$K = -L^{T}+R+ O^{+} + L^{T}R^{-1}L + L^{T} -L - R = O^{+} + L^{T}R^{-1}L  -L$$</p>
+<p>$$E = L^{T}R^{-1}$$</p>
+<h3 id="真空区域"><a href="#真空区域" class="headerlink" title="真空区域"></a>真空区域</h3><p>令 $D = I$，此时</p>
+<p>$$K = O^{+} + L^{T}L -L $$</p>
+<p>$$E = L^{T}$$</p>
+<h2 id="OWLS-最优加权最小二乘"><a href="#OWLS-最优加权最小二乘" class="headerlink" title="OWLS (最优加权最小二乘)"></a>OWLS (最优加权最小二乘)</h2><p>不带边界条件连续有限元离散之后的输运方程为<br>$$(L+R)\phi = s$$</p>
+<p>在方程两端同时乘以 $(L+R)^{T}D$，$D$是一个权重矩阵，所以<br>$$(L+R)^{T}D(L+R)\phi = (L+R)^{T}Ds$$</p>
+<p>所以<br>$$K =L^{T}DL + L^{T}DR+R^{T}DL + R^{T}DR$$</p>
+<p>$$E =L^{T}D+ R^{T}D$$</p>
+<h3 id="非真空区域-1"><a href="#非真空区域-1" class="headerlink" title="非真空区域"></a>非真空区域</h3><p>取$D = R^{-1}$，由于矩阵 $R$ 是对称的，所以<br>$$K =L^{T}R^{-1}L + L^{T}+L + R$$</p>
+<p>$$E =L^{T}R^{-1}+ I$$</p>
+<p>该方程减去一阶方程$(L+R)\phi = s$，得<br>$$K =L^{T}R^{-1}L + L^{T}$$</p>
+<p>$$E =L^{T}R^{-1}$$</p>
+<p>由于 $L^{T} = O-L$，所以<br>$$K =L^{T}R^{-1}L + O-L$$</p>
+<p>$$E =L^{T}R^{-1}$$</p>
+<p>带入边界条件后，该式与FSGS是完全一样的</p>
+<h3 id="真空区域-1"><a href="#真空区域-1" class="headerlink" title="真空区域"></a>真空区域</h3><p>取 $D = I$，则<br>$$K = O^{+} + L^{T}L -L $$</p>
+<p>$$E = L^{T}$$</p>
+<p>所以，最小二乘方法与FSGS是完全等价的。</p>
+<h3 id="为什么要减去一阶方程"><a href="#为什么要减去一阶方程" class="headerlink" title="为什么要减去一阶方程"></a>为什么要减去一阶方程</h3><p>不带边界条件的最小二乘方法的弱形式为</p>
+<p>$$(Tφ,Tϕ) = (Tφ,s)$$</p>
+<p>利用分部积分将检验函数上的导数都转移到求解量上，得<br>$$&lt;φ,n⋅Ω(Ω⋅∇ϕ+σϕ-s)&gt;-(φ,Ω⋅∇(Ω⋅∇ϕ)-Ω⋅∇s-σ^{2}ϕ+σs) = 0 $$</p>
+<p>所以最小二乘泛函的Euler-Lagrange方程为<br>$$\left\{\begin{matrix}<br>Ω⋅∇(Ω⋅∇ϕ)-Ω⋅∇s-σ^{2}ϕ+σs=0,\phi \in V\\<br>Ω⋅∇ϕ+σϕ-s,\phi \in Γ<br>\end{matrix}\right.$$</p>
+<p>所以在一个非真空材料区域内满足SAAF方程，在材料边界满足一阶中子输运方程。如果直接对原来的最小二乘变分求解表示一阶方程在材料边界上严格满足，不存在离散误差，而这是不可能的，在材料交界面上一阶方程不能严格满足。所以原来的最小二乘变分必须减去一阶方程。这样做有很多好处，包括实现了最小二乘方程的全局守恒性，可以直接处理自然边界条件，可以计算内真空问题，解决了传统最小二乘方法的所有问题。</p>
 
       
     </div>
@@ -605,7 +642,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -627,7 +664,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -689,7 +726,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Galerkin"><span class="nav-number">1.</span> <span class="nav-text">Galerkin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散过程"><span class="nav-number">1.1.</span> <span class="nav-text">离散过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵形式"><span class="nav-number">1.2.</span> <span class="nav-text">矩阵形式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SUPG-Streamline-Upwinding-Petrov-Galerkin"><span class="nav-number">2.</span> <span class="nav-text">SUPG (Streamline Upwinding Petrov Galerkin)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散过程-1"><span class="nav-number">2.1.</span> <span class="nav-text">离散过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵形式-1"><span class="nav-number">2.2.</span> <span class="nav-text">矩阵形式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GLS-Galerkin-Least-Squares"><span class="nav-number">3.</span> <span class="nav-text">GLS (Galerkin Least Squares)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SGS-Sub-Grid-Scale"><span class="nav-number">4.</span> <span class="nav-text">SGS (Sub-Grid Scale)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散过程-2"><span class="nav-number">4.1.</span> <span class="nav-text">离散过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵形式-2"><span class="nav-number">4.2.</span> <span class="nav-text">矩阵形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代求解"><span class="nav-number">4.3.</span> <span class="nav-text">迭代求解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">4.4.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SUPG-（LS）-SGS"><span class="nav-number">5.</span> <span class="nav-text">SUPG （LS） + SGS</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Galerkin"><span class="nav-number">1.</span> <span class="nav-text">Galerkin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散过程"><span class="nav-number">1.1.</span> <span class="nav-text">离散过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵形式"><span class="nav-number">1.2.</span> <span class="nav-text">矩阵形式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SUPG-Streamline-Upwinding-Petrov-Galerkin"><span class="nav-number">2.</span> <span class="nav-text">SUPG (Streamline Upwinding Petrov Galerkin)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散过程-1"><span class="nav-number">2.1.</span> <span class="nav-text">离散过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵形式-1"><span class="nav-number">2.2.</span> <span class="nav-text">矩阵形式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GLS-Galerkin-Least-Squares"><span class="nav-number">3.</span> <span class="nav-text">GLS (Galerkin Least Squares)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#边界条件"><span class="nav-number">3.1.</span> <span class="nav-text">边界条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SGS-Sub-Grid-Scale"><span class="nav-number">4.</span> <span class="nav-text">SGS (Sub-Grid Scale)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散过程-2"><span class="nav-number">4.1.</span> <span class="nav-text">离散过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵形式-2"><span class="nav-number">4.2.</span> <span class="nav-text">矩阵形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代求解"><span class="nav-number">4.3.</span> <span class="nav-text">迭代求解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">4.4.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SUPG-（LS）-SGS"><span class="nav-number">5.</span> <span class="nav-text">SUPG （LS） + SGS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以下方法是我自己提出来的"><span class="nav-number"></span> <span class="nav-text">以下方法是我自己提出来的</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#FSGS-快速SGS"><span class="nav-number">1.</span> <span class="nav-text">FSGS (快速SGS)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非真空区域"><span class="nav-number">1.1.</span> <span class="nav-text">非真空区域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#真空区域"><span class="nav-number">1.2.</span> <span class="nav-text">真空区域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OWLS-最优加权最小二乘"><span class="nav-number">2.</span> <span class="nav-text">OWLS (最优加权最小二乘)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非真空区域-1"><span class="nav-number">2.1.</span> <span class="nav-text">非真空区域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#真空区域-1"><span class="nav-number">2.2.</span> <span class="nav-text">真空区域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要减去一阶方程"><span class="nav-number">2.3.</span> <span class="nav-text">为什么要减去一阶方程</span></a></li></ol></li></ol></div>
             
 
           </div>
