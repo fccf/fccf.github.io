@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="SGS方法是A.G.Buchan在文献 1 中提出的对一阶中子输运方程稳定的有限元方法。然后在文献 2 中提出了一种更加高效的方法叫 ESGS 方法。在此基础上我提出了一种快速的SGS方法叫FSGS方法，这种方法比ESGS效率要高很多，因为不用进行特征值分解和矩阵求逆。 SGS 方法SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证">
+<meta name="description" content="SGS方法是A.G.Buchan在文献 1 中提出的对一阶中子输运方程稳定的有限元方法。然后在文献 2 中提出了一种更加高效的方法叫 ESGS 方法。在此基础上我提出了一种快速的SGS方法叫FSGS方法，这种方法比ESGS效率要高很多，因为不用进行特征值分解和矩阵求逆。">
 <meta name="keywords" content="SGS,FSGS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一阶中子输运方程FSGS离散">
 <meta property="og:url" content="http://superfun.xyz/2017/11/20/一阶中子输运方程FSGS离散/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="SGS方法是A.G.Buchan在文献 1 中提出的对一阶中子输运方程稳定的有限元方法。然后在文献 2 中提出了一种更加高效的方法叫 ESGS 方法。在此基础上我提出了一种快速的SGS方法叫FSGS方法，这种方法比ESGS效率要高很多，因为不用进行特征值分解和矩阵求逆。 SGS 方法SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证">
+<meta property="og:description" content="SGS方法是A.G.Buchan在文献 1 中提出的对一阶中子输运方程稳定的有限元方法。然后在文献 2 中提出了一种更加高效的方法叫 ESGS 方法。在此基础上我提出了一种快速的SGS方法叫FSGS方法，这种方法比ESGS效率要高很多，因为不用进行特征值分解和矩阵求逆。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-22T07:11:25.506Z">
+<meta property="og:updated_time" content="2017-11-22T13:51:50.232Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一阶中子输运方程FSGS离散">
-<meta name="twitter:description" content="SGS方法是A.G.Buchan在文献 1 中提出的对一阶中子输运方程稳定的有限元方法。然后在文献 2 中提出了一种更加高效的方法叫 ESGS 方法。在此基础上我提出了一种快速的SGS方法叫FSGS方法，这种方法比ESGS效率要高很多，因为不用进行特征值分解和矩阵求逆。 SGS 方法SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证">
+<meta name="twitter:description" content="SGS方法是A.G.Buchan在文献 1 中提出的对一阶中子输运方程稳定的有限元方法。然后在文献 2 中提出了一种更加高效的方法叫 ESGS 方法。在此基础上我提出了一种快速的SGS方法叫FSGS方法，这种方法比ESGS效率要高很多，因为不用进行特征值分解和矩阵求逆。">
 
 
 
@@ -406,7 +406,7 @@
       
 
       
-        <p>SGS方法是A.G.Buchan在文献 1 中提出的对一阶中子输运方程稳定的有限元方法。然后在文献 2 中提出了一种更加高效的方法叫 ESGS 方法。在此基础上我提出了一种快速的SGS方法叫FSGS方法，这种方法比ESGS效率要高很多，因为不用进行特征值分解和矩阵求逆。</p>
+        <p>SGS方法是A.G.Buchan在文献 1 中提出的对一阶中子输运方程稳定的有限元方法。然后在文献 2 中提出了一种更加高效的方法叫 ESGS 方法。在此基础上我提出了一种快速的SGS方法叫FSGS方法，这种方法比ESGS效率要高很多，因为不用进行特征值分解和矩阵求逆。<br><a id="more"></a></p>
 <h2 id="SGS-方法"><a href="#SGS-方法" class="headerlink" title="SGS 方法"></a>SGS 方法</h2><p>SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证方程的稳定性。该方法将变量分为连续部分与间断部分之和，其中$ ϕ_c$为连续部分，$ϕ_d$为间断部分，最终会形成两个方程<br>$$ϕ = ϕ_c+ϕ_d$$</p>
 <p>其弱形式为<br>$$(φ_c,Ω⋅∇ϕ)+(φ_c,σϕ) = (φ_c,s) \tag{$1$}$$</p>
 <p>$$(φ_d,Ω⋅∇ϕ)+(φ_d,σϕ) = (φ_d,s) \tag{$2$}$$</p>
@@ -484,10 +484,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/22/ParaView学习/" rel="prev" title="ParaView学习">
-                ParaView学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -589,7 +585,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[ParaView学习]]></title>
-    <url>%2F2017%2F11%2F22%2FParaView%E5%AD%A6%E4%B9%A0%2F</url>
-    <content type="text"><![CDATA[画图 横坐标x ($\rm cm$) 纵坐标scalar flux ($\rm cm^{-2}.s^{-1}$)]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[一阶中子输运方程FSGS离散]]></title>
     <url>%2F2017%2F11%2F20%2F%E4%B8%80%E9%98%B6%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8BFSGS%E7%A6%BB%E6%95%A3%2F</url>
     <content type="text"><![CDATA[SGS方法是A.G.Buchan在文献 1 中提出的对一阶中子输运方程稳定的有限元方法。然后在文献 2 中提出了一种更加高效的方法叫 ESGS 方法。在此基础上我提出了一种快速的SGS方法叫FSGS方法，这种方法比ESGS效率要高很多，因为不用进行特征值分解和矩阵求逆。 SGS 方法SGS(Sub-Grid Scale)方法是将间断有限元与连续有限元结合起来的一种方法，在不增加变量的情况下能够保证方程的稳定性。该方法将变量分为连续部分与间断部分之和，其中$ ϕ_c$为连续部分，$ϕ_d$为间断部分，最终会形成两个方程$$ϕ = ϕ_c+ϕ_d$$ 其弱形式为$$(φ_c,Ω⋅∇ϕ)+(φ_c,σϕ) = (φ_c,s) \tag{$1$}$$ $$(φ_d,Ω⋅∇ϕ)+(φ_d,σϕ) = (φ_d,s) \tag{$2$}$$ 其中方程1是针对全局的，对$ϕ$分部积分$$&lt;φ_c,Ω⋅nϕ&gt; - (Ω⋅∇φ_c,ϕ)+(φ_c,σϕ) = (φ_c,s)$$ 方程2是针对每个单元的，对$ϕ_d$分部积分$$&lt;φ_d,Ω⋅nϕ_d&gt; - (Ω⋅∇φ_d,ϕ_d)+(φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ) = (φ_d,s)$$ SGS方法假设对于区域边界，有如下边界条件$$&lt;φ,Ω⋅nϕ_c&gt;^{-} = G$$ $$&lt;φ,Ω⋅nϕ_d&gt; = 0$$ 对于内部单元边界$$&lt;φ_d,Ω⋅nϕ_d&gt;^{-} = 0$$ 所以带入边界条件得$$&lt;φ_c,Ω⋅nϕ_c&gt;^{+} - (Ω⋅∇φ_c,ϕ)+(φ_c,σϕ) = (φ_c,s) - G \tag{$3$}$$ $$&lt;φ_d,Ω⋅nϕ_d&gt;^{+} - (Ω⋅∇φ_d,ϕ_d)+(φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ) = (φ_d,s) \tag{$4$}$$ 定义矩阵$$A = - (Ω⋅∇φ_c,φ_c)+(φ_c,σφ_c) + &lt;φ_d,Ω⋅nφ_d&gt;^{+}$$ $$B = - (Ω⋅∇φ_c,φ_d)+(φ_c,σφ_d)$$ $$C = (φ_d,Ω⋅∇φ_c)+(φ_d,σφ_c)$$ $$D = - (Ω⋅∇φ_d,φ_d)+(φ_d,σφ_d) + &lt;φ_d,Ω⋅nφ_d&gt;^{+} $$ $$s_c = (φ_c,s) - G$$ $$s_d = (φ_d,s)$$ 所以 $$Aϕ_c+Bϕ_d = s_c \tag{$5$}$$ $$Cϕ_c+Dϕ_d = s_d \tag{$6$}$$ 由方程 6 得 $$\phi_d=D^{-1}(s_d - C\phi_c)$$ 将其带入方程5中，得 $$[A-BD^{-1}C ]\phi_c= s_c-BD^{-1}s_d \tag{$7$}$$ 求解方程 7 得到解 $\phi_c$ FSGS 方法在SGS方法中，虽然矩阵 $D$ 只用在每个小单元上求解，但在每个单元上需要求 $&lt;φ_d,Ω⋅nφ_d&gt;^{+}$，所以需要在每个单元上进行黎曼分解，而且在每个单元上都需要求 $D^{-1}$，这两个过程都是比较耗时的。在FSGS方法中提出了一种新的方法使得矩阵 $D$ 变为一个对角矩阵，并且过程中不需要进行特征值分解，所以效率会提高很多。 该方法在每个单元上假设满足$Ω\cdot ∇\phi_d = c\phi_d$, 其中c为任意常数，所以方程 2 变为 $$(φ_d,(c+σ)\phi_d) + (φ_d,Ω⋅∇ϕ_c)+(φ_d,σϕ_c) = (φ_d,s) $$ 所以矩阵 $D$ 变为以下形式 $$D = (φ_d,(c+σ)φ_d)$$ 然后通过质量矩阵集中技巧将矩阵 $D$ 对角化(对角元素等于每一行元素之和)，得到对角矩阵 $D_d$，然后将该矩阵带入方程 7 中进行求解。$$[A-BD_d^{-1}C ]\phi_c= s_c-BD_d^{-1}s_d \tag{$8$}$$ Buchan A G, Candy A S, Merton S R, et al. The Inner-Element Subgrid Scale Finite Element Method for the Boltzmann Transport Equation[J]. Nuclear Science &amp; Engineering the Journal of the American Nuclear Society, 2010, 1030(2):1031-1031. Buchan A G, Pain C C. An efficient space-angle subgrid scale discretisation of the neutron transport equation[J]. Annals of Nuclear Energy, 2016, 94:440-450.]]></content>
@@ -206,24 +201,12 @@
   <entry>
     <title><![CDATA[球谐函数方法]]></title>
     <url>%2F2017%2F10%2F20%2F%E7%90%83%E8%B0%90%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[中子输运方程的球谐函数方法是离散输运方程角度变量的一种方法，这种方法将输运方程中与角度相关的变量都用球谐函数展开，然后在方程两端同时乘以球谐函数并在整个角度上进行积分从而消去角度变量，此时方程变为一个只含有空间变量的偏微分方程组。 单能稳态中子输运方程$Ω⋅∇ϕ(r,Ω)+σ_t(r)ϕ(r,Ω)=∫_ {\mathbb{S}} σ_s(r,Ω^{‘}⋅Ω)\phi(r,Ω^{‘})drdΩ^{‘} + s(r,Ω)$ 球谐函数方法将中子角通量密度和散射截面和中子源用球谐函数展开，得 $\phi(r,Ω) ≈ \sum_{n=0}^{N}\sum_{m=-n}^{n}\phi_{n,m}(r)Y_{n,m}(Ω)$ $σ_s(r,Ω^{‘}⋅Ω) ≈ \sum_{n=0}^{L}σ_{s,n}\sum_{m=-n}^{n}Y_{n,m}(Ω)Y_{n,m}(Ω^{‘})$ $s(r,Ω) ≈ \sum_{n=0}^{N}\sum_{m=-n}^{n}s_{n,m}(r)Y_{n,m}(Ω)$ 将展开式带入中子输运方程，并将群内散射源移到方程左端，得 $Ω⋅∇\sum_{n=0}^{N}\sum_{m=-n}^{n}\phi_{n,m}(r)Y_{n,m}(Ω)+\sum_{n=0}^{N}\sum_{m=-n}^{n}σ_n(r)\phi_{n,m}(r)Y_{n,m}(Ω)= \sum_{n=0}^{N}\sum_{m=-n}^{n}s_{n,m}(r)Y_{n,m}(Ω)$ 其中 $σ_n(r) = \left\{\begin{matrix}\sigma_t(r)-\sigma_{s,n}(r) \,\,\,\,\,\,\,\,\,\,\,\, 0 ≤n ≤ L\\\sigma_t(r) \,\,\,\,\,\,\,\,\,\,\,\, L ≤ n ≤ N&amp;\end{matrix}\right.$ 向量形式将球谐函数的下标 $n,m$ 转化为一维下标 $j$，则输运方程可以表示为 $Ω⋅∇[\vec{Y}(Ω)]^{T}\vec{\phi}(r)+[\vec{Y}(Ω)]^{T} \mathbf{Σ}(r)\vec{\phi}(r)= [\vec{Y}(Ω)]^{T}\vec{s}(r)$ 其中$\mathbf{Σ}(r)$为对角矩阵，对角元素由 $\sigma_n$构成。 由球谐函数递推关系可知 $Ω_x\vec{Y}(Ω) = \mathbf{A}_x\vec{Y}(Ω)$ $Ω_y\vec{Y}(Ω) = \mathbf{A}_y\vec{Y}(Ω)$ $Ω_z\vec{Y}(Ω) = \mathbf{A}_z\vec{Y}(Ω)$ 其中 $ \mathbf{A}_x$, $ \mathbf{A}_y$, $ \mathbf{A}_z$为角度$x,y,z$方向上的雅可比矩阵，该矩阵是对称稀疏的。所以方程变为 $[\vec{Y}]^{T}(Ω)[\mathbf{A}_x\frac{\partial \vec{\phi}(r)}{\partial x}+\mathbf{A}_y\frac{\partial \vec{\phi}(r)}{\partial y}+\mathbf{A}_z\frac{\partial \vec{\phi}(r)}{\partial z}+ \mathbf{Σ}\vec{\phi}(r)] = [\vec{Y}(Ω)]^{T}\vec{s}(r)$ Galerkin投影利用Galerkin方法，在方程两端同时左乘球谐函数$\vec{Y}(Ω)$,然后对角度 $Ω$ 进行积分，由球谐函数正交关系 $\int_\mathbb{S}\vec{Y}(Ω)[\vec{Y}]^{T}(Ω)dΩ = \mathbf{I}$ 得经过球谐函数展开之后的偏微分方程组为 $\mathbf{A}_x\frac{\partial \vec{\phi}(r)}{\partial x}+\mathbf{A}_y\frac{\partial \vec{\phi}(r)}{\partial y}+\mathbf{A}_z\frac{\partial \vec{\phi}(r)}{\partial z}+ \mathbf{Σ}\vec{\phi}(r) = \vec{s}(r)$]]></content>
+    <content type="text"><![CDATA[中子输运方程的球谐函数方法是离散输运方程角度变量的一种方法，这种方法将输运方程中与角度相关的变量都用球谐函数展开，然后在方程两端同时乘以球谐函数并在整个角度上进行积分从而消去角度变量，此时方程变为一个只含有空间变量的偏微分方程组。 单能稳态中子输运方程$$Ω⋅∇ϕ(r,Ω)+σ_t(r)ϕ(r,Ω)=∫_ {\mathbb{S}} σ_s(r,Ω^{‘}⋅Ω)\phi(r,Ω^{‘})drdΩ^{‘} + s(r,Ω)$$ 球谐函数方法将中子角通量密度和散射截面和中子源用球谐函数展开，得 $$\phi(r,Ω) ≈ \sum_{n=0}^{N}\sum_{m=-n}^{n}\phi_{n,m}(r)Y_{n,m}(Ω)$$ $$σ_s(r,Ω^{‘}⋅Ω) ≈ \sum_{n=0}^{L}σ_{s,n}\sum_{m=-n}^{n}Y_{n,m}(Ω)Y_{n,m}(Ω^{‘})$$ $$s(r,Ω) ≈ \sum_{n=0}^{N}\sum_{m=-n}^{n}s_{n,m}(r)Y_{n,m}(Ω)$$ 将展开式带入中子输运方程，并将群内散射源移到方程左端，得 $$Ω⋅∇\sum_{n=0}^{N}\sum_{m=-n}^{n}\phi_{n,m}(r)Y_{n,m}(Ω)+\sum_{n=0}^{N}\sum_{m=-n}^{n}σ_n(r)\phi_{n,m}(r)Y_{n,m}(Ω)= \sum_{n=0}^{N}\sum_{m=-n}^{n}s_{n,m}(r)Y_{n,m}(Ω)$$ 其中 $$σ_n(r) = \left\{\begin{matrix}\sigma_t(r)-\sigma_{s,n}(r) \,\,\,\,\,\,\,\,\,\,\,\, 0 ≤n ≤ L\\\sigma_t(r) \,\,\,\,\,\,\,\,\,\,\,\, L ≤ n ≤ N&amp;\end{matrix}\right.$$ 向量形式将球谐函数的下标 $n,m$ 转化为一维下标 $j$，则输运方程可以表示为 $$Ω⋅∇[\vec{Y}(Ω)]^{T}\vec{\phi}(r)+[\vec{Y}(Ω)]^{T} \mathbf{Σ}(r)\vec{\phi}(r)= [\vec{Y}(Ω)]^{T}\vec{s}(r)$$ 其中$\mathbf{Σ}(r)$为对角矩阵，对角元素由 $\sigma_n$构成。 由球谐函数递推关系可知 $$Ω_x\vec{Y}(Ω) = \mathbf{A}_x\vec{Y}(Ω)$$ $$Ω_y\vec{Y}(Ω) = \mathbf{A}_y\vec{Y}(Ω)$$ $$Ω_z\vec{Y}(Ω) = \mathbf{A}_z\vec{Y}(Ω)$$ 其中 $ \mathbf{A}_x$, $ \mathbf{A}_y$, $ \mathbf{A}_z$为角度$x,y,z$方向上的雅可比矩阵，该矩阵是对称稀疏的。所以方程变为 $$[\vec{Y}]^{T}(Ω)[\mathbf{A}_x\frac{\partial \vec{\phi}(r)}{\partial x}+\mathbf{A}_y\frac{\partial \vec{\phi}(r)}{\partial y}+\mathbf{A}_z\frac{\partial \vec{\phi}(r)}{\partial z}+ \mathbf{Σ}\vec{\phi}(r)] = [\vec{Y}(Ω)]^{T}\vec{s}(r)$$ Galerkin投影利用Galerkin方法，在方程两端同时左乘球谐函数$\vec{Y}(Ω)$,然后对角度 $Ω$ 进行积分，由球谐函数正交关系 $$\int_\mathbb{S}\vec{Y}(Ω)[\vec{Y}]^{T}(Ω)dΩ = \mathbf{I}$$ 得经过球谐函数展开之后的偏微分方程组为 $$\mathbf{A}_x\frac{\partial \vec{\phi}(r)}{\partial x}+\mathbf{A}_y\frac{\partial \vec{\phi}(r)}{\partial y}+\mathbf{A}_z\frac{\partial \vec{\phi}(r)}{\partial z}+ \mathbf{Σ}\vec{\phi}(r) = \vec{s}(r)$$]]></content>
       <categories>
         <category>中子输运方程</category>
       </categories>
       <tags>
         <tag>中子输运方程</tag>
-        <tag>pn方法</tag>
-        <tag>球谐函数</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[球谐函数]]></title>
-    <url>%2F2017%2F10%2F20%2F%E7%90%83%E8%B0%90%E5%87%BD%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[球谐函数定义球谐函数图像球谐函数性质单位球面上数值积分]]></content>
-      <categories>
-        <category>球谐函数</category>
-      </categories>
-      <tags>
         <tag>pn方法</tag>
         <tag>球谐函数</tag>
       </tags>
