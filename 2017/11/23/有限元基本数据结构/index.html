@@ -94,13 +94,13 @@
 
 
 
-<meta name="description" content="变量说明基本的离散数据123456789101112131415161718192021nelem，单元数目npoin，节点数目nedge，边数npsup，围绕一点的点数ndim，空间维度nnode，单元中节点数目inpoel(1:nnode, 1:nelem)，连接数组，存储每个单元中节点编号index-position-elementcoord(1:ndimn, 1:npoin) ，坐标数组，">
+<meta name="description" content="该文描述了有限元方法中使用的基本数据，变量的符号说明，以及计算一些基本数据的流程，包括 esp (elements surrounding points)，psp (points surrounding points)，ese (elements surrounding elements), edges 等数据的计算过程。还分析了Edge-based数据结构与element-based的计算量。">
 <meta name="keywords" content="有限元">
 <meta property="og:type" content="article">
 <meta property="og:title" content="有限元基本数据结构">
 <meta property="og:url" content="http://superfun.xyz/2017/11/23/有限元基本数据结构/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="变量说明基本的离散数据123456789101112131415161718192021nelem，单元数目npoin，节点数目nedge，边数npsup，围绕一点的点数ndim，空间维度nnode，单元中节点数目inpoel(1:nnode, 1:nelem)，连接数组，存储每个单元中节点编号index-position-elementcoord(1:ndimn, 1:npoin) ，坐标数组，">
+<meta property="og:description" content="该文描述了有限元方法中使用的基本数据，变量的符号说明，以及计算一些基本数据的流程，包括 esp (elements surrounding points)，psp (points surrounding points)，ese (elements surrounding elements), edges 等数据的计算过程。还分析了Edge-based数据结构与element-based的计算量。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/esp.png">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/esp_code.png">
@@ -110,10 +110,10 @@
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/edge.png">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/%E6%9C%89%E9%99%90%E5%85%83%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E8%AE%A1%E7%AE%97%E9%87%8F.png">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/Edge-based%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%A1%E7%AE%97%E9%87%8F.png">
-<meta property="og:updated_time" content="2017-11-23T07:55:01.548Z">
+<meta property="og:updated_time" content="2017-11-23T08:00:14.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="有限元基本数据结构">
-<meta name="twitter:description" content="变量说明基本的离散数据123456789101112131415161718192021nelem，单元数目npoin，节点数目nedge，边数npsup，围绕一点的点数ndim，空间维度nnode，单元中节点数目inpoel(1:nnode, 1:nelem)，连接数组，存储每个单元中节点编号index-position-elementcoord(1:ndimn, 1:npoin) ，坐标数组，">
+<meta name="twitter:description" content="该文描述了有限元方法中使用的基本数据，变量的符号说明，以及计算一些基本数据的流程，包括 esp (elements surrounding points)，psp (points surrounding points)，ese (elements surrounding elements), edges 等数据的计算过程。还分析了Edge-based数据结构与element-based的计算量。">
 <meta name="twitter:image" content="http://on08uqozg.bkt.clouddn.com/esp.png">
 
 
@@ -415,7 +415,9 @@
       
 
       
-        <h2 id="变量说明"><a href="#变量说明" class="headerlink" title="变量说明"></a>变量说明</h2><h3 id="基本的离散数据"><a href="#基本的离散数据" class="headerlink" title="基本的离散数据"></a>基本的离散数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">nelem，单元数目</div><div class="line">npoin，节点数目</div><div class="line">nedge，边数</div><div class="line">npsup，围绕一点的点数</div><div class="line"></div><div class="line">ndim，空间维度</div><div class="line">nnode，单元中节点数目</div><div class="line"></div><div class="line">inpoel(1:nnode, 1:nelem)，连接数组，存储每个单元中节点编号index-position-element</div><div class="line">coord(1:ndimn, 1:npoin) ，坐标数组，存储每个节点的坐标。数组inpoel，coord定义了几何的网格离散方式</div><div class="line"></div><div class="line">nunkp，每个节点上的未知量数目</div><div class="line">nunke，每个单元上的未知量数目</div><div class="line">unknp(1:nunkp, 1:npoin)，节点上的未知量</div><div class="line">unkne(1:nunke, 1:nelem)，单元上的未知量</div><div class="line"></div><div class="line">nconi，每个边界点上的边界条件数目</div><div class="line">nboup，边界上的节点数目</div><div class="line">bcond(1:nconi, 1:nboup)，每个边界点上的边界条件</div><div class="line">bcond(1,iboup)，存储边界上第i点的编号</div><div class="line">bcond(2:nconi,iboup)，存储边界上第i点的边界条件</div></pre></td></tr></table></figure>
+        <p>该文描述了有限元方法中使用的基本数据，变量的符号说明，以及计算一些基本数据的流程，包括 esp (elements surrounding points)，psp (points surrounding points)，ese (elements surrounding elements), edges 等数据的计算过程。还分析了Edge-based数据结构与element-based的计算量。</p>
+<a id="more"></a>
+<h2 id="变量说明"><a href="#变量说明" class="headerlink" title="变量说明"></a>变量说明</h2><h3 id="基本的离散数据"><a href="#基本的离散数据" class="headerlink" title="基本的离散数据"></a>基本的离散数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">nelem，单元数目</div><div class="line">npoin，节点数目</div><div class="line">nedge，边数</div><div class="line">npsup，围绕一点的点数</div><div class="line"></div><div class="line">ndim，空间维度</div><div class="line">nnode，单元中节点数目</div><div class="line"></div><div class="line">inpoel(1:nnode, 1:nelem)，连接数组，存储每个单元中节点编号index-position-element</div><div class="line">coord(1:ndimn, 1:npoin) ，坐标数组，存储每个节点的坐标。数组inpoel，coord定义了几何的网格离散方式</div><div class="line"></div><div class="line">nunkp，每个节点上的未知量数目</div><div class="line">nunke，每个单元上的未知量数目</div><div class="line">unknp(1:nunkp, 1:npoin)，节点上的未知量</div><div class="line">unkne(1:nunke, 1:nelem)，单元上的未知量</div><div class="line"></div><div class="line">nconi，每个边界点上的边界条件数目</div><div class="line">nboup，边界上的节点数目</div><div class="line">bcond(1:nconi, 1:nboup)，每个边界点上的边界条件</div><div class="line">bcond(1,iboup)，存储边界上第i点的编号</div><div class="line">bcond(2:nconi,iboup)，存储边界上第i点的边界条件</div></pre></td></tr></table></figure>
 <h3 id="派生数据"><a href="#派生数据" class="headerlink" title="派生数据"></a>派生数据</h3><h4 id="esup-elements-surrounding-points"><a href="#esup-elements-surrounding-points" class="headerlink" title="esup (elements surrounding points)"></a>esup (elements surrounding points)</h4><p>由inpoel派生出的，包含两个数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">esup1(1:mesup)，存储围绕节点的单元编号</div><div class="line">esup2(1:npoin+1)，存储围绕节点的单元的位置</div></pre></td></tr></table></figure></p>
 <p>比如围绕节点 ipoin 的单元存储位置为esup1( esup2(ipoin)+1:esup2(ipoin+1) )，参考下图<br><img src="http://on08uqozg.bkt.clouddn.com/esp.png" alt="esp"></p>
 <p>计算这两个数组过程<br><img src="http://on08uqozg.bkt.clouddn.com/esp_code.png" alt="eps_code"></p>
