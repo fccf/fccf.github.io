@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="superfun" />
+  <meta name="keywords" content="有限元," />
 
 
 
@@ -94,16 +94,27 @@
 
 
 
-<meta name="description" content="道，行之而成">
-<meta property="og:type" content="website">
-<meta property="og:title" content="superfun">
-<meta property="og:url" content="http://superfun.xyz/archives/2017/10/index.html">
+<meta name="description" content="变量说明基本的离散数据123456789101112131415161718192021nelem，单元数目npoin，节点数目nedge，边数npsup，围绕一点的点数ndim，空间维度nnode，单元中节点数目inpoel(1:nnode, 1:nelem)，连接数组，存储每个单元中节点编号index-position-elementcoord(1:ndimn, 1:npoin) ，坐标数组，">
+<meta name="keywords" content="有限元">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有限元基本数据结构">
+<meta property="og:url" content="http://superfun.xyz/2017/11/23/有限元基本数据结构/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="道，行之而成">
+<meta property="og:description" content="变量说明基本的离散数据123456789101112131415161718192021nelem，单元数目npoin，节点数目nedge，边数npsup，围绕一点的点数ndim，空间维度nnode，单元中节点数目inpoel(1:nnode, 1:nelem)，连接数组，存储每个单元中节点编号index-position-elementcoord(1:ndimn, 1:npoin) ，坐标数组，">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/esp.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/esp_code.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/psp_code.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/ese_code.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/ese.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/edge.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/%E6%9C%89%E9%99%90%E5%85%83%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E8%AE%A1%E7%AE%97%E9%87%8F.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/Edge-based%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%A1%E7%AE%97%E9%87%8F.png">
+<meta property="og:updated_time" content="2017-11-23T07:55:01.548Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="superfun">
-<meta name="twitter:description" content="道，行之而成">
+<meta name="twitter:title" content="有限元基本数据结构">
+<meta name="twitter:description" content="变量说明基本的离散数据123456789101112131415161718192021nelem，单元数目npoin，节点数目nedge，边数npsup，围绕一点的点数ndim，空间维度nnode，单元中节点数目inpoel(1:nnode, 1:nelem)，连接数组，存储每个单元中节点编号index-position-elementcoord(1:ndimn, 1:npoin) ，坐标数组，">
+<meta name="twitter:image" content="http://on08uqozg.bkt.clouddn.com/esp.png">
 
 
 
@@ -132,7 +143,7 @@
 
 
 
-  <link rel="canonical" href="http://superfun.xyz/archives/2017/10/"/>
+  <link rel="canonical" href="http://superfun.xyz/2017/11/23/有限元基本数据结构/"/>
 
 
 
@@ -148,7 +159,7 @@
 </script>
 
 
-  <title>归档 | superfun</title>
+  <title>有限元基本数据结构 | superfun</title>
   
 
 
@@ -173,7 +184,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -301,411 +312,221 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/11/23/有限元基本数据结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="c.fang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bio.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="superfun">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">有限元基本数据结构</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T16:03:42+08:00">
+                2017-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 26 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/有限元/" itemprop="url" rel="index">
+                    <span itemprop="name">有限元</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/31/勒让得多项式/" itemprop="url">
-              
-                <span itemprop="name">勒让得多项式</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-31T10:49:51+08:00"
-              content="2017-10-31" >
-          10-31
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/26/psblas学习/" itemprop="url">
-              
-                <span itemprop="name">psblas学习</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-26T10:08:42+08:00"
-              content="2017-10-26" >
-          10-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/25/数值方法简介/" itemprop="url">
-              
-                <span itemprop="name">数值方法简介</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-25T11:10:37+08:00"
-              content="2017-10-25" >
-          10-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h2 id="变量说明"><a href="#变量说明" class="headerlink" title="变量说明"></a>变量说明</h2><h3 id="基本的离散数据"><a href="#基本的离散数据" class="headerlink" title="基本的离散数据"></a>基本的离散数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">nelem，单元数目</div><div class="line">npoin，节点数目</div><div class="line">nedge，边数</div><div class="line">npsup，围绕一点的点数</div><div class="line"></div><div class="line">ndim，空间维度</div><div class="line">nnode，单元中节点数目</div><div class="line"></div><div class="line">inpoel(1:nnode, 1:nelem)，连接数组，存储每个单元中节点编号index-position-element</div><div class="line">coord(1:ndimn, 1:npoin) ，坐标数组，存储每个节点的坐标。数组inpoel，coord定义了几何的网格离散方式</div><div class="line"></div><div class="line">nunkp，每个节点上的未知量数目</div><div class="line">nunke，每个单元上的未知量数目</div><div class="line">unknp(1:nunkp, 1:npoin)，节点上的未知量</div><div class="line">unkne(1:nunke, 1:nelem)，单元上的未知量</div><div class="line"></div><div class="line">nconi，每个边界点上的边界条件数目</div><div class="line">nboup，边界上的节点数目</div><div class="line">bcond(1:nconi, 1:nboup)，每个边界点上的边界条件</div><div class="line">bcond(1,iboup)，存储边界上第i点的编号</div><div class="line">bcond(2:nconi,iboup)，存储边界上第i点的边界条件</div></pre></td></tr></table></figure>
+<h3 id="派生数据"><a href="#派生数据" class="headerlink" title="派生数据"></a>派生数据</h3><h4 id="esup-elements-surrounding-points"><a href="#esup-elements-surrounding-points" class="headerlink" title="esup (elements surrounding points)"></a>esup (elements surrounding points)</h4><p>由inpoel派生出的，包含两个数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">esup1(1:mesup)，存储围绕节点的单元编号</div><div class="line">esup2(1:npoin+1)，存储围绕节点的单元的位置</div></pre></td></tr></table></figure></p>
+<p>比如围绕节点 ipoin 的单元存储位置为esup1( esup2(ipoin)+1:esup2(ipoin+1) )，参考下图<br><img src="http://on08uqozg.bkt.clouddn.com/esp.png" alt="esp"></p>
+<p>计算这两个数组过程<br><img src="http://on08uqozg.bkt.clouddn.com/esp_code.png" alt="eps_code"></p>
+<h4 id="psup-points-surrounding-points"><a href="#psup-points-surrounding-points" class="headerlink" title="psup (points surrounding points)"></a>psup (points surrounding points)</h4><p>同样包含两个数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">psup1(1:mpsup)，存储围绕节点的节点编号</div><div class="line">psup2(1:npoin+1)，存储围绕节点的节点的位置</div></pre></td></tr></table></figure></p>
+<p>比如围绕节点 ipoin 的节点存储位置为psup1( psup2(ipoin)+1:psup2(ipoin+1) ).</p>
+<p>计算这两个数组需要用到 esup, 具体过程如下<br><img src="http://on08uqozg.bkt.clouddn.com/psp_code.png" alt="psp_code"></p>
+<h4 id="esuel-elements-surrounding-elements"><a href="#esuel-elements-surrounding-elements" class="headerlink" title="esuel (elements surrounding elements)"></a>esuel (elements surrounding elements)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">esuel(1:nfael, 1:nelem)，存储围绕每个单元的单元编号</div><div class="line">nfael，每个单元的边界面数目</div></pre></td></tr></table></figure>
+<p>计算过程如下</p>
+<p><img src="http://on08uqozg.bkt.clouddn.com/ese_code.png" alt="ese_code"></p>
+<p>其中某些辅助数组含义如下</p>
+<p><img src="http://on08uqozg.bkt.clouddn.com/ese.png" alt="ese"></p>
+<h4 id="edges"><a href="#edges" class="headerlink" title="edges"></a>edges</h4><p>边存储结构常用来减少线性单元的计算量和存储量，存储离散网格中每条边的端点，用一个数组存储<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">inpoed(1:2,1:nedge)，存储离散网格中边的端点， 其中inpoed(1, iedge) &lt; inpoed(2, iedge).</div></pre></td></tr></table></figure></p>
+<p>对于线性单元，物理上的边 $\vec{ij}$ 与数值上的边 $K_{ij}$是一一对应的，数值上的边表示矩阵中的非零元素。</p>
+<p>可以直接利用 psp 进行计算得到<br><img src="http://on08uqozg.bkt.clouddn.com/edge.png" alt="edge"></p>
+<h3 id="形状函数及其导数"><a href="#形状函数及其导数" class="headerlink" title="形状函数及其导数"></a>形状函数及其导数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">geome(1:ndimn*nnode, 1:nelem)，存储每个单元中形状函数的导数</div><div class="line">geome(ndimn*nnode+1,1:nelem)，存储每个单元的体积</div></pre></td></tr></table></figure>
+<h2 id="有限元中线性单元中点，边，单元的数目"><a href="#有限元中线性单元中点，边，单元的数目" class="headerlink" title="有限元中线性单元中点，边，单元的数目"></a>有限元中线性单元中点，边，单元的数目</h2><ul>
+<li>三角形</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nelem = 2*npoin</div><div class="line">nedge = 3*npoin</div><div class="line">npsup = 6*npoin</div></pre></td></tr></table></figure>
+<ul>
+<li>四面体<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nelem = 5.5*npoin</div><div class="line">nedge = 7*npoin</div><div class="line">npsup = 14*npoin</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Edge-based数据结构"><a href="#Edge-based数据结构" class="headerlink" title="Edge-based数据结构"></a>Edge-based数据结构</h2><h3 id="不同形式数据结构的计算量"><a href="#不同形式数据结构的计算量" class="headerlink" title="不同形式数据结构的计算量"></a>不同形式数据结构的计算量</h3><ul>
+<li><p>Laplacian组装花销以及计算FLOPS花销<br><img src="http://on08uqozg.bkt.clouddn.com/%E6%9C%89%E9%99%90%E5%85%83%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E8%AE%A1%E7%AE%97%E9%87%8F.png" alt="laplacian"></p>
+</li>
+<li><p>RHS组装花销以及计算FLOPS花销<br><img src="http://on08uqozg.bkt.clouddn.com/Edge-based%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%A1%E7%AE%97%E9%87%8F.png" alt=""></p>
+</li>
+</ul>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/25/偏微分方程简介/" itemprop="url">
-              
-                <span itemprop="name">偏微分方程简介</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-25T09:53:06+08:00"
-              content="2017-10-25" >
-          10-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/23/一阶中子输运方程SGS离散/" itemprop="url">
-              
-                <span itemprop="name">一阶中子输运方程SGS离散</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-23T09:37:18+08:00"
-              content="2017-10-23" >
-          10-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/21/马斯洛人本哲学/" itemprop="url">
-              
-                <span itemprop="name">马斯洛人本哲学</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-21T10:21:41+08:00"
-              content="2017-10-21" >
-          10-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/20/中子输运方程的边界条件/" itemprop="url">
-              
-                <span itemprop="name">中子输运方程的边界条件</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-20T21:06:08+08:00"
-              content="2017-10-20" >
-          10-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/20/代数方程的物理含义/" itemprop="url">
-              
-                <span itemprop="name">代数方程的物理含义</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-20T15:29:14+08:00"
-              content="2017-10-20" >
-          10-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/20/网格与矩阵的对应关系/" itemprop="url">
-              
-                <span itemprop="name">网格与矩阵的对应关系</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-20T14:42:14+08:00"
-              content="2017-10-20" >
-          10-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/20/球谐函数方法/" itemprop="url">
-              
-                <span itemprop="name">球谐函数方法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-20T14:17:35+08:00"
-              content="2017-10-20" >
-          10-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/有限元/" rel="tag"># 有限元</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/20/一阶中子输运方程FSGS离散/" rel="next" title="一阶中子输运方程FSGS离散">
+                <i class="fa fa-chevron-left"></i> 一阶中子输运方程FSGS离散
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2017/10/page/2/">2</a><a class="extend next" rel="next" href="/archives/2017/10/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -713,6 +534,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
 
         </div>
         
@@ -733,8 +560,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/bio.png"
@@ -823,6 +659,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量说明"><span class="nav-number">1.</span> <span class="nav-text">变量说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本的离散数据"><span class="nav-number">1.1.</span> <span class="nav-text">基本的离散数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#派生数据"><span class="nav-number">1.2.</span> <span class="nav-text">派生数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#esup-elements-surrounding-points"><span class="nav-number">1.2.1.</span> <span class="nav-text">esup (elements surrounding points)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#psup-points-surrounding-points"><span class="nav-number">1.2.2.</span> <span class="nav-text">psup (points surrounding points)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#esuel-elements-surrounding-elements"><span class="nav-number">1.2.3.</span> <span class="nav-text">esuel (elements surrounding elements)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#edges"><span class="nav-number">1.2.4.</span> <span class="nav-text">edges</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形状函数及其导数"><span class="nav-number">1.3.</span> <span class="nav-text">形状函数及其导数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有限元中线性单元中点，边，单元的数目"><span class="nav-number">2.</span> <span class="nav-text">有限元中线性单元中点，边，单元的数目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Edge-based数据结构"><span class="nav-number">3.</span> <span class="nav-text">Edge-based数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不同形式数据结构的计算量"><span class="nav-number">3.1.</span> <span class="nav-text">不同形式数据结构的计算量</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -925,11 +777,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
 
 
   
@@ -956,6 +806,10 @@
   
     
 
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2146790"></script>
+      <!-- UY END -->
     
   
 
