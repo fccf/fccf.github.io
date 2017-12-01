@@ -110,7 +110,7 @@
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/edge.png">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/%E6%9C%89%E9%99%90%E5%85%83%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E8%AE%A1%E7%AE%97%E9%87%8F.png">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/Edge-based%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%A1%E7%AE%97%E9%87%8F.png">
-<meta property="og:updated_time" content="2017-11-23T08:00:14.997Z">
+<meta property="og:updated_time" content="2017-11-23T09:19:14.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="有限元基本数据结构">
 <meta name="twitter:description" content="该文描述了有限元方法中使用的基本数据，变量的符号说明，以及计算一些基本数据的流程，包括 esp (elements surrounding points)，psp (points surrounding points)，ese (elements surrounding elements), edges 等数据的计算过程。还分析了Edge-based数据结构与element-based的计算量。">
@@ -432,7 +432,7 @@
 <h4 id="edges"><a href="#edges" class="headerlink" title="edges"></a>edges</h4><p>边存储结构常用来减少线性单元的计算量和存储量，存储离散网格中每条边的端点，用一个数组存储<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">inpoed(1:2,1:nedge)，存储离散网格中边的端点， 其中inpoed(1, iedge) &lt; inpoed(2, iedge).</div></pre></td></tr></table></figure></p>
 <p>对于线性单元，物理上的边 $\vec{ij}$ 与数值上的边 $K_{ij}$是一一对应的，数值上的边表示矩阵中的非零元素。</p>
 <p>可以直接利用 psp 进行计算得到<br><img src="http://on08uqozg.bkt.clouddn.com/edge.png" alt="edge"></p>
-<h3 id="形状函数及其导数"><a href="#形状函数及其导数" class="headerlink" title="形状函数及其导数"></a>形状函数及其导数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">geome(1:ndimn*nnode, 1:nelem)，存储每个单元中形状函数的导数</div><div class="line">geome(ndimn*nnode+1,1:nelem)，存储每个单元的体积</div></pre></td></tr></table></figure>
+<h3 id="形状函数及其导数"><a href="#形状函数及其导数" class="headerlink" title="形状函数及其导数"></a>形状函数及其导数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">geome(1:ndimn*nnode, 1:nelem)，存储每个单元中形状函数的导数</div><div class="line">geome(ndimn*nnode+1,1:nelem)，存储每个单元的体积</div><div class="line"></div><div class="line">cedge(ncoef,nedge)，每条边上的系数</div></pre></td></tr></table></figure>
 <h2 id="有限元中线性单元中点，边，单元的数目"><a href="#有限元中线性单元中点，边，单元的数目" class="headerlink" title="有限元中线性单元中点，边，单元的数目"></a>有限元中线性单元中点，边，单元的数目</h2><ul>
 <li>三角形</li>
 </ul>
@@ -486,6 +486,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/01/中子输运方程固定源基准题/" rel="prev" title="中子输运方程固定源基准题">
+                中子输运方程固定源基准题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -587,7 +591,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -609,7 +613,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

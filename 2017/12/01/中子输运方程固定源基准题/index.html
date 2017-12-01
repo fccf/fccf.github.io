@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="中子输运方程,benchmark,基准题," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/fish.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="以下收集了几十个固定源基准题，包括题的几何，材料以及FISH0.4的计算结果。对某些问题比较了 OSG 方法和 SGS 方法的计算时间。">
+<meta name="keywords" content="中子输运方程,benchmark,基准题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中子输运方程固定源基准题">
+<meta property="og:url" content="http://superfun.xyz/2017/12/01/中子输运方程固定源基准题/index.html">
+<meta property="og:site_name" content="superfun">
+<meta property="og:description" content="以下收集了几十个固定源基准题，包括题的几何，材料以及FISH0.4的计算结果。对某些问题比较了 OSG 方法和 SGS 方法的计算时间。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh1d1e">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res1d1e.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh1d1r">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res1d1r.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh1d1rvac">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res1d1rvac.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh1d2rref">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res1d2rref.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh1dasa">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res1dasa.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh1daiv">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res1daiv.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh1drc">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res1drc.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh2d1e">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res2d1e.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh2d1rref">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res2d1rref.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh2d2rref">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res2d2rref.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh2d2rvac">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res2d2rvac.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh2drc">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res2drc.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh2d3riv">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res2d3riv.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh2dsdiv">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res2dsdiv.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh2dcdiv">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res2dcdiv.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh2diws">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res2diws.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh2dsap">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res2dsap.png">
+<meta property="og:updated_time" content="2017-12-01T09:50:56.717Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="中子输运方程固定源基准题">
+<meta name="twitter:description" content="以下收集了几十个固定源基准题，包括题的几何，材料以及FISH0.4的计算结果。对某些问题比较了 OSG 方法和 SGS 方法的计算时间。">
+<meta name="twitter:image" content="http://on08uqozg.bkt.clouddn.com/gmsh1d1e">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://superfun.xyz/2017/12/01/中子输运方程固定源基准题/"/>
+
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  <title>中子输运方程固定源基准题 | superfun</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">superfun</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/12/01/中子输运方程固定源基准题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="c.fang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bio.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="superfun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">中子输运方程固定源基准题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-01T17:48:03+08:00">
+                2017-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基准题/" itemprop="url" rel="index">
+                    <span itemprop="name">基准题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>以下收集了几十个固定源基准题，包括题的几何，材料以及FISH0.4的计算结果。对某些问题比较了 OSG 方法和 SGS 方法的计算时间。</p>
+<a id="more"></a>
+<h1 id="Fish0-4-固定源问题验证"><a href="#Fish0-4-固定源问题验证" class="headerlink" title="Fish0.4 固定源问题验证"></a>Fish0.4 固定源问题验证</h1><h2 id="1d"><a href="#1d" class="headerlink" title="1d"></a>1d</h2><h3 id="单单元反射边界"><a href="#单单元反射边界" class="headerlink" title="单单元反射边界"></a>单单元反射边界</h3><ul>
+<li>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh1d1e" alt="gmsh1d1e"></li>
+<li><p>材料</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.5</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scalar_flux = source/(sigma_t - sigma_s) = 2.0</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/res1d1e.png" alt="res1d1e"></p>
+<h3 id="单区域反射边界"><a href="#单区域反射边界" class="headerlink" title="单区域反射边界"></a>单区域反射边界</h3><ul>
+<li>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh1d1r" alt="gmsh1d1r"></li>
+<li><p>材料</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.5</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scalar_flux = source/(sigma_t - sigma_s) = 2.0</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/res1d1r.png" alt="res1d1r"></p>
+<h3 id="单区真空边界"><a href="#单区真空边界" class="headerlink" title="单区真空边界"></a>单区真空边界</h3><ul>
+<li>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh1d1rvac" alt="gmsh1d1rvac"></li>
+<li><p>材料</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 5.0</div><div class="line">sigma_s = 2.0</div><div class="line">source  = 3.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>结果<br><img src="http://on08uqozg.bkt.clouddn.com/res1d1rvac.png" alt="res1d1rvac"></p>
+</li>
+</ul>
+<h3 id="两区反射边界"><a href="#两区反射边界" class="headerlink" title="两区反射边界"></a>两区反射边界</h3><ul>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh1d2rref" alt="gmsh1d2rref"></p>
+</li>
+<li><p>材料</p>
+</li>
+</ul>
+<p>材料1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 5.0</div><div class="line">sigma_s = 2.0</div><div class="line">source  = 3.0</div></pre></td></tr></table></figure></p>
+<p>材料2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 5.0</div><div class="line">sigma_s = 2.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+<ul>
+<li>结果<br><img src="http://on08uqozg.bkt.clouddn.com/res1d2rref.png" alt="res1d2rref"></li>
+</ul>
+<h3 id="解析问题1：强吸收问题"><a href="#解析问题1：强吸收问题" class="headerlink" title="解析问题1：强吸收问题"></a>解析问题1：强吸收问题</h3><ul>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh1dasa" alt="gmsh1dasa"></p>
+</li>
+<li><p>材料</p>
+</li>
+</ul>
+<p>材料1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 5.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure></p>
+<p>材料2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 5.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+<ul>
+<li>结果<br><img src="http://on08uqozg.bkt.clouddn.com/res1dasa.png" alt="res1dasa"></li>
+</ul>
+<h3 id="解析问题2：内真空问题"><a href="#解析问题2：内真空问题" class="headerlink" title="解析问题2：内真空问题"></a>解析问题2：内真空问题</h3><ul>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh1daiv" alt="gmsh1daiv"></p>
+</li>
+<li><p>材料</p>
+</li>
+</ul>
+<p>材料1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.5</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure></p>
+<p>材料2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+<p>材料3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.5</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+<ul>
+<li>结果<br><img src="http://on08uqozg.bkt.clouddn.com/res1daiv.png" alt="res1daiv"></li>
+</ul>
+<h3 id="Reed-cell-基准题"><a href="#Reed-cell-基准题" class="headerlink" title="Reed cell 基准题"></a>Reed cell 基准题</h3><ul>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh1drc" alt="gmsh1drc"></p>
+</li>
+<li><p>材料</p>
+</li>
+</ul>
+<p>材料1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 50.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 50.0</div></pre></td></tr></table></figure></p>
+<p>材料2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 5.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+<p>材料3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+<p>材料4</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.9</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+<p>材料5</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+<ul>
+<li>结果<br><img src="http://on08uqozg.bkt.clouddn.com/res1drc.png" alt="res1drc"></li>
+</ul>
+<h2 id="2d"><a href="#2d" class="headerlink" title="2d"></a>2d</h2><h3 id="单单元反射边界-1"><a href="#单单元反射边界-1" class="headerlink" title="单单元反射边界"></a>单单元反射边界</h3><ul>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh2d1e" alt="gmsh2d1e"></p>
+</li>
+<li><p>材料</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.5</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scalar_flux = source/(sigma_t - sigma_s) = 2.0</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/res2d1e.png" alt="res2d1e"></p>
+<h3 id="单区域反射边界-1"><a href="#单区域反射边界-1" class="headerlink" title="单区域反射边界"></a>单区域反射边界</h3><ul>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh2d1rref" alt="gmsh2d1rref"></p>
+</li>
+<li><p>材料</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.5</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scalar_flux = source/(sigma_t - sigma_s) = 2.0</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/res2d1rref.png" alt="res2d1rref"></p>
+<h3 id="两区域反射边界"><a href="#两区域反射边界" class="headerlink" title="两区域反射边界"></a>两区域反射边界</h3><ul>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh2d2rref" alt="gmsh2d2rref"></p>
+</li>
+<li><p>材料</p>
+</li>
+</ul>
+<p>材料1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.5</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure></p>
+<p>材料2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.25</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure></p>
+<ul>
+<li>结果</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/res2d2rref.png" alt="res2d2rref"></p>
+<h3 id="两区域真空边界"><a href="#两区域真空边界" class="headerlink" title="两区域真空边界"></a>两区域真空边界</h3><ul>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh2d2rvac" alt="gmsh2d2rvac"></p>
+</li>
+<li><p>材料</p>
+</li>
+</ul>
+<p>材料1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.5</div><div class="line">sigma_s = 0.4</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure></p>
+<p>材料2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.5</div><div class="line">sigma_s = 0.4</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure></p>
+<ul>
+<li>结果</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/res2d2rvac.png" alt="res2d2rvac"></p>
+<ul>
+<li>计算时间<br>网格量 1200 meshs，计算时间如下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Pn order</th>
+<th style="text-align:left">OSG计算时间</th>
+<th style="text-align:left">OSG 迭代次数</th>
+<th style="text-align:left">SGS 计算时间</th>
+<th style="text-align:left">SGS 迭代次数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">P1</td>
+<td style="text-align:left">0.57s</td>
+<td style="text-align:left">51</td>
+<td style="text-align:left">0.07s</td>
+<td style="text-align:left">34</td>
+</tr>
+<tr>
+<td style="text-align:left">P3</td>
+<td style="text-align:left">0.33s</td>
+<td style="text-align:left">43</td>
+<td style="text-align:left">0.31s</td>
+<td style="text-align:left">34</td>
+</tr>
+<tr>
+<td style="text-align:left">P5</td>
+<td style="text-align:left">0.78s</td>
+<td style="text-align:left">43</td>
+<td style="text-align:left">1.55s</td>
+<td style="text-align:left">35</td>
+</tr>
+<tr>
+<td style="text-align:left">P7</td>
+<td style="text-align:left">1.86s</td>
+<td style="text-align:left">44</td>
+<td style="text-align:left">5.94s</td>
+<td style="text-align:left">36</td>
+</tr>
+<tr>
+<td style="text-align:left">P9</td>
+<td style="text-align:left">4.37s</td>
+<td style="text-align:left">43</td>
+<td style="text-align:left">18.95s</td>
+<td style="text-align:left">36</td>
+</tr>
+<tr>
+<td style="text-align:left">P11</td>
+<td style="text-align:left">7.72s</td>
+<td style="text-align:left">41</td>
+<td style="text-align:left">43.83s</td>
+<td style="text-align:left">36</td>
+</tr>
+<tr>
+<td style="text-align:left">P13</td>
+<td style="text-align:left">15.00s</td>
+<td style="text-align:left">41</td>
+<td style="text-align:left">98.17s</td>
+<td style="text-align:left">36</td>
+</tr>
+<tr>
+<td style="text-align:left">P15</td>
+<td style="text-align:left">26.47s</td>
+<td style="text-align:left">40</td>
+<td style="text-align:left">184.7s</td>
+<td style="text-align:left">34</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reed-cell基准题"><a href="#reed-cell基准题" class="headerlink" title="reed cell基准题"></a>reed cell基准题</h3><ul>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh2drc" alt="gmsh2drc"></p>
+</li>
+<li><p>材料</p>
+</li>
+</ul>
+<p>材料1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 50.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 50.0</div></pre></td></tr></table></figure></p>
+<p>材料2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 5.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+<p>材料3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+<p>材料4</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.9</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+<p>材料5</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+<ul>
+<li><p>结果<br><img src="http://on08uqozg.bkt.clouddn.com/res2drc.png" alt="res2drc"></p>
+</li>
+<li><p>计算时间<br>网格量 1926 meshs，计算时间如下<br>| Pn order | OSG计算时间  | OSG 迭代次数 | SGS 计算时间 | SGS 迭代次数 |<br>| :——- | :———–|:———- |:———– |:————|<br>| P1      | 1.02s       | 416 | 0.57s | 451 |<br>| P3      | 2.42s       | 417 | 6.52s| 1061 |<br>| P5      | 4.89s       | 417 | 28.0s| 1318 |<br>| P7      | 11.81s      | 464 | 61.7s| 1190   |<br>| P9      | 48.00s      | 1000($10^{-4}$) | -| - |</p>
+</li>
+</ul>
+<h3 id="内真空问题-Maynard-强散射基准题"><a href="#内真空问题-Maynard-强散射基准题" class="headerlink" title="内真空问题 (Maynard 强散射基准题)"></a>内真空问题 (Maynard 强散射基准题)</h3><ul>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh2d3riv" alt="gmsh2d3riv"></p>
+</li>
+<li><p>材料</p>
+</li>
+</ul>
+<p>材料1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.2</div><div class="line">sigma_s = 0.19</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure></p>
+<p>材料2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure></p>
+<p>材料3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.2</div><div class="line">sigma_s = 0.19</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure></p>
+<ul>
+<li>结果</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/res2d3riv.png" alt="res2d3riv"></p>
+<p>该问题计算到 P9 时达到最大迭代次数 1000, 收敛到$ 10^{-3}$，更高阶的计算不收敛。 Pn 方法存在一定的问题。</p>
+<ul>
+<li>计算时间<br>网格量 4400 meshs，计算时间如下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Pn order</th>
+<th style="text-align:left">OSG计算时间</th>
+<th style="text-align:left">OSG 迭代次数</th>
+<th style="text-align:left">SGS 计算时间</th>
+<th style="text-align:left">SGS 迭代次数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">P1</td>
+<td style="text-align:left">2.23s</td>
+<td style="text-align:left">736</td>
+<td style="text-align:left">4.43s</td>
+<td style="text-align:left">1577</td>
+</tr>
+<tr>
+<td style="text-align:left">P3</td>
+<td style="text-align:left">9.72s</td>
+<td style="text-align:left">829</td>
+<td style="text-align:left">38.42s</td>
+<td style="text-align:left">2638</td>
+</tr>
+<tr>
+<td style="text-align:left">P5</td>
+<td style="text-align:left">22.92s</td>
+<td style="text-align:left">823</td>
+<td style="text-align:left">140.4s</td>
+<td style="text-align:left">2887</td>
+</tr>
+<tr>
+<td style="text-align:left">P7</td>
+<td style="text-align:left">48.41s</td>
+<td style="text-align:left">818</td>
+<td style="text-align:left">365.0s</td>
+<td style="text-align:left">3151</td>
+</tr>
+<tr>
+<td style="text-align:left">P9</td>
+<td style="text-align:left">92.24s</td>
+<td style="text-align:left">1000($10^{-3}$)</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="直管道问题"><a href="#直管道问题" class="headerlink" title="直管道问题"></a>直管道问题</h3><ul>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh2dsdiv" alt="gmsh2dsdiv"></p>
+</li>
+<li><p>材料</p>
+</li>
+</ul>
+<p>材料1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.5</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure></p>
+<p>材料2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure></p>
+<p>材料3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.5</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure></p>
+<ul>
+<li>结果</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/res2dsdiv.png" alt="res2dsdiv"></p>
+<ul>
+<li>计算时间<br>网格量 3300 meshs，计算时间如下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Pn order</th>
+<th style="text-align:left">OSG计算时间</th>
+<th style="text-align:left">OSG 迭代次数</th>
+<th style="text-align:left">SGS 计算时间</th>
+<th style="text-align:left">SGS 迭代次数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">P1</td>
+<td style="text-align:left">0.92s</td>
+<td style="text-align:left">272</td>
+<td style="text-align:left">0.75</td>
+<td style="text-align:left">384</td>
+</tr>
+<tr>
+<td style="text-align:left">P3</td>
+<td style="text-align:left">2.90s</td>
+<td style="text-align:left">292</td>
+<td style="text-align:left">5.58</td>
+<td style="text-align:left">488</td>
+</tr>
+<tr>
+<td style="text-align:left">P5</td>
+<td style="text-align:left">7.91s</td>
+<td style="text-align:left">393</td>
+<td style="text-align:left">25.04s</td>
+<td style="text-align:left">682</td>
+</tr>
+<tr>
+<td style="text-align:left">P7</td>
+<td style="text-align:left">23.61s</td>
+<td style="text-align:left">451</td>
+<td style="text-align:left">83.88s</td>
+<td style="text-align:left">730</td>
+</tr>
+<tr>
+<td style="text-align:left">P9</td>
+<td style="text-align:left">78.24s</td>
+<td style="text-align:left">1000($10^{-3}$)</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="弯管道问题"><a href="#弯管道问题" class="headerlink" title="弯管道问题"></a>弯管道问题</h3><ul>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh2dcdiv" alt="gmsh2dcdiv"></p>
+</li>
+<li><p>材料</p>
+</li>
+</ul>
+<p>材料1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.5</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure></p>
+<p>材料2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure></p>
+<p>材料3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.5</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure></p>
+<ul>
+<li>结果</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/res2dcdiv.png" alt="res2dcdiv"></p>
+<ul>
+<li>计算时间<br>网格量 2700 meshs，计算时间如下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Pn order</th>
+<th style="text-align:left">OSG计算时间</th>
+<th style="text-align:left">OSG 迭代次数</th>
+<th style="text-align:left">SGS 计算时间</th>
+<th style="text-align:left">SGS 迭代次数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">P1</td>
+<td style="text-align:left">0.79s</td>
+<td style="text-align:left">237</td>
+<td style="text-align:left">0.46s</td>
+<td style="text-align:left">309</td>
+</tr>
+<tr>
+<td style="text-align:left">P3</td>
+<td style="text-align:left">2.20s</td>
+<td style="text-align:left">291</td>
+<td style="text-align:left">3.48s</td>
+<td style="text-align:left">380</td>
+</tr>
+<tr>
+<td style="text-align:left">P5</td>
+<td style="text-align:left">5.81s</td>
+<td style="text-align:left">357</td>
+<td style="text-align:left">15.64s</td>
+<td style="text-align:left">407</td>
+</tr>
+<tr>
+<td style="text-align:left">P7</td>
+<td style="text-align:left">14.51s</td>
+<td style="text-align:left">406</td>
+<td style="text-align:left">44.30s</td>
+<td style="text-align:left">419</td>
+</tr>
+<tr>
+<td style="text-align:left">P9</td>
+<td style="text-align:left">57.22s</td>
+<td style="text-align:left">1000($10^{-4}$)</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="铁水屏蔽问题-深穿透问题"><a href="#铁水屏蔽问题-深穿透问题" class="headerlink" title="铁水屏蔽问题 (深穿透问题)"></a>铁水屏蔽问题 (深穿透问题)</h3><ul>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh2diws" alt="gmsh2diws"></p>
+</li>
+<li><p>材料</p>
+</li>
+</ul>
+<p>材料1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 3.33</div><div class="line">sigma_s = 0.01998</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure></p>
+<p>材料2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 3.33</div><div class="line">sigma_s = 0.01998</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure></p>
+<p>材料3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.33</div><div class="line">sigma_s = 0.22477</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure></p>
+<ul>
+<li>结果</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/res2diws.png" alt="res2diws"></p>
+<ul>
+<li>计算时间<br>网格量 10000 meshs，计算时间如下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Pn order</th>
+<th style="text-align:left">OSG计算时间</th>
+<th style="text-align:left">OSG 迭代次数</th>
+<th style="text-align:left">SGS 计算时间</th>
+<th style="text-align:left">SGS 迭代次数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">P5</td>
+<td style="text-align:left">4.01s</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">10.74s</td>
+<td style="text-align:left">6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="强吸收问题"><a href="#强吸收问题" class="headerlink" title="强吸收问题"></a>强吸收问题</h3><ul>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh2dsap" alt="gmsh2dsap"></p>
+</li>
+<li><p>材料</p>
+</li>
+</ul>
+<p>材料1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1000.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 1000.0</div></pre></td></tr></table></figure></p>
+<p>材料2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1000.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure></p>
+<p>材料3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.1</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure></p>
+<ul>
+<li>结果</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/res2dsap.png" alt="res2dsap"></p>
+<ul>
+<li>计算时间<br>网格量 2586 meshs，计算时间如下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Pn order</th>
+<th style="text-align:left">OSG计算时间</th>
+<th style="text-align:left">OSG 迭代次数</th>
+<th style="text-align:left">SGS 计算时间</th>
+<th style="text-align:left">SGS 迭代次数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">P1</td>
+<td style="text-align:left">1.75s</td>
+<td style="text-align:left">158</td>
+<td style="text-align:left">0.48s</td>
+<td style="text-align:left">134</td>
+</tr>
+<tr>
+<td style="text-align:left">P3</td>
+<td style="text-align:left">1.42s</td>
+<td style="text-align:left">164</td>
+<td style="text-align:left">1.21s</td>
+<td style="text-align:left">135</td>
+</tr>
+<tr>
+<td style="text-align:left">P5</td>
+<td style="text-align:left">2.48s</td>
+<td style="text-align:left">144</td>
+<td style="text-align:left">5.84s</td>
+<td style="text-align:left">132</td>
+</tr>
+<tr>
+<td style="text-align:left">P7</td>
+<td style="text-align:left">5.56s</td>
+<td style="text-align:left">124</td>
+<td style="text-align:left">20.11s</td>
+<td style="text-align:left">126</td>
+</tr>
+<tr>
+<td style="text-align:left">P9</td>
+<td style="text-align:left">10.08s</td>
+<td style="text-align:left">120</td>
+<td style="text-align:left">46.79s</td>
+<td style="text-align:left">117</td>
+</tr>
+<tr>
+<td style="text-align:left">P11</td>
+<td style="text-align:left">31.08s</td>
+<td style="text-align:left">119</td>
+<td style="text-align:left">107.8s</td>
+<td style="text-align:left">109</td>
+</tr>
+<tr>
+<td style="text-align:left">P13</td>
+<td style="text-align:left">47.6s</td>
+<td style="text-align:left">118</td>
+<td style="text-align:left">232.3s</td>
+<td style="text-align:left">103</td>
+</tr>
+<tr>
+<td style="text-align:left">P15</td>
+<td style="text-align:left">67.51s</td>
+<td style="text-align:left">119</td>
+<td style="text-align:left">461.5s</td>
+<td style="text-align:left">98</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3d"><a href="#3d" class="headerlink" title="3d"></a>3d</h2><h3 id="kobayashi-1i"><a href="#kobayashi-1i" class="headerlink" title="kobayashi 1i"></a>kobayashi 1i</h3><h3 id="kobayashi-1ii"><a href="#kobayashi-1ii" class="headerlink" title="kobayashi 1ii"></a>kobayashi 1ii</h3><h3 id="kobayashi-2i"><a href="#kobayashi-2i" class="headerlink" title="kobayashi 2i"></a>kobayashi 2i</h3><h3 id="kobayashi-2ii"><a href="#kobayashi-2ii" class="headerlink" title="kobayashi 2ii"></a>kobayashi 2ii</h3><h3 id="kobayashi-3i"><a href="#kobayashi-3i" class="headerlink" title="kobayashi 3i"></a>kobayashi 3i</h3><h3 id="kobayashi-3ii"><a href="#kobayashi-3ii" class="headerlink" title="kobayashi 3ii"></a>kobayashi 3ii</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/中子输运方程/" rel="tag"># 中子输运方程</a>
+          
+            <a href="/tags/benchmark/" rel="tag"># benchmark</a>
+          
+            <a href="/tags/基准题/" rel="tag"># 基准题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/23/有限元基本数据结构/" rel="next" title="有限元基本数据结构">
+                <i class="fa fa-chevron-left"></i> 有限元基本数据结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/bio.png"
+               alt="c.fang" />
+          <p class="site-author-name" itemprop="name">c.fang</p>
+           
+              <p class="site-description motion-element" itemprop="description">道，行之而成</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fccf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.iter.org/" title="ITER" target="_blank">ITER</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Fish0-4-固定源问题验证"><span class="nav-number">1.</span> <span class="nav-text">Fish0.4 固定源问题验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1d"><span class="nav-number">1.1.</span> <span class="nav-text">1d</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单单元反射边界"><span class="nav-number">1.1.1.</span> <span class="nav-text">单单元反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单区域反射边界"><span class="nav-number">1.1.2.</span> <span class="nav-text">单区域反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单区真空边界"><span class="nav-number">1.1.3.</span> <span class="nav-text">单区真空边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两区反射边界"><span class="nav-number">1.1.4.</span> <span class="nav-text">两区反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析问题1：强吸收问题"><span class="nav-number">1.1.5.</span> <span class="nav-text">解析问题1：强吸收问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析问题2：内真空问题"><span class="nav-number">1.1.6.</span> <span class="nav-text">解析问题2：内真空问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reed-cell-基准题"><span class="nav-number">1.1.7.</span> <span class="nav-text">Reed cell 基准题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2d"><span class="nav-number">1.2.</span> <span class="nav-text">2d</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单单元反射边界-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">单单元反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单区域反射边界-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">单区域反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两区域反射边界"><span class="nav-number">1.2.3.</span> <span class="nav-text">两区域反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两区域真空边界"><span class="nav-number">1.2.4.</span> <span class="nav-text">两区域真空边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reed-cell基准题"><span class="nav-number">1.2.5.</span> <span class="nav-text">reed cell基准题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内真空问题-Maynard-强散射基准题"><span class="nav-number">1.2.6.</span> <span class="nav-text">内真空问题 (Maynard 强散射基准题)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直管道问题"><span class="nav-number">1.2.7.</span> <span class="nav-text">直管道问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弯管道问题"><span class="nav-number">1.2.8.</span> <span class="nav-text">弯管道问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#铁水屏蔽问题-深穿透问题"><span class="nav-number">1.2.9.</span> <span class="nav-text">铁水屏蔽问题 (深穿透问题)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强吸收问题"><span class="nav-number">1.2.10.</span> <span class="nav-text">强吸收问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3d"><span class="nav-number">1.3.</span> <span class="nav-text">3d</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-1i"><span class="nav-number">1.3.1.</span> <span class="nav-text">kobayashi 1i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-1ii"><span class="nav-number">1.3.2.</span> <span class="nav-text">kobayashi 1ii</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-2i"><span class="nav-number">1.3.3.</span> <span class="nav-text">kobayashi 2i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-2ii"><span class="nav-number">1.3.4.</span> <span class="nav-text">kobayashi 2ii</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-3i"><span class="nav-number">1.3.5.</span> <span class="nav-text">kobayashi 3i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-3ii"><span class="nav-number">1.3.6.</span> <span class="nav-text">kobayashi 3ii</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">c.fang</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2146790"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
