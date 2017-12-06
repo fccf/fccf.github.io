@@ -136,7 +136,11 @@
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res2diws.png">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh2dsap">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res2dsap.png">
-<meta property="og:updated_time" content="2017-12-01T09:50:56.717Z">
+<meta property="og:image" content="http://superfun.xyz/2017/12/01/images/gmsh3d1e">
+<meta property="og:image" content="http://superfun.xyz/2017/12/01/images/res3d1eref.png">
+<meta property="og:image" content="http://superfun.xyz/2017/12/01/images/gmsh3d1rref">
+<meta property="og:image" content="http://superfun.xyz/2017/12/01/images/res3d1rref.png">
+<meta property="og:updated_time" content="2017-12-04T06:26:16.185Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="中子输运方程固定源基准题">
 <meta name="twitter:description" content="以下收集了几十个固定源基准题，包括题的几何，材料以及FISH0.4的计算结果。对某些问题比较了 OSG 方法和 SGS 方法的计算时间。">
@@ -663,7 +667,7 @@
 <ul>
 <li><p>结果<br><img src="http://on08uqozg.bkt.clouddn.com/res2drc.png" alt="res2drc"></p>
 </li>
-<li><p>计算时间<br>网格量 1926 meshs，计算时间如下<br>| Pn order | OSG计算时间  | OSG 迭代次数 | SGS 计算时间 | SGS 迭代次数 |<br>| :——- | :———–|:———- |:———– |:————|<br>| P1      | 1.02s       | 416 | 0.57s | 451 |<br>| P3      | 2.42s       | 417 | 6.52s| 1061 |<br>| P5      | 4.89s       | 417 | 28.0s| 1318 |<br>| P7      | 11.81s      | 464 | 61.7s| 1190   |<br>| P9      | 48.00s      | 1000($10^{-4}$) | -| - |</p>
+<li><p>计算时间<br>网格量 1926 meshs，计算时间如下<br>| Pn order | OSG计算时间  | OSG 迭代次数 | SGS 计算时间 | SGS 迭代次数 |<br>| :——- | :———–|:———- |:———– |:————|<br>| P1      | 1.02s       | 416 | 0.57s | 451 |<br>| P3      | 2.42s       | 417 | 6.52s | 1061 |<br>| P5      | 4.89s       | 417 | 28.0s | 1318 |<br>| P7      | 11.81s      | 464 | 61.7s | 1190   |<br>| P9      | 48.00s      | 1000($10^{-4}$) | - | - |</p>
 </li>
 </ul>
 <h3 id="内真空问题-Maynard-强散射基准题"><a href="#内真空问题-Maynard-强散射基准题" class="headerlink" title="内真空问题 (Maynard 强散射基准题)"></a>内真空问题 (Maynard 强散射基准题)</h3><ul>
@@ -980,7 +984,31 @@
 </tr>
 </tbody>
 </table>
-<h2 id="3d"><a href="#3d" class="headerlink" title="3d"></a>3d</h2><h3 id="kobayashi-1i"><a href="#kobayashi-1i" class="headerlink" title="kobayashi 1i"></a>kobayashi 1i</h3><h3 id="kobayashi-1ii"><a href="#kobayashi-1ii" class="headerlink" title="kobayashi 1ii"></a>kobayashi 1ii</h3><h3 id="kobayashi-2i"><a href="#kobayashi-2i" class="headerlink" title="kobayashi 2i"></a>kobayashi 2i</h3><h3 id="kobayashi-2ii"><a href="#kobayashi-2ii" class="headerlink" title="kobayashi 2ii"></a>kobayashi 2ii</h3><h3 id="kobayashi-3i"><a href="#kobayashi-3i" class="headerlink" title="kobayashi 3i"></a>kobayashi 3i</h3><h3 id="kobayashi-3ii"><a href="#kobayashi-3ii" class="headerlink" title="kobayashi 3ii"></a>kobayashi 3ii</h3>
+<h2 id="3d"><a href="#3d" class="headerlink" title="3d"></a>3d</h2><h3 id="单单元反射边界-2"><a href="#单单元反射边界-2" class="headerlink" title="单单元反射边界"></a>单单元反射边界</h3><ul>
+<li><p>几何<br><img src="../images/gmsh3d1e" alt="gmsh3d1e"></p>
+</li>
+<li><p>材料</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.5</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scalar_flux = source/(sigma_t - sigma_s) = 2.0</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="../images/res3d1eref.png" alt="res3d1eref"></p>
+<h3 id="单区域反射边界-2"><a href="#单区域反射边界-2" class="headerlink" title="单区域反射边界"></a>单区域反射边界</h3><ul>
+<li>几何</li>
+</ul>
+<p><img src="../images/gmsh3d1rref" alt="gmsh3d1rref"></p>
+<ul>
+<li><p>材料</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.5</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scalar_flux = source/(sigma_t - sigma_s) = 2.0</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="../images/res3d1rref.png" alt="res3d1rref"></p>
+<h3 id="两区域反射边界-1"><a href="#两区域反射边界-1" class="headerlink" title="两区域反射边界"></a>两区域反射边界</h3><h3 id="kobayashi-1i"><a href="#kobayashi-1i" class="headerlink" title="kobayashi 1i"></a>kobayashi 1i</h3><h3 id="kobayashi-1ii"><a href="#kobayashi-1ii" class="headerlink" title="kobayashi 1ii"></a>kobayashi 1ii</h3><h3 id="kobayashi-2i"><a href="#kobayashi-2i" class="headerlink" title="kobayashi 2i"></a>kobayashi 2i</h3><h3 id="kobayashi-2ii"><a href="#kobayashi-2ii" class="headerlink" title="kobayashi 2ii"></a>kobayashi 2ii</h3><h3 id="kobayashi-3i"><a href="#kobayashi-3i" class="headerlink" title="kobayashi 3i"></a>kobayashi 3i</h3><h3 id="kobayashi-3ii"><a href="#kobayashi-3ii" class="headerlink" title="kobayashi 3ii"></a>kobayashi 3ii</h3>
       
     </div>
     
@@ -1023,6 +1051,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/06/输运计算软件Attila介绍/" rel="prev" title="输运计算软件Attila介绍">
+                输运计算软件Attila介绍 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -1124,7 +1156,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1135,7 +1167,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1146,7 +1178,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1208,7 +1240,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Fish0-4-固定源问题验证"><span class="nav-number">1.</span> <span class="nav-text">Fish0.4 固定源问题验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1d"><span class="nav-number">1.1.</span> <span class="nav-text">1d</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单单元反射边界"><span class="nav-number">1.1.1.</span> <span class="nav-text">单单元反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单区域反射边界"><span class="nav-number">1.1.2.</span> <span class="nav-text">单区域反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单区真空边界"><span class="nav-number">1.1.3.</span> <span class="nav-text">单区真空边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两区反射边界"><span class="nav-number">1.1.4.</span> <span class="nav-text">两区反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析问题1：强吸收问题"><span class="nav-number">1.1.5.</span> <span class="nav-text">解析问题1：强吸收问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析问题2：内真空问题"><span class="nav-number">1.1.6.</span> <span class="nav-text">解析问题2：内真空问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reed-cell-基准题"><span class="nav-number">1.1.7.</span> <span class="nav-text">Reed cell 基准题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2d"><span class="nav-number">1.2.</span> <span class="nav-text">2d</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单单元反射边界-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">单单元反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单区域反射边界-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">单区域反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两区域反射边界"><span class="nav-number">1.2.3.</span> <span class="nav-text">两区域反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两区域真空边界"><span class="nav-number">1.2.4.</span> <span class="nav-text">两区域真空边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reed-cell基准题"><span class="nav-number">1.2.5.</span> <span class="nav-text">reed cell基准题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内真空问题-Maynard-强散射基准题"><span class="nav-number">1.2.6.</span> <span class="nav-text">内真空问题 (Maynard 强散射基准题)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直管道问题"><span class="nav-number">1.2.7.</span> <span class="nav-text">直管道问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弯管道问题"><span class="nav-number">1.2.8.</span> <span class="nav-text">弯管道问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#铁水屏蔽问题-深穿透问题"><span class="nav-number">1.2.9.</span> <span class="nav-text">铁水屏蔽问题 (深穿透问题)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强吸收问题"><span class="nav-number">1.2.10.</span> <span class="nav-text">强吸收问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3d"><span class="nav-number">1.3.</span> <span class="nav-text">3d</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-1i"><span class="nav-number">1.3.1.</span> <span class="nav-text">kobayashi 1i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-1ii"><span class="nav-number">1.3.2.</span> <span class="nav-text">kobayashi 1ii</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-2i"><span class="nav-number">1.3.3.</span> <span class="nav-text">kobayashi 2i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-2ii"><span class="nav-number">1.3.4.</span> <span class="nav-text">kobayashi 2ii</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-3i"><span class="nav-number">1.3.5.</span> <span class="nav-text">kobayashi 3i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-3ii"><span class="nav-number">1.3.6.</span> <span class="nav-text">kobayashi 3ii</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Fish0-4-固定源问题验证"><span class="nav-number">1.</span> <span class="nav-text">Fish0.4 固定源问题验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1d"><span class="nav-number">1.1.</span> <span class="nav-text">1d</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单单元反射边界"><span class="nav-number">1.1.1.</span> <span class="nav-text">单单元反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单区域反射边界"><span class="nav-number">1.1.2.</span> <span class="nav-text">单区域反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单区真空边界"><span class="nav-number">1.1.3.</span> <span class="nav-text">单区真空边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两区反射边界"><span class="nav-number">1.1.4.</span> <span class="nav-text">两区反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析问题1：强吸收问题"><span class="nav-number">1.1.5.</span> <span class="nav-text">解析问题1：强吸收问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析问题2：内真空问题"><span class="nav-number">1.1.6.</span> <span class="nav-text">解析问题2：内真空问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reed-cell-基准题"><span class="nav-number">1.1.7.</span> <span class="nav-text">Reed cell 基准题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2d"><span class="nav-number">1.2.</span> <span class="nav-text">2d</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单单元反射边界-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">单单元反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单区域反射边界-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">单区域反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两区域反射边界"><span class="nav-number">1.2.3.</span> <span class="nav-text">两区域反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两区域真空边界"><span class="nav-number">1.2.4.</span> <span class="nav-text">两区域真空边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reed-cell基准题"><span class="nav-number">1.2.5.</span> <span class="nav-text">reed cell基准题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内真空问题-Maynard-强散射基准题"><span class="nav-number">1.2.6.</span> <span class="nav-text">内真空问题 (Maynard 强散射基准题)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直管道问题"><span class="nav-number">1.2.7.</span> <span class="nav-text">直管道问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弯管道问题"><span class="nav-number">1.2.8.</span> <span class="nav-text">弯管道问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#铁水屏蔽问题-深穿透问题"><span class="nav-number">1.2.9.</span> <span class="nav-text">铁水屏蔽问题 (深穿透问题)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强吸收问题"><span class="nav-number">1.2.10.</span> <span class="nav-text">强吸收问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3d"><span class="nav-number">1.3.</span> <span class="nav-text">3d</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单单元反射边界-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">单单元反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单区域反射边界-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">单区域反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两区域反射边界-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">两区域反射边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-1i"><span class="nav-number">1.3.4.</span> <span class="nav-text">kobayashi 1i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-1ii"><span class="nav-number">1.3.5.</span> <span class="nav-text">kobayashi 1ii</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-2i"><span class="nav-number">1.3.6.</span> <span class="nav-text">kobayashi 2i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-2ii"><span class="nav-number">1.3.7.</span> <span class="nav-text">kobayashi 2ii</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-3i"><span class="nav-number">1.3.8.</span> <span class="nav-text">kobayashi 3i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kobayashi-3ii"><span class="nav-number">1.3.9.</span> <span class="nav-text">kobayashi 3ii</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

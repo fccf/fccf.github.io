@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Attila," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/fish.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Attila软件最初由Los Alamos CIC3-Group于1995年开始开发，目前更新到Attila9.1，于2017/10/06发布。以下收集了一些相关信息：">
+<meta name="keywords" content="Attila">
+<meta property="og:type" content="article">
+<meta property="og:title" content="输运计算软件Attila介绍">
+<meta property="og:url" content="http://superfun.xyz/2017/12/06/输运计算软件Attila介绍/index.html">
+<meta property="og:site_name" content="superfun">
+<meta property="og:description" content="Attila软件最初由Los Alamos CIC3-Group于1995年开始开发，目前更新到Attila9.1，于2017/10/06发布。以下收集了一些相关信息：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/attila_application.png">
+<meta property="og:updated_time" content="2017-12-06T13:13:36.121Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="输运计算软件Attila介绍">
+<meta name="twitter:description" content="Attila软件最初由Los Alamos CIC3-Group于1995年开始开发，目前更新到Attila9.1，于2017/10/06发布。以下收集了一些相关信息：">
+<meta name="twitter:image" content="http://on08uqozg.bkt.clouddn.com/attila_application.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://superfun.xyz/2017/12/06/输运计算软件Attila介绍/"/>
+
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  <title>输运计算软件Attila介绍 | superfun</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">superfun</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/12/06/输运计算软件Attila介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="c.fang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bio.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="superfun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">输运计算软件Attila介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-06T20:56:03+08:00">
+                2017-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/输运计算软件/" itemprop="url" rel="index">
+                    <span itemprop="name">输运计算软件</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://www.attilasoftware.com/" target="_blank" rel="external">Attila软件</a>最初由Los Alamos CIC3-Group于1995年开始开发，目前更新到Attila9.1，于2017/10/06发布。以下收集了一些相关信息：</p>
+<a id="more"></a>
+<ul>
+<li>1996年： <a href="https://www.osti.gov/scitech/biblio/426394" target="_blank" rel="external">ATTILA: A three-dimensional, unstructured tetrahedral mesh discrete ordinates transport code</a></li>
+</ul>
+<ul>
+<li>1998年：<a href="https://www.osti.gov/scitech/biblio/332743-unstructured-mesh-radiation-transport-codes" target="_blank" rel="external">3D unstructured-mesh radiation transport codes</a></li>
+</ul>
+<ul>
+<li>2002年：<a href="https://www.federallabs.org/index.php?tray=award_detail&amp;cid=FLCawrd469&amp;tid=1FLtop60" target="_blank" rel="external">Greg Failla，Drs, John McGhee， Todd Wareing (LANL前职员)</a> 创建了Transpire.Inc公司，基于LANL的技术，开发了Attila软件，于2004年发布第一个版本。</li>
+</ul>
+<ul>
+<li>2007年被接收为<a href="http://www.sciencedirect.com/science/article/pii/S0920379608001336" target="_blank" rel="external">ITER的设计工具</a>.</li>
+</ul>
+<ul>
+<li>Attila提供以下  <a href="https://www.openfos.com/supply/2018802-TRANSPIRE-INC-in-GIG-HARBOR-WA/" target="_blank" rel="external">功能</a><br><img src="http://on08uqozg.bkt.clouddn.com/attila_application.png" alt="attila-application"></li>
+</ul>
+<ul>
+<li><a href="https://www.vareximaging.com/products/attila4mc-software" target="_blank" rel="external">Attila4MC</a> 集合了Attila与MCNP6。可以在同一个GUI上使用CAD直接建模，用Attila做设计计算，MCNP做验证计算。MCNP6来自Los Alamos National Laboratory。Attila来自Varex Imaging。SpaceClaim来自 ANSYS, Inc。</li>
+</ul>
+<ul>
+<li>瓦里安医疗(varian)2014年8月5日宣布<a href="https://www.prnewswire.com/news-releases/varian-medical-systems-announces-acquisition-of-certain-assets-of-transpire-inc-a-specialized-developer-of-radiation-simulation-software-269963741.html" target="_blank" rel="external">收购</a>Transpire公司部分资产，包括Acuros软件产品和Attila软件产品。</li>
+</ul>
+<ul>
+<li>瓦里安医疗(varian)是全球最大肿瘤放射设备制造商，目前市值100.38亿美元(20171206)</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><h2 id="attila-founder"><a href="#attila-founder" class="headerlink" title="attila-founder"></a><a href="https://www.federallabs.org/index.php?tray=award_detail&amp;cid=FLCawrd469&amp;tid=1FLtop60" target="_blank" rel="external">attila-founder</a></h2><p><strong>Greg Failla</strong>, Chief Executive Officer of Transpire, Inc., has plenty of reasons to be proud of what the company has accomplished in the past six years. In <strong>2002</strong>, Radion Technologies (later reincorporated as Transpire, Inc.) was founded by Failla and two former <strong>Los Alamos National Laboratory (LANL)</strong> scientists, <strong>Drs. John McGhee</strong> and <strong>Todd Wareing</strong>. Drs. McGhee and Wareing launched the startup company while on an entrepreneurial leave of absence from LANL, where they worked as scientists. They were joined soon after by <strong>Dr. Allen Barnett</strong>, who previously worked as a shielding engineer in the U.S. Navy’s Naval Nuclear Propulsion Program. Through a licensing agreement with LANL, the company built on core technology that originated at the laboratory to develop a complete radiation transport software product, <strong>Attila</strong>, that can predict how radiation behaves in a broad range of applications faster and more accurately than just about anything else. Since the first official release of Attila in January <strong>2004</strong>, interest has grown rapidly. Attila is now being used in over seven countries for applications as diverse as <strong>radiation shielding</strong>, <strong>radiotherapy</strong>, <strong>medical imaging</strong>, <strong>fusion research</strong>, <strong>homeland security</strong>, <strong>spacecraft design</strong> and <strong>reactor analysis</strong>. In addition, the company has received numerous Small Business Innovation Research grants, including two from the National Cancer Institute for medical imaging and radiotherapy, which total almost \$2 million. In 2007, Transpire generated close to \$1 million in revenue from software and training alone, and anticipates exceeding this in 2008. Because of these revenues and the large number of grants, Transpire will be able to broaden the software for additional markets. The software has recently been added to the short list of validated codes for <strong>International Thermonuclear Experimental Reactor (ITER) neutronics analyses</strong>. ITER is a joint international research and development project that aims to demonstrate the scientific and technical feasibility of fusion power and involves partners from all over the world. The company also has a multi-year project with Pacific Northwest National Laboratory to develop a scenario analysis tool to detect radiological threats at U.S. ports of entry. The software has been licensed by leading healthcare companies involved in both radiotherapy and medical imaging. Additionally, Transpire has active collaborations with the University of Texas M.D. Anderson Cancer Center for radiotherapy and Baylor College of Medicine</p>
+<h2 id="ATTILA-A-three-dimensional-unstructured-tetrahedral-mesh-discrete-ordinates-transport-code"><a href="#ATTILA-A-three-dimensional-unstructured-tetrahedral-mesh-discrete-ordinates-transport-code" class="headerlink" title="ATTILA: A three-dimensional, unstructured tetrahedral mesh discrete ordinates transport code"></a><a href="https://www.osti.gov/scitech/biblio/426394" target="_blank" rel="external">ATTILA: A three-dimensional, unstructured tetrahedral mesh discrete ordinates transport code</a></h2><p>Many applications of radiation transport require the accurate modeling of complex three-dimensional geometries. Historically, Monte Carlo codes have been used for such applications. Existing deterministic transport codes were not applied to such problems because of the difficulties of modeling complex three-dimensional geometries with rectangular meshes. The authors have developed a three-dimensional discrete ordinates ($S_{n}$) code, <strong>ATTILA</strong>, which uses <strong>linear-discontinuous</strong> finite element spatial differencing in conjunction with diffusion-synthetic acceleration (DSA) on an <strong>unstructured tetrahedral</strong> mesh. This tetrahedral mesh capability enables the authors to efficiently model complex three-dimensional geometries. One interesting and challenging application of neutron and/or gamma-ray transport is nuclear well-logging applications. Nuclear well-logging problems usually involve a complex geometry with fixed sources and one or more detectors. Detector responses must generally be accurate to within {approx}1%. The combination of complex three-dimensional geometries and high accuracy requirements makes it difficult to perform logging problems with traditional $S_{n}$ differencing schemes and rectangular meshes. Hence, it is not surprising that deterministic $S_{n}$ codes have seen limited use in nuclear well-logging applications. The geometric modeling capabilities and the advanced spatial differencing of ATTILA give it a significant advantage, relative to traditional $S_{n}$ codes, for performing nuclear well-logging calculations.</p>
+<h2 id="3D-unstructured-mesh-radiation-transport-codes"><a href="#3D-unstructured-mesh-radiation-transport-codes" class="headerlink" title="3D unstructured-mesh radiation transport codes"></a><a href="https://www.osti.gov/scitech/biblio/332743-unstructured-mesh-radiation-transport-codes" target="_blank" rel="external">3D unstructured-mesh radiation transport codes</a></h2><p>Three unstructured-mesh radiation transport codes are currently being developed at Los Alamos National Laboratory. The first code is <strong>ATTILA</strong>, which uses an unstructured tetrahedral mesh in conjunction with standard <strong>Sn</strong> (discrete-ordinates) angular discretization, standard multigroup energy discretization, and <strong>linear-discontinuous</strong> spatial differencing. ATTILA solves the standard <strong>first-order</strong> form of the transport equation using source iteration in conjunction with diffusion-synthetic acceleration of the within-group source iterations. <strong>DANTE</strong> is designed to run primarily on workstations. The second code is DANTE, which uses a <strong>hybrid finite-element</strong> mesh consisting of arbitrary combinations of hexahedra, wedges, pyramids, and tetrahedra. DANTE solves several <strong>second-order self-adjoint</strong> forms of the transport equation including the even-parity equation, the odd-parity equation, and a new equation called the self-adjoint angular flux equation. DANTE also offers three angular discretization options: $S_{n}$ (discrete-ordinates), $P_{n}$ (spherical harmonics), and $SP_{n}$ (simplified spherical harmonics). DANTE is designed to run primarily on massively parallel message-passing machines, such as the ASCI-Blue machines at LANL and LLNL. The third code is <strong>PERICLES</strong>, which uses the same hybrid finite-element mesh as DANTE, but solves the standard first-order form of the transport equation rather than a second-order self-adjoint form. DANTE uses a standard $S_{n}$ discretization in angle in conjunction with <strong>trilinear-discontinuous</strong> spatial differencing, and diffusion-synthetic acceleration of the within-group source iterations. PERICLES was initially designed to run on workstations, but a version for massively parallel message-passing machines will be built. The three codes will be described in detail and computational results will be presented.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Attila/" rel="tag"># Attila</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/01/中子输运方程固定源基准题/" rel="next" title="中子输运方程固定源基准题">
+                <i class="fa fa-chevron-left"></i> 中子输运方程固定源基准题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/bio.png"
+               alt="c.fang" />
+          <p class="site-author-name" itemprop="name">c.fang</p>
+           
+              <p class="site-description motion-element" itemprop="description">道，行之而成</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fccf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.iter.org/" title="ITER" target="_blank">ITER</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#attila-founder"><span class="nav-number">1.1.</span> <span class="nav-text">attila-founder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ATTILA-A-three-dimensional-unstructured-tetrahedral-mesh-discrete-ordinates-transport-code"><span class="nav-number">1.2.</span> <span class="nav-text">ATTILA: A three-dimensional, unstructured tetrahedral mesh discrete ordinates transport code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D-unstructured-mesh-radiation-transport-codes"><span class="nav-number">1.3.</span> <span class="nav-text">3D unstructured-mesh radiation transport codes</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">c.fang</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2146790"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
