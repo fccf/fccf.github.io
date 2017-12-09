@@ -136,11 +136,25 @@
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res2diws.png">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh2dsap">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res2dsap.png">
-<meta property="og:image" content="http://superfun.xyz/2017/12/01/images/gmsh3d1e">
-<meta property="og:image" content="http://superfun.xyz/2017/12/01/images/res3d1eref.png">
-<meta property="og:image" content="http://superfun.xyz/2017/12/01/images/gmsh3d1rref">
-<meta property="og:image" content="http://superfun.xyz/2017/12/01/images/res3d1rref.png">
-<meta property="og:updated_time" content="2017-12-04T06:26:16.185Z">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh3d1e">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res3d1eref.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh3d1rref.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res3d1rref.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmsh3d2rref.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/res3d2rref.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmshKobayashi1i.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/resKobayashi1i.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmshKobayashi1i.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/resKobayashi1ii.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmshkobayashi2.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/resKobayashi2i.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmshkobayashi2.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/resKobayashi2ii.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmshkobayashi3.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/reskobayashi3i.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gmshkobayashi3.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/reskobayashi3ii.png">
+<meta property="og:updated_time" content="2017-12-09T14:18:57.913Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="中子输运方程固定源基准题">
 <meta name="twitter:description" content="以下收集了几十个固定源基准题，包括题的几何，材料以及FISH0.4的计算结果。对某些问题比较了 OSG 方法和 SGS 方法的计算时间。">
@@ -985,20 +999,23 @@
 </tbody>
 </table>
 <h2 id="3d"><a href="#3d" class="headerlink" title="3d"></a>3d</h2><h3 id="单单元反射边界-2"><a href="#单单元反射边界-2" class="headerlink" title="单单元反射边界"></a>单单元反射边界</h3><ul>
-<li><p>几何<br><img src="../images/gmsh3d1e" alt="gmsh3d1e"></p>
+<li><p>几何<br><img src="http://on08uqozg.bkt.clouddn.com/gmsh3d1e" alt="gmsh3d1e"></p>
 </li>
-<li><p>材料</p>
+<li><p>材料1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.5</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>材料1</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.5</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
 </li>
 <li><p>结果</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scalar_flux = source/(sigma_t - sigma_s) = 2.0</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="../images/res3d1eref.png" alt="res3d1eref"></p>
+<p><img src="http://on08uqozg.bkt.clouddn.com/res3d1eref.png" alt="res3d1eref"></p>
 <h3 id="单区域反射边界-2"><a href="#单区域反射边界-2" class="headerlink" title="单区域反射边界"></a>单区域反射边界</h3><ul>
 <li>几何</li>
 </ul>
-<p><img src="../images/gmsh3d1rref" alt="gmsh3d1rref"></p>
+<p><img src="http://on08uqozg.bkt.clouddn.com/gmsh3d1rref.png" alt="gmsh3d1rref"></p>
 <ul>
 <li><p>材料</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.5</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
@@ -1007,8 +1024,131 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scalar_flux = source/(sigma_t - sigma_s) = 2.0</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="../images/res3d1rref.png" alt="res3d1rref"></p>
-<h3 id="两区域反射边界-1"><a href="#两区域反射边界-1" class="headerlink" title="两区域反射边界"></a>两区域反射边界</h3><h3 id="kobayashi-1i"><a href="#kobayashi-1i" class="headerlink" title="kobayashi 1i"></a>kobayashi 1i</h3><h3 id="kobayashi-1ii"><a href="#kobayashi-1ii" class="headerlink" title="kobayashi 1ii"></a>kobayashi 1ii</h3><h3 id="kobayashi-2i"><a href="#kobayashi-2i" class="headerlink" title="kobayashi 2i"></a>kobayashi 2i</h3><h3 id="kobayashi-2ii"><a href="#kobayashi-2ii" class="headerlink" title="kobayashi 2ii"></a>kobayashi 2ii</h3><h3 id="kobayashi-3i"><a href="#kobayashi-3i" class="headerlink" title="kobayashi 3i"></a>kobayashi 3i</h3><h3 id="kobayashi-3ii"><a href="#kobayashi-3ii" class="headerlink" title="kobayashi 3ii"></a>kobayashi 3ii</h3>
+<p><img src="http://on08uqozg.bkt.clouddn.com/res3d1rref.png" alt="res3d1rref"></p>
+<h3 id="两区域反射边界-1"><a href="#两区域反射边界-1" class="headerlink" title="两区域反射边界"></a>两区域反射边界</h3><ul>
+<li>几何</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/gmsh3d2rref.png" alt="gmsh3d2rref"></p>
+<ul>
+<li><p>材料1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.5</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>材料2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0</div><div class="line">sigma_s = 0.5</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/res3d2rref.png" alt="res3d2rref"></p>
+<h3 id="kobayashi-1i"><a href="#kobayashi-1i" class="headerlink" title="kobayashi 1i"></a>kobayashi 1i</h3><ul>
+<li>几何</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/gmshKobayashi1i.png" alt="gmshKobayashi1i"></p>
+<ul>
+<li><p>材料1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.1</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>材料2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0e-4</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>材料3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.1</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/resKobayashi1i.png" alt="resKobayashi1i"></p>
+<h3 id="kobayashi-1ii"><a href="#kobayashi-1ii" class="headerlink" title="kobayashi 1ii"></a>kobayashi 1ii</h3><ul>
+<li>几何</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/gmshKobayashi1i.png" alt="gmshKobayashi1i"></p>
+<ul>
+<li><p>材料1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.1</div><div class="line">sigma_s = 0.05</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>材料2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>材料3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.1</div><div class="line">sigma_s = 0.05</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/resKobayashi1ii.png" alt="resKobayashi1ii"></p>
+<h3 id="kobayashi-2i"><a href="#kobayashi-2i" class="headerlink" title="kobayashi 2i"></a>kobayashi 2i</h3><ul>
+<li>几何</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/gmshkobayashi2.png" alt="gmshKobayashi2"></p>
+<ul>
+<li><p>材料1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.1</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>材料2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0e-4</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>材料3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.1</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/resKobayashi2i.png" alt="resKobayashi2i"></p>
+<h3 id="kobayashi-2ii"><a href="#kobayashi-2ii" class="headerlink" title="kobayashi 2ii"></a>kobayashi 2ii</h3><ul>
+<li>几何</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/gmshkobayashi2.png" alt="gmshKobayashi2"></p>
+<ul>
+<li><p>材料1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.1</div><div class="line">sigma_s = 0.05</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>材料2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>材料3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.1</div><div class="line">sigma_s = 0.05</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/resKobayashi2ii.png" alt="resKobayashi2ii"></p>
+<h3 id="kobayashi-3i"><a href="#kobayashi-3i" class="headerlink" title="kobayashi 3i"></a>kobayashi 3i</h3><ul>
+<li>几何</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/gmshkobayashi3.png" alt="gmshkobayashi3"></p>
+<ul>
+<li><p>材料1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.1</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>材料2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 1.0e-4</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>材料3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.1</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/reskobayashi3i.png" alt="reskobayashi3i"></p>
+<h3 id="kobayashi-3ii"><a href="#kobayashi-3ii" class="headerlink" title="kobayashi 3ii"></a>kobayashi 3ii</h3><ul>
+<li>几何</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/gmshkobayashi3.png" alt="gmshKobayashi3"></p>
+<ul>
+<li><p>材料1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.1</div><div class="line">sigma_s = 0.05</div><div class="line">source  = 1.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>材料2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.0</div><div class="line">sigma_s = 0.0</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>材料3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sigma_t = 0.1</div><div class="line">sigma_s = 0.05</div><div class="line">source  = 0.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+</li>
+</ul>
+<p><img src="http://on08uqozg.bkt.clouddn.com/reskobayashi3ii.png" alt="reskobayashi3ii"></p>
+
       
     </div>
     
@@ -1156,7 +1296,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1178,7 +1318,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
