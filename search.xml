@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[反应堆设计工具包NEAMS介绍]]></title>
+    <url>%2F2017%2F12%2F12%2F%E5%8F%8D%E5%BA%94%E5%A0%86%E8%AE%BE%E8%AE%A1%E5%B7%A5%E5%85%B7%E5%8C%85NEAMS%E4%BB%8B%E7%BB%8D%2F</url>
+    <content type="text"><![CDATA[NEAMS 是 Nuclear Energy Advanced Modeling and Simulation 的缩写。是美国能源部 (DOE)召集全美各个主要研究核能的实验室，大学以及工业界利用最先进的方法和技术开发的具有革命性的反应堆设计工具包。 NEAMS的主要任务 NEAMS 包含三条产品线： 燃料性能产品线，主要基于INL的MOOSE平台开发，包括分析燃料颗粒性质的 MARMOT 程序和分析燃料棒性能的 BISON 程序。该条产品线主要 INL 负责。 反应堆模拟产品线，主要包括ANL的堆芯多物理耦合计算程序SHARP，以及INL的系统模拟程序RELAP 7。多物理耦合计算程序包括中子学计算程序 PROTEUS, 热工水力计算程序 Nek5000, 机械结构计算程序 diablo。并通过网格数据工具SIGMA 将所有程序结合起来。该条产品线主要 ANL 负责。 整合产品线，主要把相关产品全部整合起来，除了以上的燃料性能程序和反应堆模拟程序，还要把进行燃耗计算的 ORIGEN 程序，进行敏感性与不确定性分析的 Dakota 程序等全部进行整合，并开发用户界面，形成 NEAMS 计算平台。该条产品线主要 ORNL 负责。 Fuel Product Line (FPL) Subcontinuum Scale (MARMOT) Engineering Scale (BISON) Reactors Product Line (RPL) Multiphysics Simulations (SHARP) Neutronics (PROTEUS) Thermal Fluids (Nek5000)Structural Mechanics (diablo)System Simulation (relap-7)Integration Product Line (IPL) User Environment (NiCE) Geometry Interfaces (SIGMA) Common Geometry Module (CGM)Dependencies OpenCascade Mesh-Oriented datABase (MOAB)Dependencies MPI HDF5 METIS ZoltanMesh Generation (MeshKit)Dependencies CGM MOAB]]></content>
+      <categories>
+        <category>反应堆设计</category>
+      </categories>
+      <tags>
+        <tag>反应堆设计工具， NEAMS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[中子输运方程有限元求解软件]]></title>
     <url>%2F2017%2F12%2F11%2F%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E6%9C%89%E9%99%90%E5%85%83%E6%B1%82%E8%A7%A3%E8%BD%AF%E4%BB%B6%2F</url>
-    <content type="text"><![CDATA[随着反应堆设计越来越复杂以及计算精度的要求越来越高，中子输运方程的求解方法已经从最初的差分SN方法发展到适用于非结构几何的有限元方法或MOC方法，以下对国际上有名的有限元软件进行了总结 ATTILA开发机构 1995年，LANL开始开发。 2002年，创建Transpire.Inc 2004年，发布ATTILA1.0 2007年，被接收为ITER设计工具 2014年8月5日，被Varex Imaging收购 2017年10月6日，发布Attila9.1，集成了MCNP6与ATTILA 主要方法 空间上采用 DFEM 方法(间断有限元)。 单元类型为线性四面体。 角度上采用 SN 方法。 集成工具 ATTILA MCNP6 SpaceClaim (ANSYS.Inc) 典型问题 ITER ATR PROTEUS开发机构 ANL 主要方法 基于奇偶型中子输运方程。 空间上采用连续有限元方法。 单元类型包含多种，有三角形，四边形，四面体，六面体，三棱柱，六棱柱等。 角度上有SN，PN, MOC。由于PN方法太慢，主要开发的还是SN 集成工具 MPICH (并行环境) METIS (区域分解) PETSc (代数方程求解) HDF5 (数据保存) CUBIT (网格剖分) NetCDF (网格格式转化) VTK (VisIt 数据可视化) 典型问题 ATR 未来计划 sharp (Multiphysics Simulation Toolkit for Nuclear Reactor Analysis) NEAMS (Nuclear Energy Advanced Modeling and Simulation) 2015.8 MOOSE-Rattlesnake开发机构 2008年，INL开始开发MOOSE框架，采用C++语言 主要方法 基于 SAAF 方程，LS 方程，FNET 二阶方程采用连续有限元，一阶方程采用间断有限元方法 单元类型包含多种，有三角形，四边形，四面体，六面体，三棱柱，六棱柱等。 角度上有SN,PN 集成工具 MPICH (并行环境) LibMesh (有限元库) PETSc (代数方程求解) VTK (数据可视化) …… 典型问题 PWR TREAT 未来计划 APOLLO3-MINARET开发机构 2009年，CEA在 APOLLO2, CRONOS2, ERANOS2的基础上，重新设计与开发新一代的模拟软件。 2012年，发布 APOLLO3-V1.0 主要方法 空间上采用间断有限元方法 采用三角形单元和三棱柱单元 角度上采用SN方法 典型问题 ASTRID FR 未来计划 RADIANT开发机构 AMCG - IC，正在开发 主要方法 空间上采用连续有限元， SGS稳定算法 单元类型包含各种类型 角度上采用 Pn,PN,Wavelet方法 含空间自适应，角度自适应 集成工具 gmsh (网格剖分) VTK (paraview 可视化) fluidity (耦合CFD) 典型问题 C5G7 未来计划 AETIUS开发机构 2017年，KAERI 正在开发 主要方法 空间上采用间断有限元方法 采用四面体单元 角度上采用SN方法 集成工具 gmsh (网格剖分工具) 典型问题 HCCR TBM]]></content>
+    <content type="text"><![CDATA[随着反应堆设计越来越复杂以及计算精度的要求越来越高，中子输运方程的求解方法已经从最初的差分SN方法发展到适用于非结构几何的有限元方法或MOC方法，以下对国际上有名的有限元软件进行了总结 ATTILA开发机构 1995年，LANL开始开发。 2002年，创建Transpire.Inc 2004年，发布ATTILA1.0 2007年，被接收为ITER设计工具 2014年8月5日，被Varex Imaging收购 2017年10月6日，发布Attila9.1，集成了MCNP6与ATTILA 主要方法 空间上采用 DFEM 方法(间断有限元)。 单元类型为线性四面体。 角度上采用 SN 方法。 集成工具 ATTILA MCNP6 SpaceClaim (ANSYS.Inc) 典型问题 ITER ATR PROTEUS开发机构 ANL 主要方法 基于奇偶型中子输运方程。 空间上采用连续有限元方法。 单元类型包含多种，有三角形，四边形，四面体，六面体，三棱柱，六棱柱等。 角度上有SN，PN, MOC。由于PN方法太慢，主要开发的还是SN 集成工具 MPICH (并行环境) METIS (区域分解) PETSc (代数方程求解) HDF5 (数据保存) CUBIT (网格剖分) NetCDF (网格格式转化) VTK (VisIt 数据可视化) 典型问题 ATR 未来计划 sharp (Multiphysics Simulation Toolkit for Nuclear Reactor Analysis) NEAMS (Nuclear Energy Advanced Modeling and Simulation) 2012 MOOSE-Rattlesnake开发机构 2008年，INL开始开发MOOSE框架，采用C++语言 主要方法 基于 SAAF 方程，LS 方程，FNET 二阶方程采用连续有限元，一阶方程采用间断有限元方法 单元类型包含多种，有三角形，四边形，四面体，六面体，三棱柱，六棱柱等。 角度上有SN,PN 集成工具 MPICH (并行环境) LibMesh (有限元库) PETSc (代数方程求解) VTK (数据可视化) …… 典型问题 PWR TREAT 未来计划 APOLLO3-MINARET开发机构 2009年，CEA在 APOLLO2, CRONOS2, ERANOS2的基础上，重新设计与开发新一代的模拟软件。 2012年，发布 APOLLO3-V1.0 主要方法 空间上采用间断有限元方法 采用三角形单元和三棱柱单元 角度上采用SN方法 典型问题 ASTRID FR 未来计划 RADIANT开发机构 AMCG - IC，正在开发 主要方法 空间上采用连续有限元， SGS稳定算法 单元类型包含各种类型 角度上采用 Pn,PN,Wavelet方法 含空间自适应，角度自适应 集成工具 gmsh (网格剖分) VTK (paraview 可视化) fluidity (耦合CFD) 典型问题 C5G7 未来计划 AETIUS开发机构 2017年，KAERI 正在开发 主要方法 空间上采用间断有限元方法 采用四面体单元 角度上采用SN方法 集成工具 gmsh (网格剖分工具) 典型问题 HCCR TBM]]></content>
       <categories>
         <category>输运计算软件</category>
       </categories>
@@ -216,8 +227,8 @@
         <category>中子输运方程</category>
       </categories>
       <tags>
-        <tag>中子输运方程</tag>
         <tag>SGS</tag>
+        <tag>中子输运方程</tag>
       </tags>
   </entry>
   <entry>
