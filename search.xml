@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CFETR简介]]></title>
+    <url>%2F2017%2F12%2F13%2FCFETR%E7%AE%80%E4%BB%8B%2F</url>
+    <content type="text"><![CDATA[CFETR 简介 CFETR是China Fusion Engineering Test Reactor 的简称，这是中国在吸收消化ITER技术的基础上提出建造自己的聚变工程实验堆。以下对CFETR进行简单介绍 历史 2011年，科技部(MOST)成立CFETR设计组，万元熙任组长，李建刚，刘永，汪小琳任副组长。 2015年，完成CFETR概念设计，提出中国聚变能路线图。 2017年12月5日，启动CFETR工程设计研究，项目负责任为宋云涛。并提出中国核聚变研究三步走战略： 2021年，CFETR开始建设 2035年，建成CFETR，开始大规模科学实验 2050年，CFETR实验成功，建设聚变商用示范堆 研究人员以及单位 超过 200 人在对CFETR进行研究，主要研究单位包括 中国科学院等离子体物理研究所 (ASIPP) 核工业西南物理研究院 (SWIP) 中国工程物理研究院 (CAEP) 中国科学技术大学 (USTC) 华中科技大学(HUST) 中国磁约束核聚变路线图 CFETR 尺寸 CFETR 设计参数]]></content>
+      <categories>
+        <category>核聚变</category>
+      </categories>
+      <tags>
+        <tag>CFETR</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[反应堆设计工具包NEAMS介绍]]></title>
     <url>%2F2017%2F12%2F12%2F%E5%8F%8D%E5%BA%94%E5%A0%86%E8%AE%BE%E8%AE%A1%E5%B7%A5%E5%85%B7%E5%8C%85NEAMS%E4%BB%8B%E7%BB%8D%2F</url>
     <content type="text"><![CDATA[NEAMS 是 Nuclear Energy Advanced Modeling and Simulation 的缩写。是美国能源部 (DOE)召集全美各个主要研究核能的实验室，大学以及工业界利用最先进的方法和技术开发的具有革命性的反应堆设计工具包。 NEAMS的主要任务 NEAMS 包含三条产品线： 燃料性能产品线，主要基于INL的MOOSE平台开发，包括分析燃料颗粒性质的 MARMOT 程序和分析燃料棒性能的 BISON 程序。该条产品线主要 INL 负责。 反应堆模拟产品线，主要包括ANL的堆芯多物理耦合计算程序SHARP，以及INL的系统模拟程序RELAP 7。多物理耦合计算程序包括中子学计算程序 PROTEUS, 热工水力计算程序 Nek5000, 机械结构计算程序 diablo。并通过网格数据工具SIGMA 将所有程序结合起来。该条产品线主要 ANL 负责。 整合产品线，主要把相关产品全部整合起来，除了以上的燃料性能程序和反应堆模拟程序，还要把进行燃耗计算的 ORIGEN 程序，进行敏感性与不确定性分析的 Dakota 程序等全部进行整合，并开发用户界面，形成 NEAMS 计算平台。该条产品线主要 ORNL 负责。 Fuel Product Line (FPL) Subcontinuum Scale (MARMOT) Engineering Scale (BISON) Reactors Product Line (RPL) Multiphysics Simulations (SHARP) Neutronics (PROTEUS) Thermal Fluids (Nek5000)Structural Mechanics (diablo)System Simulation (relap-7)Integration Product Line (IPL) User Environment (NiCE) Geometry Interfaces (SIGMA) Common Geometry Module (CGM)Dependencies OpenCascade Mesh-Oriented datABase (MOAB)Dependencies MPI HDF5 METIS ZoltanMesh Generation (MeshKit)Dependencies CGM MOAB]]></content>
