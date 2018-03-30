@@ -409,107 +409,14 @@
 
       
         
-          
-            <h2 id="transx-简介"><a href="#transx-简介" class="headerlink" title="transx 简介"></a>transx 简介</h2><p>transx 程序是由 Los Alamos 国家实验室 MacFarlane 用 f77 语言开发。该程序用于从 MATXS 库中读取确定论程序所需要的多群截面，能够处理中子，光子，中光子耦合的多群截面。该程序仅能够处理窄共振自屏效应，因此可能会影响热中子问题的计算精度。</p>
-<h2 id="transx-编译"><a href="#transx-编译" class="headerlink" title="transx 编译"></a>transx 编译</h2><p>transx 是 f77 写的，编译时把 Check Routine Interface 关掉才能编译通过。</p>
-<h2 id="transx-输入卡片"><a href="#transx-输入卡片" class="headerlink" title="transx 输入卡片"></a>transx 输入卡片</h2><ol>
-<li>标题 (&lt;72c)</li>
-<li><p>选项</p>
-<ul>
-<li>1 打印选项 [0,1]，0=&gt;长，1=&gt;短，通常选 0</li>
-<li>2 输出格式 [0~8]，常用的有 3=&gt;FIDO，4=&gt;ANISN，通常选 4</li>
-<li>3 问题选项 [0,1]，0=&gt;直接问题，1=&gt;共轭问题，通常为 0</li>
-<li>4 粒子类型 [1,2,12]，1=&gt;中子，2=&gt;光子，12=&gt;中子光子耦合，通常为 1 或 12</li>
-<li>5 输出排序 [1,2]，1=&gt;按材料，2=&gt;按能群，通常为 1</li>
-<li>6 时间选项 [1,2]，1=&gt;稳态，2=&gt;瞬态，通常为 1</li>
-<li>7 衰变选项 0</li>
-<li>8 输运修正 [0~5]，0=&gt;不修正,4=&gt;inflow 修正，暂时选 0</li>
-<li>9 收缩选项 0</li>
-<li>10 初始通量 [0~4], 0=&gt;使用库中 P0 通量，通常选 0</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0  4  0  1  1  1  0  0  0  0/</div></pre></td></tr></table></figure>
-</li>
-<li><p>参数</p>
-<ul>
-<li>1 输出表中的能群 NG，正数表示从 matxs 读取截面，负数表示从一个截面文件夹中读取截面 xsdir</li>
-<li>2 散射阶数 NP+1</li>
-<li>3 输出表的长度 NED+4+NUP &lt;= NT &lt;= NED+4+NUP+NG</li>
-<li>4 上散射群数 NUP</li>
-<li>5 热中子群数 NTH</li>
-<li>6 材料数 NMIX</li>
-<li>7 区域数 NREG</li>
-<li>8 材料成分数 NMIXS，即所有材料的核素数目和</li>
-<li>9 额外编辑数 NED</li>
-<li>10 编辑说明数 NEDS，NEDS&gt;NED，将几种反应类型合并为一种</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">175  1  178  0  0  6  6  125  0  0/</div></pre></td></tr></table></figure>
-</li>
-<li><p>核素截面文件   </p>
-<ul>
-<li>如果能群为负数，需要指定核素 matxs 所在的文件夹，比如 <em>xsdir/</em>/，否则不填</li>
-</ul>
-</li>
-</ol>
-<ol>
-<li>材料名称卡<ul>
-<li>输入 NMIX 个材料名称，(&lt;6c)</li>
-</ul>
-</li>
-</ol>
-<ol>
-<li><p>区域说明</p>
-<ul>
-<li>区域名称 (&lt;6c)</li>
-<li>区域温度 (默认 300K)</li>
-<li>区域体积 (默认 1)</li>
-<li>不均匀性<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">r1   300K   1.0/</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>通量赋值</p>
-<ul>
-<li>当需要使用外部通量时才填此卡，否则不填。</li>
-</ul>
-</li>
-</ol>
-<ol>
-<li><p>材料 MIX 说明</p>
-<ul>
-<li>1 材料号</li>
-<li>2 区域号</li>
-<li>3 MATXS 中核素名称</li>
-<li>4 核子密度<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1  1  al27  1.0e-03/</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>额外编辑名</p>
-<ul>
-<li>如果 NED 不为 0，则填 NED 个额外编辑的名称 (&lt;6c)</li>
-</ul>
-</li>
-</ol>
-<ol>
-<li>编辑说明<ul>
-<li>额外编辑的位置[1~NED]</li>
-<li>matxs 中反应道的名称</li>
-</ul>
-</li>
-</ol>
-<ol>
-<li>并群参数<ul>
-<li>输入每个宽能群中的细能群数目。</li>
-</ul>
-</li>
-</ol>
-<h2 id="transx-输出说明"><a href="#transx-输出说明" class="headerlink" title="transx 输出说明"></a>transx 输出说明</h2><p>transx输出将所有输入都格式化输出了，便于检查错误。tranx输出的截面数据在 <strong> matname Pn </strong> 数据块中。数据格式如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">1                             xs_e(1)   !&lt; Response edits</div><div class="line">:                             xs_e()    !&lt; Response edits</div><div class="line">ned                           xs_e(ned) !&lt; Response edits</div><div class="line">ned+1                         xs_a      !&lt; standard edits</div><div class="line">ned+2                         xs_f_nu   !&lt; standard edits</div><div class="line">ned+3                         xs_t      !&lt; standard edits</div><div class="line">ned+4                                   !&lt; upscatter (g&apos;&gt;g)  </div><div class="line">:                             xs_s(g,g&apos;)!&lt; upscatter (g&apos;&gt;g)</div><div class="line">ned+nup+3                               !&lt; upscatter (g&apos;&gt;g)</div><div class="line">ned+nup+4                     xs_s(g,g) !&lt; ingroup scatter</div><div class="line">ned+5                                   !&lt; downscatter (g&apos;&lt;g)</div><div class="line">:                             xs_s(g,g&apos;)!&lt; downscatter (g&apos;&lt;g)</div><div class="line">ntabl                                   !&lt; downscatter (g&apos;&lt;g)</div></pre></td></tr></table></figure>
-<h2 id="transx-使用注意事项"><a href="#transx-使用注意事项" class="headerlink" title="transx 使用注意事项"></a>transx 使用注意事项</h2><ol>
-<li>输入 3.1 为能群，可以为负数，代表从文件夹中读取核素 MATXS，此时需要填写 4，即指定核素 MATXS 所在的文件夹。</li>
-<li>给材料，区域，额外编辑命名时名称不能超过 6 字符。</li>
-<li>输出中的吸收截面abs可以是负值。</li>
-</ol>
-
-          
+          <h2 id="transx-简介"><a href="#transx-简介" class="headerlink" title="transx 简介"></a>transx 简介</h2><p>transx 程序是由 Los Alamos 国家实验室 MacFarlane 用 f77 语言开发。该程序用于从 MATXS 库中读取确定论程序所需要的多群截面，能够处理中子，光子，中光子耦合的多群截面。该程序仅能够处理窄共振自屏效应，因此可能会影响热中子问题的计算精度。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/30/transx学习/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
