@@ -103,7 +103,7 @@
 <meta property="og:description" content="开发该程序主要用于测试各种算法，算法的稳定性，算法的效率，以及学习并行算法的实施。目前程序角度上采用球谐函数方法，空间上采用有限元方法。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/LegendrePolynomial.png">
-<meta property="og:updated_time" content="2017-11-08T07:45:28.278Z">
+<meta property="og:updated_time" content="2018-01-12T08:39:33.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="中子输运方程一维求解程序">
 <meta name="twitter:description" content="开发该程序主要用于测试各种算法，算法的稳定性，算法的效率，以及学习并行算法的实施。目前程序角度上采用球谐函数方法，空间上采用有限元方法。">
@@ -426,7 +426,7 @@
 <p>由勒让得多项式递推公式得</p>
 <p>$$\sum_{n=0}^{∞}\frac{d\phi_n(z)}{dz}[(n+1)P_{n+1}(\mu)+n P_{n-1}(μ)]+ \sum_{n=0}^{∞}(2n+1)σ_t(z)\phi_n(z)P_n(\mu) = \sum_{n=0}^{∞}(2n+1)\sigma_{sn}(z)\phi_n(z)P_n(\mu) + s(z)$$</p>
 <p>在方程两端同时乘以$P_{n}(\mu),n=0,1,2,…$,并对 $-1\le \mu \le 1$积分，得</p>
-<p>$$\frac{n+1}{2n+1}\frac{d\phi_{n+1}(z)}{dz}+\frac{1}{2n+1}\frac{d\phi_{n-1}(z)}{dz}+\sigma_{n}\phi_n(z) = s(z)δ_{0n}$$</p>
+<p>$$\frac{n+1}{2n+1}\frac{d\phi_{n+1}(z)}{dz}+\frac{n}{2n+1}\frac{d\phi_{n-1}(z)}{dz}+\sigma_{n}\phi_n(z) = s(z)δ_{0n}$$</p>
 <p>式中 $σ_n = σ_t - σ_{sn}$</p>
 <p>在实际计算中，只取方程组前 $N+1$个方程，即认为$\frac{d\phi_{n+1}}{dz} = 0$以及$\phi_{n} = 0,n&gt;N$，此时<br>$$\phi(z.μ) = \sum_{n=0}^{N}\frac{2n+1}{2}\phi_n(z)P_n(\mu)$$</p>
 <p>将其写为矩阵形式为</p>
@@ -723,7 +723,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -829,8 +829,8 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
