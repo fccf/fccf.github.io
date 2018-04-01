@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[fortran系列之自动数组分配]]></title>
+    <url>%2F2018%2F04%2F01%2Ffortran%E7%B3%BB%E5%88%97%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%95%B0%E7%BB%84%E5%88%86%E9%85%8D%2F</url>
+    <content type="text"><![CDATA[fortran系列之自动数组分配自动分配动态数组可以不用显式的指定其大小，它会根据等号右边的数组分配空间123456program main implicit none integer, allocatable :: iv(:) iv = [1,2,3,4,5] !&lt; allocate lhs print*,ivend program 结果:1&gt;&gt; 1 2 3 4 5 自动重新分配动态数组会将等号右边的数组分配给等号左端，然后将原来的空间释放掉1234567program main implicit none integer, allocatable :: iv(:) iv = (/1,2,3/) !&lt; allocate lhs， another array constructor iv = [1,2,3,4,5] !&lt; reallocate lhs print*,ivend program 结果:1&gt;&gt; 1 2 3 4 5 可以根据数组构造函数不断的扩展数组的大小 数组扩展12345678910program main implicit none integer, allocatable :: iv(:) integer :: i iv = [integer ::] !&lt; an empty array do i = 1,5 iv = [iv,i] !&lt; append array enddo print*,ivend program 结果:1&gt;&gt; 1 2 3 4 5 读取未知数目数据读取文件中的数组，其大小通常是未知的，可以使用数组扩展来进行读取1234567891011121314program main implicit none integer, allocatable :: iv(:) integer :: i, ios, unit iv = [integer ::] open(newunit = unit, file='test.txt') do read(unit=unit,fmt=*,iostat=ios) i if(ios /= 0) exit !&lt; iostat_end, iostat_eor iv = [iv,i] enddo close(unit) print*,ivend program 结果:1&gt;&gt; 1 2 3 4 5]]></content>
+      <categories>
+        <category>fortran</category>
+      </categories>
+      <tags>
+        <tag>fortran</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[learn-transx]]></title>
     <url>%2F2018%2F03%2F30%2Ftransx%E5%AD%A6%E4%B9%A0%2F</url>
     <content type="text"><![CDATA[transx 简介transx 程序是由 Los Alamos 国家实验室 MacFarlane 用 f77 语言开发。该程序用于从 MATXS 库中读取确定论程序所需要的多群截面，能够处理中子，光子，中光子耦合的多群截面。该程序仅能够处理窄共振自屏效应，因此可能会影响热中子问题的计算精度。 transx 编译transx 是 f77 写的，编译时把 Check Routine Interface 关掉才能编译通过。 transx 输入卡片 标题 (&lt;72c) 选项 1 打印选项 [0,1]，0=&gt;长，1=&gt;短，通常选 0 2 输出格式 [0~8]，常用的有 3=&gt;FIDO，4=&gt;ANISN，通常选 4 3 问题选项 [0,1]，0=&gt;直接问题，1=&gt;共轭问题，通常为 0 4 粒子类型 [1,2,12]，1=&gt;中子，2=&gt;光子，12=&gt;中子光子耦合，通常为 1 或 12 5 输出排序 [1,2]，1=&gt;按材料，2=&gt;按能群，通常为 1 6 时间选项 [1,2]，1=&gt;稳态，2=&gt;瞬态，通常为 1 7 衰变选项 0 8 输运修正 [0~5]，0=&gt;不修正,4=&gt;inflow 修正，暂时选 0 9 收缩选项 0 10 初始通量 [0~4], 0=&gt;使用库中 P0 通量，通常选 0 10 4 0 1 1 1 0 0 0 0/ 参数 1 输出表中的能群 NG，正数表示从 matxs 读取截面，负数表示从一个截面文件夹中读取截面 xsdir 2 散射阶数 NP+1 3 输出表的长度 NED+4+NUP &lt;= NT &lt;= NED+4+NUP+NG 4 上散射群数 NUP 5 热中子群数 NTH 6 材料数 NMIX 7 区域数 NREG 8 材料成分数 NMIXS，即所有材料的核素数目和 9 额外编辑数 NED 10 编辑说明数 NEDS，NEDS&gt;NED，将几种反应类型合并为一种 1175 1 178 0 0 6 6 125 0 0/ 核素截面文件 如果能群为负数，需要指定核素 matxs 所在的文件夹，比如 xsdir//，否则不填 材料名称卡 输入 NMIX 个材料名称，(&lt;6c) 区域说明 区域名称 (&lt;6c) 区域温度 (默认 300K) 区域体积 (默认 1) 不均匀性1r1 300K 1.0/ 通量赋值 当需要使用外部通量时才填此卡，否则不填。 材料 MIX 说明 1 材料号 2 区域号 3 MATXS 中核素名称 4 核子密度11 1 al27 1.0e-03/ 额外编辑名 如果 NED 不为 0，则填 NED 个额外编辑的名称 (&lt;6c) 编辑说明 额外编辑的位置[1~NED] matxs 中反应道的名称 并群参数 输入每个宽能群中的细能群数目。 transx 输出说明transx输出将所有输入都格式化输出了，便于检查错误。tranx输出的截面数据在 matname Pn 数据块中。数据格式如下 123456789101112131 xs_e(1) !&lt; Response edits: xs_e() !&lt; Response editsned xs_e(ned) !&lt; Response editsned+1 xs_a !&lt; standard editsned+2 xs_f_nu !&lt; standard editsned+3 xs_t !&lt; standard editsned+4 !&lt; upscatter (g&apos;&gt;g) : xs_s(g,g&apos;)!&lt; upscatter (g&apos;&gt;g)ned+nup+3 !&lt; upscatter (g&apos;&gt;g)ned+nup+4 xs_s(g,g) !&lt; ingroup scatterned+5 !&lt; downscatter (g&apos;&lt;g): xs_s(g,g&apos;)!&lt; downscatter (g&apos;&lt;g)ntabl !&lt; downscatter (g&apos;&lt;g) transx 使用注意事项 输入 3.1 为能群，可以为负数，代表从文件夹中读取核素 MATXS，此时需要填写 4，即指定核素 MATXS 所在的文件夹。 给材料，区域，额外编辑命名时名称不能超过 6 字符。 输出中的吸收截面abs可以是负值。]]></content>
