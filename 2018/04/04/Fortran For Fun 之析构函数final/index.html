@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="fortran系列之自动数组分配">
+<meta name="description" content="fortran程序的内存管理很不方便，对于自定义的数据类型需要在程序中手动分配和释放内存，但有时候可能会忘记释放内存，造成内存泄露。所以对于自定义的数据类型最好绑定一个final程序，该程序会在这个类的对象需要销毁的地方自动调用。这些地方包括：  程序结束 传递给intent(out)形参 deallocate 等号左边">
 <meta name="keywords" content="fortran">
 <meta property="og:type" content="article">
-<meta property="og:title" content="fortran系列之自动数组分配">
-<meta property="og:url" content="http://superfun.xyz/2018/04/01/fortran系列之自动数组分配/index.html">
+<meta property="og:title" content="fortran For Fun之析构函数final">
+<meta property="og:url" content="http://superfun.xyz/2018/04/04/Fortran For Fun 之析构函数final/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="fortran系列之自动数组分配">
+<meta property="og:description" content="fortran程序的内存管理很不方便，对于自定义的数据类型需要在程序中手动分配和释放内存，但有时候可能会忘记释放内存，造成内存泄露。所以对于自定义的数据类型最好绑定一个final程序，该程序会在这个类的对象需要销毁的地方自动调用。这些地方包括：  程序结束 传递给intent(out)形参 deallocate 等号左边">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-01T13:43:10.068Z">
+<meta property="og:updated_time" content="2018-04-02T12:28:59.229Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="fortran系列之自动数组分配">
-<meta name="twitter:description" content="fortran系列之自动数组分配">
+<meta name="twitter:title" content="fortran For Fun之析构函数final">
+<meta name="twitter:description" content="fortran程序的内存管理很不方便，对于自定义的数据类型需要在程序中手动分配和释放内存，但有时候可能会忘记释放内存，造成内存泄露。所以对于自定义的数据类型最好绑定一个final程序，该程序会在这个类的对象需要销毁的地方自动调用。这些地方包括：  程序结束 传递给intent(out)形参 deallocate 等号左边">
 
 
 
@@ -134,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://superfun.xyz/2018/04/01/fortran系列之自动数组分配/"/>
+  <link rel="canonical" href="http://superfun.xyz/2018/04/04/Fortran For Fun 之析构函数final/"/>
 
 
 
@@ -150,7 +150,7 @@
 </script>
 
 
-  <title>fortran系列之自动数组分配 | superfun</title>
+  <title>fortran For Fun之析构函数final | superfun</title>
   
 
 
@@ -317,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2018/04/01/fortran系列之自动数组分配/">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2018/04/04/Fortran For Fun 之析构函数final/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="c.fang">
@@ -334,7 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">fortran系列之自动数组分配</h1>
+          <h1 class="post-title" itemprop="name headline">fortran For Fun之析构函数final</h1>
         
 
         <div class="post-meta">
@@ -346,8 +346,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T22:40:59+08:00">
-                2018-04-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-04T22:40:59+08:00">
+                2018-04-04
               </time>
             
 
@@ -406,16 +406,25 @@
       
 
       
-        <h1 id="fortran系列之自动数组分配"><a href="#fortran系列之自动数组分配" class="headerlink" title="fortran系列之自动数组分配"></a>fortran系列之自动数组分配</h1><a id="more"></a>
-<h2 id="自动分配"><a href="#自动分配" class="headerlink" title="自动分配"></a>自动分配</h2><p>动态数组可以不用显式的指定其大小，它会根据等号右边的数组自动分配空间<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> main</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line">  <span class="keyword">integer</span>, <span class="keyword">parameter</span>   :: ivp(*) = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">  <span class="keyword">integer</span>, <span class="keyword">allocatable</span> :: iv(:)</div><div class="line">  iv = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">  <span class="keyword">if</span>(<span class="built_in">all</span>(iv==ivp)) <span class="built_in">print</span>*, <span class="string">'pass'</span></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span></div></pre></td></tr></table></figure></p>
-<p>结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pass</div></pre></td></tr></table></figure></p>
-<h2 id="自动重新分配"><a href="#自动重新分配" class="headerlink" title="自动重新分配"></a>自动重新分配</h2><p>动态数组会将等号右边的数组分配给等号左端，然后将原来的空间释放掉<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> main</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line">  <span class="keyword">integer</span>, <span class="keyword">parameter</span>   :: ivp(*) = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">  <span class="keyword">integer</span>, <span class="keyword">allocatable</span> :: iv(:)</div><div class="line">  iv = (/<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>/)   <span class="comment">!&lt; allocate lhs， another array constructor</span></div><div class="line">  iv = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>] <span class="comment">!&lt; reallocate lhs</span></div><div class="line">  <span class="keyword">if</span>(<span class="built_in">all</span>(iv==ivp)) <span class="built_in">print</span>*, <span class="string">'pass'</span></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span></div></pre></td></tr></table></figure></p>
-<p>结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pass</div></pre></td></tr></table></figure></p>
-<h2 id="数组扩展"><a href="#数组扩展" class="headerlink" title="数组扩展"></a>数组扩展</h2><p>可以根据数组构造函数不断的扩展数组的大小</p>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> main</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line">  <span class="keyword">integer</span>, <span class="keyword">parameter</span>   :: ivp(*) = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">  <span class="keyword">integer</span>, <span class="keyword">allocatable</span> :: iv(:)</div><div class="line">  <span class="keyword">integer</span> :: i</div><div class="line">  iv = [<span class="keyword">integer</span> ::]  <span class="comment">!&lt; an empty array, empty array constructor</span></div><div class="line">  <span class="keyword">do</span> i = <span class="number">1</span>,<span class="number">5</span></div><div class="line">    iv = [iv,i]      <span class="comment">!&lt; append array</span></div><div class="line">  <span class="keyword">enddo</span></div><div class="line">  <span class="keyword">if</span>(<span class="built_in">all</span>(iv==ivp)) <span class="built_in">print</span>*, <span class="string">'pass'</span></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span></div></pre></td></tr></table></figure>
-<p>结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pass</div></pre></td></tr></table></figure></p>
-<h2 id="读取未知数目数据"><a href="#读取未知数目数据" class="headerlink" title="读取未知数目数据"></a>读取未知数目数据</h2><p>读取文件中的数组，其大小通常是未知的，可以使用数组扩展来进行读取。<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> main</div><div class="line">  <span class="keyword">integer</span>, <span class="keyword">parameter</span>   :: ivp(*) = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">  <span class="keyword">integer</span>, <span class="keyword">allocatable</span> :: iv(:)</div><div class="line">  <span class="keyword">integer</span> :: i, ios, <span class="keyword">unit</span></div><div class="line">  iv = [<span class="keyword">integer</span> ::]</div><div class="line">  open(<span class="keyword">newunit</span> = <span class="keyword">unit</span>, <span class="keyword">file</span>=<span class="string">'test.txt'</span>)</div><div class="line">  <span class="keyword">do</span></div><div class="line">    read(<span class="keyword">unit</span>=<span class="keyword">unit</span>,<span class="keyword">fmt</span>=*,<span class="keyword">iostat</span>=ios) i</div><div class="line">    <span class="keyword">if</span>(ios /= <span class="number">0</span>) <span class="keyword">exit</span></div><div class="line">    iv = [iv,i]</div><div class="line">  <span class="keyword">enddo</span></div><div class="line">  close(<span class="keyword">unit</span>)</div><div class="line">  <span class="keyword">if</span>(<span class="built_in">all</span>(iv==ivp)) <span class="built_in">print</span>*, <span class="string">'pass'</span></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span></div></pre></td></tr></table></figure></p>
-<p>新建一个’test.txt’文件，第1~5行输入1-5，得到结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pass</div></pre></td></tr></table></figure></p>
+        <p>fortran程序的内存管理很不方便，对于自定义的数据类型需要在程序中手动分配和释放内存，但有时候可能会忘记释放内存，造成内存泄露。所以对于自定义的数据类型最好绑定一个final程序，该程序会在这个类的对象需要销毁的地方自动调用。这些地方包括：</p>
+<ul>
+<li>程序结束</li>
+<li>传递给intent(out)形参</li>
+<li>deallocate</li>
+<li>等号左边<a id="more"></a>
+以下通过learn_final模块进行说明。</li>
+</ul>
+<h2 id="learn-final-模块"><a href="#learn-final-模块" class="headerlink" title="learn_final 模块"></a>learn_final 模块</h2><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">module</span> learn_final</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line">  <span class="comment">!=============================================================================</span></div><div class="line">  <span class="keyword">type</span> foo</div><div class="line">    <span class="keyword">real</span>,<span class="keyword">allocatable</span> :: v(:)</div><div class="line">  <span class="keyword">contains</span></div><div class="line">    <span class="keyword">procedure</span> :: <span class="built_in">allocate</span> =&gt; foo_allocate</div><div class="line">    <span class="keyword">procedure</span> :: destory  =&gt; foo_destory</div><div class="line">    <span class="keyword">final</span>     :: foo_final, foo_final_a</div><div class="line">  <span class="keyword">end</span> <span class="keyword">type</span> foo</div><div class="line"><span class="keyword">contains</span></div><div class="line">  <span class="comment">!=============================================================================</span></div><div class="line">  <span class="function"><span class="keyword">subroutine</span></span> foo_allocate(this, n)</div><div class="line">    <span class="keyword">class</span>(foo), <span class="keyword">intent</span>(<span class="keyword">out</span>) :: this</div><div class="line">    <span class="keyword">integer</span>, <span class="keyword">intent</span>(<span class="keyword">in</span>) ::  n</div><div class="line">    <span class="built_in">allocate</span>(this%v(n))</div><div class="line">  <span class="keyword">end</span> <span class="function"><span class="keyword">subroutine</span></span> foo_allocate</div><div class="line">  <span class="comment">!=============================================================================</span></div><div class="line">  <span class="keyword">elemental</span> <span class="function"><span class="keyword">subroutine</span></span> foo_destory(this)</div><div class="line">    <span class="keyword">class</span>(foo), <span class="keyword">intent</span>(inout) :: this</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">allocated</span>(this%v)) <span class="built_in">deallocate</span>(this%v)</div><div class="line">  <span class="keyword">end</span> <span class="function"><span class="keyword">subroutine</span></span> foo_destory</div><div class="line">  <span class="comment">!=============================================================================</span></div><div class="line">  <span class="function"><span class="keyword">subroutine</span></span> foo_final(this)</div><div class="line">    <span class="keyword">type</span>(foo), <span class="keyword">intent</span>(inout) :: this</div><div class="line">    <span class="keyword">call</span> this%destory()</div><div class="line">    <span class="built_in">print</span>*, <span class="string">'deallcate data'</span></div><div class="line">  <span class="keyword">end</span> <span class="function"><span class="keyword">subroutine</span></span> foo_final</div><div class="line">  <span class="comment">!=============================================================================</span></div><div class="line">  <span class="function"><span class="keyword">subroutine</span></span> foo_final_a(this)</div><div class="line">    <span class="keyword">type</span>(foo), <span class="keyword">intent</span>(inout) :: this(:)</div><div class="line">    <span class="keyword">call</span> this%destory()</div><div class="line">    <span class="built_in">print</span>*, <span class="string">'deallcate array'</span></div><div class="line">  <span class="keyword">end</span> <span class="function"><span class="keyword">subroutine</span></span> foo_final_a</div><div class="line"><span class="keyword">end</span> <span class="keyword">module</span> learn_final</div></pre></td></tr></table></figure>
+<p>final程序的输入只有一个参数，类型必须使用type而不是class，intent属性不能为(out)。 参数可以是标量或数组，也可以是elemental 程序。在该模块中为了测试在哪儿会自动调用final程序，在final程序中有 print 子句，所以不能为elemental程序。</p>
+<h2 id="程序结束"><a href="#程序结束" class="headerlink" title="程序结束"></a>程序结束</h2><p>在程序结束会自动调用。<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> main</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line">  <span class="keyword">type</span>(foo) :: bar</div><div class="line">  bar = foo()</div><div class="line">  <span class="built_in">print</span>*, <span class="string">"test auto deallocate when end subroutine."</span></div><div class="line">  <span class="built_in">print</span>*, <span class="string">'end procedure'</span></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> main</div></pre></td></tr></table></figure></p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">test auto deallocate when end subroutine.</div><div class="line">end procedure</div><div class="line">call final</div></pre></td></tr></table></figure>
+<p>可以看到在程序结束的时候自动调用了final程序。</p>
+<h2 id="intent-out"><a href="#intent-out" class="headerlink" title="intent(out)"></a>intent(out)</h2><p>传递给intent(out)形参会自动调用。<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> main</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line">  <span class="keyword">type</span>(foo) :: bar</div><div class="line">  <span class="built_in">print</span>*, <span class="string">"test auto deallocate when intent(out)."</span></div><div class="line">  <span class="keyword">call</span> bar%<span class="built_in">allocate</span>(<span class="number">4</span>)</div><div class="line">  <span class="built_in">print</span>*, <span class="string">'end procedure'</span></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> main</div></pre></td></tr></table></figure></p>
+<h2 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">test auto deallocate when intent(out).</div><div class="line">call final</div><div class="line">end procedure</div><div class="line">call final</div></pre></td></tr></table></figure>
+<p>可以看出程序在调用 allocate函数以及程序结束时都调用了final程序。</p>
+<h2 id="deallcate"><a href="#deallcate" class="headerlink" title="deallcate"></a>deallcate</h2><p>使用deallocate释放内存。<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> main</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line">  <span class="keyword">type</span>(foo), <span class="keyword">allocatable</span>:: bar(:)</div><div class="line">  <span class="built_in">print</span>*, <span class="string">"test auto deallocate by deallocate"</span></div><div class="line">  <span class="built_in">allocate</span>(bar(<span class="number">3</span>))</div><div class="line">  <span class="built_in">deallocate</span>(bar)</div><div class="line">  <span class="built_in">print</span>*, <span class="string">'end procedure'</span></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> main</div></pre></td></tr></table></figure></p>
+<h2 id="结果-2"><a href="#结果-2" class="headerlink" title="结果"></a>结果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">test auto deallocate when deallocate</div><div class="line">call final_array</div><div class="line">end procedure</div></pre></td></tr></table></figure>
+<p>可以看出程序在调用deallocate时调用了final程序。</p>
 
       
     </div>
@@ -446,8 +455,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/30/transx学习/" rel="next" title="learn-transx">
-                <i class="fa fa-chevron-left"></i> learn-transx
+              <a href="/2018/04/03/fortran For Fun之python调用fortran/" rel="next" title="fortran For Fun之python调用fortran">
+                <i class="fa fa-chevron-left"></i> fortran For Fun之python调用fortran
               </a>
             
           </div>
@@ -455,10 +464,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/02/fortran系列之多态class(*)/" rel="prev" title="fortran 多态之class(*)">
-                fortran 多态之class(*) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -560,7 +565,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -644,7 +649,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#fortran系列之自动数组分配"><span class="nav-number">1.</span> <span class="nav-text">fortran系列之自动数组分配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动分配"><span class="nav-number">1.1.</span> <span class="nav-text">自动分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动重新分配"><span class="nav-number">1.2.</span> <span class="nav-text">自动重新分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组扩展"><span class="nav-number">1.3.</span> <span class="nav-text">数组扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取未知数目数据"><span class="nav-number">1.4.</span> <span class="nav-text">读取未知数目数据</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#learn-final-模块"><span class="nav-number">1.</span> <span class="nav-text">learn_final 模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序结束"><span class="nav-number">2.</span> <span class="nav-text">程序结束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果"><span class="nav-number">3.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#intent-out"><span class="nav-number">4.</span> <span class="nav-text">intent(out)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果-1"><span class="nav-number">5.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deallcate"><span class="nav-number">6.</span> <span class="nav-text">deallcate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果-2"><span class="nav-number">7.</span> <span class="nav-text">结果</span></a></li></ol></div>
             
 
           </div>
