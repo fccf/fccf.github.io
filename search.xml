@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[fortran For Fun纯函数 递归函数 逐元函数]]></title>
+    <title><![CDATA[fortran For Fun之block结构]]></title>
+    <url>%2F2018%2F04%2F06%2FFortran%20For%20Fun%E4%B9%8Bblock%E7%BB%93%E6%9E%84%2F</url>
+    <content type="text"><![CDATA[在fortran2008标准中新添加了一种block结构，该结构允许程序在block里定义新的局部变量以及操作。对于某些程序很长的程序，可以分解成几个block，然后在每个block里面定义变量以及操作。这样逻辑更加清晰，并且block里面的局部变量的获取速度会快很多。 block 结构block里面可以直接使用以及修改全局的变量，block里面的局部变量名称可以与全局变量名称一致，对于名称相同的变量，block里面只会修改局部变量，对全局变量没有影响。 1234567891011121314151617181920program learn_block implicit none real :: i, j = 20. i = 30.0 block integer :: i do i = 1,3 print*, i enddo print*,j j = 10. end block print*,i print*,jend program learn_block 结果12345612320.000000000000000 30.000000000000000 10.000000000000000 可以看出局部变量的修改不会影响全局变量，局部对全局变量的修改会影响全局变量。 do concurrentdo comcurrent是指每个循环之间没有依赖的循环，使用do comcurrent说明这种循环可以使处理器更容易对循环进行并行处理，以提高效率。由于block里面的局部变量获取速度更快，所以可以在do comcurrent循环里面定义block，得到更高的效率。 1234567891011121314151617181920212223program learn_doconcurrent implicit none integer, parameter :: n = 5 integer :: i real :: a(n),c(n) forall(i=1:n) a(i) = real(i) endforall do concurrent (i = 1:n) block real :: r r= a(i)**2 c(i) = sqrt(r) end block end do if(all(a==c)) print*, 'pass'end program learn_doconcurrent 结果1pass]]></content>
+      <categories>
+        <category>fortran</category>
+      </categories>
+      <tags>
+        <tag>fortran</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[fortran For Fun之纯函数 递归函数 逐元函数]]></title>
     <url>%2F2018%2F04%2F05%2FFortran%20For%20Fun%E4%B9%8B%E7%BA%AF%E5%87%BD%E6%95%B0%20%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%20%E9%80%90%E5%85%83%E5%87%BD%E6%95%B0%2F</url>
     <content type="text"><![CDATA[Fortran中存在几种特殊的函数或子程序，这些函数或子程序需要在定义时特殊说明。主要有以下三种特殊程序 pure 程序 (纯程序) recursive 程序 (递归程序) elemental 程序 (逐元程序) pure 程序pure程序不能对输入参数以及模块中的数据进行修改。局部变量定义时不能初始化，也不能有save属性。很多函数都可以定义为pure 函数。 12345678910111213program learn_pure implicit none if(add('foo','bar') == 'foobar') print*, 'pass'contains pure function add(a,b) result(c) character(*), intent(in) :: a, b character(:), allocatable :: c c = a // b end function addend program learn_pure 该程序中定义了add纯函数，作用是将两个字符合起来，相当于 // 符号， 可以利用该函数重载 +，使文字合并操作与 python 一致。 结果1pass recursive 程序递归程序是不断调用自身的程序，它一定是一个纯程序12345678910111213141516171819program learn_recursive implicit none integer :: n = 5 if(fact(n)==120) print*, 'pass'contains recursive function fact(n) result(r) integer, intent(in) :: n integer :: r if(n&lt;=0) then r = 1 else r = n*fact(n-1) endif end function factend program learn_recursive 该程序中定义了 fact 递归函数，求一个整数的阶乘。 结果1pass elemental 程序elemental程序的形参是标量，但输入参数可以是标量也可以是数组，如果是数组，则对数组中的每一个元素调用该程序。逐元程序也必须是纯函数。1234567891011121314151617181920212223program learn_elemental implicit none character(2) :: s(3) = ['1 ','2 ','3 '] if(all(to_int(s) == [1,2,3]).and.all(to_real(s) == [1.,2.,3.])) print*, 'pass'contains !============================================================================= elemental function to_int(str) character(*),intent(in) :: str integer :: to_int integer :: ios read(str, * ,iostat= ios) to_int endfunction to_int !============================================================================= elemental function to_real(str) character(*),intent(in) :: str real :: to_real integer :: ios read(str, * , iostat= ios) to_real endfunction to_realend program learn_elemental 该程序中定义了将字符转换为整数的逐元函数to_int和将字符转化为实数的逐元函数to_real。 结果1pass]]></content>
       <categories>
