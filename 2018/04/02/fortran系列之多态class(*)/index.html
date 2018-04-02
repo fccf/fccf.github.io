@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="PDE,偏微分方程," />
+  <meta name="keywords" content="fortran," />
 
 
 
@@ -94,20 +94,18 @@
 
 
 
-<meta name="description" content="偏微分方程分类偏微分方程主要分为  双曲方程 椭圆方程 抛物方程 每一种方程都对应不同的物理过程，每一种方程所需要的初始/边界条件数目不同，每一种方程的数值求解方法不同。">
-<meta name="keywords" content="PDE,偏微分方程">
+<meta name="description" content="多态是面向对象程序设计(OOP)的一个重要特征，是指同样的操作作用于不同的数据类型，这些数据类型通常继承自同一个父类。fortran 中存在一种任意数据类型 class(*)，以该类型作为子程序的形参，实参可以是任意类型，只需要在子程序中定义实参的实际操作。">
+<meta name="keywords" content="fortran">
 <meta property="og:type" content="article">
-<meta property="og:title" content="偏微分方程简介">
-<meta property="og:url" content="http://superfun.xyz/2017/10/25/偏微分方程简介/index.html">
+<meta property="og:title" content="fortran 多态之class(*)">
+<meta property="og:url" content="http://superfun.xyz/2018/04/02/fortran系列之多态class(*)/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="偏微分方程分类偏微分方程主要分为  双曲方程 椭圆方程 抛物方程 每一种方程都对应不同的物理过程，每一种方程所需要的初始/边界条件数目不同，每一种方程的数值求解方法不同。">
+<meta property="og:description" content="多态是面向对象程序设计(OOP)的一个重要特征，是指同样的操作作用于不同的数据类型，这些数据类型通常继承自同一个父类。fortran 中存在一种任意数据类型 class(*)，以该类型作为子程序的形参，实参可以是任意类型，只需要在子程序中定义实参的实际操作。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/geo_interpretation_PDE.png">
-<meta property="og:updated_time" content="2017-11-05T12:08:06.638Z">
+<meta property="og:updated_time" content="2018-04-02T02:22:32.676Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="偏微分方程简介">
-<meta name="twitter:description" content="偏微分方程分类偏微分方程主要分为  双曲方程 椭圆方程 抛物方程 每一种方程都对应不同的物理过程，每一种方程所需要的初始/边界条件数目不同，每一种方程的数值求解方法不同。">
-<meta name="twitter:image" content="http://on08uqozg.bkt.clouddn.com/geo_interpretation_PDE.png">
+<meta name="twitter:title" content="fortran 多态之class(*)">
+<meta name="twitter:description" content="多态是面向对象程序设计(OOP)的一个重要特征，是指同样的操作作用于不同的数据类型，这些数据类型通常继承自同一个父类。fortran 中存在一种任意数据类型 class(*)，以该类型作为子程序的形参，实参可以是任意类型，只需要在子程序中定义实参的实际操作。">
 
 
 
@@ -136,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://superfun.xyz/2017/10/25/偏微分方程简介/"/>
+  <link rel="canonical" href="http://superfun.xyz/2018/04/02/fortran系列之多态class(*)/"/>
 
 
 
@@ -152,7 +150,7 @@
 </script>
 
 
-  <title>偏微分方程简介 | superfun</title>
+  <title>fortran 多态之class(*) | superfun</title>
   
 
 
@@ -319,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/10/25/偏微分方程简介/">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2018/04/02/fortran系列之多态class(*)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="c.fang">
@@ -336,7 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">偏微分方程简介</h1>
+          <h1 class="post-title" itemprop="name headline">fortran 多态之class(*)</h1>
         
 
         <div class="post-meta">
@@ -348,8 +346,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-25T09:53:06+08:00">
-                2017-10-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-02T22:40:59+08:00">
+                2018-04-02
               </time>
             
 
@@ -371,8 +369,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/偏微分方程/" itemprop="url" rel="index">
-                    <span itemprop="name">偏微分方程</span>
+                  <a href="/categories/fortran/" itemprop="url" rel="index">
+                    <span itemprop="name">fortran</span>
                   </a>
                 </span>
 
@@ -408,26 +406,11 @@
       
 
       
-        <h2 id="偏微分方程分类"><a href="#偏微分方程分类" class="headerlink" title="偏微分方程分类"></a>偏微分方程分类</h2><p>偏微分方程主要分为</p>
-<ul>
-<li>双曲方程</li>
-<li>椭圆方程</li>
-<li><p>抛物方程</p>
-<p>每一种方程都对应不同的物理过程，每一种方程所需要的初始/边界条件数目不同，每一种方程的数值求解方法不同。</p>
-<a id="more"></a>
-<ul>
-<li>双曲方程描述信息以一定速度沿某个方向传播，解是很多简单波的叠加。</li>
-<li>椭圆方程描述信息以一定速度沿所有方向传播，只存在于稳态，非稳态不可能是椭圆方程。</li>
-<li>抛物方程描述信息沿下游传播，可以逐步求解。通常描述瞬态问题。</li>
-</ul>
-</li>
-</ul>
-<h3 id="一阶方程"><a href="#一阶方程" class="headerlink" title="一阶方程"></a>一阶方程</h3><p>$$a_0+a_1\frac{∂{u}}{∂{x_1}} + …+a_d\frac{∂{u}}{∂{x_{d}}} = 0 $$<br>一阶方程一定是双曲型方程。</p>
-<h3 id="二阶方程"><a href="#二阶方程" class="headerlink" title="二阶方程"></a>二阶方程</h3><p>$$\sum_{i,j=1}^{D}a_{ij}\frac{∂^{2}u}{∂x_i∂x_j}+\sum_{k}^{D}b_k\frac{∂u}{∂x_k}+cu+d = 0$$</p>
-<p>系数矩阵$A = \{a_{ij}\} \in R^{D × D}$，该矩阵是对称的<br>方程的性质由该矩阵的特征值决定，如果$D$个特征值全为正，则该方程为椭圆方程；如果$D-1$个特征值为正，另$1$个特征值为负，则该方程为双曲方程；如果$D-1$个特征值为正，另$1$个特征值为$0$，则该方程为抛物方程；</p>
-<h2 id="偏微分方程的几何解释"><a href="#偏微分方程的几何解释" class="headerlink" title="偏微分方程的几何解释"></a>偏微分方程的几何解释</h2><p><img src="http://on08uqozg.bkt.clouddn.com/geo_interpretation_PDE.png" alt="偏微分方程几何解释"></p>
-<p>图中，domain of dependence是会对点P处的信息产生影响的区域，zone of influence是点P会影响的区域。</p>
-<p>在有限元方法中，某一点的影响点集包含围绕着这一点的所有点，这对椭圆方程是适用的；对双曲方程并不适用，因为在双曲方程中，对某一点的影响点集应该只是上游区域的点，不应该包含下游区域的点。</p>
+        <p>多态是面向对象程序设计(OOP)的一个重要特征，是指同样的操作作用于不同的数据类型，这些数据类型通常继承自同一个父类。fortran 中存在一种任意数据类型 class(*)，以该类型作为子程序的形参，实参可以是任意类型，只需要在子程序中定义实参的实际操作。<br><a id="more"></a></p>
+<h2 id="将任意数据类型转换为字符串"><a href="#将任意数据类型转换为字符串" class="headerlink" title="将任意数据类型转换为字符串"></a>将任意数据类型转换为字符串</h2><p>以下模块可以将任意常用的数据类型转换为字符串类型，通过 str 函数可以将 integer, real, logical, character(*) 的标量，向量，矩阵都转化为字符串，其中将向量和矩阵转化为字符串时可以指定字符间的分隔符号，向量元素之间默认为 “,”，矩阵中向量之间默认为 “;”，还可以指定是否通过中括号将数组括起来 (默认有中括号)。数组默认转换为 matlab 形式， 通过可选参数的指定可以转换为 python 以及 java 的数组形式。</p>
+<h2 id="to-string"><a href="#to-string" class="headerlink" title="to_string"></a>to_string</h2><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">module</span> to_string</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line"></div><div class="line">  <span class="keyword">interface</span> str</div><div class="line">    <span class="keyword">module</span> <span class="keyword">procedure</span> :: scalar_to_string, vector_to_string, matrix_to_string</div><div class="line">  <span class="keyword">end</span> <span class="keyword">interface</span> str</div><div class="line"></div><div class="line">contians</div><div class="line">  <span class="comment">!=============================================================================</span></div><div class="line">  <span class="keyword">pure</span> <span class="function"><span class="keyword">function</span></span> scalar_to_string(<span class="keyword">value</span>) result(s)</div><div class="line">    <span class="comment">!&lt; convert any scalar type (integer, real, logical, character(*)) to string</span></div><div class="line">    <span class="keyword">class</span>(*), <span class="keyword">intent</span>(<span class="keyword">in</span>)      :: <span class="keyword">value</span></div><div class="line">    <span class="keyword">character</span>(:), <span class="keyword">allocatable</span> :: s</div><div class="line">    <span class="keyword">integer</span>, <span class="keyword">parameter</span>        :: max_num_len_ = <span class="number">32</span></div><div class="line">    <span class="keyword">character</span>(max_num_len_)   :: ls</div><div class="line"></div><div class="line">    <span class="keyword">select</span> <span class="keyword">type</span>(v_p =&gt; <span class="keyword">value</span>)</div><div class="line">    <span class="keyword">type</span> is(<span class="keyword">integer</span>)</div><div class="line">      <span class="built_in">write</span>(ls,<span class="string">'(i0)'</span>) v_p</div><div class="line">      s = <span class="built_in">trim</span>(<span class="built_in">adjustl</span>(ls))</div><div class="line">    <span class="keyword">type</span> is(<span class="keyword">real</span>)</div><div class="line">      <span class="built_in">write</span>(ls,<span class="keyword">fmt</span>=*) v_p</div><div class="line">      s = <span class="built_in">trim</span>(<span class="built_in">adjustl</span>(ls))</div><div class="line">    <span class="keyword">type</span> is(<span class="keyword">logical</span>)</div><div class="line">      <span class="keyword">if</span> (v_p) <span class="keyword">then</span></div><div class="line">        <span class="built_in">write</span>(ls,<span class="string">'(a)'</span>) <span class="string">'true'</span></div><div class="line">      <span class="keyword">else</span></div><div class="line">        <span class="built_in">write</span>(ls,<span class="string">'(a)'</span>) <span class="string">'false'</span></div><div class="line">      <span class="keyword">end</span> <span class="keyword">if</span></div><div class="line">      s = <span class="built_in">trim</span>(<span class="built_in">adjustl</span>(ls))</div><div class="line">    <span class="keyword">type</span> is(<span class="keyword">character</span>(*))</div><div class="line">      s = <span class="built_in">trim</span>(<span class="built_in">adjustl</span>(v_p))</div><div class="line">    <span class="keyword">class</span> <span class="keyword">default</span></div><div class="line">      <span class="built_in">write</span>(ls,<span class="string">'(a)'</span>) <span class="string">'***'</span></div><div class="line">      s = <span class="built_in">trim</span>(<span class="built_in">adjustl</span>(ls))</div><div class="line">    <span class="keyword">end</span> <span class="keyword">select</span></div><div class="line">  <span class="keyword">end</span> <span class="function"><span class="keyword">function</span></span> scalar_to_string</div><div class="line">  <span class="comment">!=============================================================================</span></div><div class="line">  <span class="keyword">pure</span> <span class="function"><span class="keyword">function</span></span> vector_to_string(<span class="keyword">value</span>, vsep, shell) result(s)</div><div class="line">    <span class="comment">!&lt; convert any vector type (integer, real, logical, character(*)) to string</span></div><div class="line">    <span class="keyword">class</span>(*), <span class="keyword">intent</span>(<span class="keyword">in</span>) :: <span class="keyword">value</span>(:)</div><div class="line">    <span class="keyword">character</span>(*), <span class="keyword">intent</span>(<span class="keyword">in</span>), <span class="keyword">optional</span> :: vsep   <span class="comment">!&lt; vector separator ',', ' '</span></div><div class="line">    <span class="keyword">logical</span>,<span class="keyword">intent</span>(<span class="keyword">in</span>), <span class="keyword">optional</span> :: shell        <span class="comment">!&lt; if have the shell []</span></div><div class="line">    <span class="keyword">character</span>(:), <span class="keyword">allocatable</span> :: s</div><div class="line"></div><div class="line">    <span class="keyword">character</span>(:),<span class="keyword">allocatable</span> :: lsep</div><div class="line">    <span class="keyword">logical</span> :: lshell</div><div class="line">    <span class="keyword">integer</span> :: n</div><div class="line"></div><div class="line">    lsep = <span class="string">','</span>      <span class="comment">!&lt; default vector separator</span></div><div class="line">    lshell = .TRUE. <span class="comment">!&lt; default shell = true</span></div><div class="line">    <span class="keyword">if</span>(<span class="built_in">present</span>(vsep)) lsep = vsep <span class="comment">!&lt; local optional argument</span></div><div class="line">    <span class="keyword">if</span>(<span class="built_in">present</span>(shell)) lshell = shell <span class="comment">!&lt; another local argument</span></div><div class="line"></div><div class="line">    s = <span class="string">''</span></div><div class="line">    <span class="keyword">if</span>(lshell) s = <span class="string">'['</span></div><div class="line">    <span class="keyword">do</span> n = <span class="number">1</span>, <span class="built_in">size</span>(<span class="keyword">value</span>)</div><div class="line">      <span class="keyword">if</span> (n &gt; <span class="number">1</span>) s = s//lsep</div><div class="line">      s = s // str(<span class="keyword">value</span>(n))    <span class="comment">!&lt; str =&gt; scalar_to_string</span></div><div class="line">    <span class="keyword">end</span> <span class="keyword">do</span></div><div class="line">    <span class="keyword">if</span>(lshell) s = s// <span class="string">']'</span></div><div class="line"></div><div class="line">  <span class="keyword">end</span> <span class="function"><span class="keyword">function</span></span> vector_to_string</div><div class="line">  <span class="comment">!=============================================================================</span></div><div class="line">  <span class="keyword">pure</span> <span class="function"><span class="keyword">function</span></span> matrix_to_string(<span class="keyword">value</span>, vsep, msep, shell) result(s)</div><div class="line">    <span class="keyword">class</span>(*), <span class="keyword">intent</span>(<span class="keyword">in</span>) :: <span class="keyword">value</span>(:,:)</div><div class="line">    <span class="keyword">character</span>(*), <span class="keyword">intent</span>(<span class="keyword">in</span>), <span class="keyword">optional</span> :: vsep  <span class="comment">!&lt; vector separator ',', ' '</span></div><div class="line">    <span class="keyword">character</span>(*), <span class="keyword">intent</span>(<span class="keyword">in</span>), <span class="keyword">optional</span> :: msep  <span class="comment">!&lt; matrix separator ';', new_line('a')</span></div><div class="line">    <span class="keyword">logical</span>,<span class="keyword">intent</span>(<span class="keyword">in</span>), <span class="keyword">optional</span> :: shell       <span class="comment">!&lt; if have the shell []</span></div><div class="line"></div><div class="line">    <span class="keyword">character</span>(:), <span class="keyword">allocatable</span> :: s</div><div class="line"></div><div class="line">    <span class="keyword">character</span>(:),<span class="keyword">allocatable</span> :: lvsep, lmsep</div><div class="line">    <span class="keyword">logical</span> :: lshell</div><div class="line">    <span class="keyword">integer</span>   :: n, m</div><div class="line">    lvsep = <span class="string">','</span></div><div class="line">    lmsep = <span class="string">';'</span></div><div class="line">    lshell = .TRUE.</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">present</span>(vsep)) lvsep = vsep</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">present</span>(msep)) lmsep = msep</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">present</span>(shell)) lshell = shell</div><div class="line"></div><div class="line">    s = <span class="string">''</span></div><div class="line">    <span class="keyword">if</span>(lshell) s = <span class="string">'['</span></div><div class="line">    <span class="keyword">do</span> n = <span class="number">1</span>, <span class="built_in">size</span>(<span class="keyword">value</span>,<span class="number">2</span>)</div><div class="line">      <span class="keyword">if</span> (n &gt; <span class="number">1</span>) s = s//lmsep</div><div class="line">      <span class="keyword">if</span>(lshell) s = s//<span class="string">'['</span></div><div class="line">      <span class="keyword">do</span> m = <span class="number">1</span>, <span class="built_in">size</span>(<span class="keyword">value</span>, <span class="number">1</span>)</div><div class="line">        <span class="keyword">if</span> (m &gt; <span class="number">1</span>) s = s//lvsep</div><div class="line">        s = s // str(<span class="keyword">value</span>(m,n))    <span class="comment">!&lt; str =&gt; scalar_to_string</span></div><div class="line">      <span class="keyword">enddo</span></div><div class="line">      <span class="keyword">if</span>(lshell) s = s//<span class="string">']'</span></div><div class="line">    <span class="keyword">enddo</span></div><div class="line">    <span class="keyword">if</span>(lshell) s = s//<span class="string">']'</span></div><div class="line"></div><div class="line">  <span class="keyword">end</span> <span class="function"><span class="keyword">function</span></span> matrix_to_string</div><div class="line"><span class="keyword">end</span> <span class="keyword">module</span> to_string</div></pre></td></tr></table></figure>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> main</div><div class="line">  <span class="keyword">use</span> to_string, <span class="keyword">only</span>: str</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line"></div><div class="line">  <span class="keyword">real</span> :: r = <span class="number">1.</span>, rv(<span class="number">4</span>) = [<span class="number">1.</span>,<span class="number">2.</span>,<span class="number">3.</span>,<span class="number">4.</span>], rm(<span class="number">2</span>,<span class="number">2</span>) = <span class="built_in">reshape</span>([<span class="number">1.</span>,<span class="number">2.</span>,<span class="number">3.</span>,<span class="number">4.</span>],[<span class="number">2</span>,<span class="number">2</span>])</div><div class="line">  <span class="keyword">character</span>(<span class="number">2</span>) :: c = <span class="string">'a '</span>, cv(<span class="number">4</span>) = [<span class="string">'a '</span>,<span class="string">'b '</span>,<span class="string">'c '</span>,<span class="string">'d '</span>], cm(<span class="number">2</span>,<span class="number">2</span>) = <span class="built_in">reshape</span>([<span class="string">'a '</span>,<span class="string">'b '</span>,<span class="string">'c '</span>,<span class="string">'d '</span>],[<span class="number">2</span>,<span class="number">2</span>])</div><div class="line">  <span class="keyword">integer</span> :: i = <span class="number">1</span>, iv(<span class="number">4</span>) = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>], im(<span class="number">2</span>,<span class="number">2</span>) = <span class="built_in">reshape</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],[<span class="number">2</span>,<span class="number">2</span>])</div><div class="line">  <span class="keyword">logical</span> :: l = .TRUE.,lv(<span class="number">4</span>) = [.TRUE.,.FALSE.,.FALSE.,.TRUE.], lm(<span class="number">2</span>,<span class="number">2</span>) = <span class="built_in">reshape</span>([.TRUE.,.FALSE.,.FALSE.,.TRUE.],[<span class="number">2</span>,<span class="number">2</span>])</div><div class="line"></div><div class="line">  <span class="built_in">print</span>*,<span class="string">'r = '</span>//str(r)</div><div class="line">  <span class="built_in">print</span>*,<span class="string">'rv = '</span>//str(rv)</div><div class="line">  <span class="built_in">print</span>*,<span class="string">'rm = '</span>//str(rm)</div><div class="line"></div><div class="line">  <span class="built_in">print</span>*,<span class="string">'i = '</span>//str(i)</div><div class="line">  <span class="built_in">print</span>*,<span class="string">'iv = '</span>//str(iv)</div><div class="line">  <span class="built_in">print</span>*,<span class="string">'im = '</span>//str(im)</div><div class="line"></div><div class="line">  <span class="built_in">print</span>*,<span class="string">'c = '</span>//str(c)</div><div class="line">  <span class="built_in">print</span>*,<span class="string">'cv = '</span>//str(cv)</div><div class="line">  <span class="built_in">print</span>*,<span class="string">'cm = '</span>//str(cm)</div><div class="line"></div><div class="line">  <span class="built_in">print</span>*,<span class="string">'l = '</span>//str(l)</div><div class="line">  <span class="built_in">print</span>*,<span class="string">'lv = '</span>//str(lv)</div><div class="line">  <span class="built_in">print</span>*,<span class="string">'lm = '</span>//str(lm)</div><div class="line"></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> main</div></pre></td></tr></table></figure>
+<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">r = 1.0000000000000000</div><div class="line">rv = [1.0000000000000000,2.0000000000000000,3.0000000000000000,4.0000000000000000]</div><div class="line">rm = [[1.0000000000000000,2.0000000000000000];[3.0000000000000000,4.0000000000000000]]</div><div class="line">i = 1</div><div class="line">iv = [1,2,3,4]</div><div class="line">im = [[1,2];[3,4]]</div><div class="line">c = a</div><div class="line">cv = [a,b,b,c]</div><div class="line">cm = [[a,b];[b,c]]</div><div class="line">l = true</div><div class="line">lv = [true,false,false,true]</div><div class="line">lm = [[true,false];[false,true]]</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -445,9 +428,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/PDE/" rel="tag"># PDE</a>
-          
-            <a href="/tags/偏微分方程/" rel="tag"># 偏微分方程</a>
+            <a href="/tags/fortran/" rel="tag"># fortran</a>
           
         </div>
       
@@ -460,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/23/一阶中子输运方程SGS离散/" rel="next" title="一阶中子输运方程SGS离散">
-                <i class="fa fa-chevron-left"></i> 一阶中子输运方程SGS离散
+              <a href="/2018/04/01/fortran系列之自动数组分配/" rel="next" title="fortran系列之自动数组分配">
+                <i class="fa fa-chevron-left"></i> fortran系列之自动数组分配
               </a>
             
           </div>
@@ -469,10 +450,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/25/数值方法简介/" rel="prev" title="数值方法简介">
-                数值方法简介 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -658,7 +635,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#偏微分方程分类"><span class="nav-number">1.</span> <span class="nav-text">偏微分方程分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一阶方程"><span class="nav-number">1.1.</span> <span class="nav-text">一阶方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二阶方程"><span class="nav-number">1.2.</span> <span class="nav-text">二阶方程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#偏微分方程的几何解释"><span class="nav-number">2.</span> <span class="nav-text">偏微分方程的几何解释</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#将任意数据类型转换为字符串"><span class="nav-number">1.</span> <span class="nav-text">将任意数据类型转换为字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#to-string"><span class="nav-number">2.</span> <span class="nav-text">to_string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">3.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试结果"><span class="nav-number">4.</span> <span class="nav-text">测试结果</span></a></li></ol></div>
             
 
           </div>
