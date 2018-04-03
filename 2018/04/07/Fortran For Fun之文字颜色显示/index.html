@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="有限元,数值计算,迎风格式," />
+  <meta name="keywords" content="fortran," />
 
 
 
@@ -94,20 +94,21 @@
 
 
 
-<meta name="description" content="数值计算方法是将连续的偏微分方程及其边值条件通过一些数值方法将其离散为一个代数方程组，然后利用计算机进行数值求解。常用的数值方法有有限差分法，有限体积法，有限元法等。">
-<meta name="keywords" content="有限元,数值计算,迎风格式">
+<meta name="description" content="可以在字符的前端和后端添加一些特殊字符，使字符在终端的显示带有颜色。">
+<meta name="keywords" content="fortran">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数值方法简介">
-<meta property="og:url" content="http://superfun.xyz/2017/10/25/数值方法简介/index.html">
+<meta property="og:title" content="fortran For Fun之文字颜色显示">
+<meta property="og:url" content="http://superfun.xyz/2018/04/07/Fortran For Fun之文字颜色显示/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="数值计算方法是将连续的偏微分方程及其边值条件通过一些数值方法将其离散为一个代数方程组，然后利用计算机进行数值求解。常用的数值方法有有限差分法，有限体积法，有限元法等。">
+<meta property="og:description" content="可以在字符的前端和后端添加一些特殊字符，使字符在终端的显示带有颜色。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/smearing_wiggles.png">
-<meta property="og:updated_time" content="2017-11-03T09:31:00.730Z">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/colorize.png">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/colormap.png">
+<meta property="og:updated_time" content="2018-04-03T01:50:12.364Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数值方法简介">
-<meta name="twitter:description" content="数值计算方法是将连续的偏微分方程及其边值条件通过一些数值方法将其离散为一个代数方程组，然后利用计算机进行数值求解。常用的数值方法有有限差分法，有限体积法，有限元法等。">
-<meta name="twitter:image" content="http://on08uqozg.bkt.clouddn.com/smearing_wiggles.png">
+<meta name="twitter:title" content="fortran For Fun之文字颜色显示">
+<meta name="twitter:description" content="可以在字符的前端和后端添加一些特殊字符，使字符在终端的显示带有颜色。">
+<meta name="twitter:image" content="http://on08uqozg.bkt.clouddn.com/colorize.png">
 
 
 
@@ -136,7 +137,7 @@
 
 
 
-  <link rel="canonical" href="http://superfun.xyz/2017/10/25/数值方法简介/"/>
+  <link rel="canonical" href="http://superfun.xyz/2018/04/07/Fortran For Fun之文字颜色显示/"/>
 
 
 
@@ -152,7 +153,7 @@
 </script>
 
 
-  <title>数值方法简介 | superfun</title>
+  <title>fortran For Fun之文字颜色显示 | superfun</title>
   
 
 
@@ -319,7 +320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/10/25/数值方法简介/">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2018/04/07/Fortran For Fun之文字颜色显示/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="c.fang">
@@ -336,7 +337,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数值方法简介</h1>
+          <h1 class="post-title" itemprop="name headline">fortran For Fun之文字颜色显示</h1>
         
 
         <div class="post-meta">
@@ -348,8 +349,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-25T11:10:37+08:00">
-                2017-10-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-07T22:40:59+08:00">
+                2018-04-07
               </time>
             
 
@@ -371,8 +372,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数值计算/" itemprop="url" rel="index">
-                    <span itemprop="name">数值计算</span>
+                  <a href="/categories/fortran/" itemprop="url" rel="index">
+                    <span itemprop="name">fortran</span>
                   </a>
                 </span>
 
@@ -408,39 +409,18 @@
       
 
       
-        <p>数值计算方法是将连续的偏微分方程及其边值条件通过一些数值方法将其离散为一个代数方程组，然后利用计算机进行数值求解。常用的数值方法有有限差分法，有限体积法，有限元法等。<br><a id="more"></a><br>有限差分法通过用差商代替微分，将偏微分方程离散为代数方程，这种方法简单有效，容易推导，但通常只针对结构网格。</p>
-<p>有限体积法根据守恒定理将方程的积分形式在每一个控制体中列出一个守恒方程，这样可以保证物理量的局部守恒，而且可以适用于任意网格。</p>
-<p>有限元方法利用变分原理或加权残值法将偏微分方程变为一种积分形式，这种形式被称为弱形式，然后利用分片多项式对未知量进行插值，带入弱形式中进行求解。有限元方法非常通用和灵活，很容易处理任意边界条件，同时适用于任意网格。</p>
-<h2 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h2><h3 id="迎风差分格式"><a href="#迎风差分格式" class="headerlink" title="迎风差分格式"></a>迎风差分格式</h3><p>$$\frac{\partial \phi}{\partial x} = \frac{\phi_i - \phi_{i-1}}{Δx}$$</p>
-<p>表示点$i$只与点$i-1$相关</p>
-<h4 id="矩阵形式"><a href="#矩阵形式" class="headerlink" title="矩阵形式"></a>矩阵形式</h4><p>$$[\frac{\partial \phi}{\partial x}Δx] = \begin{bmatrix} 1 &amp; 0 &amp; 0  &amp;…&amp;0<br>                            \ -1&amp;1  &amp; 0 &amp; …&amp;0<br>                            \ 0&amp;-1 &amp;1 &amp; …&amp;0<br>                            \ \vdots&amp;\vdots &amp;\vdots&amp;\ddots &amp; \vdots<br>                            \ 0&amp;0 &amp;0&amp;-1 &amp; 1\end{bmatrix}\begin{bmatrix} \phi_1 \ \phi_2 \ \phi_3 \ \vdots \ \phi_n \end{bmatrix}$$</p>
-<p>矩阵中第一行和最后一行应该由边界条件决定,该矩阵是一个下三角矩阵.</p>
-<h3 id="中心差分格式"><a href="#中心差分格式" class="headerlink" title="中心差分格式"></a>中心差分格式</h3><p>$$\frac{\partial \phi}{\partial x} = \frac{\phi_{i+1} - \phi_{i-1}}{2Δx}$$<br>表示点$i$与点$i-1$和点$i+1$相关</p>
-<h4 id="矩阵形式-1"><a href="#矩阵形式-1" class="headerlink" title="矩阵形式"></a>矩阵形式</h4><p>$$[\frac{\partial \phi}{\partial x}Δx] = \frac{1}{2}\begin{bmatrix}<br>                              0 &amp; 1 &amp; 0&amp; 0  &amp;…&amp;0<br>                            \ -1&amp;0  &amp; 1 &amp; 0&amp;…&amp;0<br>                            \ 0&amp;-1 &amp;0 &amp; 1 &amp;…&amp;0<br>                            \ \vdots&amp;\vdots &amp;\vdots&amp;\vdots&amp; \ddots&amp; \vdots<br>                            \ 0&amp;0&amp;0&amp;-1&amp;0 &amp; 1<br>                            \ 0&amp;0 &amp;0&amp;0&amp;-1 &amp; 0<br>                            \end{bmatrix}<br>                            \begin{bmatrix}<br>                            \phi_1 \ \phi_2 \ \phi_3 \ \vdots \ \phi_{n-1} \ \phi_n<br>                            \end{bmatrix}$$</p>
-<p>矩阵中第一行和最后一行应该由边界条件决定,该矩阵是一个反对称矩阵.</p>
-<p>对对流占优方程使用迎风差分格式会产生拖尾效应 (smearing)，使用中心差分格式会产生伪震荡现象(wiggles)</p>
-<p><img src="http://on08uqozg.bkt.clouddn.com/smearing_wiggles.png" alt="smearing_wiggles"></p>
-<h2 id="有限元"><a href="#有限元" class="headerlink" title="有限元"></a>有限元</h2><p>有限元方法在方程两端同时乘以基函数,然后再进行积分,导数项的单元矩阵可以表示为<br>$$\mathbf{B}_{1x} = \int_{e}\vec{N}(x)\frac{\partial \vec{N}^{T}(x)}{\partial x}dx$$</p>
-<p>如果采用线性单元,此时<br>$$\vec{N}(z) = [λ_1,λ_2]^{T}$$</p>
-<p>$$\frac{\partial \vec{N}(z)}{\partial z} = \frac{[-1,1]^{T}}{l}$$</p>
-<p>$$\int_{x}dx=l$$</p>
-<p>$$\int_{x}λ_idx=\frac{l}{2}$$</p>
-<p>$$\int_{x}λ_i^{2}dx=\frac{l}{3}$$</p>
-<p>$$\int_{x}λ_iλ_jdx=\frac{l}{6},(i\ne j)$$</p>
-<p>所以<br>$$\mathbf{B}_{1x} =\frac{1}{2}\begin{bmatrix}<br>-1&amp;1\\<br>-1&amp;1<br>\end{bmatrix}$$</p>
-<p>将矩阵进行组装之后,得<br>$$(\varphi,\frac{\partial \phi}{\partial x}) = \frac{1}{2}\begin{bmatrix}<br>                              -1 &amp; 1 &amp; 0&amp; 0  &amp;…&amp;0<br>                            \ -1&amp;0  &amp; 1 &amp; 0&amp;…&amp;0<br>                            \ 0&amp;-1 &amp;0 &amp; 1 &amp;…&amp;0<br>                            \ \vdots&amp;\vdots &amp;\vdots&amp;\vdots&amp; \ddots&amp; \vdots<br>                            \ 0&amp;0&amp;0&amp;-1&amp;0 &amp; 1<br>                            \ 0&amp;0 &amp;0&amp;0&amp;-1 &amp; 1<br>                            \end{bmatrix}<br>                            \begin{bmatrix}<br>                            \phi_1 \ \phi_2 \ \phi_3 \ \vdots \ \phi_{n-1} \ \phi_n<br>                            \end{bmatrix}$$</p>
-<p>矩阵中第一行和最后一行应该由边界条件决定,除此之外,该矩阵与中心差分是完全一样的,该矩阵是一个反对称矩阵.所以有限元方法是与中心差分类似的方法. 不能直接用于求解双曲方程.</p>
-<h3 id="迎风格式探索"><a href="#迎风格式探索" class="headerlink" title="迎风格式探索"></a>迎风格式探索</h3><h4 id="格式1"><a href="#格式1" class="headerlink" title="格式1"></a>格式1</h4><p>$$\mathbf{B}_{1x} =\begin{bmatrix}<br>0&amp;0\\<br>-1&amp;1<br>\end{bmatrix}$$<br>那么<br>$$(\varphi,\frac{\partial \phi}{\partial x})  = \begin{bmatrix} 0 &amp; 0 &amp; 0  &amp;…&amp;0<br>                            \ -1&amp;1  &amp; 0 &amp; …&amp;0<br>                            \ 0&amp;-1 &amp;1 &amp; …&amp;0<br>                            \ \vdots&amp;\vdots &amp;\vdots&amp;\ddots &amp; \vdots<br>                            \ 0&amp;0 &amp;0&amp;-1 &amp; 1\end{bmatrix}\begin{bmatrix} \phi_1 \ \phi_2 \ \phi_3 \ \vdots \ \phi_n \end{bmatrix}$$</p>
-<h4 id="格式2"><a href="#格式2" class="headerlink" title="格式2"></a>格式2</h4><p>$$\mathbf{B}_{1x} =\begin{bmatrix}<br>1&amp;0\\<br>-1&amp;0<br>\end{bmatrix}$$<br>那么<br>$$(\varphi,\frac{\partial \phi}{\partial x})  = \begin{bmatrix} 1 &amp; 0 &amp; 0  &amp;…&amp;0<br>                            \ -1&amp;1  &amp; 0 &amp; …&amp;0<br>                            \ 0&amp;-1 &amp;1 &amp; …&amp;0<br>                            \ \vdots&amp;\vdots &amp;\vdots&amp;\ddots &amp; \vdots<br>                            \ 0&amp;0 &amp;0&amp;-1 &amp; 0\end{bmatrix}\begin{bmatrix} \phi_1 \ \phi_2 \ \phi_3 \ \vdots \ \phi_n \end{bmatrix}$$</p>
-<h4 id="格式3"><a href="#格式3" class="headerlink" title="格式3"></a>格式3</h4><p>$$\mathbf{B}_{1x} =\frac{1}{2}\begin{bmatrix}<br>1&amp;0\\<br>-2&amp;1<br>\end{bmatrix}$$<br>那么<br>$$(\varphi,\frac{\partial \phi}{\partial x})  = \begin{bmatrix} 1/2 &amp; 0 &amp; 0  &amp;…&amp;0<br>                            \ -1&amp;1  &amp; 0 &amp; …&amp;0<br>                            \ 0&amp;-1 &amp;1 &amp; …&amp;0<br>                            \ \vdots&amp;\vdots &amp;\vdots&amp;\ddots &amp; \vdots<br>                            \ 0&amp;0 &amp;0&amp;-1 &amp; 1/2\end{bmatrix}\begin{bmatrix} \phi_1 \ \phi_2 \ \phi_3 \ \vdots \ \phi_n \end{bmatrix}$$    </p>
-<h2 id="数值方法的性质"><a href="#数值方法的性质" class="headerlink" title="数值方法的性质"></a>数值方法的性质</h2><p>数值方法应该满足以下几点性质</p>
-<ol>
-<li>一致性，随着网格尺寸的减小，截断误差应该趋近于0</li>
-<li>稳定性</li>
-<li>收敛性</li>
-<li>物理量守恒</li>
-<li>物理边界</li>
-</ol>
+        <p>可以在字符的前端和后端添加一些特殊字符，使字符在终端的显示带有颜色。<br><a id="more"></a></p>
+<h2 id="color"><a href="#color" class="headerlink" title="color"></a>color</h2><p>以下color模块中定义了两个函数：</p>
+<ul>
+<li>colorize(s,c)，该函数输入一个字符串s和一个RGB数组c(3)=[r,g,b]，其中 r,g,b在[0,5]之间。返回带有颜色的字符串。</li>
+<li>color_map(v,r), 该函数输入一个颜色相对位置v 在颜色范围r = [lbound, ubound]内，返回一个RGB数组， 该color_map属于 coolwarm 。</li>
+</ul>
+<p>注意字符串只有在终端才会显示颜色，在文本编辑器中可能会出现乱码。</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">module</span> color</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line"></div><div class="line">  <span class="keyword">public</span> :: colorize, color_map</div><div class="line"></div><div class="line">  <span class="keyword">private</span></div><div class="line"><span class="keyword">contains</span></div><div class="line">  <span class="comment">!=============================================================================</span></div><div class="line">  <span class="function"><span class="keyword">function</span></span> colorize(s,c) result(o)</div><div class="line">    <span class="comment">!&lt; Bracket a string with text to change its color on a terminal</span></div><div class="line">    <span class="keyword">character</span>(*),<span class="keyword">intent</span>(<span class="keyword">in</span>)::s <span class="comment">!&lt; String to colorize</span></div><div class="line">    <span class="keyword">integer</span>,<span class="keyword">dimension</span>(<span class="number">3</span>),<span class="keyword">intent</span>(<span class="keyword">in</span>)::c <span class="comment">! c in [0,5]</span></div><div class="line">    <span class="comment">!&lt; Color to use in [r,g,b] format, where \(r,g,b \in [0,5]\)</span></div><div class="line">    <span class="keyword">character</span>(:),<span class="keyword">allocatable</span>::o</div><div class="line">    <span class="keyword">character</span>(<span class="number">1</span>),<span class="keyword">parameter</span>::ESC = <span class="built_in">achar</span>(<span class="number">27</span>)</div><div class="line">    <span class="keyword">character</span>(<span class="number">3</span>),<span class="keyword">parameter</span>::post = <span class="string">'[0m'</span></div><div class="line">    <span class="keyword">character</span>(<span class="number">8</span>) :: pre</div><div class="line"></div><div class="line">    <span class="built_in">write</span>(pre,<span class="string">'(i0)'</span>) <span class="number">36</span>*c(<span class="number">1</span>)+<span class="number">6</span>*c(<span class="number">2</span>)+c(<span class="number">3</span>)+<span class="number">16</span></div><div class="line"></div><div class="line">    o = ESC//<span class="string">'[38;5;'</span>//<span class="built_in">trim</span>(<span class="built_in">adjustl</span>(pre))//<span class="string">'m'</span>//s//ESC//post</div><div class="line"></div><div class="line">  <span class="keyword">end</span> <span class="function"><span class="keyword">function</span></span> colorize</div><div class="line">  <span class="comment">!=============================================================================</span></div><div class="line">  <span class="function"><span class="keyword">function</span></span> color_map(v,r) result(c)</div><div class="line">    <span class="comment">!&lt; Return the color code for colorize based on the coolwarm color map</span></div><div class="line">    <span class="keyword">real</span>,<span class="keyword">intent</span>(<span class="keyword">in</span>)::v</div><div class="line">    <span class="comment">!! Value to map</span></div><div class="line">    <span class="keyword">real</span>,<span class="keyword">dimension</span>(<span class="number">2</span>),<span class="keyword">intent</span>(<span class="keyword">in</span>)::r</div><div class="line">    <span class="comment">!! Range over which to scale the colors</span></div><div class="line">    <span class="keyword">integer</span>,<span class="keyword">dimension</span>(<span class="number">3</span>)::c</div><div class="line"></div><div class="line">    <span class="keyword">integer</span>::s</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(v&lt;<span class="built_in">sum</span>(r)/<span class="number">2.0</span>) <span class="keyword">then</span></div><div class="line">      s = <span class="built_in">nint</span>((v-r(<span class="number">1</span>))/(<span class="built_in">sum</span>(r)/<span class="number">2.0</span>-r(<span class="number">1</span>))*<span class="number">5.0</span>)</div><div class="line">      c = [s,s,<span class="number">5</span>]</div><div class="line">    <span class="keyword">else</span></div><div class="line">      s = <span class="number">5</span>-<span class="built_in">nint</span>((v-<span class="built_in">sum</span>(r)/<span class="number">2.0</span>)/(r(<span class="number">2</span>)-<span class="built_in">sum</span>(r)/<span class="number">2.0</span>)*<span class="number">5.0</span>)</div><div class="line">      c = [<span class="number">5</span>,s,s]</div><div class="line">    <span class="keyword">end</span> <span class="keyword">if</span></div><div class="line"></div><div class="line">  <span class="keyword">end</span> <span class="function"><span class="keyword">function</span></span> color_map</div><div class="line"></div><div class="line"><span class="keyword">end</span> <span class="keyword">module</span> color</div></pre></td></tr></table></figure>
+<h2 id="colorize"><a href="#colorize" class="headerlink" title="colorize"></a>colorize</h2><p>以下程序测试了colorize的颜色显示，对常用的几种颜色的RGB进行了定义。<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> learn_colorize</div><div class="line">  <span class="keyword">use</span> color</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line"></div><div class="line">  <span class="keyword">integer</span>, <span class="keyword">parameter</span> :: black(<span class="number">3</span>) = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],&amp;</div><div class="line">                      &amp; white(<span class="number">3</span>) = [<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>],&amp;</div><div class="line">                      &amp; red(<span class="number">3</span>)   = [<span class="number">5</span>,<span class="number">0</span>,<span class="number">0</span>],&amp;</div><div class="line">                      &amp; green(<span class="number">3</span>) = [<span class="number">0</span>,<span class="number">5</span>,<span class="number">0</span>],&amp;</div><div class="line">                      &amp; blue(<span class="number">3</span>)  = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">5</span>],&amp;</div><div class="line">                      &amp; yello(<span class="number">3</span>) = [<span class="number">5</span>,<span class="number">5</span>,<span class="number">0</span>],&amp;</div><div class="line">                      &amp; cyan(<span class="number">3</span>)  = [<span class="number">5</span>,<span class="number">0</span>,<span class="number">5</span>],&amp;</div><div class="line">                      &amp; purple(<span class="number">3</span>)= [<span class="number">0</span>,<span class="number">5</span>,<span class="number">5</span>]</div><div class="line"></div><div class="line">  <span class="built_in">print</span>*, colorize(<span class="string">'black'</span>,black)</div><div class="line">  <span class="built_in">print</span>*, colorize(<span class="string">'white'</span>,white)</div><div class="line">  <span class="built_in">print</span>*, colorize(<span class="string">'red'</span>,red)</div><div class="line">  <span class="built_in">print</span>*, colorize(<span class="string">'green'</span>,green)</div><div class="line">  <span class="built_in">print</span>*, colorize(<span class="string">'blue'</span>,blue)</div><div class="line">  <span class="built_in">print</span>*, colorize(<span class="string">'yello'</span>,yello)</div><div class="line">  <span class="built_in">print</span>*, colorize(<span class="string">'cyan'</span>,cyan)</div><div class="line">  <span class="built_in">print</span>*, colorize(<span class="string">'purple'</span>,purple)</div><div class="line"></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> learn_colorize</div></pre></td></tr></table></figure></p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img src="http://on08uqozg.bkt.clouddn.com/colorize.png" alt="colorize"></p>
+<h2 id="color-map"><a href="#color-map" class="headerlink" title="color_map"></a>color_map</h2><p>以下程序将colormap用21个颜色进行显示<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> learn_colormap</div><div class="line">  <span class="keyword">use</span> color</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line">  <span class="keyword">integer</span> :: i</div><div class="line"></div><div class="line">  <span class="keyword">do</span> i = <span class="number">0</span>,<span class="number">20</span></div><div class="line">    <span class="built_in">print</span>*, colorize(<span class="string">'corlormap'</span>,color_map(v=<span class="number">0.05</span>*i,r=[<span class="number">0.</span>,<span class="number">1.</span>]))</div><div class="line">  <span class="keyword">enddo</span></div><div class="line"></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> learn_colormap</div></pre></td></tr></table></figure></p>
+<h3 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h3><p><img src="http://on08uqozg.bkt.clouddn.com/colormap.png" alt=""></p>
 
       
     </div>
@@ -458,11 +438,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/有限元/" rel="tag"># 有限元</a>
-          
-            <a href="/tags/数值计算/" rel="tag"># 数值计算</a>
-          
-            <a href="/tags/迎风格式/" rel="tag"># 迎风格式</a>
+            <a href="/tags/fortran/" rel="tag"># fortran</a>
           
         </div>
       
@@ -475,8 +451,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/25/偏微分方程简介/" rel="next" title="偏微分方程简介">
-                <i class="fa fa-chevron-left"></i> 偏微分方程简介
+              <a href="/2018/04/06/Fortran For Fun之block结构/" rel="next" title="fortran For Fun之block结构">
+                <i class="fa fa-chevron-left"></i> fortran For Fun之block结构
               </a>
             
           </div>
@@ -484,10 +460,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/26/psblas学习/" rel="prev" title="psblas学习">
-                psblas学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -673,7 +645,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#差分"><span class="nav-number">1.</span> <span class="nav-text">差分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#迎风差分格式"><span class="nav-number">1.1.</span> <span class="nav-text">迎风差分格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵形式"><span class="nav-number">1.1.1.</span> <span class="nav-text">矩阵形式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中心差分格式"><span class="nav-number">1.2.</span> <span class="nav-text">中心差分格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵形式-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">矩阵形式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有限元"><span class="nav-number">2.</span> <span class="nav-text">有限元</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#迎风格式探索"><span class="nav-number">2.1.</span> <span class="nav-text">迎风格式探索</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#格式1"><span class="nav-number">2.1.1.</span> <span class="nav-text">格式1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#格式2"><span class="nav-number">2.1.2.</span> <span class="nav-text">格式2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#格式3"><span class="nav-number">2.1.3.</span> <span class="nav-text">格式3</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值方法的性质"><span class="nav-number">3.</span> <span class="nav-text">数值方法的性质</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#color"><span class="nav-number">1.</span> <span class="nav-text">color</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#colorize"><span class="nav-number">2.</span> <span class="nav-text">colorize</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">2.1.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#color-map"><span class="nav-number">3.</span> <span class="nav-text">color_map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结果-1"><span class="nav-number">3.1.</span> <span class="nav-text">结果</span></a></li></ol></li></ol></div>
             
 
           </div>
