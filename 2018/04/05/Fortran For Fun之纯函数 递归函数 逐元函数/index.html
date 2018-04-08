@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="superfun">
 <meta property="og:description" content="Fortran中存在几种特殊的函数或子程序，这些函数或子程序需要在定义时特殊说明。主要有以下三种特殊程序  pure 程序 (纯程序) recursive 程序 (递归程序) elemental 程序 (逐元程序)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-03T02:00:55.327Z">
+<meta property="og:updated_time" content="2018-04-03T12:15:58.113Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fortran For Fun之纯函数 递归函数 逐元函数">
 <meta name="twitter:description" content="Fortran中存在几种特殊的函数或子程序，这些函数或子程序需要在定义时特殊说明。主要有以下三种特殊程序  pure 程序 (纯程序) recursive 程序 (递归程序) elemental 程序 (逐元程序)">
@@ -413,7 +413,7 @@
 <li>elemental 程序 (逐元程序)</li>
 </ul>
 <a id="more"></a>
-<h2 id="pure-程序"><a href="#pure-程序" class="headerlink" title="pure 程序"></a>pure 程序</h2><p>pure程序不能对输入参数以及模块中的数据进行修改。局部变量定义时不能初始化，也不能有save属性。很多函数都可以定义为pure 函数。</p>
+<h2 id="pure-程序"><a href="#pure-程序" class="headerlink" title="pure 程序"></a>pure 程序</h2><p>pure程序是不造成任何副作用的程序，即不能对输入参数以及模块中的数据进行修改，局部变量定义时不能初始化，也不能有save属性。很多函数都可以定义为pure 函数。</p>
 <figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> learn_pure</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line"></div><div class="line">  <span class="keyword">if</span>(add(<span class="string">'foo'</span>,<span class="string">'bar'</span>) == <span class="string">'foobar'</span>) <span class="built_in">print</span>*, <span class="string">'pass'</span></div><div class="line"></div><div class="line"><span class="keyword">contains</span></div><div class="line">  <span class="keyword">pure</span> <span class="function"><span class="keyword">function</span></span> add(a,b) result(c)</div><div class="line">    <span class="keyword">character</span>(*), <span class="keyword">intent</span>(<span class="keyword">in</span>) :: a, b</div><div class="line">    <span class="keyword">character</span>(:), <span class="keyword">allocatable</span> :: c</div><div class="line">    c = a // b</div><div class="line">  <span class="keyword">end</span> <span class="function"><span class="keyword">function</span></span> add</div><div class="line"></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> learn_pure</div></pre></td></tr></table></figure>
 <p>该程序中定义了add纯函数，作用是将两个字符合起来，相当于 // 符号， 可以利用该函数重载 +，使文字合并操作与 python 一致。</p>
 <h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">pass</span></div></pre></td></tr></table></figure>
@@ -567,7 +567,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
