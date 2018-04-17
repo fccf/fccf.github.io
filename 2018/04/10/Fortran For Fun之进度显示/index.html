@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="在fortran输出advence = ‘no’的情况下，输出前面加上char(13)可以删除原来的输出，在同一行重新进行输出，以下字符为 1234char(8)  !&amp;lt; 退格符char(9)  !&amp;lt; 制表符  char(10) !&amp;lt; 换行符char(13) !&amp;lt; 回车符">
+<meta name="description" content="在fortran输出advence = ‘no’的情况下，输出前面加上achar(13)可以删除原来的输出，在同一行重新进行输出，以下字符为 1234achar(8)  !&amp;lt; 退格符achar(9)  !&amp;lt; 制表符  achar(10) !&amp;lt; 换行符achar(13) !&amp;lt; 回车符">
 <meta name="keywords" content="fortran">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fortran For Fun之进度显示">
 <meta property="og:url" content="http://superfun.xyz/2018/04/10/Fortran For Fun之进度显示/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="在fortran输出advence = ‘no’的情况下，输出前面加上char(13)可以删除原来的输出，在同一行重新进行输出，以下字符为 1234char(8)  !&amp;lt; 退格符char(9)  !&amp;lt; 制表符  char(10) !&amp;lt; 换行符char(13) !&amp;lt; 回车符">
+<meta property="og:description" content="在fortran输出advence = ‘no’的情况下，输出前面加上achar(13)可以删除原来的输出，在同一行重新进行输出，以下字符为 1234achar(8)  !&amp;lt; 退格符achar(9)  !&amp;lt; 制表符  achar(10) !&amp;lt; 换行符achar(13) !&amp;lt; 回车符">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-03T09:46:57.426Z">
+<meta property="og:updated_time" content="2018-04-08T03:01:28.163Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fortran For Fun之进度显示">
-<meta name="twitter:description" content="在fortran输出advence = ‘no’的情况下，输出前面加上char(13)可以删除原来的输出，在同一行重新进行输出，以下字符为 1234char(8)  !&amp;lt; 退格符char(9)  !&amp;lt; 制表符  char(10) !&amp;lt; 换行符char(13) !&amp;lt; 回车符">
+<meta name="twitter:description" content="在fortran输出advence = ‘no’的情况下，输出前面加上achar(13)可以删除原来的输出，在同一行重新进行输出，以下字符为 1234achar(8)  !&amp;lt; 退格符achar(9)  !&amp;lt; 制表符  achar(10) !&amp;lt; 换行符achar(13) !&amp;lt; 回车符">
 
 
 
@@ -406,8 +406,8 @@
       
 
       
-        <p>在fortran输出advence = ‘no’的情况下，输出前面加上char(13)可以删除原来的输出，在同一行重新进行输出，以下字符为</p>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">char</span>(<span class="number">8</span>)  <span class="comment">!&lt; 退格符</span></div><div class="line"><span class="built_in">char</span>(<span class="number">9</span>)  <span class="comment">!&lt; 制表符  </span></div><div class="line"><span class="built_in">char</span>(<span class="number">10</span>) <span class="comment">!&lt; 换行符</span></div><div class="line"><span class="built_in">char</span>(<span class="number">13</span>) <span class="comment">!&lt; 回车符</span></div></pre></td></tr></table></figure>
+        <p>在fortran输出advence = ‘no’的情况下，输出前面加上achar(13)可以删除原来的输出，在同一行重新进行输出，以下字符为</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">achar</span>(<span class="number">8</span>)  <span class="comment">!&lt; 退格符</span></div><div class="line"><span class="built_in">achar</span>(<span class="number">9</span>)  <span class="comment">!&lt; 制表符  </span></div><div class="line"><span class="built_in">achar</span>(<span class="number">10</span>) <span class="comment">!&lt; 换行符</span></div><div class="line"><span class="built_in">achar</span>(<span class="number">13</span>) <span class="comment">!&lt; 回车符</span></div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="overwrite"><a href="#overwrite" class="headerlink" title="overwrite"></a>overwrite</h2><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> learn_overwrite</div><div class="line">  <span class="keyword">use</span> <span class="keyword">iso_c_binding</span></div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line"></div><div class="line">  <span class="keyword">integer</span> :: i</div><div class="line">  <span class="keyword">integer</span>, <span class="keyword">parameter</span> :: n = <span class="number">100</span></div><div class="line"></div><div class="line">  <span class="keyword">interface</span></div><div class="line">    <span class="function"><span class="keyword">subroutine</span></span> <span class="keyword">wait</span>(usec) <span class="keyword">bind</span>(C,<span class="keyword">name</span>=<span class="string">'usleep'</span>)</div><div class="line">      <span class="keyword">use</span> <span class="keyword">iso_c_binding</span></div><div class="line">      <span class="keyword">integer</span>(<span class="keyword">c_int</span>),<span class="keyword">value</span>::usec</div><div class="line">    <span class="keyword">end</span> <span class="function"><span class="keyword">subroutine</span></span> <span class="keyword">wait</span></div><div class="line">  <span class="keyword">end</span> <span class="keyword">interface</span></div><div class="line"></div><div class="line">  <span class="keyword">do</span> i = <span class="number">1</span>, n</div><div class="line">    <span class="built_in">write</span>(*,<span class="string">'(a,f6.2,a)'</span>,<span class="keyword">advance</span>=<span class="string">'no'</span>) <span class="built_in">char</span>(<span class="number">13</span>),<span class="keyword">real</span>(i),<span class="string">'%'</span></div><div class="line">    <span class="keyword">call</span> <span class="keyword">wait</span>(<span class="number">50000</span>)</div><div class="line">  <span class="keyword">enddo</span></div><div class="line">  <span class="built_in">write</span>(*,*)</div><div class="line"></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> learn_overwrite</div></pre></td></tr></table></figure>
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>会动态显示 1% ~ 100%</p>
@@ -444,7 +444,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/10/Fortran For Fun 之iso_fortran_env/" rel="next" title="Fortran For Fun之预处理">
+              <a href="/2018/04/09/Fortran For Fun之预处理/" rel="next" title="Fortran For Fun之预处理">
                 <i class="fa fa-chevron-left"></i> Fortran For Fun之预处理
               </a>
             
@@ -453,6 +453,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/11/Fortran For Fun 之iso_fortran_env/" rel="prev" title="Fortran For Fun之iso_fortran_env">
+                Fortran For Fun之iso_fortran_env <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -554,7 +558,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Fortran For Fun之进度显示]]></title>
-    <url>%2F2018%2F04%2F10%2FFortran%20For%20Fun%E4%B9%8B%E8%BF%9B%E5%BA%A6%E6%98%BE%E7%A4%BA%2F</url>
-    <content type="text"><![CDATA[在fortran输出advence = ‘no’的情况下，输出前面加上char(13)可以删除原来的输出，在同一行重新进行输出，以下字符为 1234char(8) !&lt; 退格符char(9) !&lt; 制表符 char(10) !&lt; 换行符char(13) !&lt; 回车符 overwrite123456789101112131415161718192021program learn_overwrite use iso_c_binding implicit none integer :: i integer, parameter :: n = 100 interface subroutine wait(usec) bind(C,name='usleep') use iso_c_binding integer(c_int),value::usec end subroutine wait end interface do i = 1, n write(*,'(a,f6.2,a)',advance='no') char(13),real(i),'%' call wait(50000) enddo write(*,*)end program learn_overwrite 结果会动态显示 1% ~ 100% show_progress1234567891011121314151617181920212223242526272829303132333435363738394041424344program learn_show_progress use iso_c_binding implicit none interface subroutine wait(usec) bind(C,name='usleep') use iso_c_binding integer(c_int),value::usec end subroutine wait end interface integer :: n write(*, *) 'initialize progress' do n = 1,100 call wait(100000) call show_progress(n/100.0) enddo write(*,*)contains subroutine show_progress(p) real,intent(in)::p !! Progress fraction \(p\in[0,1]\), 0 = start progress 1 = complete progress integer :: i integer :: n = 60 real ::r character(3) :: persent write(persent,'(i0)') int(p*100) write(*,'(a)',advance='no') achar(13)//' [' do i=1,60 r = real(i-1)/real(N-1) if(r&lt;=p) then write(*,'(1a)',advance='no') '=' else write(*,'(1a)',advance='no') ' ' endif end do write(*,'(a)',advance='no') '] '//trim(persent)//' %' ! flush(*) end subroutine show_progressend program learn_show_progress 结果动态显示整个过程12initialize progress[============================================================] 100 % 结合之前的颜色模块可以使输出带有颜色，输出更加友好。]]></content>
+    <title><![CDATA[Fortran For Fun 并行之openmp]]></title>
+    <url>%2F2018%2F04%2F17%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bopenmp%2F</url>
+    <content type="text"><![CDATA[OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项，gfortran选项1-fopenmp ifort 选项1-openmp lean_omp123456789101112131415program learn_omp use omp_lib implicit none integer :: it, nt !$omp parallel private(it) it = omp_get_thread_num() if(it==0) then nt = omp_get_num_threads() endif print'(a,i0,a,i0)', 'hello openmp from thread ',it, ' with total threads ',nt !$omp end parallelend program learn_omp 结果12345678hello openmp from thread 6 with total threads 8hello openmp from thread 7 with total threads 8hello openmp from thread 5 with total threads 8hello openmp from thread 4 with total threads 8hello openmp from thread 3 with total threads 8hello openmp from thread 0 with total threads 8hello openmp from thread 1 with total threads 8hello openmp from thread 2 with total threads 8 openmp]]></content>
       <categories>
         <category>fortran</category>
       </categories>
@@ -12,9 +12,86 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Fortran For Fun之预处理]]></title>
-    <url>%2F2018%2F04%2F10%2FFortran%20For%20Fun%20%E4%B9%8Biso_fortran_env%2F</url>
-    <content type="text"><![CDATA[iso_fortran_env 是fortran语言的一个内部模块，其中定义了一些与fortran运行环境相关的常数或数据类型。主要包含内部数据类型12345real32real64int32int64... 标准输入输出123input_unitoutput_uniterror_unit io状态12iostat_endiostat_eor 存储单元大小123numeric_storage_sizecharacter_storage_size... … learn_iso_fortran_env1234567891011121314151617181920212223242526program learn_iso_fortran_env use, intrinsic :: iso_fortran_env implicit none print*, 'character_kinds =', character_kinds print*, 'integer_kinds =', integer_kinds print*, 'real_kinds =', real_kinds print*, 'int32 = ',int32 print*, 'int64 = ',int64 print*, 'real32 = ',real32 print*, 'real64 = ',real64 print*, 'input_unit = ',input_unit print*, 'output_unit = ',output_unit print*, 'error_unit = ',error_unit print*, 'numeric_storage_size = ',numeric_storage_size print*, 'character_storage_size = ',character_storage_size print*, 'file_storage_size = ',file_storage_size print*, 'iostat_end = ',iostat_end print*, 'iostat_eor = ',iostat_eorend program learn_iso_fortran_env 结果123456789101112131415character_kinds = 1 4integer_kinds = 1 2 4 8 16real_kinds = 4 8 10 16int32 = 4int64 = 8real32 = 4real64 = 8input_unit = 5output_unit = 6error_unit = 0numeric_storage_size = 32character_storage_size = 8file_storage_size = 8iostat_end = -1iostat_eor = -2 iso_fortran_env]]></content>
+    <title><![CDATA[有限元单元变换]]></title>
+    <url>%2F2018%2F04%2F17%2F%E6%9C%89%E9%99%90%E5%85%83%E5%8D%95%E5%85%83%E5%8F%98%E6%8D%A2%2F</url>
+    <content type="text"><![CDATA[单元变换有限元方法求解单元上的积分，是通过坐标变换将所有单元变换为一个标准单元，然后在标准单元上进行数值积分。 单元节点坐标单元上节点的实际坐标定义为 $\mathbf{C}$$$\mathbf{C} =\begin{bmatrix} x_1 &amp; y_1 &amp; z_1\\ x_2 &amp; y_2 &amp; z_2\\ x_3 &amp; y_3 &amp; z_3\\ \vdots &amp; \vdots &amp; \vdots \\ x_n &amp; y_n &amp; z_n \end{bmatrix}$$ 单元形状函数单元形状函数定义为 $\vec{N}$$$\vec{N} =\begin{bmatrix}N_1\\N_2\\N_3 \\\vdots \\N_n\end{bmatrix}$$ 全局坐标单元中任意一点的全局坐标定义为 $\vec{X}$$$\vec{X} =\begin{bmatrix}x\\y\\z\\\end{bmatrix}$$ 全局坐标与节点坐标以及形状函数存在以下关系$$\vec{X}^T = \vec{N}^{T}\mathbf{C}$$ Jacobian 矩阵$$\mathbf{J} = \frac{\partial \vec{X}^{T}}{\partial \vec{λ}} = \frac{\partial \vec{N}^{T}}{\partial \vec{λ}}\mathbf{C}$$其中$\vec{λ}$是坐标变换之后的局部坐标。 形状函数对局部坐标的导数$$\frac{\partial}{\partial \vec{λ}} = \frac{\partial \vec{X}^{T}}{\partial \vec{λ}} \frac{\partial}{\partial \vec{X}} = \mathbf{J} \frac{\partial}{\partial \vec{X}} $$ 形状函数对实际坐标的导数$$ \frac{\partial}{\partial \vec{X}} = \mathbf{J}^{-1}\frac{\partial}{\partial \vec{λ}}$$ 积分变换$$\int\int \int dx dy dz = \int\int \int det|\mathbf{J}|dλ_1dλ_2 dλ_3$$ 数值积分$$\int\int \int f(λ_1,λ_2,λ_3)dλ_1dλ_2dλ_3 = \sum_{i=1}^{nq} w_i f(λ_1,λ_2,λ_3)_i $$]]></content>
+      <categories>
+        <category>有限元</category>
+      </categories>
+      <tags>
+        <tag>有限元</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Fortran For Fun 并行之mpi]]></title>
+    <url>%2F2018%2F04%2F16%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bmpi%2F</url>
+    <content type="text"><![CDATA[MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。 learn_mpi123456789101112131415161718192021222324252627program learn_mpi use mpi implicit none integer :: ip, np, ctx, info real :: wtime call mpi_init(info) call mpi_comm_size(MPI_COMM_WORLD, np, info) call mpi_comm_rank(MPI_COMM_WORLD, ip, info) if(ip == 0) then print*, 'number of process = ',np wtime = mpi_wtime() endif print*, 'hello mpi from process ',ip if(ip==0) then wtime = mpi_wtime() - wtime print*, 'Time elapsed = ',wtime,' seconds.' endif call mpi_finalize(info)end program learn_mpi 结果执行mpirun -n 4 learn_mpi得到123456number of process = 4hello mpi from process 0hello mpi from process 1hello mpi from process 2hello mpi from process 3Time elapsed = 4.0020095184445381E-006 seconds. open-mpi]]></content>
+      <categories>
+        <category>fortran</category>
+      </categories>
+      <tags>
+        <tag>fortran</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Fortran For Fun 并行之Co-Array Fortran (CAF)]]></title>
+    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8BCo-Array%20Fortran(CAF)%2F</url>
+    <content type="text"><![CDATA[Fortran2008及之后版本的主要提升在于混合编程和并行编程，并行编程通过coarray实现，想将Fortran的并行操作变成与数组操作一样简单，将Fortran变为一个天然的并行编程语言。 目前的fortran编译器基本上都内在的支持coarray，只需要在编译选项中添加一些选项就可以编译coarray程序。对gfortran, 添加选项1-fcoarray=lib -lcaf_mpi 对intel fortran添加选项1-coarray hello_coarray12345678program hello_coarray implicit none if(this_image() == 1) write(*,'(a,i0)') 'total images ',num_images() write(*,'(a,i0,a)') 'image ',this_image(), ' say hello coarray 'end program hello_coarray 结果执行 cafrun -n 4 hello_coarray 或 mpirun -n 4 hello_coarray ,得到12345total images 4image 1 say hello coarrayimage 2 say hello coarrayimage 3 say hello coarrayimage 4 say hello coarray coarray12345678910111213program coarray implicit none integer, allocatable :: iv(:)[:] !&lt; a vector coarray integer :: i,j allocate(iv(4)[*]) do i = 1,num_images() iv(:)[i] = [(j+i-1,j=1,4)] if(this_image()==i) print'(a,i0,a,*(i0,3x))', 'iamges-', i,':',iv enddoend program coarray 程序中iv就是一个coarray，可以在每一个镜像中对coarray赋值。 结果执行 cafrun -n 4 hello_coarray 或 mpirun -n 4 hello_coarray ,得到1234iamges-1:1 2 3 4iamges-2:2 3 4 5iamges-3:3 4 5 6iamges-4:4 5 6 7 openCoarrays]]></content>
+      <categories>
+        <category>fortran</category>
+      </categories>
+      <tags>
+        <tag>fortran</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Fortran For Fun 绘图函数库ogpf]]></title>
+    <url>%2F2018%2F04%2F14%2FFortran%20For%20Fun%E7%BB%98%E5%9B%BE%E5%87%BD%E6%95%B0%E5%BA%93ogpf%2F</url>
+    <content type="text"><![CDATA[ogpf (Object based interface to GnuPlot from Fortran )是利用fortran生成gnuplot脚本然后使用gnuplot进行绘图的一个函数库，使用较简单，可以绘制常用的曲线曲面图。 learn_ogpf123456789101112131415161718192021222324252627282930313233program learn_ogpf use ogpf implicit none call plot_surf()contains subroutine plot_surf() type(gpf):: gp real, parameter :: pi=4._wp*atan(1._wp) real, allocatable :: x(:,:), y(:,:), z(:,:) integer:: m, n call meshgrid(x, y, linspace(-2.0,2.0, 65), linspace(-2.0,3.0, 65) ) m=size(x,1) n=size(x,2) allocate( z(m,n) ) z = x * exp(-x**2 - y**2) call gp%options('unset key') call gp%options('unset surface') call gp%axis([real(wp):: -2, 2, -2, 3]) call gp%title('Surface example') call gp%options('unset border; unset tics') call gp%surf(x,y,z, palette='accent') end subroutine plot_surfend program learn_ogpf 结果 ogpf]]></content>
+      <categories>
+        <category>fortran</category>
+      </categories>
+      <tags>
+        <tag>fortran</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Fortran For Fun 常用io操作之read_line]]></title>
+    <url>%2F2018%2F04%2F13%2FFortran%20For%20Fun%20%E5%B8%B8%E7%94%A8io%E6%93%8D%E4%BD%9C%E4%B9%8Bread_line%2F</url>
+    <content type="text"><![CDATA[读取任意长度行在读取文件中的某一行时，通常会先定义一个固定长度的字符变量 line(max_line_), 它的长度为一个固定大小 max_line_ , 如果实际文件中的字符长度超过max_line_，就会读不完整。而可变长度的字符串不可以直接从文件中读取，所以以下程序通过一个字符一个字符的读取，然后添加到可变长度字符上，实现了可变长度字符的直接读取。 123456789101112131415161718192021222324252627282930313233343536373839404142program learn_read_line use, intrinsic :: iso_fortran_env, only: iostat_end implicit none character(:),allocatable :: line integer :: ios, unit open(newunit=unit,status='scratch') write(unit,*) '!'//repeat('=',40) &amp; &amp; //new_line('a')//'! this is fortran comment' &amp; &amp; //new_line('a')//'; this is python inline comment' &amp; &amp; //new_line('a')//'# this is python comment' &amp; &amp; //achar(10)//' 0 1.0 2.0E-5 +3.2' rewind(unit) do call read_line(unit,line,iostat = ios) if(ios== iostat_end) exit print *, trim(adjustl(line)) enddo close(unit=unit)contains subroutine read_line(unit, line, iostat) integer, intent(in) :: unit character(:), allocatable :: line !&lt; Line storage. integer, intent(out), optional :: iostat character :: ch !&lt; Character storage. integer :: ios line = '' do read(unit, "(a)", advance='no', iostat=ios) ch if(ios /= 0) exit line = line//ch enddo if(present(iostat)) iostat = ios endsubroutine read_lineend program learn_read_line 结果12345!========================================! this is fortran comment; this is python inline comment# this is python comment0 1.0 2.0E-5 +3.2]]></content>
+      <categories>
+        <category>fortran</category>
+      </categories>
+      <tags>
+        <tag>fortran</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Fortran For Fun之常用字符处理函数]]></title>
+    <url>%2F2018%2F04%2F12%2FFortran%20For%20Fun%E4%B9%8B%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[Fortran的字符串处理功能比较差，只提供一些非常简单的字符串处理函数。常用的有 achar(i)返回ASCII码为i的字符，常用的有 1234achar(8) !&lt; 退格符achar(9) !&lt; 制表符 achar(10) !&lt; 换行符achar(13) !&lt; 回车符 ichar(a)返回字符的ASCII码 adjustl(s)字符向左调整 adjustr(s)字符向右调整 trim(s)去掉字符后面的空格，通常和adjustl结合使用，trim(adjustl(s)) len(s)返回字符的长度 repeat(s,n)重复s，n次 new_line(‘a’)开始新的一行，相当于achar(10) index(s,ss,[back])返回ss在s中第一次出现的位置 scan(s,ss,[back])返回ss中任意字符在s中出现的位置 verify(s,ss,[back])返回s中第一次出现不属于ss中字符的位置 learn_char12345678910111213141516171819202122232425262728293031323334353637383940414243444546program learn_char use, intrinsic :: iso_fortran_env, only: iostat_end implicit none character(99) :: line integer :: ierr, unit open(newunit=unit,status='scratch') write(unit,*) '!'//repeat('=',40) &amp; &amp; //new_line('a')//'! this is fortran comment' &amp; &amp; //new_line('a')//'; this is python inline comment' &amp; &amp; //new_line('a')//'# this is python comment' &amp; &amp; //achar(10)//' 0 1.0 2.0E-5 +3.2' rewind(unit) do read(unit,'(a)',iostat = ierr) line if(ierr == iostat_end) exit if(is_comments(line)) print'(a,t50, a)', trim(adjustl(line)), '!&lt; comment line; ' if(is_number(line)) print'(a,t50, a)', trim(adjustl(line)), '!&lt; number line; ' enddo close(unit=unit)contains pure function is_fortran_comment(s) result(r) character(*), intent(in) :: s logical :: r r = .FALSE. if (index(trim(adjustl(s)), '!') == 1) r = .TRUE. end function is_fortran_comment pure function is_comments(s) result(r) character(*), intent(in) :: s logical :: r r = .FALSE. if (scan(trim(adjustl(s)), '!#;') == 1) r = .TRUE. end function is_comments pure function is_number(s) result(r) character(*), intent(in) :: s logical :: r r = .TRUE. if(verify(trim(adjustl(s)), '+-.0123456789E ' ) /= 0) r = .FALSE. end function is_numberend program learn_char 结果12345!======================================== !&lt; comment line;! this is fortran comment !&lt; comment line;; this is python inline comment !&lt; comment line;# this is python comment !&lt; comment line;0 1.0 2.0E-5 +3.2 !&lt; number line;]]></content>
+      <categories>
+        <category>fortran</category>
+      </categories>
+      <tags>
+        <tag>fortran</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Fortran For Fun之iso_fortran_env]]></title>
+    <url>%2F2018%2F04%2F11%2FFortran%20For%20Fun%20%E4%B9%8Biso_fortran_env%2F</url>
+    <content type="text"><![CDATA[iso_fortran_env 是fortran语言的一个内部模块，其中定义了一些与fortran运行环境相关的常数或数据类型。主要包含 内部数据类型12345real32real64int32int64... 标准输入输出123input_unitoutput_uniterror_unit io状态12iostat_endiostat_eor 存储单元大小123numeric_storage_sizecharacter_storage_size... … learn_iso_fortran_env1234567891011121314151617181920212223242526program learn_iso_fortran_env use, intrinsic :: iso_fortran_env implicit none print*, 'character_kinds =', character_kinds print*, 'integer_kinds =', integer_kinds print*, 'real_kinds =', real_kinds print*, 'int32 = ',int32 print*, 'int64 = ',int64 print*, 'real32 = ',real32 print*, 'real64 = ',real64 print*, 'input_unit = ',input_unit print*, 'output_unit = ',output_unit print*, 'error_unit = ',error_unit print*, 'numeric_storage_size = ',numeric_storage_size print*, 'character_storage_size = ',character_storage_size print*, 'file_storage_size = ',file_storage_size print*, 'iostat_end = ',iostat_end print*, 'iostat_eor = ',iostat_eorend program learn_iso_fortran_env 结果123456789101112131415character_kinds = 1 4integer_kinds = 1 2 4 8 16real_kinds = 4 8 10 16int32 = 4int64 = 8real32 = 4real64 = 8input_unit = 5output_unit = 6error_unit = 0numeric_storage_size = 32character_storage_size = 8file_storage_size = 8iostat_end = -1iostat_eor = -2 iso_fortran_env]]></content>
+      <categories>
+        <category>fortran</category>
+      </categories>
+      <tags>
+        <tag>fortran</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Fortran For Fun之进度显示]]></title>
+    <url>%2F2018%2F04%2F10%2FFortran%20For%20Fun%E4%B9%8B%E8%BF%9B%E5%BA%A6%E6%98%BE%E7%A4%BA%2F</url>
+    <content type="text"><![CDATA[在fortran输出advence = ‘no’的情况下，输出前面加上achar(13)可以删除原来的输出，在同一行重新进行输出，以下字符为 1234achar(8) !&lt; 退格符achar(9) !&lt; 制表符 achar(10) !&lt; 换行符achar(13) !&lt; 回车符 overwrite123456789101112131415161718192021program learn_overwrite use iso_c_binding implicit none integer :: i integer, parameter :: n = 100 interface subroutine wait(usec) bind(C,name='usleep') use iso_c_binding integer(c_int),value::usec end subroutine wait end interface do i = 1, n write(*,'(a,f6.2,a)',advance='no') char(13),real(i),'%' call wait(50000) enddo write(*,*)end program learn_overwrite 结果会动态显示 1% ~ 100% show_progress1234567891011121314151617181920212223242526272829303132333435363738394041424344program learn_show_progress use iso_c_binding implicit none interface subroutine wait(usec) bind(C,name='usleep') use iso_c_binding integer(c_int),value::usec end subroutine wait end interface integer :: n write(*, *) 'initialize progress' do n = 1,100 call wait(100000) call show_progress(n/100.0) enddo write(*,*)contains subroutine show_progress(p) real,intent(in)::p !! Progress fraction \(p\in[0,1]\), 0 = start progress 1 = complete progress integer :: i integer :: n = 60 real ::r character(3) :: persent write(persent,'(i0)') int(p*100) write(*,'(a)',advance='no') achar(13)//' [' do i=1,60 r = real(i-1)/real(N-1) if(r&lt;=p) then write(*,'(1a)',advance='no') '=' else write(*,'(1a)',advance='no') ' ' endif end do write(*,'(a)',advance='no') '] '//trim(persent)//' %' ! flush(*) end subroutine show_progressend program learn_show_progress 结果动态显示整个过程12initialize progress[============================================================] 100 % 结合之前的颜色模块可以使输出带有颜色，输出更加友好。]]></content>
       <categories>
         <category>fortran</category>
       </categories>

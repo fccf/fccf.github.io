@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="fortran," />
+  <meta name="keywords" content="superfun" />
 
 
 
@@ -94,18 +94,16 @@
 
 
 
-<meta name="description" content="iso_fortran_env 是fortran语言的一个内部模块，其中定义了一些与fortran运行环境相关的常数或数据类型。主要包含">
-<meta name="keywords" content="fortran">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Fortran For Fun之预处理">
-<meta property="og:url" content="http://superfun.xyz/2018/04/10/Fortran For Fun 之iso_fortran_env/index.html">
+<meta name="description" content="道，行之而成">
+<meta property="og:type" content="website">
+<meta property="og:title" content="superfun">
+<meta property="og:url" content="http://superfun.xyz/page/6/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="iso_fortran_env 是fortran语言的一个内部模块，其中定义了一些与fortran运行环境相关的常数或数据类型。主要包含">
+<meta property="og:description" content="道，行之而成">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-08T02:53:44.712Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fortran For Fun之预处理">
-<meta name="twitter:description" content="iso_fortran_env 是fortran语言的一个内部模块，其中定义了一些与fortran运行环境相关的常数或数据类型。主要包含">
+<meta name="twitter:title" content="superfun">
+<meta name="twitter:description" content="道，行之而成">
 
 
 
@@ -134,7 +132,7 @@
 
 
 
-  <link rel="canonical" href="http://superfun.xyz/2018/04/10/Fortran For Fun 之iso_fortran_env/"/>
+  <link rel="canonical" href="http://superfun.xyz/page/6/"/>
 
 
 
@@ -150,7 +148,7 @@
 </script>
 
 
-  <title>Fortran For Fun之预处理 | superfun</title>
+  <title>superfun</title>
   
 
 
@@ -175,7 +173,9 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -302,9 +302,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -317,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2018/04/10/Fortran For Fun 之iso_fortran_env/">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/10/18/三角形单元/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="c.fang">
@@ -334,7 +334,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Fortran For Fun之预处理</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/18/三角形单元/" itemprop="url">三角形单元</a></h1>
         
 
         <div class="post-meta">
@@ -346,8 +348,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T22:40:59+08:00">
-                2018-04-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T19:06:22+08:00">
+                2017-10-18
               </time>
             
 
@@ -369,8 +371,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/fortran/" itemprop="url" rel="index">
-                    <span itemprop="name">fortran</span>
+                  <a href="/categories/有限元/" itemprop="url" rel="index">
+                    <span itemprop="name">有限元</span>
                   </a>
                 </span>
 
@@ -406,15 +408,16 @@
       
 
       
-        <p>iso_fortran_env 是fortran语言的一个内部模块，其中定义了一些与fortran运行环境相关的常数或数据类型。主要包含<br><a id="more"></a><br>内部数据类型<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">real32</div><div class="line">real64</div><div class="line">int32</div><div class="line">int64</div><div class="line">...</div></pre></td></tr></table></figure></p>
-<p>标准输入输出<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">input_unit</span></div><div class="line"><span class="keyword">output_unit</span></div><div class="line"><span class="keyword">error_unit</span></div></pre></td></tr></table></figure></p>
-<p>io状态<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">iostat_end</span></div><div class="line"><span class="keyword">iostat_eor</span></div></pre></td></tr></table></figure></p>
-<p>存储单元大小<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">numeric_storage_size</span></div><div class="line"><span class="keyword">character_storage_size</span></div><div class="line">...</div></pre></td></tr></table></figure></p>
-<p>…</p>
-<h1 id="learn-iso-fortran-env"><a href="#learn-iso-fortran-env" class="headerlink" title="learn_iso_fortran_env"></a>learn_iso_fortran_env</h1><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> learn_iso_fortran_env</div><div class="line">  <span class="keyword">use</span>, <span class="keyword">intrinsic</span> :: <span class="keyword">iso_fortran_env</span></div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line"></div><div class="line">  <span class="built_in">print</span>*, <span class="string">'character_kinds        ='</span>, character_kinds</div><div class="line">  <span class="built_in">print</span>*, <span class="string">'integer_kinds          ='</span>, integer_kinds</div><div class="line">  <span class="built_in">print</span>*, <span class="string">'real_kinds             ='</span>, real_kinds</div><div class="line"></div><div class="line">  <span class="built_in">print</span>*, <span class="string">'int32                  = '</span>,int32</div><div class="line">  <span class="built_in">print</span>*, <span class="string">'int64                  = '</span>,int64</div><div class="line">  <span class="built_in">print</span>*, <span class="string">'real32                 = '</span>,real32</div><div class="line">  <span class="built_in">print</span>*, <span class="string">'real64                 = '</span>,real64</div><div class="line"></div><div class="line">  <span class="built_in">print</span>*, <span class="string">'input_unit             = '</span>,<span class="keyword">input_unit</span></div><div class="line">  <span class="built_in">print</span>*, <span class="string">'output_unit            = '</span>,<span class="keyword">output_unit</span></div><div class="line">  <span class="built_in">print</span>*, <span class="string">'error_unit             = '</span>,<span class="keyword">error_unit</span></div><div class="line"></div><div class="line">  <span class="built_in">print</span>*, <span class="string">'numeric_storage_size   = '</span>,<span class="keyword">numeric_storage_size</span></div><div class="line">  <span class="built_in">print</span>*, <span class="string">'character_storage_size = '</span>,<span class="keyword">character_storage_size</span></div><div class="line">  <span class="built_in">print</span>*, <span class="string">'file_storage_size      = '</span>,<span class="keyword">file_storage_size</span></div><div class="line"></div><div class="line">  <span class="built_in">print</span>*, <span class="string">'iostat_end             = '</span>,<span class="keyword">iostat_end</span></div><div class="line">  <span class="built_in">print</span>*, <span class="string">'iostat_eor             = '</span>,<span class="keyword">iostat_eor</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> learn_iso_fortran_env</div></pre></td></tr></table></figure>
-<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">character_kinds        =           1           4</div><div class="line">integer_kinds          =           1           2           4           8          16</div><div class="line">real_kinds             =           4           8          10          16</div><div class="line">int32                  =            4</div><div class="line">int64                  =            8</div><div class="line">real32                 =            4</div><div class="line">real64                 =            8</div><div class="line">input_unit             =            5</div><div class="line">output_unit            =            6</div><div class="line">error_unit             =            0</div><div class="line">numeric_storage_size   =           32</div><div class="line">character_storage_size =            8</div><div class="line">file_storage_size      =            8</div><div class="line">iostat_end             =           -1</div><div class="line">iostat_eor             =           -2</div></pre></td></tr></table></figure>
-<p><a href="http://fortranwiki.org/fortran/show/iso_fortran_env" target="_blank" rel="external">iso_fortran_env</a></p>
-
+        
+          <p>本文解析的推导了线性三角形单元的基函数及其相关积分。将所有与基函数相关积分都用节点的实际坐标表示，并将其写成向量乘积的形式，这样在计算单元刚度矩阵时就不用使用数值积分而可以直接使用解析形式，而且如果采用无矩阵方法，单元矩阵与向量的乘积只需要很少的计算量。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/18/三角形单元/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
     
@@ -429,40 +432,14 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/fortran/" rel="tag"># fortran</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/04/09/Fortran For Fun之预处理/" rel="next" title="Fortran For Fun之预处理">
-                <i class="fa fa-chevron-left"></i> Fortran For Fun之预处理
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/10/Fortran For Fun之进度显示/" rel="prev" title="Fortran For Fun之进度显示">
-                Fortran For Fun之进度显示 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -472,34 +449,306 @@
   </article>
 
 
-
-    <div class="post-spread">
+    
       
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
 
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/10/18/利用hexo和github搭建个人blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="c.fang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bio.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="superfun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/18/利用hexo和github搭建个人blog/" itemprop="url">利用hexo和github搭建个人blog</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T10:40:59+08:00">
+                2017-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>最开始时使用emacs的org-mod写博客，但使用atom之后就很少使用emacs，blog也没有坚持写下去。现在想用markdown代替org-mod重新开始写blog，所以又开始了折腾。<br>现在的主要流程是使用atom编辑markdown文档，然后使用hexo生成和发布blog，发布平台使用 github-page，下面对整个流程进行简单说明。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/18/利用hexo和github搭建个人blog/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2017/10/17/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="c.fang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bio.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="superfun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/17/hello-world/" itemprop="url">Hello World</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T22:40:59+08:00">
+                2017-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/17/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+  </nav>
+
 
 
           </div>
@@ -507,12 +756,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div id="uyan_frame"></div>
-    
-  </div>
-
 
         </div>
         
@@ -533,17 +776,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/bio.png"
@@ -558,7 +792,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -632,22 +866,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#learn-iso-fortran-env"><span class="nav-number">1.</span> <span class="nav-text">learn_iso_fortran_env</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结果"><span class="nav-number">2.</span> <span class="nav-text">结果</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -750,10 +968,10 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-
+  
 
   
 
@@ -779,10 +997,6 @@
   
     
 
-    
-      <!-- UY BEGIN -->
-      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2146790"></script>
-      <!-- UY END -->
     
   
 
