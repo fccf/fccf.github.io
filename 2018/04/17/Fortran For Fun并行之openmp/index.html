@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项，gfortran选项1-fopenmp ifort 选项1-openmp lean_omp123456789101112131415program learn_omp  use omp_lib  implicit none  integer :: it, nt  !$omp parallel private(it)">
+<meta name="description" content="OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项，">
 <meta name="keywords" content="fortran">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fortran For Fun 并行之openmp">
 <meta property="og:url" content="http://superfun.xyz/2018/04/17/Fortran For Fun并行之openmp/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项，gfortran选项1-fopenmp ifort 选项1-openmp lean_omp123456789101112131415program learn_omp  use omp_lib  implicit none  integer :: it, nt  !$omp parallel private(it)">
+<meta property="og:description" content="OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-09T09:43:27.942Z">
+<meta property="og:updated_time" content="2018-04-17T08:12:36.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fortran For Fun 并行之openmp">
-<meta name="twitter:description" content="OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项，gfortran选项1-fopenmp ifort 选项1-openmp lean_omp123456789101112131415program learn_omp  use omp_lib  implicit none  integer :: it, nt  !$omp parallel private(it)">
+<meta name="twitter:description" content="OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项，">
 
 
 
@@ -406,7 +406,9 @@
       
 
       
-        <p>OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项，<br>gfortran选项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-fopenmp</div></pre></td></tr></table></figure></p>
+        <p>OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项，</p>
+<a id="more"></a>
+<p>gfortran选项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-fopenmp</div></pre></td></tr></table></figure></p>
 <p>ifort 选项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-openmp</div></pre></td></tr></table></figure></p>
 <h1 id="lean-omp"><a href="#lean-omp" class="headerlink" title="lean_omp"></a>lean_omp</h1><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> learn_omp</div><div class="line">  <span class="keyword">use</span> omp_lib</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line">  <span class="keyword">integer</span> :: it, nt</div><div class="line"></div><div class="line">  <span class="comment">!$omp parallel private(it)</span></div><div class="line">  it = omp_get_thread_num()</div><div class="line">  <span class="keyword">if</span>(it==<span class="number">0</span>) <span class="keyword">then</span></div><div class="line">    nt = omp_get_num_threads()</div><div class="line">  <span class="keyword">endif</span></div><div class="line">  <span class="built_in">print</span><span class="string">'(a,i0,a,i0)'</span>, <span class="string">'hello openmp from thread '</span>,it, <span class="string">' with total threads '</span>,nt</div><div class="line"></div><div class="line">  <span class="comment">!$omp end parallel</span></div><div class="line"></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> learn_omp</div></pre></td></tr></table></figure>
 <h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">hello openmp from thread 6 with total threads 8</div><div class="line">hello openmp from thread 7 with total threads 8</div><div class="line">hello openmp from thread 5 with total threads 8</div><div class="line">hello openmp from thread 4 with total threads 8</div><div class="line">hello openmp from thread 3 with total threads 8</div><div class="line">hello openmp from thread 0 with total threads 8</div><div class="line">hello openmp from thread 1 with total threads 8</div><div class="line">hello openmp from thread 2 with total threads 8</div></pre></td></tr></table></figure>

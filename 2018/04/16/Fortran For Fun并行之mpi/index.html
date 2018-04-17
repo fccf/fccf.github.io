@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。 learn_mpi123456789101112131415161718192021222324252627program learn_mpi  use mpi  implicit none  integer :: ip, np, ctx, info  real :: wtime  call mpi_init(in">
+<meta name="description" content="MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。">
 <meta name="keywords" content="fortran">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fortran For Fun 并行之mpi">
 <meta property="og:url" content="http://superfun.xyz/2018/04/16/Fortran For Fun并行之mpi/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。 learn_mpi123456789101112131415161718192021222324252627program learn_mpi  use mpi  implicit none  integer :: ip, np, ctx, info  real :: wtime  call mpi_init(in">
+<meta property="og:description" content="MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-09T08:25:25.398Z">
+<meta property="og:updated_time" content="2018-04-17T08:12:29.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fortran For Fun 并行之mpi">
-<meta name="twitter:description" content="MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。 learn_mpi123456789101112131415161718192021222324252627program learn_mpi  use mpi  implicit none  integer :: ip, np, ctx, info  real :: wtime  call mpi_init(in">
+<meta name="twitter:description" content="MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。">
 
 
 
@@ -407,6 +407,7 @@
 
       
         <p>MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。</p>
+<a id="more"></a>
 <h1 id="learn-mpi"><a href="#learn-mpi" class="headerlink" title="learn_mpi"></a>learn_mpi</h1><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> learn_mpi</div><div class="line">  <span class="keyword">use</span> mpi</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line"></div><div class="line">  <span class="keyword">integer</span> :: ip, np, ctx, info</div><div class="line">  <span class="keyword">real</span> :: wtime</div><div class="line"></div><div class="line">  <span class="keyword">call</span> mpi_init(info)</div><div class="line">  <span class="keyword">call</span> mpi_comm_size(MPI_COMM_WORLD, np, info)</div><div class="line">  <span class="keyword">call</span> mpi_comm_rank(MPI_COMM_WORLD, ip, info)</div><div class="line"></div><div class="line">  <span class="keyword">if</span>(ip == <span class="number">0</span>) <span class="keyword">then</span></div><div class="line">    <span class="built_in">print</span>*, <span class="string">'number of process = '</span>,np</div><div class="line">    wtime = mpi_wtime()</div><div class="line">  <span class="keyword">endif</span></div><div class="line"></div><div class="line">  <span class="built_in">print</span>*, <span class="string">'hello mpi from process '</span>,ip</div><div class="line"></div><div class="line">  <span class="keyword">if</span>(ip==<span class="number">0</span>) <span class="keyword">then</span></div><div class="line">    wtime = mpi_wtime() - wtime</div><div class="line">    <span class="built_in">print</span>*, <span class="string">'Time elapsed = '</span>,wtime,<span class="string">' seconds.'</span></div><div class="line">  <span class="keyword">endif</span></div><div class="line"></div><div class="line">  <span class="keyword">call</span> mpi_finalize(info)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> learn_mpi</div></pre></td></tr></table></figure>
 <h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>执行mpirun -n 4 learn_mpi得到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">number of process =            4</div><div class="line">hello mpi from process            0</div><div class="line">hello mpi from process            1</div><div class="line">hello mpi from process            2</div><div class="line">hello mpi from process            3</div><div class="line">Time elapsed =    4.0020095184445381E-006  seconds.</div></pre></td></tr></table></figure></p>
 <p><a href="https://github.com/open-mpi/ompi" target="_blank" rel="external">open-mpi</a></p>

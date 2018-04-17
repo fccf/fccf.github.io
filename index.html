@@ -409,14 +409,14 @@
 
       
         
-          
-            <p>OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项，<br>gfortran选项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-fopenmp</div></pre></td></tr></table></figure></p>
-<p>ifort 选项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-openmp</div></pre></td></tr></table></figure></p>
-<h1 id="lean-omp"><a href="#lean-omp" class="headerlink" title="lean_omp"></a>lean_omp</h1><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> learn_omp</div><div class="line">  <span class="keyword">use</span> omp_lib</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line">  <span class="keyword">integer</span> :: it, nt</div><div class="line"></div><div class="line">  <span class="comment">!$omp parallel private(it)</span></div><div class="line">  it = omp_get_thread_num()</div><div class="line">  <span class="keyword">if</span>(it==<span class="number">0</span>) <span class="keyword">then</span></div><div class="line">    nt = omp_get_num_threads()</div><div class="line">  <span class="keyword">endif</span></div><div class="line">  <span class="built_in">print</span><span class="string">'(a,i0,a,i0)'</span>, <span class="string">'hello openmp from thread '</span>,it, <span class="string">' with total threads '</span>,nt</div><div class="line"></div><div class="line">  <span class="comment">!$omp end parallel</span></div><div class="line"></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> learn_omp</div></pre></td></tr></table></figure>
-<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">hello openmp from thread 6 with total threads 8</div><div class="line">hello openmp from thread 7 with total threads 8</div><div class="line">hello openmp from thread 5 with total threads 8</div><div class="line">hello openmp from thread 4 with total threads 8</div><div class="line">hello openmp from thread 3 with total threads 8</div><div class="line">hello openmp from thread 0 with total threads 8</div><div class="line">hello openmp from thread 1 with total threads 8</div><div class="line">hello openmp from thread 2 with total threads 8</div></pre></td></tr></table></figure>
-<p><a href="http://www.openmp.org/" target="_blank" rel="external">openmp</a></p>
-
-          
+          <p>OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项，</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/17/Fortran For Fun并行之openmp/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -701,13 +701,14 @@
 
       
         
-          
-            <p>MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。</p>
-<h1 id="learn-mpi"><a href="#learn-mpi" class="headerlink" title="learn_mpi"></a>learn_mpi</h1><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> learn_mpi</div><div class="line">  <span class="keyword">use</span> mpi</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line"></div><div class="line">  <span class="keyword">integer</span> :: ip, np, ctx, info</div><div class="line">  <span class="keyword">real</span> :: wtime</div><div class="line"></div><div class="line">  <span class="keyword">call</span> mpi_init(info)</div><div class="line">  <span class="keyword">call</span> mpi_comm_size(MPI_COMM_WORLD, np, info)</div><div class="line">  <span class="keyword">call</span> mpi_comm_rank(MPI_COMM_WORLD, ip, info)</div><div class="line"></div><div class="line">  <span class="keyword">if</span>(ip == <span class="number">0</span>) <span class="keyword">then</span></div><div class="line">    <span class="built_in">print</span>*, <span class="string">'number of process = '</span>,np</div><div class="line">    wtime = mpi_wtime()</div><div class="line">  <span class="keyword">endif</span></div><div class="line"></div><div class="line">  <span class="built_in">print</span>*, <span class="string">'hello mpi from process '</span>,ip</div><div class="line"></div><div class="line">  <span class="keyword">if</span>(ip==<span class="number">0</span>) <span class="keyword">then</span></div><div class="line">    wtime = mpi_wtime() - wtime</div><div class="line">    <span class="built_in">print</span>*, <span class="string">'Time elapsed = '</span>,wtime,<span class="string">' seconds.'</span></div><div class="line">  <span class="keyword">endif</span></div><div class="line"></div><div class="line">  <span class="keyword">call</span> mpi_finalize(info)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> learn_mpi</div></pre></td></tr></table></figure>
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>执行mpirun -n 4 learn_mpi得到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">number of process =            4</div><div class="line">hello mpi from process            0</div><div class="line">hello mpi from process            1</div><div class="line">hello mpi from process            2</div><div class="line">hello mpi from process            3</div><div class="line">Time elapsed =    4.0020095184445381E-006  seconds.</div></pre></td></tr></table></figure></p>
-<p><a href="https://github.com/open-mpi/ompi" target="_blank" rel="external">open-mpi</a></p>
-
-          
+          <p>MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/16/Fortran For Fun并行之mpi/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
