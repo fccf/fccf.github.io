@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Fortran For Fun 并行之openmp]]></title>
-    <url>%2F2018%2F04%2F17%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bopenmp%2F</url>
-    <content type="text"><![CDATA[OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项， gfortran选项1-fopenmp ifort 选项1-openmp lean_omp123456789101112131415program learn_omp use omp_lib implicit none integer :: it, nt !$omp parallel private(it) it = omp_get_thread_num() if(it==0) then nt = omp_get_num_threads() endif print'(a,i0,a,i0)', 'hello openmp from thread ',it, ' with total threads ',nt !$omp end parallelend program learn_omp 结果12345678hello openmp from thread 6 with total threads 8hello openmp from thread 7 with total threads 8hello openmp from thread 5 with total threads 8hello openmp from thread 4 with total threads 8hello openmp from thread 3 with total threads 8hello openmp from thread 0 with total threads 8hello openmp from thread 1 with total threads 8hello openmp from thread 2 with total threads 8 openmp]]></content>
-      <categories>
-        <category>fortran</category>
-      </categories>
-      <tags>
-        <tag>fortran</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[有限元单元变换]]></title>
     <url>%2F2018%2F04%2F17%2F%E6%9C%89%E9%99%90%E5%85%83%E5%8D%95%E5%85%83%E5%8F%98%E6%8D%A2%2F</url>
     <content type="text"><![CDATA[单元变换有限元方法求解单元上的积分，是通过坐标变换将所有单元变换为一个标准单元，然后在标准单元上进行数值积分。 单元节点坐标单元上节点的实际坐标定义为 $\mathbf{C}$$$\mathbf{C} =\begin{bmatrix} x_1 &amp; y_1 &amp; z_1\\ x_2 &amp; y_2 &amp; z_2\\ x_3 &amp; y_3 &amp; z_3\\ \vdots &amp; \vdots &amp; \vdots \\ x_n &amp; y_n &amp; z_n \end{bmatrix}$$ 单元形状函数单元形状函数定义为 $\vec{N}$$$\vec{N} =\begin{bmatrix}N_1\\N_2\\N_3 \\\vdots \\N_n\end{bmatrix}$$ 全局坐标单元中任意一点的全局坐标定义为 $\vec{X}$$$\vec{X} =\begin{bmatrix}x\\y\\z\\\end{bmatrix}$$ 全局坐标与节点坐标以及形状函数存在以下关系$$\vec{X}^T = \vec{N}^{T}\mathbf{C}$$ Jacobian 矩阵$$\mathbf{J} = \frac{\partial \vec{X}^{T}}{\partial \vec{λ}} = \frac{\partial \vec{N}^{T}}{\partial \vec{λ}}\mathbf{C}$$其中$\vec{λ}$是坐标变换之后的局部坐标。 形状函数对局部坐标的导数$$\frac{\partial}{\partial \vec{λ}} = \frac{\partial \vec{X}^{T}}{\partial \vec{λ}} \frac{\partial}{\partial \vec{X}} = \mathbf{J} \frac{\partial}{\partial \vec{X}} $$ 形状函数对实际坐标的导数$$ \frac{\partial}{\partial \vec{X}} = \mathbf{J}^{-1}\frac{\partial}{\partial \vec{λ}}$$ 积分变换$$\int\int \int dx dy dz = \int\int \int det|\mathbf{J}|dλ_1dλ_2 dλ_3$$ 数值积分$$\int\int \int f(λ_1,λ_2,λ_3)dλ_1dλ_2dλ_3 = \sum_{i=1}^{nq} w_i f(λ_1,λ_2,λ_3)_i $$]]></content>
@@ -23,8 +12,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Fortran For Fun 并行之Co-Array Fortran (CAF)]]></title>
+    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8BCo-Array%20Fortran(CAF)%2F</url>
+    <content type="text"><![CDATA[Fortran2008及之后版本的主要提升在于混合编程和并行编程，并行编程通过coarray实现，想将Fortran的并行操作变成与数组操作一样简单，将Fortran变为一个天然的并行编程语言。 目前的fortran编译器基本上都内在的支持coarray，只需要在编译选项中添加一些选项就可以编译coarray程序。对gfortran, 添加选项1-fcoarray=lib -lcaf_mpi 对intel fortran添加选项1-coarray hello_coarray12345678program hello_coarray implicit none if(this_image() == 1) write(*,'(a,i0)') 'total images ',num_images() write(*,'(a,i0,a)') 'image ',this_image(), ' say hello coarray 'end program hello_coarray 结果执行 cafrun -n 4 hello_coarray 或 mpirun -n 4 hello_coarray ,得到12345total images 4image 1 say hello coarrayimage 2 say hello coarrayimage 3 say hello coarrayimage 4 say hello coarray coarray12345678910111213program coarray implicit none integer, allocatable :: iv(:)[:] !&lt; a vector coarray integer :: i,j allocate(iv(4)[*]) do i = 1,num_images() iv(:)[i] = [(j+i-1,j=1,4)] if(this_image()==i) print'(a,i0,a,*(i0,3x))', 'iamges-', i,':',iv enddoend program coarray 程序中iv就是一个coarray，可以在每一个镜像中对coarray赋值。 结果执行 cafrun -n 4 hello_coarray 或 mpirun -n 4 hello_coarray ,得到1234iamges-1:1 2 3 4iamges-2:2 3 4 5iamges-3:3 4 5 6iamges-4:4 5 6 7 openCoarrays]]></content>
+      <categories>
+        <category>fortran</category>
+      </categories>
+      <tags>
+        <tag>fortran</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Fortran For Fun 并行之mpi]]></title>
-    <url>%2F2018%2F04%2F16%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bmpi%2F</url>
+    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bmpi%2F</url>
     <content type="text"><![CDATA[MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。 learn_mpi123456789101112131415161718192021222324252627program learn_mpi use mpi implicit none integer :: ip, np, ctx, info real :: wtime call mpi_init(info) call mpi_comm_size(MPI_COMM_WORLD, np, info) call mpi_comm_rank(MPI_COMM_WORLD, ip, info) if(ip == 0) then print*, 'number of process = ',np wtime = mpi_wtime() endif print*, 'hello mpi from process ',ip if(ip==0) then wtime = mpi_wtime() - wtime print*, 'Time elapsed = ',wtime,' seconds.' endif call mpi_finalize(info)end program learn_mpi 结果执行mpirun -n 4 learn_mpi得到123456number of process = 4hello mpi from process 0hello mpi from process 1hello mpi from process 2hello mpi from process 3Time elapsed = 4.0020095184445381E-006 seconds. open-mpi]]></content>
       <categories>
         <category>fortran</category>
@@ -34,9 +34,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Fortran For Fun 并行之Co-Array Fortran (CAF)]]></title>
-    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8BCo-Array%20Fortran(CAF)%2F</url>
-    <content type="text"><![CDATA[Fortran2008及之后版本的主要提升在于混合编程和并行编程，并行编程通过coarray实现，想将Fortran的并行操作变成与数组操作一样简单，将Fortran变为一个天然的并行编程语言。 目前的fortran编译器基本上都内在的支持coarray，只需要在编译选项中添加一些选项就可以编译coarray程序。对gfortran, 添加选项1-fcoarray=lib -lcaf_mpi 对intel fortran添加选项1-coarray hello_coarray12345678program hello_coarray implicit none if(this_image() == 1) write(*,'(a,i0)') 'total images ',num_images() write(*,'(a,i0,a)') 'image ',this_image(), ' say hello coarray 'end program hello_coarray 结果执行 cafrun -n 4 hello_coarray 或 mpirun -n 4 hello_coarray ,得到12345total images 4image 1 say hello coarrayimage 2 say hello coarrayimage 3 say hello coarrayimage 4 say hello coarray coarray12345678910111213program coarray implicit none integer, allocatable :: iv(:)[:] !&lt; a vector coarray integer :: i,j allocate(iv(4)[*]) do i = 1,num_images() iv(:)[i] = [(j+i-1,j=1,4)] if(this_image()==i) print'(a,i0,a,*(i0,3x))', 'iamges-', i,':',iv enddoend program coarray 程序中iv就是一个coarray，可以在每一个镜像中对coarray赋值。 结果执行 cafrun -n 4 hello_coarray 或 mpirun -n 4 hello_coarray ,得到1234iamges-1:1 2 3 4iamges-2:2 3 4 5iamges-3:3 4 5 6iamges-4:4 5 6 7 openCoarrays]]></content>
+    <title><![CDATA[Fortran For Fun 并行之openmp]]></title>
+    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bopenmp%2F</url>
+    <content type="text"><![CDATA[OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项， gfortran选项1-fopenmp ifort 选项1-openmp lean_omp123456789101112131415program learn_omp use omp_lib implicit none integer :: it, nt !$omp parallel private(it) it = omp_get_thread_num() if(it==0) then nt = omp_get_num_threads() endif print'(a,i0,a,i0)', 'hello openmp from thread ',it, ' with total threads ',nt !$omp end parallelend program learn_omp 结果12345678hello openmp from thread 6 with total threads 8hello openmp from thread 7 with total threads 8hello openmp from thread 5 with total threads 8hello openmp from thread 4 with total threads 8hello openmp from thread 3 with total threads 8hello openmp from thread 0 with total threads 8hello openmp from thread 1 with total threads 8hello openmp from thread 2 with total threads 8 openmp]]></content>
       <categories>
         <category>fortran</category>
       </categories>
