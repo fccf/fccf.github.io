@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Fortran For Fun 函数库之HDF5]]></title>
+    <url>%2F2018%2F04%2F19%2FFortran%20For%20Fun%E5%87%BD%E6%95%B0%E5%BA%93%E4%B9%8BHDF5%2F</url>
+    <content type="text"><![CDATA[HDF5(Hierarchica Data Format 5)是一种二进制数据存储文件格式，可以很方便的向文件中添加以及获取数据。HDF5程序库有C语言开发，提供C,C++,python,java,Fortran等语言的API，但提供的Fortran接口不是很好用，所以我在github上与另一人合作开发了一个更高级的API.oo_hdf5_fortran，使用非常简单，方便，功能基本满足要求。 该接口API可以像操作文件一样在程序中操作各种数据，可以很简单的添加group, dataset[0-6d], attribute 等数据，通过以下程序说明。 learn_hdf51234567891011121314151617181920212223242526272829303132333435program leran_hdf5 use hdf5_interface implicit none type(hdf5_file) :: h5f integer, parameter :: is = 1, &amp; iv(*) = [1,2,3,4], &amp; im(*,*) = reshape([1,2,3,4],[2,2]) real, parameter :: rs = 1.0, &amp; rv(*) = [1.,2.,3.,4.], &amp; rm(*,*) = reshape([1.,2.,3.,4.],[2,2]) character(*), parameter :: case = 'test' !&gt; create new hdf5 call h5f%initialize('test.h5',status='new',action='w') !&gt; add string call h5f%add('/case',case) !&gt; add scalar data call h5f%add('/scalar/integer',is) call h5f%add('/scalar/real',rs) !&gt; add vector data call h5f%add('/vector/integer',iv) call h5f%add('/vector/real',rv) !&gt; add matrix group call h5f%add('/matrix/') call h5f%open('/matrix/') !&gt; add data in group '/matrix/' call h5f%add('integer',im) call h5f%add('real',rm) call h5f%close() !&gt; add attribute call h5f%writeattr('/case/','note','this is test file for hdf5 interface') !&gt; call h5f%finalize()end program leran_hdf5 结果输出的数据文件可以通过hdfview进行查看，可以非常方便的查看各个数据的值，就像在matlab中查看数据值一样方便，实际上matlab的数据存储格式就是hdf5格式。]]></content>
+      <categories>
+        <category>fortran</category>
+      </categories>
+      <tags>
+        <tag>fortran</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[有限元单元变换]]></title>
     <url>%2F2018%2F04%2F17%2F%E6%9C%89%E9%99%90%E5%85%83%E5%8D%95%E5%85%83%E5%8F%98%E6%8D%A2%2F</url>
     <content type="text"><![CDATA[单元变换有限元方法求解单元上的积分，是通过坐标变换将所有单元变换为一个标准单元，然后在标准单元上进行数值积分。 单元节点坐标单元上节点的实际坐标定义为 $\mathbf{C}$$$\mathbf{C} =\begin{bmatrix} x_1 &amp; y_1 &amp; z_1\\ x_2 &amp; y_2 &amp; z_2\\ x_3 &amp; y_3 &amp; z_3\\ \vdots &amp; \vdots &amp; \vdots \\ x_n &amp; y_n &amp; z_n \end{bmatrix}$$ 单元形状函数单元形状函数定义为 $\vec{N}$$$\vec{N} =\begin{bmatrix}N_1\\N_2\\N_3 \\\vdots \\N_n\end{bmatrix}$$ 全局坐标单元中任意一点的全局坐标定义为 $\vec{X}$$$\vec{X} =\begin{bmatrix}x\\y\\z\\\end{bmatrix}$$ 全局坐标与节点坐标以及形状函数存在以下关系$$\vec{X}^T = \vec{N}^{T}\mathbf{C}$$ Jacobian 矩阵$$\mathbf{J} = \frac{\partial \vec{X}^{T}}{\partial \vec{λ}} = \frac{\partial \vec{N}^{T}}{\partial \vec{λ}}\mathbf{C}$$其中$\vec{λ}$是坐标变换之后的局部坐标。 形状函数对局部坐标的导数$$\frac{\partial}{\partial \vec{λ}} = \frac{\partial \vec{X}^{T}}{\partial \vec{λ}} \frac{\partial}{\partial \vec{X}} = \mathbf{J} \frac{\partial}{\partial \vec{X}} $$ 形状函数对实际坐标的导数$$ \frac{\partial}{\partial \vec{X}} = \mathbf{J}^{-1}\frac{\partial}{\partial \vec{λ}}$$ 积分变换$$\int\int \int dx dy dz = \int\int \int det|\mathbf{J}|dλ_1dλ_2 dλ_3$$ 数值积分$$\int\int \int f(λ_1,λ_2,λ_3)dλ_1dλ_2dλ_3 = \sum_{i=1}^{nq} w_i f(λ_1,λ_2,λ_3)_i $$]]></content>
@@ -23,9 +34,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Fortran For Fun 并行之mpi]]></title>
-    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bmpi%2F</url>
-    <content type="text"><![CDATA[MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。 learn_mpi123456789101112131415161718192021222324252627program learn_mpi use mpi implicit none integer :: ip, np, ctx, info real :: wtime call mpi_init(info) call mpi_comm_size(MPI_COMM_WORLD, np, info) call mpi_comm_rank(MPI_COMM_WORLD, ip, info) if(ip == 0) then print*, 'number of process = ',np wtime = mpi_wtime() endif print*, 'hello mpi from process ',ip if(ip==0) then wtime = mpi_wtime() - wtime print*, 'Time elapsed = ',wtime,' seconds.' endif call mpi_finalize(info)end program learn_mpi 结果执行mpirun -n 4 learn_mpi得到123456number of process = 4hello mpi from process 0hello mpi from process 1hello mpi from process 2hello mpi from process 3Time elapsed = 4.0020095184445381E-006 seconds. open-mpi]]></content>
+    <title><![CDATA[Fortran For Fun 并行之openmp]]></title>
+    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bopenmp%2F</url>
+    <content type="text"><![CDATA[OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项， gfortran选项1-fopenmp ifort 选项1-openmp lean_omp123456789101112131415program learn_omp use omp_lib implicit none integer :: it, nt !$omp parallel private(it) it = omp_get_thread_num() if(it==0) then nt = omp_get_num_threads() endif print'(a,i0,a,i0)', 'hello openmp from thread ',it, ' with total threads ',nt !$omp end parallelend program learn_omp 结果12345678hello openmp from thread 6 with total threads 8hello openmp from thread 7 with total threads 8hello openmp from thread 5 with total threads 8hello openmp from thread 4 with total threads 8hello openmp from thread 3 with total threads 8hello openmp from thread 0 with total threads 8hello openmp from thread 1 with total threads 8hello openmp from thread 2 with total threads 8 openmp]]></content>
       <categories>
         <category>fortran</category>
       </categories>
@@ -34,9 +45,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Fortran For Fun 并行之openmp]]></title>
-    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bopenmp%2F</url>
-    <content type="text"><![CDATA[OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项， gfortran选项1-fopenmp ifort 选项1-openmp lean_omp123456789101112131415program learn_omp use omp_lib implicit none integer :: it, nt !$omp parallel private(it) it = omp_get_thread_num() if(it==0) then nt = omp_get_num_threads() endif print'(a,i0,a,i0)', 'hello openmp from thread ',it, ' with total threads ',nt !$omp end parallelend program learn_omp 结果12345678hello openmp from thread 6 with total threads 8hello openmp from thread 7 with total threads 8hello openmp from thread 5 with total threads 8hello openmp from thread 4 with total threads 8hello openmp from thread 3 with total threads 8hello openmp from thread 0 with total threads 8hello openmp from thread 1 with total threads 8hello openmp from thread 2 with total threads 8 openmp]]></content>
+    <title><![CDATA[Fortran For Fun 并行之mpi]]></title>
+    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bmpi%2F</url>
+    <content type="text"><![CDATA[MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。 learn_mpi123456789101112131415161718192021222324252627program learn_mpi use mpi implicit none integer :: ip, np, ctx, info real :: wtime call mpi_init(info) call mpi_comm_size(MPI_COMM_WORLD, np, info) call mpi_comm_rank(MPI_COMM_WORLD, ip, info) if(ip == 0) then print*, 'number of process = ',np wtime = mpi_wtime() endif print*, 'hello mpi from process ',ip if(ip==0) then wtime = mpi_wtime() - wtime print*, 'Time elapsed = ',wtime,' seconds.' endif call mpi_finalize(info)end program learn_mpi 结果执行mpirun -n 4 learn_mpi得到123456number of process = 4hello mpi from process 0hello mpi from process 1hello mpi from process 2hello mpi from process 3Time elapsed = 4.0020095184445381E-006 seconds. open-mpi]]></content>
       <categories>
         <category>fortran</category>
       </categories>

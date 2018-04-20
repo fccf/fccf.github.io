@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="superfun" />
+  <meta name="keywords" content="fortran," />
 
 
 
@@ -94,16 +94,20 @@
 
 
 
-<meta name="description" content="道，行之而成">
-<meta property="og:type" content="website">
-<meta property="og:title" content="superfun">
-<meta property="og:url" content="http://superfun.xyz/categories/输运计算软件/index.html">
+<meta name="description" content="HDF5(Hierarchica Data Format 5)是一种二进制数据存储文件格式，可以很方便的向文件中添加以及获取数据。HDF5程序库有C语言开发，提供C,C++,python,java,Fortran等语言的API，但提供的Fortran接口不是很好用，所以我在github上与另一人合作开发了一个更高级的API.oo_hdf5_fortran，使用非常简单，方便，功能基本满足要求。">
+<meta name="keywords" content="fortran">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fortran For Fun 函数库之HDF5">
+<meta property="og:url" content="http://superfun.xyz/2018/04/19/Fortran For Fun函数库之HDF5/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="道，行之而成">
+<meta property="og:description" content="HDF5(Hierarchica Data Format 5)是一种二进制数据存储文件格式，可以很方便的向文件中添加以及获取数据。HDF5程序库有C语言开发，提供C,C++,python,java,Fortran等语言的API，但提供的Fortran接口不是很好用，所以我在github上与另一人合作开发了一个更高级的API.oo_hdf5_fortran，使用非常简单，方便，功能基本满足要求。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/hdf5_view.png">
+<meta property="og:updated_time" content="2018-04-20T03:16:07.029Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="superfun">
-<meta name="twitter:description" content="道，行之而成">
+<meta name="twitter:title" content="Fortran For Fun 函数库之HDF5">
+<meta name="twitter:description" content="HDF5(Hierarchica Data Format 5)是一种二进制数据存储文件格式，可以很方便的向文件中添加以及获取数据。HDF5程序库有C语言开发，提供C,C++,python,java,Fortran等语言的API，但提供的Fortran接口不是很好用，所以我在github上与另一人合作开发了一个更高级的API.oo_hdf5_fortran，使用非常简单，方便，功能基本满足要求。">
+<meta name="twitter:image" content="http://on08uqozg.bkt.clouddn.com/hdf5_view.png">
 
 
 
@@ -132,7 +136,7 @@
 
 
 
-  <link rel="canonical" href="http://superfun.xyz/categories/输运计算软件/"/>
+  <link rel="canonical" href="http://superfun.xyz/2018/04/19/Fortran For Fun函数库之HDF5/"/>
 
 
 
@@ -148,7 +152,7 @@
 </script>
 
 
-  <title>分类: 输运计算软件 | superfun</title>
+  <title>Fortran For Fun 函数库之HDF5 | superfun</title>
   
 
 
@@ -173,7 +177,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -301,167 +305,195 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>输运计算软件<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://superfun.xyz/2018/04/19/Fortran For Fun函数库之HDF5/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="c.fang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bio.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="superfun">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/03/30/transx学习/" itemprop="url">
-              
-                <span itemprop="name">learn-transx</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Fortran For Fun 函数库之HDF5</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-30T14:41:26+08:00"
-              content="2018-03-30" >
-          03-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-19T22:40:59+08:00">
+                2018-04-19
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/fortran/" itemprop="url" rel="index">
+                    <span itemprop="name">fortran</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/11/中子输运方程有限元求解软件/" itemprop="url">
-              
-                <span itemprop="name">中子输运方程有限元求解软件</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-11T22:06:58+08:00"
-              content="2017-12-11" >
-          12-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/11/awsome-NTE-solver/" itemprop="url">
-              
-                <span itemprop="name">awsome-NTE-solver</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-11T14:41:26+08:00"
-              content="2017-12-11" >
-          12-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/09/输运计算程序总结/" itemprop="url">
-              
-                <span itemprop="name">输运计算程序总结</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-09T22:17:36+08:00"
-              content="2017-12-09" >
-          12-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/06/输运计算软件Attila介绍/" itemprop="url">
-              
-                <span itemprop="name">输运计算软件Attila介绍</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-06T20:56:03+08:00"
-              content="2017-12-06" >
-          12-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>HDF5(Hierarchica Data Format 5)是一种二进制数据存储文件格式，可以很方便的向文件中添加以及获取数据。HDF5程序库有C语言开发，提供C,C++,python,java,Fortran等语言的API，但提供的Fortran接口不是很好用，所以我在github上与另一人合作开发了一个更高级的API.<a href="https://github.com/fccf/oo_hdf5_fortran" target="_blank" rel="external">oo_hdf5_fortran</a>，使用非常简单，方便，功能基本满足要求。<br><a id="more"></a></p>
+<p>该接口API可以像操作文件一样在程序中操作各种数据，可以很简单的添加group,　dataset[0-6d],　attribute　等数据，通过以下程序说明。</p>
+<h1 id="learn-hdf5"><a href="#learn-hdf5" class="headerlink" title="learn_hdf5"></a>learn_hdf5</h1><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> leran_hdf5</div><div class="line">  <span class="keyword">use</span> hdf5_interface</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line">  <span class="keyword">type</span>(hdf5_file)    :: h5f</div><div class="line">  <span class="keyword">integer</span>, <span class="keyword">parameter</span> :: is = <span class="number">1</span>, &amp;</div><div class="line">                        iv(*) = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>], &amp;</div><div class="line">                        im(*,*) = <span class="built_in">reshape</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],[<span class="number">2</span>,<span class="number">2</span>])</div><div class="line"></div><div class="line">  <span class="keyword">real</span>,    <span class="keyword">parameter</span> :: rs = <span class="number">1.0</span>, &amp;</div><div class="line">                        rv(*) = [<span class="number">1.</span>,<span class="number">2.</span>,<span class="number">3.</span>,<span class="number">4.</span>], &amp;</div><div class="line">                        rm(*,*) = <span class="built_in">reshape</span>([<span class="number">1.</span>,<span class="number">2.</span>,<span class="number">3.</span>,<span class="number">4.</span>],[<span class="number">2</span>,<span class="number">2</span>])</div><div class="line"></div><div class="line">  <span class="keyword">character</span>(*), <span class="keyword">parameter</span> :: <span class="keyword">case</span> = <span class="string">'test'</span></div><div class="line">  <span class="comment">!&gt; create new hdf5</span></div><div class="line">  <span class="keyword">call</span> h5f%initialize(<span class="string">'test.h5'</span>,<span class="keyword">status</span>=<span class="string">'new'</span>,<span class="keyword">action</span>=<span class="string">'w'</span>)</div><div class="line">  <span class="comment">!&gt; add string</span></div><div class="line">  <span class="keyword">call</span> h5f%add(<span class="string">'/case'</span>,<span class="keyword">case</span>)</div><div class="line">  <span class="comment">!&gt; add scalar data</span></div><div class="line">  <span class="keyword">call</span> h5f%add(<span class="string">'/scalar/integer'</span>,is)</div><div class="line">  <span class="keyword">call</span> h5f%add(<span class="string">'/scalar/real'</span>,rs)</div><div class="line">  <span class="comment">!&gt; add vector data</span></div><div class="line">  <span class="keyword">call</span> h5f%add(<span class="string">'/vector/integer'</span>,iv)</div><div class="line">  <span class="keyword">call</span> h5f%add(<span class="string">'/vector/real'</span>,rv)</div><div class="line">  <span class="comment">!&gt; add matrix group</span></div><div class="line">  <span class="keyword">call</span> h5f%add(<span class="string">'/matrix/'</span>)</div><div class="line">  <span class="keyword">call</span> h5f%open(<span class="string">'/matrix/'</span>)</div><div class="line">  <span class="comment">!&gt; add data in group '/matrix/'</span></div><div class="line">  <span class="keyword">call</span> h5f%add(<span class="string">'integer'</span>,im)</div><div class="line">  <span class="keyword">call</span> h5f%add(<span class="string">'real'</span>,rm)</div><div class="line">  <span class="keyword">call</span> h5f%close()</div><div class="line">  <span class="comment">!&gt; add attribute</span></div><div class="line">  <span class="keyword">call</span> h5f%writeattr(<span class="string">'/case/'</span>,<span class="string">'note'</span>,<span class="string">'this is test file for hdf5 interface'</span>)</div><div class="line">  <span class="comment">!&gt;</span></div><div class="line">  <span class="keyword">call</span> h5f%finalize()</div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> leran_hdf5</div></pre></td></tr></table></figure>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p>输出的数据文件可以通过hdfview进行查看，可以非常方便的查看各个数据的值，就像在matlab中查看数据值一样方便，实际上matlab的数据存储格式就是hdf5格式。<br><img src="http://on08uqozg.bkt.clouddn.com/hdf5_view.png" alt="hdf5_view"></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/fortran/" rel="tag"># fortran</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/17/有限元单元变换/" rel="next" title="有限元单元变换">
+                <i class="fa fa-chevron-left"></i> 有限元单元变换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -469,6 +501,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
 
         </div>
         
@@ -489,8 +527,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/bio.png"
@@ -579,6 +626,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#learn-hdf5"><span class="nav-number">1.</span> <span class="nav-text">learn_hdf5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结果"><span class="nav-number">2.</span> <span class="nav-text">结果</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -681,10 +744,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
@@ -710,6 +773,10 @@
   
     
 
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2146790"></script>
+      <!-- UY END -->
     
   
 
