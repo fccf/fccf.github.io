@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Fortran For Fun 函数库之json-fortran]]></title>
+    <url>%2F2018%2F04%2F20%2FFortran%E3%80%80For%20Fun%E5%87%BD%E6%95%B0%E5%BA%93%E4%B9%8Bjson-fortran%2F</url>
+    <content type="text"><![CDATA[json(JaveScript Object Notation)和XML都是是一种数据交换格式，采用完全独立于编程语言的文本格式来存储和表示数据。json数据可以存储任意数据类型，结构简洁清晰，易于编写和阅读。 json_fortran是一个完全采用fortran语言编写的json API，基本上可以实现json文件的读写。 learn_json1234567891011121314151617181920212223242526272829303132333435363738394041program learn_json use json_module implicit none character(len=*),parameter :: filename = 'test.json' type(json_value),pointer :: p1,p2 type(json_core) :: json !! factory for manipulating `json_value` pointers integer :: iunit integer, parameter :: is = 1, &amp; iv(*) = [1,2,3,4] real, parameter :: rs = 1.0, &amp; rv(*) = [1.,2.,3.,4.] character(*), parameter :: case = 'test' call json%initialize() !root: call json%create_object(p1,filename) ! create the value and associate the pointer !&gt; case call json%add(p1,'case',case) !&gt; integer call json%create_object(p2,"integer") call json%add(p2,"scalar",is) call json%add(p2,"vector",iv) call json%add(p2,"descreption","integer data") call json%add(p1,p2) nullify(p2) !&gt; real call json%create_object(p2,"real") call json%add(p2,"scalar",rs) call json%add(p2,"vector",rv) call json%add(p2,"descreption","real data") call json%add(p1,p2) nullify(p2) !&gt; create file open(newunit=iunit, file=filename, status='replace') call json%print(p1,iunit) close(iunit) nullify(p1)end program learn_json 结果1234567891011121314151617181920212223&#123; "case": "test", "integer": &#123; "scalar": 1, "vector": [ 1, 2, 3, 4 ], "descreption": "integer data" &#125;, "real": &#123; "scalar": 0.1E+1, "vector": [ 0.1E+1, 0.2E+1, 0.3E+1, 0.4E+1 ], "descreption": "real data" &#125;&#125;]]></content>
+      <categories>
+        <category>fortran</category>
+      </categories>
+      <tags>
+        <tag>fortran</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Fortran For Fun 函数库之HDF5]]></title>
     <url>%2F2018%2F04%2F19%2FFortran%20For%20Fun%E5%87%BD%E6%95%B0%E5%BA%93%E4%B9%8BHDF5%2F</url>
     <content type="text"><![CDATA[HDF5(Hierarchica Data Format 5)是一种二进制数据存储文件格式，可以很方便的向文件中添加以及获取数据。HDF5程序库有C语言开发，提供C,C++,python,java,Fortran等语言的API，但提供的Fortran接口不是很好用，所以我在github上与另一人合作开发了一个更高级的API.oo_hdf5_fortran，使用非常简单，方便，功能基本满足要求。 该接口API可以像操作文件一样在程序中操作各种数据，可以很简单的添加group, dataset[0-6d], attribute 等数据，通过以下程序说明。 learn_hdf51234567891011121314151617181920212223242526272829303132333435program leran_hdf5 use hdf5_interface implicit none type(hdf5_file) :: h5f integer, parameter :: is = 1, &amp; iv(*) = [1,2,3,4], &amp; im(*,*) = reshape([1,2,3,4],[2,2]) real, parameter :: rs = 1.0, &amp; rv(*) = [1.,2.,3.,4.], &amp; rm(*,*) = reshape([1.,2.,3.,4.],[2,2]) character(*), parameter :: case = 'test' !&gt; create new hdf5 call h5f%initialize('test.h5',status='new',action='w') !&gt; add string call h5f%add('/case',case) !&gt; add scalar data call h5f%add('/scalar/integer',is) call h5f%add('/scalar/real',rs) !&gt; add vector data call h5f%add('/vector/integer',iv) call h5f%add('/vector/real',rv) !&gt; add matrix group call h5f%add('/matrix/') call h5f%open('/matrix/') !&gt; add data in group '/matrix/' call h5f%add('integer',im) call h5f%add('real',rm) call h5f%close() !&gt; add attribute call h5f%writeattr('/case/','note','this is test file for hdf5 interface') !&gt; call h5f%finalize()end program leran_hdf5 结果输出的数据文件可以通过hdfview进行查看，可以非常方便的查看各个数据的值，就像在matlab中查看数据值一样方便，实际上matlab的数据存储格式就是hdf5格式。]]></content>
@@ -23,17 +34,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Fortran For Fun 并行之Co-Array Fortran (CAF)]]></title>
-    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8BCo-Array%20Fortran(CAF)%2F</url>
-    <content type="text"><![CDATA[Fortran2008及之后版本的主要提升在于混合编程和并行编程，并行编程通过coarray实现，想将Fortran的并行操作变成与数组操作一样简单，将Fortran变为一个天然的并行编程语言。 目前的fortran编译器基本上都内在的支持coarray，只需要在编译选项中添加一些选项就可以编译coarray程序。对gfortran, 添加选项1-fcoarray=lib -lcaf_mpi 对intel fortran添加选项1-coarray hello_coarray12345678program hello_coarray implicit none if(this_image() == 1) write(*,'(a,i0)') 'total images ',num_images() write(*,'(a,i0,a)') 'image ',this_image(), ' say hello coarray 'end program hello_coarray 结果执行 cafrun -n 4 hello_coarray 或 mpirun -n 4 hello_coarray ,得到12345total images 4image 1 say hello coarrayimage 2 say hello coarrayimage 3 say hello coarrayimage 4 say hello coarray coarray12345678910111213program coarray implicit none integer, allocatable :: iv(:)[:] !&lt; a vector coarray integer :: i,j allocate(iv(4)[*]) do i = 1,num_images() iv(:)[i] = [(j+i-1,j=1,4)] if(this_image()==i) print'(a,i0,a,*(i0,3x))', 'iamges-', i,':',iv enddoend program coarray 程序中iv就是一个coarray，可以在每一个镜像中对coarray赋值。 结果执行 cafrun -n 4 hello_coarray 或 mpirun -n 4 hello_coarray ,得到1234iamges-1:1 2 3 4iamges-2:2 3 4 5iamges-3:3 4 5 6iamges-4:4 5 6 7 openCoarrays]]></content>
-      <categories>
-        <category>fortran</category>
-      </categories>
-      <tags>
-        <tag>fortran</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Fortran For Fun 并行之openmp]]></title>
     <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bopenmp%2F</url>
     <content type="text"><![CDATA[OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项， gfortran选项1-fopenmp ifort 选项1-openmp lean_omp123456789101112131415program learn_omp use omp_lib implicit none integer :: it, nt !$omp parallel private(it) it = omp_get_thread_num() if(it==0) then nt = omp_get_num_threads() endif print'(a,i0,a,i0)', 'hello openmp from thread ',it, ' with total threads ',nt !$omp end parallelend program learn_omp 结果12345678hello openmp from thread 6 with total threads 8hello openmp from thread 7 with total threads 8hello openmp from thread 5 with total threads 8hello openmp from thread 4 with total threads 8hello openmp from thread 3 with total threads 8hello openmp from thread 0 with total threads 8hello openmp from thread 1 with total threads 8hello openmp from thread 2 with total threads 8 openmp]]></content>
@@ -48,6 +48,17 @@
     <title><![CDATA[Fortran For Fun 并行之mpi]]></title>
     <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bmpi%2F</url>
     <content type="text"><![CDATA[MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。 learn_mpi123456789101112131415161718192021222324252627program learn_mpi use mpi implicit none integer :: ip, np, ctx, info real :: wtime call mpi_init(info) call mpi_comm_size(MPI_COMM_WORLD, np, info) call mpi_comm_rank(MPI_COMM_WORLD, ip, info) if(ip == 0) then print*, 'number of process = ',np wtime = mpi_wtime() endif print*, 'hello mpi from process ',ip if(ip==0) then wtime = mpi_wtime() - wtime print*, 'Time elapsed = ',wtime,' seconds.' endif call mpi_finalize(info)end program learn_mpi 结果执行mpirun -n 4 learn_mpi得到123456number of process = 4hello mpi from process 0hello mpi from process 1hello mpi from process 2hello mpi from process 3Time elapsed = 4.0020095184445381E-006 seconds. open-mpi]]></content>
+      <categories>
+        <category>fortran</category>
+      </categories>
+      <tags>
+        <tag>fortran</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Fortran For Fun 并行之Co-Array Fortran (CAF)]]></title>
+    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8BCo-Array%20Fortran(CAF)%2F</url>
+    <content type="text"><![CDATA[Fortran2008及之后版本的主要提升在于混合编程和并行编程，并行编程通过coarray实现，想将Fortran的并行操作变成与数组操作一样简单，将Fortran变为一个天然的并行编程语言。 目前的fortran编译器基本上都内在的支持coarray，只需要在编译选项中添加一些选项就可以编译coarray程序。对gfortran, 添加选项1-fcoarray=lib -lcaf_mpi 对intel fortran添加选项1-coarray hello_coarray12345678program hello_coarray implicit none if(this_image() == 1) write(*,'(a,i0)') 'total images ',num_images() write(*,'(a,i0,a)') 'image ',this_image(), ' say hello coarray 'end program hello_coarray 结果执行 cafrun -n 4 hello_coarray 或 mpirun -n 4 hello_coarray ,得到12345total images 4image 1 say hello coarrayimage 2 say hello coarrayimage 3 say hello coarrayimage 4 say hello coarray coarray12345678910111213program coarray implicit none integer, allocatable :: iv(:)[:] !&lt; a vector coarray integer :: i,j allocate(iv(4)[*]) do i = 1,num_images() iv(:)[i] = [(j+i-1,j=1,4)] if(this_image()==i) print'(a,i0,a,*(i0,3x))', 'iamges-', i,':',iv enddoend program coarray 程序中iv就是一个coarray，可以在每一个镜像中对coarray赋值。 结果执行 cafrun -n 4 hello_coarray 或 mpirun -n 4 hello_coarray ,得到1234iamges-1:1 2 3 4iamges-2:2 3 4 5iamges-3:3 4 5 6iamges-4:4 5 6 7 openCoarrays]]></content>
       <categories>
         <category>fortran</category>
       </categories>
