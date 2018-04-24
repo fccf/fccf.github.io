@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Fortran For Fun 函数库之json-fortran]]></title>
-    <url>%2F2018%2F04%2F20%2FFortran%E3%80%80For%20Fun%E5%87%BD%E6%95%B0%E5%BA%93%E4%B9%8Bjson-fortran%2F</url>
-    <content type="text"><![CDATA[json(JaveScript Object Notation)和XML都是是一种数据交换格式，采用完全独立于编程语言的文本格式来存储和表示数据。json数据可以存储任意数据类型，结构简洁清晰，易于编写和阅读。 json_fortran是一个完全采用fortran语言编写的json API，基本上可以实现json文件的读写。 learn_json1234567891011121314151617181920212223242526272829303132333435363738394041program learn_json use json_module implicit none character(len=*),parameter :: filename = 'test.json' type(json_value),pointer :: p1,p2 type(json_core) :: json !! factory for manipulating `json_value` pointers integer :: iunit integer, parameter :: is = 1, &amp; iv(*) = [1,2,3,4] real, parameter :: rs = 1.0, &amp; rv(*) = [1.,2.,3.,4.] character(*), parameter :: case = 'test' call json%initialize() !root: call json%create_object(p1,filename) ! create the value and associate the pointer !&gt; case call json%add(p1,'case',case) !&gt; integer call json%create_object(p2,"integer") call json%add(p2,"scalar",is) call json%add(p2,"vector",iv) call json%add(p2,"descreption","integer data") call json%add(p1,p2) nullify(p2) !&gt; real call json%create_object(p2,"real") call json%add(p2,"scalar",rs) call json%add(p2,"vector",rv) call json%add(p2,"descreption","real data") call json%add(p1,p2) nullify(p2) !&gt; create file open(newunit=iunit, file=filename, status='replace') call json%print(p1,iunit) close(iunit) nullify(p1)end program learn_json 结果1234567891011121314151617181920212223&#123; "case": "test", "integer": &#123; "scalar": 1, "vector": [ 1, 2, 3, 4 ], "descreption": "integer data" &#125;, "real": &#123; "scalar": 0.1E+1, "vector": [ 0.1E+1, 0.2E+1, 0.3E+1, 0.4E+1 ], "descreption": "real data" &#125;&#125;]]></content>
+    <title><![CDATA[Fortran For Fun之编辑器atom]]></title>
+    <url>%2F2018%2F04%2F24%2FFortran%20For%20Fun%E4%B9%8B%E7%BC%96%E8%BE%91%E5%99%A8atom%2F</url>
+    <content type="text"><![CDATA[欲善其事，必先利其器。使用好的文本编辑器编写程序能事半功倍。我使用过的文本编辑器有vim, emacs, sublime, atom。vim在终端直接使用得较多，sublime只是试用过一段时间，emacs用的时间很长，也挺好用的，直到遇到atom。网上有很多吐槽atom很慢，很卡，但目前我基本上没遇到过，可能由于我编辑的工程不是很大，大概就几万行代码。 我基本上所有的文本编辑工作都使用atom，包括写代码(fortran)，写blog(markdown)，论文(latex)，所有工作基本上都能很好的被满足。atom的快捷键非常方便，常用的所有操作都可以使用快捷键，而且基本上不用专门去记，比emacs的快捷键人性化很多。 以下简单介绍以下使用atom写fortran的方便之处。 主题与排版atom的内置主题比较好看，不喜欢还可以自己安装其它的。 light 主题 dark 主题 排版以前使用过visual studio自带的代码编辑器，对fortran非常不友好，连’space’和’tab’键都要注意，排版缩进等很麻烦。使用atom编辑器写代码完全不用在意排版的问题，对于排版不好的代码可以一键排版，整齐美观。 自动补全atom对于fortran语言的自动补全功能非常强大，这也是我使用atom写fortran的主要原因，能够补全的包括 关键词 模板 代码中已有的词汇 所有函数及其参数，包括fortran语言内置的以及自己写的 在线语法检测该编辑器可以直接对fortran语言的语法进行在线检测，对于编译过程中可能出现的错误和警告都会在线提示，在代码编写阶段就可以发现存在问题的地方，代码写完后，通常可以直接编译通过。 在编辑器的左下角会有当前代码中存在的错误个数和警告个数，编辑器下方会提示错误以及警告的类型以及详细信息。比如未定义，未使用等等。 git对于用git管理的代码，在编辑器中会显示git的状态，在右下方会显示当前所在分支，并且可以直接进行push,pull,fetch操作。在编辑器的左端文件树中会用不同的颜色直接显示每个文件的 git 状态，通常新添加还没add的是绿色，已添加但修改过的为黄色，正常commit过的为灰色。这样可以很清楚的知道当前对哪些文件做过修改，方便对代码进行管理。]]></content>
       <categories>
         <category>fortran</category>
       </categories>
@@ -12,9 +12,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Fortran For Fun 之GUI编程gtk-fortran]]></title>
-    <url>%2F2018%2F04%2F19%2FFortran%20For%20Fun%E4%B9%8BGUI%E7%BC%96%E7%A8%8Bgtk-fortran%2F</url>
-    <content type="text"><![CDATA[GTK+是一个功能强大，设计灵活的通用GUI编程库，可以利用这个库创建图形界面程序，使用较为简单。 gtk是使用C语言编写的，提供各种语言的API, 包括Fortran语言的API.gtk_fortran，利用该接口，可以使用Fortran语言创建图形界面程序。 learn_gtk_fortran1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253program learn_gtk_button use handlers, only:hello, quit use iso_c_binding use gtk, only: gtk_init, gtk_window_new, GTK_WINDOW_TOPLEVEL, gtk_widget_show_all, gtk_main, &amp; &amp; gtk_vbox_new, gtk_button_new_with_label, gtk_box_pack_start, g_signal_connect, FALSE, TRUE, &amp; &amp; GTK_ORIENTATION_HORIZONTAL, gtk_container_add implicit none type(c_ptr) :: window, box, button, button2 call gtk_init() !&gt; window window = gtk_window_new (GTK_WINDOW_TOPLEVEL) !&gt; box box = gtk_vbox_new (TRUE, _c_int); call gtk_container_add (window, box) !&gt; button button = gtk_button_new_with_label ("Run"//c_null_char) call gtk_box_pack_start (box, button, FALSE, FALSE, _c_int) call g_signal_connect (button, "clicked"//c_null_char, c_funloc(hello)) !&gt; button2 button2 = gtk_button_new_with_label ("Quit"//c_null_char) call gtk_box_pack_start (box, button2, FALSE, FALSE, _c_int) call g_signal_connect (button2, "clicked"//c_null_char, c_funloc(quit)) call gtk_widget_show_all (window) call gtk_main ()end program learn_gtk_buttonmodule handlers use gtk, only: gtk_main_quit, FALSE implicit nonecontains ! "clicked" is a GtkButton signal function hello (widget, gdata ) result(ret) bind(c) use iso_c_binding, only: c_ptr, c_int integer(c_int) :: ret type(c_ptr), value :: widget, gdata print *, "Hello World!" ret = FALSE end function hello ! "quit" is a GtkObject signal subroutine quit (widget, gdata) bind(c) use iso_c_binding, only: c_ptr type(c_ptr), value :: widget, gdata print *, "Exit program" call gtk_main_quit () end subroutine quitend module handlers 结果以上程序会创建一个窗口，有Run和Quit两个按钮，点击Run会输出’Hello World!’，点击Quit，直接退出程序。]]></content>
+    <title><![CDATA[Fortran For Fun 函数库之json-fortran]]></title>
+    <url>%2F2018%2F04%2F20%2FFortran%E3%80%80For%20Fun%E5%87%BD%E6%95%B0%E5%BA%93%E4%B9%8Bjson-fortran%2F</url>
+    <content type="text"><![CDATA[json(JaveScript Object Notation)和XML都是一种数据交换格式，采用完全独立于编程语言的文本格式来存储和表示数据。json数据可以存储任意数据类型，结构简洁清晰，易于编写和阅读。 json_fortran是一个完全采用fortran语言编写的json API，基本上可以实现json文件的读写。 learn_json1234567891011121314151617181920212223242526272829303132333435363738394041program learn_json use json_module implicit none character(len=*),parameter :: filename = 'test.json' type(json_value),pointer :: p1,p2 type(json_core) :: json !! factory for manipulating `json_value` pointers integer :: iunit integer, parameter :: is = 1, &amp; iv(*) = [1,2,3,4] real, parameter :: rs = 1.0, &amp; rv(*) = [1.,2.,3.,4.] character(*), parameter :: case = 'test' call json%initialize() !root: call json%create_object(p1,filename) ! create the value and associate the pointer !&gt; case call json%add(p1,'case',case) !&gt; integer call json%create_object(p2,"integer") call json%add(p2,"scalar",is) call json%add(p2,"vector",iv) call json%add(p2,"descreption","integer data") call json%add(p1,p2) nullify(p2) !&gt; real call json%create_object(p2,"real") call json%add(p2,"scalar",rs) call json%add(p2,"vector",rv) call json%add(p2,"descreption","real data") call json%add(p1,p2) nullify(p2) !&gt; create file open(newunit=iunit, file=filename, status='replace') call json%print(p1,iunit) close(iunit) nullify(p1)end program learn_json 结果1234567891011121314151617181920212223&#123; "case": "test", "integer": &#123; "scalar": 1, "vector": [ 1, 2, 3, 4 ], "descreption": "integer data" &#125;, "real": &#123; "scalar": 0.1E+1, "vector": [ 0.1E+1, 0.2E+1, 0.3E+1, 0.4E+1 ], "descreption": "real data" &#125;&#125;]]></content>
       <categories>
         <category>fortran</category>
       </categories>
@@ -34,6 +34,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Fortran For Fun 之GUI编程gtk-fortran]]></title>
+    <url>%2F2018%2F04%2F19%2FFortran%20For%20Fun%E4%B9%8BGUI%E7%BC%96%E7%A8%8Bgtk-fortran%2F</url>
+    <content type="text"><![CDATA[GTK+是一个功能强大，设计灵活的通用GUI编程库，(与其类似的库还有Qt)，可以利用这个库创建图形界面程序，使用较为简单。 gtk是使用C语言编写的，提供各种语言的API, 包括Fortran语言的API.gtk_fortran，利用该接口，可以使用Fortran语言创建图形界面程序。 learn_gtk_fortran1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253program learn_gtk_button use handlers, only:hello, quit use iso_c_binding use gtk, only: gtk_init, gtk_window_new, GTK_WINDOW_TOPLEVEL, gtk_widget_show_all, gtk_main, &amp; &amp; gtk_vbox_new, gtk_button_new_with_label, gtk_box_pack_start, g_signal_connect, FALSE, TRUE, &amp; &amp; GTK_ORIENTATION_HORIZONTAL, gtk_container_add implicit none type(c_ptr) :: window, box, button, button2 call gtk_init() !&gt; window window = gtk_window_new (GTK_WINDOW_TOPLEVEL) !&gt; box box = gtk_vbox_new (TRUE, _c_int); call gtk_container_add (window, box) !&gt; button button = gtk_button_new_with_label ("Run"//c_null_char) call gtk_box_pack_start (box, button, FALSE, FALSE, _c_int) call g_signal_connect (button, "clicked"//c_null_char, c_funloc(hello)) !&gt; button2 button2 = gtk_button_new_with_label ("Quit"//c_null_char) call gtk_box_pack_start (box, button2, FALSE, FALSE, _c_int) call g_signal_connect (button2, "clicked"//c_null_char, c_funloc(quit)) call gtk_widget_show_all (window) call gtk_main ()end program learn_gtk_buttonmodule handlers use gtk, only: gtk_main_quit, FALSE implicit nonecontains ! "clicked" is a GtkButton signal function hello (widget, gdata ) result(ret) bind(c) use iso_c_binding, only: c_ptr, c_int integer(c_int) :: ret type(c_ptr), value :: widget, gdata print *, "Hello World!" ret = FALSE end function hello ! "quit" is a GtkObject signal subroutine quit (widget, gdata) bind(c) use iso_c_binding, only: c_ptr type(c_ptr), value :: widget, gdata print *, "Exit program" call gtk_main_quit () end subroutine quitend module handlers 结果以上程序会创建一个窗口，有Run和Quit两个按钮，点击Run会输出’Hello World!’，点击Quit，直接退出程序。]]></content>
+      <categories>
+        <category>fortran</category>
+      </categories>
+      <tags>
+        <tag>fortran</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[有限元单元变换]]></title>
     <url>%2F2018%2F04%2F17%2F%E6%9C%89%E9%99%90%E5%85%83%E5%8D%95%E5%85%83%E5%8F%98%E6%8D%A2%2F</url>
     <content type="text"><![CDATA[单元变换有限元方法求解单元上的积分，是通过坐标变换将所有单元变换为一个标准单元，然后在标准单元上进行数值积分。 单元节点坐标单元上节点的实际坐标定义为 $\mathbf{C}$$$\mathbf{C} =\begin{bmatrix} x_1 &amp; y_1 &amp; z_1\\ x_2 &amp; y_2 &amp; z_2\\ x_3 &amp; y_3 &amp; z_3\\ \vdots &amp; \vdots &amp; \vdots \\ x_n &amp; y_n &amp; z_n \end{bmatrix}$$ 单元形状函数单元形状函数定义为 $\vec{N}$$$\vec{N} =\begin{bmatrix}N_1\\N_2\\N_3 \\\vdots \\N_n\end{bmatrix}$$ 全局坐标单元中任意一点的全局坐标定义为 $\vec{X}$$$\vec{X} =\begin{bmatrix}x\\y\\z\\\end{bmatrix}$$ 全局坐标与节点坐标以及形状函数存在以下关系$$\vec{X}^T = \vec{N}^{T}\mathbf{C}$$ Jacobian 矩阵$$\mathbf{J} = \frac{\partial \vec{X}^{T}}{\partial \vec{λ}} = \frac{\partial \vec{N}^{T}}{\partial \vec{λ}}\mathbf{C}$$其中$\vec{λ}$是坐标变换之后的局部坐标。 形状函数对局部坐标的导数$$\frac{\partial}{\partial \vec{λ}} = \frac{\partial \vec{X}^{T}}{\partial \vec{λ}} \frac{\partial}{\partial \vec{X}} = \mathbf{J} \frac{\partial}{\partial \vec{X}} $$ 形状函数对实际坐标的导数$$ \frac{\partial}{\partial \vec{X}} = \mathbf{J}^{-1}\frac{\partial}{\partial \vec{λ}}$$ 积分变换$$\int\int \int dx dy dz = \int\int \int det|\mathbf{J}|dλ_1dλ_2 dλ_3$$ 数值积分$$\int\int \int f(λ_1,λ_2,λ_3)dλ_1dλ_2dλ_3 = \sum_{i=1}^{nq} w_i f(λ_1,λ_2,λ_3)_i $$]]></content>
@@ -42,6 +53,17 @@
       </categories>
       <tags>
         <tag>有限元</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Fortran For Fun 并行之Co-Array Fortran (CAF)]]></title>
+    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8BCo-Array%20Fortran(CAF)%2F</url>
+    <content type="text"><![CDATA[Fortran2008及之后版本的主要提升在于混合编程和并行编程，并行编程通过coarray实现，想将Fortran的并行操作变成与数组操作一样简单，将Fortran变为一个天然的并行编程语言。 目前的fortran编译器基本上都内在的支持coarray，只需要在编译选项中添加一些选项就可以编译coarray程序。对gfortran, 添加选项1-fcoarray=lib -lcaf_mpi 对intel fortran添加选项1-coarray hello_coarray12345678program hello_coarray implicit none if(this_image() == 1) write(*,'(a,i0)') 'total images ',num_images() write(*,'(a,i0,a)') 'image ',this_image(), ' say hello coarray 'end program hello_coarray 结果执行 cafrun -n 4 hello_coarray 或 mpirun -n 4 hello_coarray ,得到12345total images 4image 1 say hello coarrayimage 2 say hello coarrayimage 3 say hello coarrayimage 4 say hello coarray coarray12345678910111213program coarray implicit none integer, allocatable :: iv(:)[:] !&lt; a vector coarray integer :: i,j allocate(iv(4)[*]) do i = 1,num_images() iv(:)[i] = [(j+i-1,j=1,4)] if(this_image()==i) print'(a,i0,a,*(i0,3x))', 'iamges-', i,':',iv enddoend program coarray 程序中iv就是一个coarray，可以在每一个镜像中对coarray赋值。 结果执行 cafrun -n 4 hello_coarray 或 mpirun -n 4 hello_coarray ,得到1234iamges-1:1 2 3 4iamges-2:2 3 4 5iamges-3:3 4 5 6iamges-4:4 5 6 7 openCoarrays]]></content>
+      <categories>
+        <category>fortran</category>
+      </categories>
+      <tags>
+        <tag>fortran</tag>
       </tags>
   </entry>
   <entry>
@@ -59,17 +81,6 @@
     <title><![CDATA[Fortran For Fun 并行之openmp]]></title>
     <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bopenmp%2F</url>
     <content type="text"><![CDATA[OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项， gfortran选项1-fopenmp ifort 选项1-openmp lean_omp123456789101112131415program learn_omp use omp_lib implicit none integer :: it, nt !$omp parallel private(it) it = omp_get_thread_num() if(it==0) then nt = omp_get_num_threads() endif print'(a,i0,a,i0)', 'hello openmp from thread ',it, ' with total threads ',nt !$omp end parallelend program learn_omp 结果12345678hello openmp from thread 6 with total threads 8hello openmp from thread 7 with total threads 8hello openmp from thread 5 with total threads 8hello openmp from thread 4 with total threads 8hello openmp from thread 3 with total threads 8hello openmp from thread 0 with total threads 8hello openmp from thread 1 with total threads 8hello openmp from thread 2 with total threads 8 openmp]]></content>
-      <categories>
-        <category>fortran</category>
-      </categories>
-      <tags>
-        <tag>fortran</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Fortran For Fun 并行之Co-Array Fortran (CAF)]]></title>
-    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8BCo-Array%20Fortran(CAF)%2F</url>
-    <content type="text"><![CDATA[Fortran2008及之后版本的主要提升在于混合编程和并行编程，并行编程通过coarray实现，想将Fortran的并行操作变成与数组操作一样简单，将Fortran变为一个天然的并行编程语言。 目前的fortran编译器基本上都内在的支持coarray，只需要在编译选项中添加一些选项就可以编译coarray程序。对gfortran, 添加选项1-fcoarray=lib -lcaf_mpi 对intel fortran添加选项1-coarray hello_coarray12345678program hello_coarray implicit none if(this_image() == 1) write(*,'(a,i0)') 'total images ',num_images() write(*,'(a,i0,a)') 'image ',this_image(), ' say hello coarray 'end program hello_coarray 结果执行 cafrun -n 4 hello_coarray 或 mpirun -n 4 hello_coarray ,得到12345total images 4image 1 say hello coarrayimage 2 say hello coarrayimage 3 say hello coarrayimage 4 say hello coarray coarray12345678910111213program coarray implicit none integer, allocatable :: iv(:)[:] !&lt; a vector coarray integer :: i,j allocate(iv(4)[*]) do i = 1,num_images() iv(:)[i] = [(j+i-1,j=1,4)] if(this_image()==i) print'(a,i0,a,*(i0,3x))', 'iamges-', i,':',iv enddoend program coarray 程序中iv就是一个coarray，可以在每一个镜像中对coarray赋值。 结果执行 cafrun -n 4 hello_coarray 或 mpirun -n 4 hello_coarray ,得到1234iamges-1:1 2 3 4iamges-2:2 3 4 5iamges-3:3 4 5 6iamges-4:4 5 6 7 openCoarrays]]></content>
       <categories>
         <category>fortran</category>
       </categories>

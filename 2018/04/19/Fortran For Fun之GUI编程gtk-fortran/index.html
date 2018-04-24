@@ -94,19 +94,19 @@
 
 
 
-<meta name="description" content="GTK+是一个功能强大，设计灵活的通用GUI编程库，可以利用这个库创建图形界面程序，使用较为简单。 gtk是使用C语言编写的，提供各种语言的API, 包括Fortran语言的API.gtk_fortran，利用该接口，可以使用Fortran语言创建图形界面程序。">
+<meta name="description" content="GTK+是一个功能强大，设计灵活的通用GUI编程库，(与其类似的库还有Qt)，可以利用这个库创建图形界面程序，使用较为简单。 gtk是使用C语言编写的，提供各种语言的API, 包括Fortran语言的API.gtk_fortran，利用该接口，可以使用Fortran语言创建图形界面程序。">
 <meta name="keywords" content="fortran">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fortran For Fun 之GUI编程gtk-fortran">
 <meta property="og:url" content="http://superfun.xyz/2018/04/19/Fortran For Fun之GUI编程gtk-fortran/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="GTK+是一个功能强大，设计灵活的通用GUI编程库，可以利用这个库创建图形界面程序，使用较为简单。 gtk是使用C语言编写的，提供各种语言的API, 包括Fortran语言的API.gtk_fortran，利用该接口，可以使用Fortran语言创建图形界面程序。">
+<meta property="og:description" content="GTK+是一个功能强大，设计灵活的通用GUI编程库，(与其类似的库还有Qt)，可以利用这个库创建图形界面程序，使用较为简单。 gtk是使用C语言编写的，提供各种语言的API, 包括Fortran语言的API.gtk_fortran，利用该接口，可以使用Fortran语言创建图形界面程序。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/gtk_fortran.png">
-<meta property="og:updated_time" content="2018-04-20T08:45:28.347Z">
+<meta property="og:updated_time" content="2018-04-20T08:53:11.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fortran For Fun 之GUI编程gtk-fortran">
-<meta name="twitter:description" content="GTK+是一个功能强大，设计灵活的通用GUI编程库，可以利用这个库创建图形界面程序，使用较为简单。 gtk是使用C语言编写的，提供各种语言的API, 包括Fortran语言的API.gtk_fortran，利用该接口，可以使用Fortran语言创建图形界面程序。">
+<meta name="twitter:description" content="GTK+是一个功能强大，设计灵活的通用GUI编程库，(与其类似的库还有Qt)，可以利用这个库创建图形界面程序，使用较为简单。 gtk是使用C语言编写的，提供各种语言的API, 包括Fortran语言的API.gtk_fortran，利用该接口，可以使用Fortran语言创建图形界面程序。">
 <meta name="twitter:image" content="http://on08uqozg.bkt.clouddn.com/gtk_fortran.png">
 
 
@@ -408,7 +408,7 @@
       
 
       
-        <p>GTK+是一个功能强大，设计灵活的通用GUI编程库，可以利用这个库创建图形界面程序，使用较为简单。</p>
+        <p>GTK+是一个功能强大，设计灵活的通用GUI编程库，(与其类似的库还有Qt)，可以利用这个库创建图形界面程序，使用较为简单。</p>
 <p>gtk是使用C语言编写的，提供各种语言的API, 包括Fortran语言的API.<a href="https://github.com/jerryd/gtk-fortran" target="_blank" rel="external">gtk_fortran</a>，利用该接口，可以使用Fortran语言创建图形界面程序。<br><a id="more"></a></p>
 <h1 id="learn-gtk-fortran"><a href="#learn-gtk-fortran" class="headerlink" title="learn_gtk_fortran"></a>learn_gtk_fortran</h1><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> learn_gtk_button</div><div class="line">  <span class="keyword">use</span> handlers, <span class="keyword">only</span>:hello, quit</div><div class="line">  <span class="keyword">use</span> <span class="keyword">iso_c_binding</span></div><div class="line">  <span class="keyword">use</span> gtk, <span class="keyword">only</span>: gtk_init, gtk_window_new, GTK_WINDOW_TOPLEVEL, gtk_widget_show_all, gtk_main, &amp;</div><div class="line">  &amp; gtk_vbox_new, gtk_button_new_with_label, gtk_box_pack_start, g_signal_connect, FALSE, TRUE, &amp;</div><div class="line">  &amp; GTK_ORIENTATION_HORIZONTAL, gtk_container_add</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line">  <span class="keyword">type</span>(<span class="keyword">c_ptr</span>) :: window, box, button, button2</div><div class="line"></div><div class="line">  <span class="keyword">call</span> gtk_init()</div><div class="line"></div><div class="line">  <span class="comment">!&gt; window</span></div><div class="line">  window = gtk_window_new (GTK_WINDOW_TOPLEVEL)</div><div class="line">  <span class="comment">!&gt; box</span></div><div class="line">  box = gtk_vbox_new (TRUE, _c_int);</div><div class="line">  <span class="keyword">call</span> gtk_container_add (window, box)</div><div class="line">  <span class="comment">!&gt; button</span></div><div class="line">  button = gtk_button_new_with_label (<span class="string">"Run"</span>//<span class="keyword">c_null_char</span>)</div><div class="line">  <span class="keyword">call</span> gtk_box_pack_start (box, button, FALSE, FALSE, _c_int)</div><div class="line">  <span class="keyword">call</span> g_signal_connect (button, <span class="string">"clicked"</span>//<span class="keyword">c_null_char</span>, <span class="keyword">c_funloc</span>(hello))</div><div class="line">  <span class="comment">!&gt; button2</span></div><div class="line">  button2 = gtk_button_new_with_label (<span class="string">"Quit"</span>//<span class="keyword">c_null_char</span>)</div><div class="line">  <span class="keyword">call</span> gtk_box_pack_start (box, button2, FALSE, FALSE, _c_int)</div><div class="line">  <span class="keyword">call</span> g_signal_connect (button2, <span class="string">"clicked"</span>//<span class="keyword">c_null_char</span>, <span class="keyword">c_funloc</span>(quit))</div><div class="line"></div><div class="line">  <span class="keyword">call</span> gtk_widget_show_all (window)</div><div class="line"></div><div class="line">  <span class="keyword">call</span> gtk_main ()</div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> learn_gtk_button</div><div class="line"></div><div class="line"><span class="keyword">module</span> handlers</div><div class="line">  <span class="keyword">use</span> gtk, <span class="keyword">only</span>: gtk_main_quit, FALSE</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line"></div><div class="line"><span class="keyword">contains</span></div><div class="line">  <span class="comment">! "clicked" is a GtkButton signal</span></div><div class="line">  <span class="function"><span class="keyword">function</span></span> hello (widget, gdata ) result(ret)  <span class="keyword">bind</span>(c)</div><div class="line">    <span class="keyword">use</span> <span class="keyword">iso_c_binding</span>, <span class="keyword">only</span>: <span class="keyword">c_ptr</span>, <span class="keyword">c_int</span></div><div class="line">    <span class="keyword">integer</span>(<span class="keyword">c_int</span>)    :: ret</div><div class="line">    <span class="keyword">type</span>(<span class="keyword">c_ptr</span>), <span class="keyword">value</span> :: widget, gdata</div><div class="line">    <span class="built_in">print</span> *, <span class="string">"Hello World!"</span></div><div class="line">    ret = FALSE</div><div class="line">  <span class="keyword">end</span> <span class="function"><span class="keyword">function</span></span> hello</div><div class="line"></div><div class="line">  <span class="comment">! "quit" is a GtkObject signal</span></div><div class="line">  <span class="function"><span class="keyword">subroutine</span></span> quit (widget, gdata) <span class="keyword">bind</span>(c)</div><div class="line">    <span class="keyword">use</span> <span class="keyword">iso_c_binding</span>, <span class="keyword">only</span>: <span class="keyword">c_ptr</span></div><div class="line">    <span class="keyword">type</span>(<span class="keyword">c_ptr</span>), <span class="keyword">value</span> :: widget, gdata</div><div class="line">    <span class="built_in">print</span> *, <span class="string">"Exit program"</span></div><div class="line">    <span class="keyword">call</span> gtk_main_quit ()</div><div class="line">  <span class="keyword">end</span> <span class="function"><span class="keyword">subroutine</span></span> quit</div><div class="line"></div><div class="line"><span class="keyword">end</span> <span class="keyword">module</span> handlers</div></pre></td></tr></table></figure>
 <h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p>以上程序会创建一个窗口，有Run和Quit两个按钮，点击Run会输出’Hello World!’，点击Quit，直接退出程序。<br><img src="http://on08uqozg.bkt.clouddn.com/gtk_fortran.png" alt="hdf5_view"></p>
@@ -442,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/19/Fortran For Fun函数库之HDF5/" rel="next" title="Fortran For Fun 函数库之HDF5">
-                <i class="fa fa-chevron-left"></i> Fortran For Fun 函数库之HDF5
+              <a href="/2018/04/17/有限元单元变换/" rel="next" title="有限元单元变换">
+                <i class="fa fa-chevron-left"></i> 有限元单元变换
               </a>
             
           </div>
@@ -452,8 +452,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/20/Fortran　For Fun函数库之json-fortran/" rel="prev" title="Fortran For Fun 函数库之json-fortran">
-                Fortran For Fun 函数库之json-fortran <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/19/Fortran For Fun函数库之HDF5/" rel="prev" title="Fortran For Fun 函数库之HDF5">
+                Fortran For Fun 函数库之HDF5 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -556,7 +556,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

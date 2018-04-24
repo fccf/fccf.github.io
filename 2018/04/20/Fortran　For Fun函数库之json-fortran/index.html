@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="json(JaveScript Object Notation)和XML都是是一种数据交换格式，采用完全独立于编程语言的文本格式来存储和表示数据。json数据可以存储任意数据类型，结构简洁清晰，易于编写和阅读。">
+<meta name="description" content="json(JaveScript Object Notation)和XML都是一种数据交换格式，采用完全独立于编程语言的文本格式来存储和表示数据。json数据可以存储任意数据类型，结构简洁清晰，易于编写和阅读。">
 <meta name="keywords" content="fortran">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fortran For Fun 函数库之json-fortran">
 <meta property="og:url" content="http://superfun.xyz/2018/04/20/Fortran　For Fun函数库之json-fortran/index.html">
 <meta property="og:site_name" content="superfun">
-<meta property="og:description" content="json(JaveScript Object Notation)和XML都是是一种数据交换格式，采用完全独立于编程语言的文本格式来存储和表示数据。json数据可以存储任意数据类型，结构简洁清晰，易于编写和阅读。">
+<meta property="og:description" content="json(JaveScript Object Notation)和XML都是一种数据交换格式，采用完全独立于编程语言的文本格式来存储和表示数据。json数据可以存储任意数据类型，结构简洁清晰，易于编写和阅读。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-20T07:36:45.148Z">
+<meta property="og:updated_time" content="2018-04-20T08:51:23.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fortran For Fun 函数库之json-fortran">
-<meta name="twitter:description" content="json(JaveScript Object Notation)和XML都是是一种数据交换格式，采用完全独立于编程语言的文本格式来存储和表示数据。json数据可以存储任意数据类型，结构简洁清晰，易于编写和阅读。">
+<meta name="twitter:description" content="json(JaveScript Object Notation)和XML都是一种数据交换格式，采用完全独立于编程语言的文本格式来存储和表示数据。json数据可以存储任意数据类型，结构简洁清晰，易于编写和阅读。">
 
 
 
@@ -406,7 +406,7 @@
       
 
       
-        <p>json(JaveScript Object Notation)和XML都是是一种数据交换格式，采用完全独立于编程语言的文本格式来存储和表示数据。json数据可以存储任意数据类型，结构简洁清晰，易于编写和阅读。</p>
+        <p>json(JaveScript Object Notation)和XML都是一种数据交换格式，采用完全独立于编程语言的文本格式来存储和表示数据。json数据可以存储任意数据类型，结构简洁清晰，易于编写和阅读。</p>
 <a id="more"></a>
 <p><a href="https://github.com/jacobwilliams/json-fortran" target="_blank" rel="external">json_fortran</a>是一个完全采用fortran语言编写的json API，基本上可以实现json文件的读写。</p>
 <h1 id="learn-json"><a href="#learn-json" class="headerlink" title="learn_json"></a>learn_json</h1><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">program</span></span> learn_json</div><div class="line">  <span class="keyword">use</span> json_module</div><div class="line">  <span class="keyword">implicit</span> <span class="keyword">none</span></div><div class="line"></div><div class="line">  <span class="keyword">character</span>(len=*),<span class="keyword">parameter</span> :: filename = <span class="string">'test.json'</span></div><div class="line">  <span class="keyword">type</span>(json_value),<span class="keyword">pointer</span> :: p1,p2</div><div class="line">  <span class="keyword">type</span>(json_core) :: json            <span class="comment">!! factory for manipulating `json_value` pointers</span></div><div class="line">  <span class="keyword">integer</span> :: iunit</div><div class="line">  <span class="keyword">integer</span>, <span class="keyword">parameter</span> :: is = <span class="number">1</span>, &amp;</div><div class="line">                        iv(*) = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line">  <span class="keyword">real</span>,    <span class="keyword">parameter</span> :: rs = <span class="number">1.0</span>, &amp;</div><div class="line">                        rv(*) = [<span class="number">1.</span>,<span class="number">2.</span>,<span class="number">3.</span>,<span class="number">4.</span>]</div><div class="line"></div><div class="line">  <span class="keyword">character</span>(*), <span class="keyword">parameter</span> :: <span class="keyword">case</span> = <span class="string">'test'</span></div><div class="line"></div><div class="line">  <span class="keyword">call</span> json%initialize()</div><div class="line">  <span class="comment">!root:</span></div><div class="line">  <span class="keyword">call</span> json%create_object(p1,filename)     <span class="comment">! create the value and associate the pointer</span></div><div class="line">  <span class="comment">!&gt; case</span></div><div class="line">  <span class="keyword">call</span> json%add(p1,<span class="string">'case'</span>,<span class="keyword">case</span>)</div><div class="line">  <span class="comment">!&gt; integer</span></div><div class="line">  <span class="keyword">call</span> json%create_object(p2,<span class="string">"integer"</span>)</div><div class="line">  <span class="keyword">call</span> json%add(p2,<span class="string">"scalar"</span>,is)</div><div class="line">  <span class="keyword">call</span> json%add(p2,<span class="string">"vector"</span>,iv)</div><div class="line">  <span class="keyword">call</span> json%add(p2,<span class="string">"descreption"</span>,<span class="string">"integer data"</span>)</div><div class="line">  <span class="keyword">call</span> json%add(p1,p2)</div><div class="line">  <span class="built_in">nullify</span>(p2)</div><div class="line">  <span class="comment">!&gt; real</span></div><div class="line">  <span class="keyword">call</span> json%create_object(p2,<span class="string">"real"</span>)</div><div class="line">  <span class="keyword">call</span> json%add(p2,<span class="string">"scalar"</span>,rs)</div><div class="line">  <span class="keyword">call</span> json%add(p2,<span class="string">"vector"</span>,rv)</div><div class="line">  <span class="keyword">call</span> json%add(p2,<span class="string">"descreption"</span>,<span class="string">"real data"</span>)</div><div class="line">  <span class="keyword">call</span> json%add(p1,p2)</div><div class="line">  <span class="built_in">nullify</span>(p2)</div><div class="line">  <span class="comment">!&gt; create file</span></div><div class="line">  open(<span class="keyword">newunit</span>=iunit, <span class="keyword">file</span>=filename, <span class="keyword">status</span>=<span class="string">'replace'</span>)</div><div class="line">  <span class="keyword">call</span> json%<span class="built_in">print</span>(p1,iunit)</div><div class="line">  close(iunit)</div><div class="line">  <span class="built_in">nullify</span>(p1)</div><div class="line"></div><div class="line"><span class="keyword">end</span> <span class="function"><span class="keyword">program</span></span> learn_json</div></pre></td></tr></table></figure>
@@ -441,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/19/Fortran For Fun之GUI编程gtk-fortran/" rel="next" title="Fortran For Fun 之GUI编程gtk-fortran">
-                <i class="fa fa-chevron-left"></i> Fortran For Fun 之GUI编程gtk-fortran
+              <a href="/2018/04/19/Fortran For Fun函数库之HDF5/" rel="next" title="Fortran For Fun 函数库之HDF5">
+                <i class="fa fa-chevron-left"></i> Fortran For Fun 函数库之HDF5
               </a>
             
           </div>
@@ -450,6 +450,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/24/Fortran For Fun之编辑器atom/" rel="prev" title="Fortran For Fun之编辑器atom">
+                Fortran For Fun之编辑器atom <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -551,7 +555,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
