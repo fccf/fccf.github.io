@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[中子输运方程的边界条件]]></title>
+    <url>%2F2018%2F05%2F16%2F%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E7%9A%84%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[中子输运方程是一个双曲方程，在数值计算中只需要给定入流边界条件就可以了，通常情况中子输运方程的边界条件包括真空边界条件，即入流恒为零;另一种边界条件为反射边界条件，即如流量等于其关于切线的对称角的出流量。在处理有限元方法的边界条件时，通常是将边界条件直接带入变分之后的边界积分项，然后对带边界条件的变分方程进行离散。以下对球谐函数方法的这两种边界条件进行处理。 真空边界条件$$\phi(r,Ω) =0 \,\,\,\,\,\,\,\,\,\,\,\, r \in \Gamma_{v},n\cdot \Omega &lt;0$$ 其中$\Gamma_{v}$为真空边界; $n$为边界外法线方向。对于球谐函数方法有$$\int_{n\cdot \Omega &lt;0}n\cdot \Omega\vec{Y}(Ω)\phi(r,Ω) dΩ = 0$$ 反射边界条件$$\phi(r,Ω) =\phi(r,\mathbf{H}Ω) \,\,\,\,\,\,\,\,\,\,\,\, r \in \Gamma_{r},n\cdot \Omega &lt;0$$ 其中$\Gamma_{r}$为反射边界，$\mathbf{H}$为反射矩阵$\mathbf{H}=\mathbf{I}-2nn^{T}$。对于球谐函数方法，将其用球谐函数展开，得$$[\vec{Y}(Ω)]^{T}\vec{\phi}_{r}(r)= [\vec{Y}(\mathbf{H}Ω)]^{T}\vec{\phi}(r)$$所以$$\vec{\phi}_{r}(r) = \mathbf{R}\vec{\phi}(r)$$其中$$\mathbf{R}=\int_{Ω}\vec{Y}(Ω)[\vec{Y}(\mathbf{H}Ω)]^{T}dΩ$$ X方向$$\vec{n}_{x}^{+} = [1,0,0]^{T}$$ $$\vec{n}_{x}^{-} = [-1,0,0]^{T}$$ $$\mathbf{H}_x=\mathbf{I}-2\vec{n}_x\vec{n}_x^{T} = \begin{bmatrix}-1 &amp; 0 &amp; 0\ 0 &amp; 1 &amp; 0\ 0 &amp; 0 &amp; 1\end{bmatrix}$$ $$\mathbf{R}_x=\int_{Ω}\vec{Y}(Ω)[\vec{Y}(\mathbf{H}_xΩ)]^{T}dΩ = $$ Y方向$$\vec{n}_y^{+} = [0,1,0]^{T}$$ $$\vec{n}_y^{-} = [0,-1,0]^{T}$$ $$\mathbf{H}_y=\mathbf{I}-2\vec{n}_y\vec{n}_y^{T} = \begin{bmatrix}1 &amp; 0 &amp; 0\ 0 &amp; -1 &amp; 0\ 0 &amp; 0 &amp; 1\end{bmatrix}$$ Z方向$$\vec{n}_z^{+} = [0,0,1]^{T}$$ $$\vec{n}_z^{-} = [0,0,-1]^{T}$$ $$\mathbf{H}_z=\mathbf{I}-2\vec{n}_z\vec{n}_z^{T} = \begin{bmatrix}1 &amp; 0 &amp; 0\ 0 &amp; 1 &amp; 0\ 0 &amp; 0 &amp; -1\end{bmatrix}$$ 黎曼分解边界上的角度雅克比矩阵为$$\mathbf{A}_{n}=n_x\mathbf{A}_{x}+n_y\mathbf{A}_{y}+n_z\mathbf{A}_{z}$$ 对其进行特征值分解，得$$\mathbf{A}_{n}=\mathbf{V}Λ\mathbf{V}^{T}=\mathbf{V}(Λ^{+}+Λ^{-})\mathbf{V}^{T}=\mathbf{A}_{n}^{+}+\mathbf{A}_{n}^{-}$$ 其中$Λ$特征值对角矩阵，$Λ^{+}$为该矩阵中特征值为正的分量，$Λ^{-}$为该矩阵中特征值为负的分量；$\mathbf{V}$为特征向量形成的矩阵。$$\mathbf{A}_{n}^{+}=\mathbf{V}Λ^{+}\mathbf{V}^{T}$$$$\mathbf{A}_{n}^{-}=\mathbf{V}Λ^{-}\mathbf{V}^{T}$$ 边界积分项通过特征值分解，边界积分项可以分解为入流部分与出流部分$$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n} = \mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{+} + \mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} $$ 其中$\mathbf{B}_{Γ}$是空间边界上的积分， $\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} $表示入流，$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{+} $ 表示出流，所以对于真空边界条件与反射边界条件可以表示为 真空边界$$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} = 0$$ 反射边界$$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} = \mathbf{B}_{Γ}\mathbf{X}\mathbf{R}\mathbf{A}_{n}^{-}$$]]></content>
+      <categories>
+        <category>中子输运方程</category>
+      </categories>
+      <tags>
+        <tag>中子输运方程</tag>
+        <tag>边界条件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Fortran For Fun之编辑器atom]]></title>
     <url>%2F2018%2F04%2F24%2FFortran%20For%20Fun%E4%B9%8B%E7%BC%96%E8%BE%91%E5%99%A8atom%2F</url>
     <content type="text"><![CDATA[欲善其事，必先利其器。使用好的文本编辑器编写程序能事半功倍。我使用过的文本编辑器有vim, emacs, sublime, atom。vim在终端直接使用得较多，sublime只是试用过一段时间，emacs用的时间很长，也挺好用的，直到遇到atom。网上有很多吐槽atom很慢，很卡，但目前我基本上没遇到过，可能由于我编辑的工程不是很大，大概就几万行代码。 我基本上所有的文本编辑工作都使用atom，包括写代码(fortran)，写blog(markdown)，论文(latex)，所有工作基本上都能很好的被满足。atom的快捷键非常方便，常用的所有操作都可以使用快捷键，而且基本上不用专门去记，比emacs的快捷键人性化很多。 以下简单介绍以下使用atom写fortran的方便之处。 主题与排版atom的内置主题比较好看，不喜欢还可以自己安装其它的。 light 主题 dark 主题 排版以前使用过visual studio自带的代码编辑器，对fortran非常不友好，连’space’和’tab’键都要注意，排版缩进等很麻烦。使用atom编辑器写代码完全不用在意排版的问题，对于排版不好的代码可以一键排版，整齐美观。 自动补全atom对于fortran语言的自动补全功能非常强大，这也是我使用atom写fortran的主要原因，能够补全的包括 关键词 模板 代码中已有的词汇 所有函数及其参数，包括fortran语言内置的以及自己写的 在线语法检测该编辑器可以直接对fortran语言的语法进行在线检测，对于编译过程中可能出现的错误和警告都会在线提示，在代码编写阶段就可以发现存在问题的地方，代码写完后，通常可以直接编译通过。 在编辑器的左下角会有当前代码中存在的错误个数和警告个数，编辑器下方会提示错误以及警告的类型以及详细信息。比如未定义，未使用等等。 git对于用git管理的代码，在编辑器中会显示git的状态，在右下方会显示当前所在分支，并且可以直接进行push,pull,fetch操作。在编辑器的左端文件树中会用不同的颜色直接显示每个文件的 git 状态，通常新添加还没add的是绿色，已添加但修改过的为黄色，正常commit过的为灰色。这样可以很清楚的知道当前对哪些文件做过修改，方便对代码进行管理。]]></content>
@@ -67,9 +79,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Fortran For Fun 并行之mpi]]></title>
-    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bmpi%2F</url>
-    <content type="text"><![CDATA[MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。 learn_mpi123456789101112131415161718192021222324252627program learn_mpi use mpi implicit none integer :: ip, np, ctx, info real :: wtime call mpi_init(info) call mpi_comm_size(MPI_COMM_WORLD, np, info) call mpi_comm_rank(MPI_COMM_WORLD, ip, info) if(ip == 0) then print*, 'number of process = ',np wtime = mpi_wtime() endif print*, 'hello mpi from process ',ip if(ip==0) then wtime = mpi_wtime() - wtime print*, 'Time elapsed = ',wtime,' seconds.' endif call mpi_finalize(info)end program learn_mpi 结果执行mpirun -n 4 learn_mpi得到123456number of process = 4hello mpi from process 0hello mpi from process 1hello mpi from process 2hello mpi from process 3Time elapsed = 4.0020095184445381E-006 seconds. open-mpi]]></content>
+    <title><![CDATA[Fortran For Fun 并行之openmp]]></title>
+    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bopenmp%2F</url>
+    <content type="text"><![CDATA[OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项， gfortran选项1-fopenmp ifort 选项1-openmp lean_omp123456789101112131415program learn_omp use omp_lib implicit none integer :: it, nt !$omp parallel private(it) it = omp_get_thread_num() if(it==0) then nt = omp_get_num_threads() endif print'(a,i0,a,i0)', 'hello openmp from thread ',it, ' with total threads ',nt !$omp end parallelend program learn_omp 结果12345678hello openmp from thread 6 with total threads 8hello openmp from thread 7 with total threads 8hello openmp from thread 5 with total threads 8hello openmp from thread 4 with total threads 8hello openmp from thread 3 with total threads 8hello openmp from thread 0 with total threads 8hello openmp from thread 1 with total threads 8hello openmp from thread 2 with total threads 8 openmp]]></content>
       <categories>
         <category>fortran</category>
       </categories>
@@ -78,9 +90,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Fortran For Fun 并行之openmp]]></title>
-    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bopenmp%2F</url>
-    <content type="text"><![CDATA[OpenMP是共享式内存并行库，编译器通常自带该库，编译时只需要添加相应的编译选项， gfortran选项1-fopenmp ifort 选项1-openmp lean_omp123456789101112131415program learn_omp use omp_lib implicit none integer :: it, nt !$omp parallel private(it) it = omp_get_thread_num() if(it==0) then nt = omp_get_num_threads() endif print'(a,i0,a,i0)', 'hello openmp from thread ',it, ' with total threads ',nt !$omp end parallelend program learn_omp 结果12345678hello openmp from thread 6 with total threads 8hello openmp from thread 7 with total threads 8hello openmp from thread 5 with total threads 8hello openmp from thread 4 with total threads 8hello openmp from thread 3 with total threads 8hello openmp from thread 0 with total threads 8hello openmp from thread 1 with total threads 8hello openmp from thread 2 with total threads 8 openmp]]></content>
+    <title><![CDATA[Fortran For Fun 并行之mpi]]></title>
+    <url>%2F2018%2F04%2F15%2FFortran%20For%20Fun%E5%B9%B6%E8%A1%8C%E4%B9%8Bmpi%2F</url>
+    <content type="text"><![CDATA[MPI是常用的并行编程库，可以安装openmpi或mpich来获得mpi的API。 learn_mpi123456789101112131415161718192021222324252627program learn_mpi use mpi implicit none integer :: ip, np, ctx, info real :: wtime call mpi_init(info) call mpi_comm_size(MPI_COMM_WORLD, np, info) call mpi_comm_rank(MPI_COMM_WORLD, ip, info) if(ip == 0) then print*, 'number of process = ',np wtime = mpi_wtime() endif print*, 'hello mpi from process ',ip if(ip==0) then wtime = mpi_wtime() - wtime print*, 'Time elapsed = ',wtime,' seconds.' endif call mpi_finalize(info)end program learn_mpi 结果执行mpirun -n 4 learn_mpi得到123456number of process = 4hello mpi from process 0hello mpi from process 1hello mpi from process 2hello mpi from process 3Time elapsed = 4.0020095184445381E-006 seconds. open-mpi]]></content>
       <categories>
         <category>fortran</category>
       </categories>
@@ -515,18 +527,6 @@
       </categories>
       <tags>
         <tag>马斯洛</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[中子输运方程的边界条件]]></title>
-    <url>%2F2017%2F10%2F20%2F%E4%B8%AD%E5%AD%90%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E7%9A%84%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6%2F</url>
-    <content type="text"><![CDATA[中子输运方程是一个双曲方程，在数值计算中只需要给定入流边界条件就可以了，通常情况中子输运方程的边界条件包括真空边界条件，即入流恒为零;另一种边界条件为反射边界条件，即如流量等于其关于切线的对称角的出流量。在处理有限元方法的边界条件时，通常是将边界条件直接带入变分之后的边界积分项，然后对带边界条件的变分方程进行离散。以下对球谐函数方法的这两种边界条件进行处理。 真空边界条件$\phi(r,Ω) =0 \,\,\,\,\,\,\,\,\,\,\,\, r \in \Gamma_{v},n\cdot \Omega &lt;0$ 其中$\Gamma_{v}$为真空边界; $n$为边界外法线方向。 对于球谐函数方法有$\int_{n\cdot \Omega &lt;0}n\cdot \Omega\vec{Y}(Ω)\phi(r,Ω) dΩ = 0$ 反射边界条件$\phi(r,Ω) =\phi(r,\mathbf{H}Ω) \,\,\,\,\,\,\,\,\,\,\,\, r \in \Gamma_{r},n\cdot \Omega &lt;0$ 其中$\Gamma_{r}$为反射边界，$\mathbf{H}$为反射矩阵 $\mathbf{H}=\mathbf{I}-2nn^{T}$ 对于球谐函数方法，将其用球谐函数展开，得$[\vec{Y}(Ω)]^{T}\vec{\phi}_{r}(r)= [\vec{Y}(\mathbf{H}Ω)]^{T}\vec{\phi}(r)$所以$\vec{\phi}_{r}(r) = \mathbf{R}\vec{\phi}(r)$其中$\mathbf{R}=\int_{Ω}\vec{Y}(Ω)[\vec{Y}(\mathbf{H}Ω)]^{T}dΩ$ 黎曼分解边界上的角度雅克比矩阵为$\mathbf{A}_{n}=n_x\mathbf{A}_{x}+n_y\mathbf{A}_{y}+n_z\mathbf{A}_{z}$ 对其进行特征值分解，得$\mathbf{A}_{n}=\mathbf{V}Λ\mathbf{V}^{T}=\mathbf{V}(Λ^{+}+Λ^{-})\mathbf{V}^{T}=\mathbf{A}_{n}^{+}+\mathbf{A}_{n}^{-}$ 其中$Λ$特征值对角矩阵，$Λ^{+}$为该矩阵中特征值为正的分量，$Λ^{-}$为该矩阵中特征值为负的分量；$\mathbf{V}$为特征向量形成的矩阵。$\mathbf{A}_{n}^{+}=\mathbf{V}Λ^{+}\mathbf{V}^{T}$$\mathbf{A}_{n}^{-}=\mathbf{V}Λ^{-}\mathbf{V}^{T}$ 边界积分项通过特征值分解，边界积分项可以分解为入流部分与出流部分$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n} = \mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{+} + \mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} $ 其中$\mathbf{B}_{Γ}$是空间边界上的积分， $\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} $表示入流，$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{+} $ 表示出流，所以对于真空边界条件与反射边界条件可以表示为 真空边界$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} = 0$ 反射边界$\mathbf{B}_{Γ}\mathbf{X}\mathbf{A}_{n}^{-} = \mathbf{B}_{Γ}\mathbf{X}\mathbf{R}\mathbf{A}_{n}^{-}$]]></content>
-      <categories>
-        <category>中子输运方程</category>
-      </categories>
-      <tags>
-        <tag>中子输运方程</tag>
-        <tag>边界条件</tag>
       </tags>
   </entry>
   <entry>
