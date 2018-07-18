@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/QPushButton-1.png">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/QPushButton-2.png">
 <meta property="og:image" content="http://on08uqozg.bkt.clouddn.com/EnvetSender.png">
-<meta property="og:updated_time" content="2018-07-18T09:01:32.641Z">
+<meta property="og:updated_time" content="2018-07-18T09:10:11.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PyQt5学习3-第一个按钮">
 <meta name="twitter:description" content="在图形界面中，点击按钮会发出信号，然后与具体的操作连接起来。 12btn = QPushButton()btn.clicked.connect()">
@@ -415,8 +415,10 @@
 <a id="more"></a>
 <h1 id="QPushButton"><a href="#QPushButton" class="headerlink" title="QPushButton"></a>QPushButton</h1><p>QPushButton 是 PyQt5.QtWidgets 模块提供的按钮部件，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python3</div><div class="line">#-*- coding: utf-8 -*-</div><div class="line">import sys</div><div class="line">from PyQt5.QtWidgets import QWidget,QPushButton,QApplication,QMessageBox</div><div class="line"></div><div class="line">class ex(QWidget):</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        super().__init__()</div><div class="line">        self.initUI()</div><div class="line"></div><div class="line">    def initUI(self):</div><div class="line">        self.btn = QPushButton(&apos;Hello&apos;, self)</div><div class="line">        self.btn.move(100,100)</div><div class="line">        self.btn.clicked.connect(self.buttonClicked)</div><div class="line">        self.setWindowTitle(&apos;Hello PyQt5&apos;)</div><div class="line">        self.show()</div><div class="line"></div><div class="line">    def buttonClicked(self):</div><div class="line">        QMessageBox.information(self,&quot;Information&quot;,&quot;Hello PyQt5&quot;)</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    app = QApplication(sys.argv)</div><div class="line">    e = ex()</div><div class="line">    sys.exit(app.exec_())</div></pre></td></tr></table></figure>
-<p>该程序产生一个窗口中间有一个hello按钮<br><img src="http://on08uqozg.bkt.clouddn.com/QPushButton-1.png" alt="w1"></p>
-<p>点击该按钮，出现一个information对话框<br><img src="http://on08uqozg.bkt.clouddn.com/QPushButton-2.png" alt="w2"></p>
+<p>该程序产生一个窗口中间有一个hello按钮</p>
+<p><img src="http://on08uqozg.bkt.clouddn.com/QPushButton-1.png" alt="w1"></p>
+<p>点击该按钮，出现一个information对话框</p>
+<p><img src="http://on08uqozg.bkt.clouddn.com/QPushButton-2.png" alt="w2"></p>
 <h1 id="QMainWindow"><a href="#QMainWindow" class="headerlink" title="QMainWindow"></a>QMainWindow</h1><p>QMainWindow 是 PyQt5.QtWidgets 模块提供主窗口部件,该组件继承于Widget。</p>
 <p>通过Widget中的sender()方法可以知道是哪个组件发出的信号。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python3</div><div class="line">#-*- coding: utf-8 -*-</div><div class="line">import sys</div><div class="line">from PyQt5.QtWidgets import QMainWindow, QPushButton, QApplication</div><div class="line"></div><div class="line">class ex(QMainWindow):</div><div class="line">    def __init__(self):</div><div class="line">        super().__init__()</div><div class="line">        self.initUI()</div><div class="line"></div><div class="line">    def initUI(self):</div><div class="line">        btn1 = QPushButton(&apos;button 1&apos;,self)</div><div class="line">        btn1.move(30,50)</div><div class="line">        btn2 = QPushButton(&apos;button 2&apos;,self)</div><div class="line">        btn2.move(150,50)</div><div class="line"></div><div class="line">        btn1.clicked.connect(self.buttonClicked)</div><div class="line">        btn2.clicked.connect(self.buttonClicked)</div><div class="line"></div><div class="line">        self.statusBar()</div><div class="line">        self.setGeometry(300,300,290,150)</div><div class="line">        self.setWindowTitle(&apos;Envet Sender&apos;)</div><div class="line">        self.show()</div><div class="line"></div><div class="line">    def buttonClicked(self):</div><div class="line">        sender = self.sender()</div><div class="line">        self.statusBar().showMessage(sender.text() + &apos; was pressed&apos;)</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    app = QApplication(sys.argv)</div><div class="line">    e = ex()</div><div class="line">    sys.exit(app.exec_())</div></pre></td></tr></table></figure>
@@ -461,6 +463,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/19/PyQt5学习4-布局管理/" rel="prev" title="PyQt5学习4-布局管理">
+                PyQt5学习4-布局管理 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -562,7 +568,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
