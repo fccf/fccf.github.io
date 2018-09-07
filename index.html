@@ -409,121 +409,15 @@
 
       
         
-          
-            <h1 id="球谐函数"><a href="#球谐函数" class="headerlink" title="球谐函数"></a>球谐函数</h1><h2 id="实值的球谐函数"><a href="#实值的球谐函数" class="headerlink" title="实值的球谐函数"></a>实值的球谐函数</h2><p>该模块主要定义了实值的球谐函数如下：</p>
+          <h1 id="球谐函数"><a href="#球谐函数" class="headerlink" title="球谐函数"></a>球谐函数</h1><h2 id="实值的球谐函数"><a href="#实值的球谐函数" class="headerlink" title="实值的球谐函数"></a>实值的球谐函数</h2><p>该模块主要定义了实值的球谐函数如下：</p>
 <p>$$Y_{n,m}(\Omega) = \left\{\begin{matrix}<br>\sqrt{\frac{(2n+1)(n-m)!}{2\pi(n+m)!}}P_{n}^{m}(\mu)cos(m\varphi) &amp; m&gt;0\\<br>\sqrt{\frac{(2n+1)}{4\pi}}P_{n}(\mu) &amp; m=0 \\<br>\sqrt{\frac{(2n+1)(n-|m|)!}{2\pi(n+|m|)!}}P_{n}^{|m|}(\mu)sin(|m|\varphi) &amp; m&lt;0<br>\end{matrix}\right.$$</p>
-<h2 id="勒让得多项式"><a href="#勒让得多项式" class="headerlink" title="勒让得多项式"></a>勒让得多项式</h2><ul>
-<li>LegendrePolynomial<br><img src="http://on08uqozg.bkt.clouddn.com/legendre_polynomial.png" alt="LegendrePolynomial"></li>
-</ul>
-<h2 id="连带勒让得多项式"><a href="#连带勒让得多项式" class="headerlink" title="连带勒让得多项式"></a>连带勒让得多项式</h2><ul>
-<li>AssociateLegendrePolynomial<br><img src="http://on08uqozg.bkt.clouddn.com/associate_legendre_polynomial.png" alt="AssociateLegendrePolynomial"></li>
-</ul>
-<h2 id="球谐函数-1"><a href="#球谐函数-1" class="headerlink" title="球谐函数"></a>球谐函数</h2><ul>
-<li>SphericalHarmonics<br><img src="http://on08uqozg.bkt.clouddn.com/spherical_harmonics.png" alt="SphericalHarmonics"></li>
-</ul>
-<h1 id="球谐函数递推关系"><a href="#球谐函数递推关系" class="headerlink" title="球谐函数递推关系"></a>球谐函数递推关系</h1><p>球谐函数存在如下递推关系：</p>
-<p>$$Ω_x\vec{Y}(Ω) = \mathbf{A}_x\vec{Y}(Ω)$$</p>
-<p>$$Ω_y\vec{Y}(Ω) = \mathbf{A}_y\vec{Y}(Ω)$$</p>
-<p>$$Ω_z\vec{Y}(Ω) = \mathbf{A}_z\vec{Y}(Ω)$$</p>
-<p>其中矩阵 $ \mathbf{A}_x,  \mathbf{A}_y,  \mathbf{A}_z$ 分别为 $x,y,z$ 方向上的递推关系矩阵，又被称为角度Jacobian矩阵。</p>
-<h2 id="球谐函数正交关系"><a href="#球谐函数正交关系" class="headerlink" title="球谐函数正交关系"></a>球谐函数正交关系</h2><p>定义的球谐函数是正交归一的，内积是一个单位矩阵<br>$$ \mathbf{A} = \int_{\Omega} \vec{Y}(Ω) \vec{Y}^{T}(Ω) d\Omega = \mathbf{I}$$</p>
-<p><img src="http://on08uqozg.bkt.clouddn.com/A1-tp2.png" alt="A"></p>
-<h2 id="x方向递推关系"><a href="#x方向递推关系" class="headerlink" title="x方向递推关系"></a>x方向递推关系</h2><p>定义 $Y_{n,m}^{’}$ 为不带归一化系数的球谐函数，由连带勒让得多项式和三角函数的乘积组成，其递推关系为：</p>
-<ul>
-<li><p>m &gt; 0<br>$$ \eta Y_{n,m}^{’}= \frac{1}{2(2n+1)} [Y_{n-1,m+1}^{’} - Y_{n+1,m+1}^{’} + (n-m+2)(n-m+1) Y_{n+1,m-1}^{’} - (n+m)(n+m-1) Y_{n-1,m-1}^{’}]$$</p>
-</li>
-<li><p>m = 0<br>$$ \eta Y_{n,0}^{’}= \frac{1}{2n+1} [Y_{n-1,1}^{’} - Y_{n+1,1}^{’}]$$</p>
-</li>
-<li><p>m = -1<br>$$ \eta Y_{n,-1}^{’}= \frac{1}{2(2n+1)} [Y_{n-1,-2}^{’} - Y_{n+1,-2}^{’}]$$</p>
-</li>
-<li><p>m &lt; -1<br>$$ \eta Y_{n,m}^{’}= \frac{1}{2(2n+1)} [Y_{n-1,m-1}^{’} - Y_{n+1,m-1}^{’} + (n+m+2)(n+m+1) Y_{n+1,m+1}^{’} - (n-m)(n-m-1) Y_{n-1,m+1}^{’}]$$</p>
-</li>
-</ul>
-<p>通过以上递推关系式，可以直接得到递推关系矩阵$\mathbf{A}_x$。<br>根据球谐函数正交关系可知 $\mathbf{A}_x$ 可以表示为：<br>$$ \mathbf{A}_x = \int_{\Omega} Ω_x\vec{Y}(Ω) \vec{Y}^{T}(Ω) d\Omega$$</p>
-<p>$\mathbf{A}_x$ 的稀疏矩阵图可以表示为<br><img src="http://on08uqozg.bkt.clouddn.com/Ax-tp2.png" alt="Ax"></p>
-<h2 id="y方向递推关系"><a href="#y方向递推关系" class="headerlink" title="y方向递推关系"></a>y方向递推关系</h2><p>非归一化球谐函数  $Y_{n,m}^{’}$ 在y方向的递推关系为</p>
-<ul>
-<li><p>m &gt; 1<br>$$ \xi Y_{n,m}^{’}= \frac{1}{2(2n+1)} [Y_{n-1,-m-1}^{’} - Y_{n+1,-m-1}^{’} + (n+m+2)(n+m+1) Y_{n+1,-m+1}^{’} - (n-m)(n-m-1) Y_{n-1,-m+1}^{’}]$$</p>
-</li>
-<li><p>m = 1<br>$$ \xi Y_{n,-1}^{’}= \frac{1}{2(2n+1)} [Y_{n-1,-2}^{’} - Y_{n+1,-2}^{’}]$$</p>
-</li>
-<li><p>m = 0<br>$$ \xi Y_{n,0}^{’}= \frac{1}{2n+1} [Y_{n-1,-1}^{’} - Y_{n+1,-1}^{’}]$$</p>
-</li>
-<li><p>m &lt; 0<br>$$ \xi Y_{n,m}^{’}= \frac{1}{2(2n+1)} [Y_{n+1,-m+1}^{’} - Y_{n-1,-m+1}^{’} + (n+m+2)(n+m+1) Y_{n+1,-m-1}^{’} - (n-m)(n-m-1) Y_{n-1,-m-1}^{’}]$$</p>
-</li>
-</ul>
-<p>递推关系矩阵$ \mathbf{A}_y$为：<br>$$ \mathbf{A}_y = \int_{\Omega} Ω_y\vec{Y}(Ω) \vec{Y}^{T}(Ω) d\Omega$$</p>
-<p>$ \mathbf{A}_y$的稀疏矩阵图为<br><img src="http://on08uqozg.bkt.clouddn.com/Ay-tp2.png" alt="Ay"></p>
-<h2 id="z方向递推关系"><a href="#z方向递推关系" class="headerlink" title="z方向递推关系"></a>z方向递推关系</h2><p>非归一化球谐函数  $Y_{n,m}^{’}$ 在z方向的递推关系为<br>$$\mu Y_{n,m}^{’}=\frac{1}{2n+1}[(n-|m|+1)Y_{n+1,m}^{’}+(n+|m|)Y_{n-1,m}^{’}]$$</p>
-<p>递推关系矩阵$ \mathbf{A}_y$为：</p>
-<p>$$ \mathbf{A}_{z} = \int_{\Omega} Ω_z\vec{Y}(Ω) \vec{Y}^{T}(Ω) d\Omega$$</p>
-<p>$ \mathbf{A}_z$的稀疏矩阵图为<br><img src="http://on08uqozg.bkt.clouddn.com/Az-tp2.png" alt="Az"></p>
-<h1 id="边界上的角度矩阵"><a href="#边界上的角度矩阵" class="headerlink" title="边界上的角度矩阵"></a>边界上的角度矩阵</h1><h2 id="边界角度矩阵"><a href="#边界角度矩阵" class="headerlink" title="边界角度矩阵"></a>边界角度矩阵</h2><p>边界上的角度矩阵是$x,y,z$方向上的角度矩阵在法线上的投影，定义为<br>$$ \mathbf{A}_{n} = \int_{\Omega} n \cdot \Omega\vec{Y}(Ω) \vec{Y}^{T}(Ω) d\Omega = n_x \mathbf{A}_{x} + n_y \mathbf{A}_{y} + n_z \mathbf{A}_{z} $$</p>
-<p>法向量 $n = \frac{\sqrt{3}}{3}[1,1,1]^{T}$ 时，矩阵的稀疏矩阵图为<br><img src="http://on08uqozg.bkt.clouddn.com/An.png" alt="An"></p>
-<h2 id="特征值分解"><a href="#特征值分解" class="headerlink" title="特征值分解"></a>特征值分解</h2><p>定义出流边界矩阵<br>$$ \mathbf{A}_{n}^{+} = \int_{n\cdot\Omega&gt;0} n \cdot \Omega\vec{Y}(Ω) \vec{Y}^{T}(Ω) d\Omega $$</p>
-<p>入流边界矩阵<br>$$ \mathbf{A}_{n}^{-} = \int_{n\cdot\Omega&lt;0} n \cdot \Omega\vec{Y}(Ω) \vec{Y}^{T}(Ω) d\Omega $$</p>
-<p>可以通过特征值分解来求解入流边界矩阵与出流矩阵。</p>
-<p>$$\mathbf{A}_{n} = \mathbf{V}\Lambda\mathbf{V}^{T}=\mathbf{V}(\Lambda^{+}+\Lambda^{-})\mathbf{V}^{T}=\mathbf{A}_{n}^{+}+\mathbf{A}_{n}^{-}$$</p>
-<p>其中 $\Lambda$ 为矩阵的特征值组成的对角矩阵，$\mathbf{A}_{n}^{+}$ 是特征值为正的分量，$\mathbf{A}_{n}^{-}$ 为特征值为负的分量。</p>
-<p>法向量 $n = \frac{\sqrt{3}}{3}[1,1,1]^{T}$ 时，入流矩阵和出流矩阵分别为</p>
-<ul>
-<li><p>入流矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/Anm.png" alt="Anm"></p>
-</li>
-<li><p>出流矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/Anp.png" alt="Anp"></p>
-</li>
-</ul>
-<h2 id="反射矩阵"><a href="#反射矩阵" class="headerlink" title="反射矩阵"></a>反射矩阵</h2><p>反射矩阵是将原方向的角度展开矩反射到反射角度上的角度展开矩，反射矩阵定义为<br>$$ \mathbf{A}_{r} = \int_{\Omega} \vec{Y}(Ω) \vec{Y}^{T}(\mathbf{H}Ω) d\Omega $$</p>
-<p>其中 $\mathbf{H}Ω$ 是 角度 $Ω$ 关于法向量 $n$ 的反射角<br>$$\mathbf{H} = \mathbf{I} - n n^{T} $$</p>
-<p>反射矩阵可以通过数值积分进行求解；当法向量 $n = \frac{\sqrt{3}}{3}[1,1,1]^{T}$ 时，反射矩阵为</p>
-<p><img src="http://on08uqozg.bkt.clouddn.com/Ar.png" alt="Ar"></p>
-<h2 id="边界条件角度矩阵"><a href="#边界条件角度矩阵" class="headerlink" title="边界条件角度矩阵"></a>边界条件角度矩阵</h2><p>真空边界条件中，入流为零，所以边界上的角度矩阵为出流矩阵，即<br>$$\mathbf{A}_{b} = \mathbf{A}_{n}^{+}$$<br><img src="http://on08uqozg.bkt.clouddn.com/Anp.png" alt="Anp"></p>
-<p>反射边界条件中，入流为出流的反射，此时边界矩阵为<br>$$\mathbf{A}_{b} = \mathbf{A}_{n}^{+} + \mathbf{A}_{n}^{-}\mathbf{A}_{r}$$</p>
-<p><img src="http://on08uqozg.bkt.clouddn.com/Ab.png" alt="Ab"></p>
-<p>以上都是  $n = \frac{\sqrt{3}}{3}[1,1,1]^{T}$ 时的边界矩阵。</p>
-<h3 id="x方向上边界角度矩阵"><a href="#x方向上边界角度矩阵" class="headerlink" title="x方向上边界角度矩阵"></a>x方向上边界角度矩阵</h3><ul>
-<li><p>法向量<br>$n = [1,0,0]^{T}$</p>
-</li>
-<li><p>边界角度矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/ax.png" alt="ax"></p>
-</li>
-<li><p>入流矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/axm.png" alt="axm"></p>
-</li>
-<li><p>出流矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/axp.png" alt="axp"></p>
-</li>
-<li><p>反射矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/axr.png" alt="axr"></p>
-</li>
-<li><p>反射边界矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/axb.png" alt="axb"></p>
-</li>
-</ul>
-<h3 id="y方向上边界角度矩阵"><a href="#y方向上边界角度矩阵" class="headerlink" title="y方向上边界角度矩阵"></a>y方向上边界角度矩阵</h3><ul>
-<li><p>法向量<br>$n = [0,1,0]^{T}$</p>
-</li>
-<li><p>边界角度矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/Ay.png" alt="Ay"></p>
-</li>
-<li><p>入流矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/Aym.png" alt="Aym"></p>
-</li>
-<li><p>出流矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/Ayp.png" alt="Ayp"></p>
-</li>
-<li><p>反射矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/Ayr.png" alt="Ayr"></p>
-</li>
-<li><p>反射边界矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/Ayb.png" alt="Ayb"></p>
-</li>
-</ul>
-<h3 id="z方向上边界角度矩阵"><a href="#z方向上边界角度矩阵" class="headerlink" title="z方向上边界角度矩阵"></a>z方向上边界角度矩阵</h3><ul>
-<li><p>法向量<br>$n = [0,0,1]^{T}$</p>
-</li>
-<li><p>边界角度矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/Az.png" alt="Az"></p>
-</li>
-<li><p>入流矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/Azm.png" alt="Azm"></p>
-</li>
-<li><p>出流矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/Azp.png" alt="Azp"></p>
-</li>
-<li><p>反射矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/Azr.png" alt="Azr"></p>
-</li>
-<li><p>反射边界矩阵<br><img src="http://on08uqozg.bkt.clouddn.com/Azb.png" alt="Azb"></p>
-</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/07/球谐函数方法矩阵性质/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
